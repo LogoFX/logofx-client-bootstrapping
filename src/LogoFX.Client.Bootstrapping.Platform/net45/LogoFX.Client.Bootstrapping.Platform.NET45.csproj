@@ -47,6 +47,14 @@
       <HintPath>..\..\packages\LogoFX.Client.Bootstrapping.Adapters.Contracts.1.0.4\lib\portable-net45+wpa8+win8\LogoFX.Client.Bootstrapping.Adapters.Contracts.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="LogoFX.Client.Core, Version=1.0.7.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\LogoFX.Client.Core.Core.1.0.7\lib\portable-net45+wpa8+win8+MonoAndroid+MonoTouch\LogoFX.Client.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="LogoFX.Client.Core.Platform, Version=1.0.7.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\LogoFX.Client.Core.1.0.7\lib\net45\LogoFX.Client.Core.Platform.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="Solid.Practices.Composition, Version=1.0.9.0, Culture=neutral, processorArchitecture=MSIL">
@@ -114,9 +122,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\LogoFX.Client.Bootstrapping.Core\LogoFX.Client.Bootstrapping.Core.csproj">
-      <Project>{BC639B22-269A-4556-83F7-BBFC2A4BF570}</Project>
-      <Name>LogoFX.Client.Bootstrapping.Core</Name>
+    <ProjectReference Include="..\..\LogoFX.Client.Bootstrapping\LogoFX.Client.Bootstrapping.csproj">
+      <Project>{bc639b22-269a-4556-83f7-bbfc2a4bf570}</Project>
+      <Name>LogoFX.Client.Bootstrapping</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

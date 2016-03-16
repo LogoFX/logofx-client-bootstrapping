@@ -1,8 +1,9 @@
 ﻿{
   "dependencies": {
     "Caliburn.Micro": "3.0.0",
-    "LogoFX.Client.Bootstrapping.Adapters.Contracts": "1.0.4",
-    "LogoFX.Client.Bootstrapping.Core": "1.0.8",
+    "LogoFX.Client.Bootstrapping.Adapters.Contracts": "1.0.4",    
+    "LogoFX.Client.Core": "1.0.7",
+    "LogoFX.Client.Core.Core": "1.0.7",
     "Microsoft.NETCore.UniversalWindowsPlatform": "5.0.0",
     "Solid.Practices.Composition": "1.1.2",
     "Solid.Practices.Composition.Client": "1.0.9",

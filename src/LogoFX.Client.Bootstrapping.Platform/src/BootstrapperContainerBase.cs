@@ -1,4 +1,5 @@
 ﻿using System.Reflection;
+using System.Windows.Threading;
 #if NET45
 using System.Windows;
 #endif
@@ -130,7 +131,7 @@ namespace LogoFX.Client.Bootstrapping
                 Modules);
             InitializeViewLocator();
             InitializeAdapter();      
-            BootstrapperHelper<TRootViewModel, TIocContainerAdapter>.InitializeDispatcher();
+            InitializeDispatcher();
             RegisterPlatformSpecificServices(_iocContainerAdapter);                        
             OnConfigure(_iocContainerAdapter);
         }
@@ -169,6 +170,14 @@ namespace LogoFX.Client.Bootstrapping
         /// <value>
         /// The assemblies.
         /// </value>
-        protected Assembly[] Assemblies { get; private set; }        
+        protected Assembly[] Assemblies { get; private set; }
+
+        /// <summary>
+        /// Initializes the framework dispatcher.
+        /// </summary>
+        public static void InitializeDispatcher()
+        {
+            Dispatch.Current.InitializeDispatch();
+        }
     }    
 }

@@ -2,7 +2,6 @@
 using System.ComponentModel;
 using System.Linq;
 using System.Reflection;
-using System.Windows.Threading;
 using LogoFX.Core;
 using Solid.Practices.IoC;
 using Solid.Practices.Modularity;
@@ -17,15 +16,7 @@ namespace LogoFX.Client.Bootstrapping
     public static class BootstrapperHelper<TRootViewModel, TIocContainerAdapter> 
         where TRootViewModel : class
         where TIocContainerAdapter : class, IIocContainer
-    {
-        /// <summary>
-        /// Initializes the framework dispatcher.
-        /// </summary>
-        public static void InitializeDispatcher()
-        {
-            Dispatch.Current.InitializeDispatch();
-        }
-
+    {        
         /// <summary>
         /// Registers the IoC container and root view model.
         /// </summary>
