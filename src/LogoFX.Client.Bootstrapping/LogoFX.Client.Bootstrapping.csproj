@@ -28,11 +28,11 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>..\Bin\Release\Client\</OutputPath>
+    <OutputPath>..\Bin\portable\Release\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>..\Bin\Release\Client\LogoFX.Client.Bootstrapping.XML</DocumentationFile>
+    <DocumentationFile>..\Bin\portable\Release\LogoFX.Client.Bootstrapping.XML</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="BootstrapperCreationOptions.cs" />
