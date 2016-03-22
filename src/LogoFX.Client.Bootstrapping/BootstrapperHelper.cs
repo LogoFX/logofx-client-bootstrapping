@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Reflection;
@@ -51,11 +52,18 @@ namespace LogoFX.Client.Bootstrapping
         /// </summary>
         /// <param name="iocContainerAdapter">The ioc container adapter.</param>
         /// <param name="modules">The modules.</param>
+        /// <param name="lifetimeScopeProvider">The lifetime scope provider.</param>
         public static void RegisterCompositionModules(
             TIocContainerAdapter iocContainerAdapter, 
-            IEnumerable<ICompositionModule> modules)
+            IEnumerable<ICompositionModule> modules,
+            Func<object> lifetimeScopeProvider)
         {
             new ModuleRegistrator(modules).RegisterModules(iocContainerAdapter);
+            if (iocContainerAdapter is IIocContainerScoped)
+                // ReSharper disable HeuristicUnreachableCode - The container adapter may inherit from IIocContainerScoped
+            {
+                new ScopedModuleRegistrator(modules, lifetimeScopeProvider).RegisterModules((IIocContainerScoped) iocContainerAdapter);
+            }            
         }        
     }
 }

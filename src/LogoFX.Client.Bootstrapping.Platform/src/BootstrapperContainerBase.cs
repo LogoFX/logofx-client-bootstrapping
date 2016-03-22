@@ -128,7 +128,7 @@ namespace LogoFX.Client.Bootstrapping
             BootstrapperHelper<TRootViewModel, TIocContainerAdapter>.RegisterViewsAndViewModels(_iocContainerAdapter,
                 Assemblies);
             BootstrapperHelper<TRootViewModel, TIocContainerAdapter>.RegisterCompositionModules(_iocContainerAdapter,
-                Modules);
+                Modules, () => CurrentLifetimeScope);
             InitializeViewLocator();
             InitializeAdapter();      
             InitializeDispatcher();
