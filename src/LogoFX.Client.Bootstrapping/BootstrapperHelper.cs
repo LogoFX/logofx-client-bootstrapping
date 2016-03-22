@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Reflection;
+using LogoFX.Client.Modularity;
 using LogoFX.Core;
 using Solid.Practices.IoC;
 using Solid.Practices.Modularity;
@@ -58,12 +59,30 @@ namespace LogoFX.Client.Bootstrapping
             IEnumerable<ICompositionModule> modules,
             Func<object> lifetimeScopeProvider)
         {
-            new ModuleRegistrator(modules).RegisterModules(iocContainerAdapter);
+            var compositionModules = modules as ICompositionModule[] ?? modules.ToArray();
+            new ModuleRegistrator(compositionModules).RegisterModules(iocContainerAdapter);
             if (iocContainerAdapter is IIocContainerScoped)
                 // ReSharper disable HeuristicUnreachableCode - The container adapter may inherit from IIocContainerScoped
             {
-                new ScopedModuleRegistrator(modules, lifetimeScopeProvider).RegisterModules((IIocContainerScoped) iocContainerAdapter);
+                new ScopedModuleRegistrator(compositionModules, lifetimeScopeProvider).RegisterModules((IIocContainerScoped) iocContainerAdapter);
             }            
-        }        
+        }
+
+        /// <summary>
+        /// Registers the UI modules as collection.
+        /// </summary>
+        /// <typeparam name="TUiModule">The type of the UI module.</typeparam>
+        /// <param name="iocContainerAdapter">The ioc container adapter.</param>
+        /// <param name="modules">The modules.</param>
+        public static void RegisterUiModules<TUiModule>(
+            TIocContainerAdapter iocContainerAdapter,
+            IEnumerable<ICompositionModule> modules) where TUiModule : class, IUiModule
+        {
+            var uiModules = modules.OfType<TUiModule>().ToArray();
+            if (uiModules.Length > 0)
+            {
+                iocContainerAdapter.RegisterCollection<TUiModule>(uiModules.Select(t => t.GetType()));
+            }
+        }    
     }
 }

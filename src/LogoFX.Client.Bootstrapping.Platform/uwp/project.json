@@ -4,11 +4,12 @@
     "LogoFX.Client.Bootstrapping.Adapters.Contracts": "1.0.4",
     "LogoFX.Client.Core": "1.0.7",
     "LogoFX.Client.Core.Core": "1.0.7",
+    "LogoFX.Client.Modularity": "1.0.5",
     "Microsoft.NETCore.UniversalWindowsPlatform": "5.0.0",
     "Solid.Practices.Composition": "1.1.2",
     "Solid.Practices.Composition.Client": "1.0.9",
     "Solid.Practices.Composition.Core": "1.0.9",
-    "Solid.Practices.IoC": "1.0.9"
+    "Solid.Practices.IoC": "1.1.0"
   },
   "frameworks": {
     "uap10.0": {}
