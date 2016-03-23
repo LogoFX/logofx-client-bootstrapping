@@ -9,6 +9,7 @@ using Windows.ApplicationModel.Activation;
 #endif
 using Caliburn.Micro;
 using LogoFX.Client.Bootstrapping.Adapters.Contracts;
+using Solid.Practices.Composition;
 using Solid.Practices.IoC;
 
 namespace LogoFX.Client.Bootstrapping
@@ -55,6 +56,17 @@ namespace LogoFX.Client.Bootstrapping
         {
             _iocContainerAdapter = iocContainerAdapter;
             _reuseCompositionInformation = creationOptions.ReuseCompositionInformation;
+            if (creationOptions.DiscoverCompositionModules || creationOptions.InspectAssemblies)
+            {
+                Solid.Practices.Composition.PlatformProvider.Current =
+#if NET45
+                    new NetPlatformProvider()
+#endif
+#if NETFX_CORE || WINDOWS_UWP
+                    new UniversalPlatformProvider()
+#endif
+                    ;
+            }
             if (creationOptions.DiscoverCompositionModules)
             {
                 InitializeCompositionModules();
