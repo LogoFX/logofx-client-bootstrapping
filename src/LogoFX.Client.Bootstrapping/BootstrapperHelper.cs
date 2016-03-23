@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Reflection;
-using LogoFX.Client.Modularity;
 using LogoFX.Core;
 using Solid.Practices.IoC;
 using Solid.Practices.Modularity;
@@ -65,24 +64,13 @@ namespace LogoFX.Client.Bootstrapping
                 // ReSharper disable HeuristicUnreachableCode - The container adapter may inherit from IIocContainerScoped
             {
                 new ScopedModuleRegistrator(compositionModules, lifetimeScopeProvider).RegisterModules((IIocContainerScoped) iocContainerAdapter);
-            }            
-        }
-
-        /// <summary>
-        /// Registers the UI modules as collection.
-        /// </summary>
-        /// <typeparam name="TUiModule">The type of the UI module.</typeparam>
-        /// <param name="iocContainerAdapter">The ioc container adapter.</param>
-        /// <param name="modules">The modules.</param>
-        public static void RegisterUiModules<TUiModule>(
-            TIocContainerAdapter iocContainerAdapter,
-            IEnumerable<ICompositionModule> modules) where TUiModule : class, IUiModule
-        {
-            var uiModules = modules.OfType<TUiModule>().ToArray();
-            if (uiModules.Length > 0)
-            {
-                iocContainerAdapter.RegisterCollection<TUiModule>(uiModules.Select(t => t.GetType()));
             }
-        }    
+
+            var hierarchicalModules = compositionModules.OfType<IHierarchicalCompositionModule>();
+            foreach (var hierarchicalModule in hierarchicalModules)
+            {
+                hierarchicalModule.RegisterModules(iocContainerAdapter, compositionModules);
+            }
+        }          
     }
 }

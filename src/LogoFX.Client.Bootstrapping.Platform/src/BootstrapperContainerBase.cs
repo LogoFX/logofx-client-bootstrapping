@@ -9,56 +9,10 @@ using Windows.ApplicationModel.Activation;
 #endif
 using Caliburn.Micro;
 using LogoFX.Client.Bootstrapping.Adapters.Contracts;
-using LogoFX.Client.Modularity;
 using Solid.Practices.IoC;
 
 namespace LogoFX.Client.Bootstrapping
-{
-    /// <summary>
-    /// Base class for application and test boostrappers.
-    /// Used when no navigation logic is needed.
-    /// </summary>
-    /// <typeparam name="TRootViewModel">Type of Root ViewModel.</typeparam>
-    /// <typeparam name="TIocContainerAdapter">Type of IoC container adapter.</typeparam>
-    /// <typeparam name="TUiModule">Type of Ui Module.</typeparam>
-    public class BootstrapperContainerBase<TRootViewModel, TUiModule, TIocContainerAdapter> :
-            BootstrapperContainerBase<TRootViewModel, TIocContainerAdapter>
-        where TRootViewModel : class
-        where TUiModule : class, IUiModule
-        where TIocContainerAdapter : class, IIocContainer, IBootstrapperAdapter, new()
-        
-    {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="BootstrapperContainerBase{TRootViewModel, TUiModule, TIocContainerAdapter}"/> class.
-        /// </summary>
-        /// <param name="iocContainerAdapter">The ioc container adapter.</param>
-        public BootstrapperContainerBase(TIocContainerAdapter iocContainerAdapter) : 
-            base(iocContainerAdapter)
-        {
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="BootstrapperContainerBase{TRootViewModel, TUiModule, TIocContainerAdapter}"/> class.
-        /// </summary>
-        /// <param name="iocContainerAdapter">The ioc container adapter.</param>
-        /// <param name="creationOptions">The creation options.</param>
-        public BootstrapperContainerBase(TIocContainerAdapter iocContainerAdapter, BootstrapperCreationOptions creationOptions) :
-            base(iocContainerAdapter, creationOptions)
-        {
-        }
-
-        /// <summary>
-        /// Override this method to inject custom logic during bootstrapper configuration.
-        /// </summary>
-        /// <param name="iocContainerAdapter">IoC container adapter</param>
-        protected override void OnConfigure(TIocContainerAdapter iocContainerAdapter)
-        {
-            base.OnConfigure(iocContainerAdapter);
-            BootstrapperHelper<TRootViewModel, TIocContainerAdapter>.RegisterUiModules<TUiModule>(iocContainerAdapter,
-                Modules);
-        }
-    }
-
+{   
     /// <summary>
     /// Base class for application and test boostrappers.
     /// Used when no navigation logic is needed.

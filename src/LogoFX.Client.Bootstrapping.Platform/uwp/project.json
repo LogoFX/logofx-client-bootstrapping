@@ -9,7 +9,8 @@
     "Solid.Practices.Composition": "1.1.2",
     "Solid.Practices.Composition.Client": "1.0.9",
     "Solid.Practices.Composition.Core": "1.0.9",
-    "Solid.Practices.IoC": "1.1.0"
+    "Solid.Practices.IoC": "1.1.0",
+    "Solid.Practices.Modularity": "1.1.0"
   },
   "frameworks": {
     "uap10.0": {}
