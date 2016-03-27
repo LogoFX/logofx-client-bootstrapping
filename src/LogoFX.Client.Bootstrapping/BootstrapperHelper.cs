@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Reflection;
-using LogoFX.Core;
 using Solid.Practices.IoC;
-using Solid.Practices.Modularity;
 
 namespace LogoFX.Client.Bootstrapping
 {
@@ -13,7 +10,7 @@ namespace LogoFX.Client.Bootstrapping
     /// Contains cross-platform bootstrapper utilities.
     /// </summary>
     /// <typeparam name="TRootViewModel">The type of the root view model.</typeparam>
-    /// <typeparam name="TIocContainerAdapter">The type of the ioc container adapter.</typeparam>
+    /// <typeparam name="TIocContainerAdapter">The type of the ioc container.</typeparam>
     public static class BootstrapperHelper<TRootViewModel, TIocContainerAdapter> 
         where TRootViewModel : class
         where TIocContainerAdapter : class, IIocContainer
@@ -21,7 +18,7 @@ namespace LogoFX.Client.Bootstrapping
         /// <summary>
         /// Registers the IoC container and root view model.
         /// </summary>
-        /// <param name="iocContainerAdapter">The ioc container adapter.</param>
+        /// <param name="iocContainerAdapter">The ioc containeradapter .</param>
         public static void RegisterCore(TIocContainerAdapter iocContainerAdapter)                                    
         {
             iocContainerAdapter.RegisterSingleton<TRootViewModel, TRootViewModel>();
@@ -32,45 +29,23 @@ namespace LogoFX.Client.Bootstrapping
         /// <summary>
         /// Registers the views and view models.
         /// </summary>
-        /// <param name="iocContainer">The ioc container.</param>
+        /// <param name="iocContainerAdapter">The ioc container adapter.</param>
         /// <param name="assemblies">The assemblies.</param>
-        public static void RegisterViewsAndViewModels(IIocContainerRegistrator iocContainer, IEnumerable<Assembly> assemblies)
+        public static void RegisterViewsAndViewModels(IIocContainerRegistrator iocContainerAdapter,
+            IEnumerable<Assembly> assemblies)
         {
-            assemblies
+            var viewModelTypes = assemblies
                 .SelectMany(assembly => assembly.ExportedTypes)
-                .Where(type => type != typeof (TRootViewModel) && type.Name.EndsWith("ViewModel"))
+                .Where(type => type != typeof(TRootViewModel) && type.Name.EndsWith("ViewModel"))
                 .Where(
                     type =>
-                        !(string.IsNullOrWhiteSpace(type.Namespace)) && type.Namespace != null &&
+                        !string.IsNullOrWhiteSpace(type.Namespace) && type.Namespace != null &&
                         type.Namespace.EndsWith("ViewModels"))
-                .Where(type => type.GetTypeInfo().ImplementedInterfaces.Contains(typeof(INotifyPropertyChanged)))
-                .ForEach(a => iocContainer.RegisterTransient(a, a));
-        }
-
-        /// <summary>
-        /// Registers the composition modules.
-        /// </summary>
-        /// <param name="iocContainerAdapter">The ioc container adapter.</param>
-        /// <param name="modules">The modules.</param>
-        /// <param name="lifetimeScopeProvider">The lifetime scope provider.</param>
-        public static void RegisterCompositionModules(
-            TIocContainerAdapter iocContainerAdapter, 
-            IEnumerable<ICompositionModule> modules,
-            Func<object> lifetimeScopeProvider)
-        {
-            var compositionModules = modules as ICompositionModule[] ?? modules.ToArray();
-            new ModuleRegistrator(compositionModules).RegisterModules(iocContainerAdapter);
-            if (iocContainerAdapter is IIocContainerScoped)
-                // ReSharper disable HeuristicUnreachableCode - The container adapter may inherit from IIocContainerScoped
+                .Where(type => type.GetTypeInfo().ImplementedInterfaces.Contains(typeof(INotifyPropertyChanged)));
+            foreach (var viewModelType in viewModelTypes)
             {
-                new ScopedModuleRegistrator(compositionModules, lifetimeScopeProvider).RegisterModules((IIocContainerScoped) iocContainerAdapter);
-            }
-
-            var hierarchicalModules = compositionModules.OfType<IHierarchicalCompositionModule>();
-            foreach (var hierarchicalModule in hierarchicalModules)
-            {
-                hierarchicalModule.RegisterModules(iocContainerAdapter, compositionModules);
-            }
-        }          
+                iocContainerAdapter.RegisterTransient(viewModelType, viewModelType);
+            }            
+        }        
     }
 }

@@ -11,7 +11,7 @@ namespace LogoFX.Client.Bootstrapping
     /// <typeparam name="TIocContainerAdapter">The type of the ioc container adapter.</typeparam>
     public class BootstrapperBuilder<TRootViewModel, TIocContainerAdapter> 
         where TRootViewModel : class 
-        where TIocContainerAdapter : class, IIocContainer, IBootstrapperAdapter, new()
+        where TIocContainerAdapter : class, IIocContainer, IBootstrapperAdapter, IIocContainerAdapter, new()
     {
         private readonly TIocContainerAdapter _container;
         private readonly BootstrapperCreationOptions _options = new BootstrapperCreationOptions();

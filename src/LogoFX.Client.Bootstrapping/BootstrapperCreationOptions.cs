@@ -3,7 +3,7 @@ using Solid.Practices.Modularity;
 namespace LogoFX.Client.Bootstrapping
 {
     /// <summary>
-    /// Represents various options fot bootstrapper creation.
+    /// Represents various settings for bootstrapper creation.
     /// </summary>
     public class BootstrapperCreationOptions
     {
@@ -16,10 +16,12 @@ namespace LogoFX.Client.Bootstrapping
             ReuseCompositionInformation = true;
             DiscoverCompositionModules = true;
             InspectAssemblies = true;
+            InitializeOnCreation = true;
         }
 
         /// <summary>
-        /// Gets or sets a value indicating whether the real application is used. Use <c>false</c> for tests.
+        /// Gets or sets a value indicating whether the real application is used.
+        /// The default value is <c>true</c>. Use <c>false</c> for tests.
         /// </summary>
         /// <value>
         ///   <c>true</c> if the real application is used; otherwise, <c>false</c>.
@@ -29,6 +31,7 @@ namespace LogoFX.Client.Bootstrapping
         /// <summary>
         /// Gets or sets a value indicating whether the composition information is re-used. Use <c>true</c>
         /// when running lots of integration client-side tests.
+        /// The default value is <c>true</c>.
         /// </summary>
         /// <value>
         /// <c>true</c> if the composition information is re-used; otherwise, <c>false</c>.
@@ -38,6 +41,7 @@ namespace LogoFX.Client.Bootstrapping
         /// <summary>
         /// Gets or sets a value indicating whether the bootstrapper 
         /// should look for instances of <see cref="ICompositionModule"/>.
+        /// The default value is <c>true</c>.
         /// </summary>
         /// <value>
         /// <c>true</c> if the composition modules should be looked for; otherwise, <c>false</c>.
@@ -47,10 +51,20 @@ namespace LogoFX.Client.Bootstrapping
         /// <summary>
         /// Gets or sets a value indicating whether the bootstrapper
         /// should look for potential application-component assemblies.
+        /// The default value is <c>true</c>.
         /// </summary>
         /// <value>
         ///   <c>true</c> if the assemblies should be looked for; otherwise, <c>false</c>.
         /// </value>
         public bool InspectAssemblies { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether the bootstrapper
+        /// is initialized upon its creation. The default value is <c>true</c>.
+        /// </summary>
+        /// <value>
+        ///   <c>true</c> if the bootstrapper should be initialized upon its creation; otherwise, <c>false</c>.
+        /// </value>
+        public bool InitializeOnCreation { get; set; }
     }
 }

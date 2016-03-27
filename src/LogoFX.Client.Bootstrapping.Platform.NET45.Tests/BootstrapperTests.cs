@@ -1,6 +1,10 @@
-﻿using LogoFX.Client.Bootstrapping.Adapters.SimpleContainer;
+﻿using System;
+using LogoFX.Client.Bootstrapping.Adapters.SimpleContainer;
+using LogoFX.Practices.IoC;
 using NUnit.Framework;
 using Solid.Practices.Composition;
+using Solid.Practices.IoC;
+using Solid.Practices.Modularity;
 
 namespace LogoFX.Client.Bootstrapping.Platform.NET45.Tests
 {
@@ -14,6 +18,34 @@ namespace LogoFX.Client.Bootstrapping.Platform.NET45.Tests
             {
                 UseApplication = false
             }));
+        }
+
+        [Test]
+        public void
+            GivenThereIsCompositionModuleWithDependencyRegistration_WhenBootstrapperWithConcreteContainerIsUsedAndDependencyIsResolvedFromConcreteContainer_ResolvedDependencyIsValid
+            ()
+        {
+            var container = new ExtendedSimpleContainer();
+            var adapter = new ExtendedSimpleContainerAdapter(container);
+            var bootstrapper = new TestConcreteBootstrapper(container, c => adapter);
+            bootstrapper.Initialize();
+
+            var dependency = container.GetInstance(typeof (IDependency), null);
+            Assert.IsNotNull(dependency);
+        }
+
+        [Test]
+        public void
+            GivenThereIsCompositionModuleWithDependencyRegistration_WhenBootstrapperWithConcreteContainerIsUsedAndDependencyIsResolvedFromAdapter_ResolvedDependencyIsValid
+            ()
+        {
+            var container = new ExtendedSimpleContainer();
+            var adapter = new ExtendedSimpleContainerAdapter(container);
+            var bootstrapper = new TestConcreteBootstrapper(container, c => adapter);
+            bootstrapper.Initialize();
+
+            var dependency = adapter.Resolve<IDependency>();
+            Assert.IsNotNull(dependency);
         }
     }
 
@@ -32,6 +64,40 @@ namespace LogoFX.Client.Bootstrapping.Platform.NET45.Tests
             base(iocContainerAdapter, creationOptions)
         {
             PlatformProvider.Current = new NetPlatformProvider();
+        }
+    }
+
+    class TestConcreteBootstrapper : BootstrapperContainerBase<TestShellViewModel, ExtendedSimpleContainerAdapter, ExtendedSimpleContainer>
+    {
+        public TestConcreteBootstrapper(ExtendedSimpleContainer iocContainer, Func<ExtendedSimpleContainer, ExtendedSimpleContainerAdapter> adapterCreator) : 
+            base(iocContainer, adapterCreator, new BootstrapperCreationOptions
+            {
+                UseApplication = false
+            })
+        {            
+        }
+        
+        public override string[] Prefixes
+        {
+            get { return new[] { "LogoFX.Client" };}
+        }
+    }
+
+    interface IDependency
+    {
+        
+    }
+
+    class Dependency : IDependency
+    {
+        
+    }
+
+    class ServicesModule : ICompositionModule<IIocContainer>
+    {
+        public void RegisterModule(IIocContainer iocContainer)
+        {
+            iocContainer.RegisterSingleton<IDependency, Dependency>();
         }
     }
 }
