@@ -15,8 +15,7 @@ namespace LogoFX.Client.Bootstrapping
             UseApplication = true;
             ReuseCompositionInformation = true;
             DiscoverCompositionModules = true;
-            InspectAssemblies = true;
-            InitializeOnCreation = true;
+            InspectAssemblies = true;            
         }
 
         /// <summary>
@@ -56,15 +55,6 @@ namespace LogoFX.Client.Bootstrapping
         /// <value>
         ///   <c>true</c> if the assemblies should be looked for; otherwise, <c>false</c>.
         /// </value>
-        public bool InspectAssemblies { get; set; }
-
-        /// <summary>
-        /// Gets or sets a value indicating whether the bootstrapper
-        /// is initialized upon its creation. The default value is <c>true</c>.
-        /// </summary>
-        /// <value>
-        ///   <c>true</c> if the bootstrapper should be initialized upon its creation; otherwise, <c>false</c>.
-        /// </value>
-        public bool InitializeOnCreation { get; set; }
+        public bool InspectAssemblies { get; set; }        
     }
 }

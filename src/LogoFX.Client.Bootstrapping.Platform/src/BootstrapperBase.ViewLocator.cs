@@ -12,11 +12,11 @@ using Caliburn.Micro;
 
 namespace LogoFX.Client.Bootstrapping
 {
-    partial class BootstrapperContainerBase<TRootViewModel, TIocContainerAdapter>
+    partial class BootstrapperBase
     {
         private readonly Dictionary<string, Type> _typedic = new Dictionary<string, Type>();
 
-        private void InitializeViewLocator()
+        internal void InitializeViewLocator()
         {
             //overriden for performance reasons (Assembly caching)
             ViewLocator.LocateTypeForModelType = (modelType, displayLocation, context) =>

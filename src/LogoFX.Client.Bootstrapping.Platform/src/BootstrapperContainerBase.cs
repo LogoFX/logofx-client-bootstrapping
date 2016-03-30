@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Reflection;
+using System.Collections.Generic;
 using System.Windows.Threading;
 #if NET45
 using System.Windows;
@@ -10,25 +10,23 @@ using Windows.ApplicationModel.Activation;
 #endif
 using Caliburn.Micro;
 using LogoFX.Client.Bootstrapping.Adapters.Contracts;
-using Solid.Practices.Composition;
 using Solid.Practices.IoC;
+using Solid.Practices.Middleware;
 
 namespace LogoFX.Client.Bootstrapping
 {
     /// <summary>
-    /// 
+    /// Application bootstrapper. Used when there is need in IoC-container-specific logic.
     /// </summary>
     /// <typeparam name="TRootViewModel">The type of the root view model.</typeparam>
     /// <typeparam name="TIocContainerAdapter">The type of the ioc container adapter.</typeparam>
     /// <typeparam name="TIocContainer">The type of the ioc container.</typeparam>
     /// <seealso cref="Bootstrapping.BootstrapperContainerBase{TRootViewModel, TIocContainerAdapter}" />
-    public class BootstrapperContainerBase<TRootViewModel, TIocContainerAdapter, TIocContainer> :
+    public partial class BootstrapperContainerBase<TRootViewModel, TIocContainerAdapter, TIocContainer> :
                     BootstrapperContainerBase<TRootViewModel, TIocContainerAdapter> where TRootViewModel : class
         where TIocContainerAdapter : class, IIocContainer, IIocContainerAdapter<TIocContainer>, IBootstrapperAdapter, new() 
         where TIocContainer : class
     {
-        private readonly TIocContainer _iocContainer;        
-
         /// <summary>
         /// Initializes a new instance of the 
         /// <see cref="BootstrapperContainerBase{TRootViewModel, TIocContainerAdapter, TIocContainer}"/> class.
@@ -38,12 +36,9 @@ namespace LogoFX.Client.Bootstrapping
         public BootstrapperContainerBase(
             TIocContainer iocContainer, 
             Func<TIocContainer, TIocContainerAdapter> adapterCreator) : 
-            this(iocContainer, adapterCreator, new BootstrapperCreationOptions
-            {
-               InitializeOnCreation = false
-            })
+            this(iocContainer, adapterCreator, new BootstrapperCreationOptions())
         {
-            _iocContainer = iocContainer;
+            Container = iocContainer;
         }
 
         /// <summary>
@@ -57,16 +52,18 @@ namespace LogoFX.Client.Bootstrapping
             TIocContainer iocContainer,
             Func<TIocContainer, TIocContainerAdapter> adapterCreator,
             BootstrapperCreationOptions creationOptions) : base(adapterCreator(iocContainer), 
-                ForceInitializeOnCreationFalseValue(creationOptions))
+                creationOptions)
         {
-            _iocContainer = iocContainer;
+            Container = iocContainer;
         }
 
-        private static BootstrapperCreationOptions ForceInitializeOnCreationFalseValue(BootstrapperCreationOptions creationOptions)
-        {
-            creationOptions.InitializeOnCreation = false;
-            return creationOptions;
-        }
+        /// <summary>
+        /// Gets the container.
+        /// </summary>
+        /// <value>
+        /// The container.
+        /// </value>
+        public TIocContainer Container { get; }
 
         /// <summary>
         /// Override this method to inject custom logic during bootstrapper configuration.
@@ -75,29 +72,27 @@ namespace LogoFX.Client.Bootstrapping
         protected override void OnConfigure(TIocContainerAdapter iocContainerAdapter)
         {
             base.OnConfigure(iocContainerAdapter);
-            ModuleRegistrationHelper.RegisterCompositionModules(_iocContainer, Modules, () => CurrentLifetimeScope);
+            ModuleRegistrationHelper.RegisterCompositionModules(Container, Modules, () => CurrentLifetimeScope);
+            MiddlewareApplier.ApplyMiddlewares(this, _middlewares);
         }
     }
 
     /// <summary>
-    /// Base class for application and test boostrappers.
-    /// Used when no navigation logic is needed.
+    /// Application bootstrapper. Used when no IoC-container-specific logic is needed.    
     /// </summary>
     /// <typeparam name="TRootViewModel">Type of Root ViewModel.</typeparam>
     /// <typeparam name="TIocContainerAdapter">Type of IoC container adapter.</typeparam>
-    public partial class BootstrapperContainerBase<TRootViewModel, TIocContainerAdapter> :
-#if NET45
-        BootstrapperBase
-#endif
-#if WINDOWS_UWP || NETFX_CORE
-        CaliburnApplication
-#endif               
+    public partial class BootstrapperContainerBase<TRootViewModel, TIocContainerAdapter> : BootstrapperBase               
         where TRootViewModel : class
         where TIocContainerAdapter : class, IIocContainer, IIocContainerAdapter, IBootstrapperAdapter, new()
-    {        
-        private readonly TIocContainerAdapter _iocContainerAdapter;
-        private readonly BootstrapperCreationOptions _creationOptions;
-        private bool _isInitialized;
+    {
+        /// <summary>
+        /// Gets the container adapter.
+        /// </summary>
+        /// <value>
+        /// The container adapter.
+        /// </value>
+        public TIocContainerAdapter ContainerAdapter { get; }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="BootstrapperContainerBase{TRootViewModel, TIocContainerAdapter}"/> class.
@@ -118,52 +113,11 @@ namespace LogoFX.Client.Bootstrapping
             TIocContainerAdapter iocContainerAdapter,
             BootstrapperCreationOptions creationOptions)
 #if NET45
-            :base(creationOptions.UseApplication)
+            :base(creationOptions)
 #endif
         {
-            _iocContainerAdapter = iocContainerAdapter;
-            _reuseCompositionInformation = creationOptions.ReuseCompositionInformation;
-            _creationOptions = creationOptions;
-            if (creationOptions.InitializeOnCreation)
-            {
-                Initialize();
-            }                              
-        }
-
-        /// <summary>
-        /// Initializes the framework.
-        /// </summary>
-        public new void Initialize()
-        {
-            if (_isInitialized)
-                return;
-            _isInitialized = true;
-            InitializeInternal();
-        }
-
-        private void InitializeInternal()
-        {            
-            if (_creationOptions.DiscoverCompositionModules || _creationOptions.InspectAssemblies)
-            {
-                Solid.Practices.Composition.PlatformProvider.Current =
-#if NET45
-                    new NetPlatformProvider()
-#endif
-#if NETFX_CORE || WINDOWS_UWP
-                    new UniversalPlatformProvider()
-#endif
-                    ;
-            }
-            if (_creationOptions.DiscoverCompositionModules)
-            {
-                InitializeCompositionModules();
-            }
-            if (_creationOptions.InspectAssemblies)
-            {
-                InitializeInspectedAssemblies();
-            }
-            base.Initialize();
-        }
+            ContainerAdapter = iocContainerAdapter;
+        }        
 
 #if NET45
         /// <summary>
@@ -190,8 +144,14 @@ namespace LogoFX.Client.Bootstrapping
         /// <param name="e">Details about the launch request and process.</param>
         protected override void OnLaunched(LaunchActivatedEventArgs e)
         {
+            OnLaunchedCore();
             BeforeOnLaunched(e);          
             DisplayRootView();
+        }
+
+        private void OnLaunchedCore()
+        {
+            InitializeDispatcher();
         }
 #endif
 
@@ -223,16 +183,19 @@ namespace LogoFX.Client.Bootstrapping
         protected sealed override void Configure()
         {
             base.Configure();            
-            BootstrapperHelper<TRootViewModel, TIocContainerAdapter>.RegisterCore(_iocContainerAdapter);            
-            BootstrapperHelper<TRootViewModel, TIocContainerAdapter>.RegisterViewsAndViewModels(_iocContainerAdapter,
+            BootstrapperHelper<TRootViewModel, TIocContainerAdapter>.RegisterCore(ContainerAdapter);            
+            BootstrapperHelper<TRootViewModel, TIocContainerAdapter>.RegisterViewsAndViewModels(ContainerAdapter,
                 Assemblies);
-            ModuleRegistrationHelper.RegisterCompositionModules(_iocContainerAdapter,
+            ModuleRegistrationHelper.RegisterCompositionModules(ContainerAdapter,
                 Modules);
+            MiddlewareApplier.ApplyMiddlewares(this, _middlewares);
             InitializeViewLocator();
-            InitializeAdapter();      
+            InitializeAdapter(ContainerAdapter);
+#if NET45 // in UWP the dispatcher is initialized later.
             InitializeDispatcher();
-            RegisterPlatformSpecificServices(_iocContainerAdapter);                        
-            OnConfigure(_iocContainerAdapter);
+#endif
+            RegisterPlatformSpecificServices(ContainerAdapter);                        
+            OnConfigure(ContainerAdapter);
         }
         
         private static void RegisterPlatformSpecificServices(TIocContainerAdapter iocContainerAdapter)
@@ -261,22 +224,52 @@ namespace LogoFX.Client.Bootstrapping
         public virtual object CurrentLifetimeScope
         {
             get { return _defaultLifetimeScope; }
-        }
-        
-        /// <summary>
-        /// Gets the assemblies that will be inspected for the application components.
-        /// </summary>
-        /// <value>
-        /// The assemblies.
-        /// </value>
-        protected Assembly[] Assemblies { get; private set; }
+        }                
 
         /// <summary>
         /// Initializes the framework dispatcher.
         /// </summary>
-        public static void InitializeDispatcher()
+        static void InitializeDispatcher()
         {
             Dispatch.Current.InitializeDispatch();
         }
-    }    
+    }
+
+    public partial class BootstrapperContainerBase<TRootViewModel, TIocContainerAdapter, TIocContainer>
+    {
+        private readonly
+            List<IMiddleware<BootstrapperContainerBase<TRootViewModel, TIocContainerAdapter, TIocContainer>>>
+            _middlewares =
+                new List<IMiddleware<BootstrapperContainerBase<TRootViewModel, TIocContainerAdapter, TIocContainer>>>();
+
+        /// <summary>
+        /// Uses the specified middleware.
+        /// </summary>
+        /// <param name="middleware">The middleware.</param>
+        /// <returns></returns>
+        public BootstrapperContainerBase<TRootViewModel, TIocContainerAdapter, TIocContainer> Use(
+            IMiddleware<BootstrapperContainerBase<TRootViewModel, TIocContainerAdapter, TIocContainer>> middleware)
+        {
+            _middlewares.Add(middleware);
+            return this;
+        }
+    }
+
+    public partial class BootstrapperContainerBase<TRootViewModel, TIocContainerAdapter>
+    {
+        private readonly List<IMiddleware<BootstrapperContainerBase<TRootViewModel, TIocContainerAdapter>>> _middlewares =
+            new List<IMiddleware<BootstrapperContainerBase<TRootViewModel, TIocContainerAdapter>>>();
+
+        /// <summary>
+        /// Uses the specified middleware.
+        /// </summary>
+        /// <param name="middleware">The middleware.</param>
+        /// <returns></returns>
+        public BootstrapperContainerBase<TRootViewModel, TIocContainerAdapter> Use(
+            IMiddleware<BootstrapperContainerBase<TRootViewModel, TIocContainerAdapter>> middleware)
+        {
+            _middlewares.Add(middleware);
+            return this;
+        }
+    }
 }

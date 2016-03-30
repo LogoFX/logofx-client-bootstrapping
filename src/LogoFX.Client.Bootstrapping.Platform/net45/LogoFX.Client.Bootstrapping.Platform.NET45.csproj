@@ -95,20 +95,23 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\src\BootstrapperBase.Adapter.cs">
+      <Link>BootstrapperBase.Adapter.cs</Link>
+    </Compile>
+    <Compile Include="..\src\BootstrapperBase.Composition.cs">
+      <Link>BootstrapperBase.Composition.cs</Link>
+    </Compile>
+    <Compile Include="..\src\BootstrapperBase.cs">
+      <Link>BootstrapperBase.cs</Link>
+    </Compile>
+    <Compile Include="..\src\BootstrapperBase.ViewLocator.cs">
+      <Link>BootstrapperBase.ViewLocator.cs</Link>
+    </Compile>
     <Compile Include="..\src\BootstrapperBuilder.cs">
       <Link>BootstrapperBuilder.cs</Link>
     </Compile>
-    <Compile Include="..\src\BootstrapperContainerBase.Adapter.cs">
-      <Link>BootstrapperContainerBase.Adapter.cs</Link>
-    </Compile>
-    <Compile Include="..\src\BootstrapperContainerBase.Composition.cs">
-      <Link>BootstrapperContainerBase.Composition.cs</Link>
-    </Compile>
     <Compile Include="..\src\BootstrapperContainerBase.cs">
       <Link>BootstrapperContainerBase.cs</Link>
-    </Compile>
-    <Compile Include="..\src\BootstrapperContainerBase.ViewLocator.cs">
-      <Link>BootstrapperContainerBase.ViewLocator.cs</Link>
     </Compile>
     <Compile Include="..\src\CompositionHelper.cs">
       <Link>CompositionHelper.cs</Link>

@@ -9,6 +9,7 @@
     "Solid.Practices.Composition.Client": "1.1.3",
     "Solid.Practices.Composition.Core": "1.1.3",
     "Solid.Practices.IoC": "1.1.1",
+    "Solid.Practices.Middleware": "1.0.9",
     "Solid.Practices.Modularity": "1.1.1"
   },
   "frameworks": {
