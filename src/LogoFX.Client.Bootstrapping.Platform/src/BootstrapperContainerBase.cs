@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Windows.Threading;
 #if NET45
 using System.Windows;
@@ -8,7 +7,6 @@ using System.Windows;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 #endif
-using Caliburn.Micro;
 using LogoFX.Client.Bootstrapping.Adapters.Contracts;
 using Solid.Practices.IoC;
 using Solid.Practices.Middleware;
@@ -37,8 +35,7 @@ namespace LogoFX.Client.Bootstrapping
             TIocContainer iocContainer, 
             Func<TIocContainer, TIocContainerAdapter> adapterCreator) : 
             this(iocContainer, adapterCreator, new BootstrapperCreationOptions())
-        {
-            Container = iocContainer;
+        {           
         }
 
         /// <summary>
@@ -55,6 +52,7 @@ namespace LogoFX.Client.Bootstrapping
                 creationOptions)
         {
             Container = iocContainer;
+            Use(new RegisterScopedMiddleware<TRootViewModel, TIocContainerAdapter, TIocContainer>());
         }
 
         /// <summary>
@@ -71,8 +69,7 @@ namespace LogoFX.Client.Bootstrapping
         /// <param name="iocContainerAdapter">IoC container adapter</param>
         protected override void OnConfigure(TIocContainerAdapter iocContainerAdapter)
         {
-            base.OnConfigure(iocContainerAdapter);
-            ModuleRegistrationHelper.RegisterCompositionModules(Container, Modules, () => CurrentLifetimeScope);
+            base.OnConfigure(iocContainerAdapter);            
             MiddlewareApplier.ApplyMiddlewares(this, _middlewares);
         }
     }
@@ -86,14 +83,6 @@ namespace LogoFX.Client.Bootstrapping
         where TRootViewModel : class
         where TIocContainerAdapter : class, IIocContainer, IIocContainerAdapter, IBootstrapperAdapter, new()
     {
-        /// <summary>
-        /// Gets the container adapter.
-        /// </summary>
-        /// <value>
-        /// The container adapter.
-        /// </value>
-        public TIocContainerAdapter ContainerAdapter { get; }
-
         /// <summary>
         /// Initializes a new instance of the <see cref="BootstrapperContainerBase{TRootViewModel, TIocContainerAdapter}"/> class.
         /// </summary>
@@ -117,7 +106,19 @@ namespace LogoFX.Client.Bootstrapping
 #endif
         {
             ContainerAdapter = iocContainerAdapter;
-        }        
+            Use(new RegisterCoreMiddleware<TRootViewModel, TIocContainerAdapter>())
+                .Use(new RegisterViewAndViewModelsMiddleware<TRootViewModel, TIocContainerAdapter>())
+                .Use(new RegisterCompositionModulesMiddleware<TRootViewModel, TIocContainerAdapter>())
+                .Use(new RegisterPlatformSpecificMiddleware<TRootViewModel, TIocContainerAdapter>());
+        }
+
+        /// <summary>
+        /// Gets the container adapter.
+        /// </summary>
+        /// <value>
+        /// The container adapter.
+        /// </value>
+        public TIocContainerAdapter ContainerAdapter { get; }
 
 #if NET45
         /// <summary>
@@ -182,29 +183,16 @@ namespace LogoFX.Client.Bootstrapping
         /// </summary>
         protected sealed override void Configure()
         {
-            base.Configure();            
-            BootstrapperHelper<TRootViewModel, TIocContainerAdapter>.RegisterCore(ContainerAdapter);            
-            BootstrapperHelper<TRootViewModel, TIocContainerAdapter>.RegisterViewsAndViewModels(ContainerAdapter,
-                Assemblies);
-            ModuleRegistrationHelper.RegisterCompositionModules(ContainerAdapter,
-                Modules);
-            MiddlewareApplier.ApplyMiddlewares(this, _middlewares);
+            base.Configure();                                                       
             InitializeViewLocator();
             InitializeAdapter(ContainerAdapter);
 #if NET45 // in UWP the dispatcher is initialized later.
             InitializeDispatcher();
-#endif
-            RegisterPlatformSpecificServices(ContainerAdapter);                        
+#endif            
+            MiddlewareApplier.ApplyMiddlewares(this, _middlewares);
             OnConfigure(ContainerAdapter);
         }
-        
-        private static void RegisterPlatformSpecificServices(TIocContainerAdapter iocContainerAdapter)
-        {
-#if NET45
-                  iocContainerAdapter.RegisterSingleton<IWindowManager, WindowManager>();
-#endif
-        }
-
+                
         /// <summary>
         /// Override this method to inject custom logic during bootstrapper configuration.
         /// </summary>

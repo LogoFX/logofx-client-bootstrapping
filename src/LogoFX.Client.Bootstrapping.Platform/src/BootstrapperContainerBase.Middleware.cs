@@ -1,4 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using Caliburn.Micro;
+using LogoFX.Client.Bootstrapping.Adapters.Contracts;
+using Solid.Practices.IoC;
 using Solid.Practices.Middleware;
 
 namespace LogoFX.Client.Bootstrapping
@@ -38,6 +42,76 @@ namespace LogoFX.Client.Bootstrapping
         {
             _middlewares.Add(middleware);
             return this;
+        }
+    }
+
+    class RegisterScopedMiddleware<TRootViewModel, TIocContainerAdapter, TIocContainer> :
+        IMiddleware<BootstrapperContainerBase<TRootViewModel, TIocContainerAdapter, TIocContainer>>
+        where TRootViewModel : class
+        where TIocContainerAdapter : class, IIocContainer, IIocContainerAdapter<TIocContainer>, IBootstrapperAdapter, new()
+        where TIocContainer : class
+    {
+        public BootstrapperContainerBase<TRootViewModel, TIocContainerAdapter, TIocContainer> Apply(
+            BootstrapperContainerBase<TRootViewModel, TIocContainerAdapter, TIocContainer> @object)
+        {
+            ModuleRegistrationHelper.RegisterCompositionModules(@object.Container, @object.Modules, () => @object.CurrentLifetimeScope);
+            return @object;
+        }
+    }
+    
+    class RegisterCoreMiddleware<TRootViewModel, TIocContainerAdapter> :
+        IMiddleware<BootstrapperContainerBase<TRootViewModel, TIocContainerAdapter>>
+        where TRootViewModel : class
+        where TIocContainerAdapter : class, IIocContainer, IIocContainerAdapter, IBootstrapperAdapter, new()        
+    {
+        public BootstrapperContainerBase<TRootViewModel, TIocContainerAdapter> Apply(
+            BootstrapperContainerBase<TRootViewModel, TIocContainerAdapter> @object)
+        {
+            BootstrapperHelper<TRootViewModel, TIocContainerAdapter>.RegisterCore(@object.ContainerAdapter);
+            return @object;
+        }
+    }
+
+    class RegisterViewAndViewModelsMiddleware<TRootViewModel, TIocContainerAdapter> :
+        IMiddleware<BootstrapperContainerBase<TRootViewModel, TIocContainerAdapter>>
+        where TRootViewModel : class
+        where TIocContainerAdapter : class, IIocContainer, IIocContainerAdapter, IBootstrapperAdapter, new()
+    {
+        public BootstrapperContainerBase<TRootViewModel, TIocContainerAdapter> Apply(
+            BootstrapperContainerBase<TRootViewModel, TIocContainerAdapter> @object)
+        {
+            BootstrapperHelper<TRootViewModel, TIocContainerAdapter>.RegisterViewsAndViewModels(
+                @object.ContainerAdapter, @object.Assemblies);
+            return @object;
+        }
+    }
+
+    class RegisterCompositionModulesMiddleware<TRootViewModel, TIocContainerAdapter> :
+        IMiddleware<BootstrapperContainerBase<TRootViewModel, TIocContainerAdapter>>
+        where TRootViewModel : class
+        where TIocContainerAdapter : class, IIocContainer, IIocContainerAdapter, IBootstrapperAdapter, new()
+    {
+        public BootstrapperContainerBase<TRootViewModel, TIocContainerAdapter> Apply(
+            BootstrapperContainerBase<TRootViewModel, TIocContainerAdapter> @object)
+        {
+            ModuleRegistrationHelper.RegisterCompositionModules(@object.ContainerAdapter,
+                @object.Modules);
+            return @object;
+        }
+    }
+
+    class RegisterPlatformSpecificMiddleware<TRootViewModel, TIocContainerAdapter> :
+        IMiddleware<BootstrapperContainerBase<TRootViewModel, TIocContainerAdapter>>
+        where TRootViewModel : class
+        where TIocContainerAdapter : class, IIocContainer, IIocContainerAdapter, IBootstrapperAdapter, new()
+    {
+        public BootstrapperContainerBase<TRootViewModel, TIocContainerAdapter> Apply(
+            BootstrapperContainerBase<TRootViewModel, TIocContainerAdapter> @object)
+        {
+#if NET45
+            @object.ContainerAdapter.RegisterSingleton<IWindowManager, WindowManager>();
+#endif
+            return @object;
         }
     }
 }
