@@ -1,6 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+#if NET45
 using Caliburn.Micro;
+#endif
 using LogoFX.Client.Bootstrapping.Adapters.Contracts;
 using Solid.Practices.IoC;
 using Solid.Practices.Middleware;

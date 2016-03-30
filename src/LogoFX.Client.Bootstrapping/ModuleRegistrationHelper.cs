@@ -13,7 +13,7 @@ namespace LogoFX.Client.Bootstrapping
     public static class ModuleRegistrationHelper
     {
         /// <summary>
-        /// Registers the composition modules.
+        /// Registers the composition modules using specified lifetime scope provider.
         /// </summary>
         /// <typeparam name="TIocContainer"></typeparam>
         /// <param name="iocContainer">The ioc container.</param>

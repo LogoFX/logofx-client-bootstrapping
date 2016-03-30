@@ -87,7 +87,7 @@ namespace LogoFX.Client.Bootstrapping
         {
         }
 
-        internal void InitializeCompositionModules()
+        private void InitializeCompositionModules()
         {
             Modules = CompositionHelper.GetCompositionModules(ModulesPath, Prefixes,
                     _reuseCompositionInformation);

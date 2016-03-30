@@ -8,6 +8,11 @@ namespace LogoFX.Client.Bootstrapping
     {
         private IBootstrapperAdapter _bootstrapperAdapter;
 
+        internal void InitializeAdapter(IBootstrapperAdapter bootstrapperAdapter)
+        {
+            _bootstrapperAdapter = bootstrapperAdapter;
+        }
+
         /// <summary>
         /// Gets the service by its type and optional <see cref="string"/> key.
         /// Not intended to be used explicitly from code.

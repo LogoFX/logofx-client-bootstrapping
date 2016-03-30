@@ -1,7 +1,6 @@
 #if WINDOWS_UWP || NETFX_CORE
 using Caliburn.Micro;
 #endif
-using LogoFX.Client.Bootstrapping.Adapters.Contracts;
 using Solid.Practices.Composition;
 
 namespace LogoFX.Client.Bootstrapping
@@ -63,11 +62,6 @@ namespace LogoFX.Client.Bootstrapping
             {
                 InitializeCompositionModules();
             }
-        }        
-
-        internal void InitializeAdapter(IBootstrapperAdapter bootstrapperAdapter)
-        {
-            _bootstrapperAdapter = bootstrapperAdapter;
-        }
+        }                
     }
 }
