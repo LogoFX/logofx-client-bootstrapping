@@ -126,6 +126,9 @@
     <Compile Include="..\src\BootstrapperContainerBase.cs">
       <Link>BootstrapperContainerBase.cs</Link>
     </Compile>
+    <Compile Include="..\src\BootstrapperContainerBase.Middleware.cs">
+      <Link>BootstrapperContainerBase.Middleware.cs</Link>
+    </Compile>
     <Compile Include="..\src\CompositionHelper.cs">
       <Link>CompositionHelper.cs</Link>
     </Compile>
