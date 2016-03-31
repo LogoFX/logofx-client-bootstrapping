@@ -36,7 +36,7 @@ namespace LogoFX.Client.Bootstrapping
         /// </summary>
         /// <param name="useApplication"><c>true</c> if the real application is used; otherwise, <c>false</c>.</param>
         /// <returns></returns>
-        public BootstrapperContainerBuilder<TRootViewModel, TIocContainerAdapter> WithUseApplication(bool useApplication)
+        public BootstrapperContainerBuilder<TRootViewModel, TIocContainerAdapter> UseApplication(bool useApplication)
         {
             _options.UseApplication = useApplication;
             return this;
@@ -51,7 +51,7 @@ namespace LogoFX.Client.Bootstrapping
         /// <c>true</c> if the composition information is re-used; otherwise, <c>false</c>.
         /// </param>
         /// <returns></returns>
-        public BootstrapperContainerBuilder<TRootViewModel, TIocContainerAdapter> WithReuseCompositionInformation(bool reuseCompositionInformation)
+        public BootstrapperContainerBuilder<TRootViewModel, TIocContainerAdapter> ReuseCompositionInformation(bool reuseCompositionInformation)
         {
             _options.ReuseCompositionInformation = reuseCompositionInformation;
             return this;
@@ -65,7 +65,7 @@ namespace LogoFX.Client.Bootstrapping
         /// <c>true</c> if the assemblies should be looked for; otherwise, <c>false</c>.
         /// </param>
         /// <returns></returns>
-        public BootstrapperContainerBuilder<TRootViewModel, TIocContainerAdapter> WithInspectAssemblies(bool inspectAssemblies)
+        public BootstrapperContainerBuilder<TRootViewModel, TIocContainerAdapter> InspectAssemblies(bool inspectAssemblies)
         {
             _options.InspectAssemblies = inspectAssemblies;
             return this;
@@ -79,9 +79,23 @@ namespace LogoFX.Client.Bootstrapping
         /// <c>true</c> if the composition modules should be looked for; otherwise, <c>false</c>.
         /// </param>
         /// <returns></returns>
-        public BootstrapperContainerBuilder<TRootViewModel, TIocContainerAdapter> WithDiscoverCompositionModules(bool discoverCompositionModules)
+        public BootstrapperContainerBuilder<TRootViewModel, TIocContainerAdapter> DiscoverCompositionModules(bool discoverCompositionModules)
         {
             _options.DiscoverCompositionModules = discoverCompositionModules;
+            return this;
+        }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether the default middlewares
+        /// are used.
+        /// </summary>       
+        /// <param name="useDefaultMiddlewares">
+        /// <c>true</c> if the composition modules should be looked for; otherwise, <c>false</c>.
+        /// </param>
+        /// <returns></returns>
+        public BootstrapperContainerBuilder<TRootViewModel, TIocContainerAdapter> UseDefaultMiddlewares(bool useDefaultMiddlewares)
+        {
+            _options.UseDefaultMiddlewares = useDefaultMiddlewares;
             return this;
         }
 

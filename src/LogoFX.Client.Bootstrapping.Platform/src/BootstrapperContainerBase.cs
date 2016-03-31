@@ -38,13 +38,13 @@ namespace LogoFX.Client.Bootstrapping
         {           
         }
 
-        [Obsolete("Added for compatibility reasons.")]
         /// <summary>
         /// Initializes a new instance of the <see cref="BootstrapperContainerBase{TRootViewModel, TIocContainerAdapter, TIocContainer}"/> class.
         /// </summary>
         /// <param name="iocContainer">The ioc container.</param>
         /// <param name="adapterCreator">The adapter creator.</param>
         /// <param name="creationOptions">The creation options.</param>
+        [Obsolete("Added for compatibility reasons.")]
         public BootstrapperContainerBase(
             TIocContainer iocContainer,
             Func<TIocContainer, TIocContainerAdapter> adapterCreator,
@@ -111,12 +111,12 @@ namespace LogoFX.Client.Bootstrapping
         {            
         }
 
-        [Obsolete("Added for compatibility reasons.")]
         /// <summary>
         /// Initializes a new instance of the <see cref="BootstrapperContainerBase{TRootViewModel, TIocContainerAdapter}"/> class.
         /// </summary>
         /// <param name="iocContainerAdapter">The ioc container adapter.</param>
         /// <param name="creationOptions">The creation options.</param>
+        [Obsolete("Added for compatibility reasons.")]
         public BootstrapperContainerBase(
             TIocContainerAdapter iocContainerAdapter, 
             BootstrapperCreationOptions creationOptions)

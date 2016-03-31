@@ -24,7 +24,13 @@ namespace LogoFX.Client.Bootstrapping
         /// </value>
         public bool UseDefaultMiddlewares { get; set; }
 
-        [Obsolete("Added for compatibility reasons.")]
+        /// <summary>
+        /// Creates an instance of <see cref="BootstrapperContainerCreationOptions"/> 
+        /// from the provided instance of <see cref="BootstrapperCreationOptions"/>.
+        /// </summary>
+        /// <param name="creationOptions">The creation options.</param>
+        /// <returns></returns>
+        [Obsolete("Added for compatibility reasons.")]        
         public static BootstrapperContainerCreationOptions From(BootstrapperCreationOptions creationOptions)
         {
             return new BootstrapperContainerCreationOptions
