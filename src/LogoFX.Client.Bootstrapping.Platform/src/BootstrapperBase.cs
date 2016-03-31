@@ -6,7 +6,7 @@ using Solid.Practices.Composition;
 namespace LogoFX.Client.Bootstrapping
 {
     /// <summary>
-    /// Base bootstrapper, responsible for composition and middleware.
+    /// Base bootstrapper, responsible for modules composition.
     /// </summary>    
     /// <seealso cref="Solid.Practices.Composition.Contracts.ICompositionModulesProvider" />
     public abstract partial class BootstrapperBase :

@@ -27,11 +27,11 @@ namespace LogoFX.Client.Bootstrapping
         }
 
         /// <summary>
-        /// Registers the views and view models.
+        /// Registers the view models.
         /// </summary>
         /// <param name="iocContainerAdapter">The ioc container adapter.</param>
         /// <param name="assemblies">The assemblies.</param>
-        public static void RegisterViewsAndViewModels(IIocContainerRegistrator iocContainerAdapter,
+        public static void RegisterViewModels(IIocContainerRegistrator iocContainerAdapter,
             IEnumerable<Assembly> assemblies)
         {
             var viewModelTypes = assemblies

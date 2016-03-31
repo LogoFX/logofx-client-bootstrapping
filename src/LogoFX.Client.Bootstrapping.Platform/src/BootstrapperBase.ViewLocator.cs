@@ -60,7 +60,7 @@ namespace LogoFX.Client.Bootstrapping
                 return viewType == null
                     ? new TextBlock
                     {
-                        Text = string.Format("Cannot find view for\nModel: {0}\nContext: {1} .", modelType, context)
+                        Text = $"Cannot find view for\nModel: {modelType}\nContext: {context} ."
                     }
                     : ViewLocator.GetOrCreateViewType(viewType);
             };

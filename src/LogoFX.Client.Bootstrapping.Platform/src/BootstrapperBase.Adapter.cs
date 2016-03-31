@@ -20,7 +20,7 @@ namespace LogoFX.Client.Bootstrapping
         /// <param name="service">The service.</param>
         /// <param name="key">The key.</param>
         /// <returns></returns>
-        protected override object GetInstance(Type service, string key)
+        protected sealed override object GetInstance(Type service, string key)
         {            
             return _bootstrapperAdapter.GetInstance(service, key);
         }
@@ -31,7 +31,7 @@ namespace LogoFX.Client.Bootstrapping
         /// </summary>
         /// <param name="service">The service.</param>
         /// <returns></returns>
-        protected override IEnumerable<object> GetAllInstances(Type service)
+        protected sealed override IEnumerable<object> GetAllInstances(Type service)
         {
             return _bootstrapperAdapter.GetAllInstances(service);
         }
@@ -41,7 +41,7 @@ namespace LogoFX.Client.Bootstrapping
         /// Not intended to be used explicitly from code.
         /// </summary>
         /// <param name="instance">The instance.</param>
-        protected override void BuildUp(object instance)
+        protected sealed override void BuildUp(object instance)
         {
             _bootstrapperAdapter.BuildUp(instance);
         }        

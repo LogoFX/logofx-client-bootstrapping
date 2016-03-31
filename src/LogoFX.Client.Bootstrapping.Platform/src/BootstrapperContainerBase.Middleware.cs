@@ -73,7 +73,7 @@ namespace LogoFX.Client.Bootstrapping
         }
     }
 
-    class RegisterViewAndViewModelsMiddleware<TRootViewModel, TIocContainerAdapter> :
+    class RegisterViewModelsMiddleware<TRootViewModel, TIocContainerAdapter> :
         IMiddleware<BootstrapperContainerBase<TRootViewModel, TIocContainerAdapter>>
         where TRootViewModel : class
         where TIocContainerAdapter : class, IIocContainer, IIocContainerAdapter, IBootstrapperAdapter, new()
@@ -81,7 +81,7 @@ namespace LogoFX.Client.Bootstrapping
         public BootstrapperContainerBase<TRootViewModel, TIocContainerAdapter> Apply(
             BootstrapperContainerBase<TRootViewModel, TIocContainerAdapter> @object)
         {
-            BootstrapperHelper<TRootViewModel, TIocContainerAdapter>.RegisterViewsAndViewModels(
+            BootstrapperHelper<TRootViewModel, TIocContainerAdapter>.RegisterViewModels(
                 @object.ContainerAdapter, @object.Assemblies);
             return @object;
         }

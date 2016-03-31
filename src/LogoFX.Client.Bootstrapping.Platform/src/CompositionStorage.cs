@@ -5,18 +5,18 @@ namespace LogoFX.Client.Bootstrapping
 {
     static class CompositionStorage
     {
-        private static readonly ConcurrentDictionary<string, ICompositionModule[]> _internalStorage =
+        private static readonly ConcurrentDictionary<string, ICompositionModule[]> InternalStorage =
             new ConcurrentDictionary<string, ICompositionModule[]>();
 
         internal static void AddCompositionModules(string rootPath, ICompositionModule[] compositionModules)
         {
-            _internalStorage.TryAdd(rootPath, compositionModules);
+            InternalStorage.TryAdd(rootPath, compositionModules);
         }
 
         internal static ICompositionModule[] GetCompositionModules(string rootPath)
         {
             ICompositionModule[] compositionModules;
-            _internalStorage.TryGetValue(rootPath, out compositionModules);
+            InternalStorage.TryGetValue(rootPath, out compositionModules);
             return compositionModules;
         }
     }

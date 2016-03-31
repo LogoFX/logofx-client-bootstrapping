@@ -107,7 +107,7 @@ namespace LogoFX.Client.Bootstrapping
         {
             ContainerAdapter = iocContainerAdapter;
             Use(new RegisterCoreMiddleware<TRootViewModel, TIocContainerAdapter>())
-                .Use(new RegisterViewAndViewModelsMiddleware<TRootViewModel, TIocContainerAdapter>())
+                .Use(new RegisterViewModelsMiddleware<TRootViewModel, TIocContainerAdapter>())
                 .Use(new RegisterCompositionModulesMiddleware<TRootViewModel, TIocContainerAdapter>())
                 .Use(new RegisterPlatformSpecificMiddleware<TRootViewModel, TIocContainerAdapter>());
         }
@@ -201,18 +201,13 @@ namespace LogoFX.Client.Bootstrapping
         {
         }
 
-        private readonly object _defaultLifetimeScope = new object();
-
         /// <summary>
         /// Gets the current lifetime scope.
         /// </summary>
         /// <value>
         /// The current lifetime scope.
         /// </value>
-        public virtual object CurrentLifetimeScope
-        {
-            get { return _defaultLifetimeScope; }
-        }                
+        public virtual object CurrentLifetimeScope { get; } = new object();
 
         /// <summary>
         /// Initializes the framework dispatcher.
