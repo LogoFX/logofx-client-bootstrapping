@@ -14,7 +14,7 @@ namespace LogoFX.Client.Bootstrapping.Platform.NET45.Tests
         [Test]
         public void Initialization_DoesNotThrow()
         {
-            Assert.DoesNotThrow(() => new TestBootstrapper(new ExtendedSimpleContainerAdapter(),new BootstrapperCreationOptions
+            Assert.DoesNotThrow(() => new TestBootstrapper(new ExtendedSimpleContainerAdapter(),new BootstrapperContainerCreationOptions
             {
                 UseApplication = false
             }));
@@ -60,7 +60,7 @@ namespace LogoFX.Client.Bootstrapping.Platform.NET45.Tests
         {
         }
 
-        public TestBootstrapper(ExtendedSimpleContainerAdapter iocContainerAdapter, BootstrapperCreationOptions creationOptions) : 
+        public TestBootstrapper(ExtendedSimpleContainerAdapter iocContainerAdapter, BootstrapperContainerCreationOptions creationOptions) : 
             base(iocContainerAdapter, creationOptions)
         {
             PlatformProvider.Current = new NetPlatformProvider();
@@ -70,7 +70,7 @@ namespace LogoFX.Client.Bootstrapping.Platform.NET45.Tests
     class TestConcreteBootstrapper : BootstrapperContainerBase<TestShellViewModel, ExtendedSimpleContainerAdapter, ExtendedSimpleContainer>
     {
         public TestConcreteBootstrapper(ExtendedSimpleContainer iocContainer, Func<ExtendedSimpleContainer, ExtendedSimpleContainerAdapter> adapterCreator) : 
-            base(iocContainer, adapterCreator, new BootstrapperCreationOptions
+            base(iocContainer, adapterCreator, new BootstrapperContainerCreationOptions
             {
                 UseApplication = false
             })

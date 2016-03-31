@@ -46,12 +46,23 @@ namespace LogoFX.Client.Bootstrapping
         }
     }
 
-    class RegisterScopedMiddleware<TRootViewModel, TIocContainerAdapter, TIocContainer> :
+    /// <summary>
+    /// Registers composition modules into the ioc container using an external lifetime scope provider.
+    /// </summary>
+    /// <typeparam name="TRootViewModel">The type of the root view model.</typeparam>
+    /// <typeparam name="TIocContainerAdapter">The type of the ioc container adapter.</typeparam>
+    /// <typeparam name="TIocContainer">The type of the ioc container.</typeparam>    
+    public class RegisterScopedMiddleware<TRootViewModel, TIocContainerAdapter, TIocContainer> :
         IMiddleware<BootstrapperContainerBase<TRootViewModel, TIocContainerAdapter, TIocContainer>>
         where TRootViewModel : class
         where TIocContainerAdapter : class, IIocContainer, IIocContainerAdapter<TIocContainer>, IBootstrapperAdapter, new()
         where TIocContainer : class
     {
+        /// <summary>
+        /// Applies the middleware on the specified object.
+        /// </summary>
+        /// <param name="object">The object.</param>
+        /// <returns></returns>
         public BootstrapperContainerBase<TRootViewModel, TIocContainerAdapter, TIocContainer> Apply(
             BootstrapperContainerBase<TRootViewModel, TIocContainerAdapter, TIocContainer> @object)
         {
@@ -59,12 +70,22 @@ namespace LogoFX.Client.Bootstrapping
             return @object;
         }
     }
-    
-    class RegisterCoreMiddleware<TRootViewModel, TIocContainerAdapter> :
+
+    /// <summary>
+    /// Registers the core application components (root view model, ioc container etc.) into the ioc container.
+    /// </summary>
+    /// <typeparam name="TRootViewModel">The type of the root view model.</typeparam>
+    /// <typeparam name="TIocContainerAdapter">The type of the ioc container adapter.</typeparam>    
+    public class RegisterCoreMiddleware<TRootViewModel, TIocContainerAdapter> :
         IMiddleware<BootstrapperContainerBase<TRootViewModel, TIocContainerAdapter>>
         where TRootViewModel : class
         where TIocContainerAdapter : class, IIocContainer, IIocContainerAdapter, IBootstrapperAdapter, new()        
     {
+        /// <summary>
+        /// Applies the middleware on the specified object.
+        /// </summary>
+        /// <param name="object">The object.</param>
+        /// <returns></returns>
         public BootstrapperContainerBase<TRootViewModel, TIocContainerAdapter> Apply(
             BootstrapperContainerBase<TRootViewModel, TIocContainerAdapter> @object)
         {
@@ -73,11 +94,21 @@ namespace LogoFX.Client.Bootstrapping
         }
     }
 
-    class RegisterViewModelsMiddleware<TRootViewModel, TIocContainerAdapter> :
+    /// <summary>
+    /// Registers automagically the application's view models in the transient lifestyle.
+    /// </summary>
+    /// <typeparam name="TRootViewModel">The type of the root view model.</typeparam>
+    /// <typeparam name="TIocContainerAdapter">The type of the ioc container adapter.</typeparam>    
+    public class RegisterViewModelsMiddleware<TRootViewModel, TIocContainerAdapter> :
         IMiddleware<BootstrapperContainerBase<TRootViewModel, TIocContainerAdapter>>
         where TRootViewModel : class
         where TIocContainerAdapter : class, IIocContainer, IIocContainerAdapter, IBootstrapperAdapter, new()
     {
+        /// <summary>
+        /// Applies the middleware on the specified object.
+        /// </summary>
+        /// <param name="object">The object.</param>
+        /// <returns></returns>
         public BootstrapperContainerBase<TRootViewModel, TIocContainerAdapter> Apply(
             BootstrapperContainerBase<TRootViewModel, TIocContainerAdapter> @object)
         {
@@ -87,11 +118,21 @@ namespace LogoFX.Client.Bootstrapping
         }
     }
 
-    class RegisterCompositionModulesMiddleware<TRootViewModel, TIocContainerAdapter> :
+    /// <summary>
+    /// Registers composition modules into the ioc container.
+    /// </summary>
+    /// <typeparam name="TRootViewModel">The type of the root view model.</typeparam>
+    /// <typeparam name="TIocContainerAdapter">The type of the ioc container adapter.</typeparam>    
+    public class RegisterCompositionModulesMiddleware<TRootViewModel, TIocContainerAdapter> :
         IMiddleware<BootstrapperContainerBase<TRootViewModel, TIocContainerAdapter>>
         where TRootViewModel : class
         where TIocContainerAdapter : class, IIocContainer, IIocContainerAdapter, IBootstrapperAdapter, new()
     {
+        /// <summary>
+        /// Applies the middleware on the specified object.
+        /// </summary>
+        /// <param name="object">The object.</param>
+        /// <returns></returns>
         public BootstrapperContainerBase<TRootViewModel, TIocContainerAdapter> Apply(
             BootstrapperContainerBase<TRootViewModel, TIocContainerAdapter> @object)
         {
@@ -101,11 +142,21 @@ namespace LogoFX.Client.Bootstrapping
         }
     }
 
-    class RegisterPlatformSpecificMiddleware<TRootViewModel, TIocContainerAdapter> :
+    /// <summary>
+    /// Registers platform-specific services into the ioc container.
+    /// </summary>
+    /// <typeparam name="TRootViewModel">The type of the root view model.</typeparam>
+    /// <typeparam name="TIocContainerAdapter">The type of the ioc container adapter.</typeparam>    
+    public class RegisterPlatformSpecificMiddleware<TRootViewModel, TIocContainerAdapter> :
         IMiddleware<BootstrapperContainerBase<TRootViewModel, TIocContainerAdapter>>
         where TRootViewModel : class
         where TIocContainerAdapter : class, IIocContainer, IIocContainerAdapter, IBootstrapperAdapter, new()
     {
+        /// <summary>
+        /// Applies the middleware on the specified object.
+        /// </summary>
+        /// <param name="object">The object.</param>
+        /// <returns></returns>
         public BootstrapperContainerBase<TRootViewModel, TIocContainerAdapter> Apply(
             BootstrapperContainerBase<TRootViewModel, TIocContainerAdapter> @object)
         {
