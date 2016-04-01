@@ -21,7 +21,9 @@ namespace LogoFX.Client.Bootstrapping
     /// <typeparam name="TIocContainer">The type of the ioc container.</typeparam>
     /// <seealso cref="Bootstrapping.BootstrapperContainerBase{TRootViewModel, TIocContainerAdapter}" />
     public partial class BootstrapperContainerBase<TRootViewModel, TIocContainerAdapter, TIocContainer> :
-                    BootstrapperContainerBase<TRootViewModel, TIocContainerAdapter> where TRootViewModel : class
+                    BootstrapperContainerBase<TRootViewModel, TIocContainerAdapter>,
+                    IBootstrapperWithContainer<TRootViewModel, TIocContainerAdapter, TIocContainer>
+        where TRootViewModel : class
         where TIocContainerAdapter : class, IIocContainer, IIocContainerAdapter<TIocContainer>, IBootstrapperAdapter, new() 
         where TIocContainer : class
     {
@@ -69,7 +71,7 @@ namespace LogoFX.Client.Bootstrapping
             Container = iocContainer;
             if (creationOptions.UseDefaultMiddlewares)
             {
-                Use(new RegisterScopedMiddleware<TRootViewModel, TIocContainerAdapter, TIocContainer>());
+                Use(new RegisterScopedMiddleware<TRootViewModel, TIocContainerAdapter, TIocContainer>(() => CurrentLifetimeScope));
             }            
         }
 
@@ -97,7 +99,8 @@ namespace LogoFX.Client.Bootstrapping
     /// </summary>
     /// <typeparam name="TRootViewModel">Type of Root ViewModel.</typeparam>
     /// <typeparam name="TIocContainerAdapter">Type of IoC container adapter.</typeparam>
-    public partial class BootstrapperContainerBase<TRootViewModel, TIocContainerAdapter> : BootstrapperBase               
+    public partial class BootstrapperContainerBase<TRootViewModel, TIocContainerAdapter> : 
+        BootstrapperBase, IBootstrapperWithContainerAdapter<TRootViewModel, TIocContainerAdapter>               
         where TRootViewModel : class
         where TIocContainerAdapter : class, IIocContainer, IIocContainerAdapter, IBootstrapperAdapter, new()
     {

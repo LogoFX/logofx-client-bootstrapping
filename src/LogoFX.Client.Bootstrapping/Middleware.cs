@@ -1,0 +1,115 @@
+﻿using System;
+using LogoFX.Client.Bootstrapping.Adapters.Contracts;
+using Solid.Practices.IoC;
+using Solid.Practices.Middleware;
+
+namespace LogoFX.Client.Bootstrapping
+{
+    /// <summary>
+    /// Registers the core application components (root view model, ioc container etc.) into the ioc container.
+    /// </summary>
+    /// <typeparam name="TRootViewModel">The type of the root view model.</typeparam>
+    /// <typeparam name="TIocContainerAdapter">The type of the ioc container adapter.</typeparam>    
+    public class RegisterCoreMiddleware<TRootViewModel, TIocContainerAdapter> :
+        IMiddleware<IBootstrapperWithContainerAdapter<TRootViewModel, TIocContainerAdapter>>
+        where TRootViewModel : class
+        where TIocContainerAdapter : class, IIocContainer, IIocContainerAdapter, IBootstrapperAdapter, new()
+    {
+        /// <summary>
+        /// Applies the middleware on the specified object.
+        /// </summary>
+        /// <param name="object">The object.</param>
+        /// <returns></returns>
+        public IBootstrapperWithContainerAdapter<TRootViewModel, TIocContainerAdapter> Apply(
+            IBootstrapperWithContainerAdapter<TRootViewModel, TIocContainerAdapter> @object)
+        {
+            BootstrapperHelper<TRootViewModel, TIocContainerAdapter>.RegisterCore(@object.ContainerAdapter);
+            return @object;
+        }
+    }
+
+    /// <summary>
+    /// Registers composition modules into the ioc container using an external lifetime scope provider.
+    /// </summary>
+    /// <typeparam name="TRootViewModel">The type of the root view model.</typeparam>
+    /// <typeparam name="TIocContainerAdapter">The type of the ioc container adapter.</typeparam>
+    /// <typeparam name="TIocContainer">The type of the ioc container.</typeparam>    
+    public class RegisterScopedMiddleware<TRootViewModel, TIocContainerAdapter, TIocContainer> :
+        IMiddleware<IBootstrapperWithContainer<TRootViewModel, TIocContainerAdapter, TIocContainer>>
+        where TRootViewModel : class
+        where TIocContainerAdapter : class, IIocContainer, IIocContainerAdapter<TIocContainer>, IBootstrapperAdapter, new()
+        where TIocContainer : class
+    {
+        private readonly Func<object> _lifetimeScopeProvider;
+
+        /// <summary>
+        /// Initializes a new instance of the 
+        /// <see cref="RegisterScopedMiddleware{TRootViewModel, TIocContainerAdapter, TIocContainer}"/> class.
+        /// </summary>
+        /// <param name="lifetimeScopeProvider">The lifetime scope provider.</param>
+        public RegisterScopedMiddleware(Func<object> lifetimeScopeProvider)
+        {
+            _lifetimeScopeProvider = lifetimeScopeProvider;
+        }
+
+        /// <summary>
+        /// Applies the middleware on the specified object.
+        /// </summary>
+        /// <param name="object">The object.</param>
+        /// <returns></returns>
+        public IBootstrapperWithContainer<TRootViewModel, TIocContainerAdapter, TIocContainer> Apply(
+            IBootstrapperWithContainer<TRootViewModel, TIocContainerAdapter, TIocContainer> @object)
+        {
+            ModuleRegistrationHelper.RegisterCompositionModules(@object.Container, @object.Modules, _lifetimeScopeProvider);
+            return @object;
+        }
+    }
+
+    /// <summary>
+    /// Registers automagically the application's view models in the transient lifestyle.
+    /// </summary>
+    /// <typeparam name="TRootViewModel">The type of the root view model.</typeparam>
+    /// <typeparam name="TIocContainerAdapter">The type of the ioc container adapter.</typeparam>    
+    public class RegisterViewModelsMiddleware<TRootViewModel, TIocContainerAdapter> :
+        IMiddleware<IBootstrapperWithContainerAdapter<TRootViewModel, TIocContainerAdapter>>
+        where TRootViewModel : class
+        where TIocContainerAdapter : class, IIocContainer, IIocContainerAdapter, IBootstrapperAdapter, new()
+    {
+        /// <summary>
+        /// Applies the middleware on the specified object.
+        /// </summary>
+        /// <param name="object">The object.</param>
+        /// <returns></returns>
+        public IBootstrapperWithContainerAdapter<TRootViewModel, TIocContainerAdapter> Apply(
+            IBootstrapperWithContainerAdapter<TRootViewModel, TIocContainerAdapter> @object)
+        {
+            BootstrapperHelper<TRootViewModel, TIocContainerAdapter>.RegisterViewModels(
+                @object.ContainerAdapter, @object.Assemblies);
+            return @object;
+        }
+    }
+
+    /// <summary>
+    /// Registers composition modules into the ioc container.
+    /// </summary>
+    /// <typeparam name="TRootViewModel">The type of the root view model.</typeparam>
+    /// <typeparam name="TIocContainerAdapter">The type of the ioc container adapter.</typeparam>    
+    public class RegisterCompositionModulesMiddleware<TRootViewModel, TIocContainerAdapter> :
+        IMiddleware<IBootstrapperWithContainerAdapter<TRootViewModel, TIocContainerAdapter>>
+        where TRootViewModel : class
+        where TIocContainerAdapter : class, IIocContainer, IIocContainerAdapter, IBootstrapperAdapter, new()
+    {
+        /// <summary>
+        /// Applies the middleware on the specified object.
+        /// </summary>
+        /// <param name="object">The object.</param>
+        /// <returns></returns>
+        public IBootstrapperWithContainerAdapter<TRootViewModel, TIocContainerAdapter> Apply(
+            IBootstrapperWithContainerAdapter<TRootViewModel, TIocContainerAdapter> @object)
+        {
+            ModuleRegistrationHelper.RegisterCompositionModules(@object.ContainerAdapter,
+                @object.Modules);
+            return @object;
+        }
+    }
+}

@@ -16,6 +16,7 @@ namespace LogoFX.Client.Bootstrapping
 #if WINDOWS_UWP || NETFX_CORE
         CaliburnApplication
 #endif
+        , IBootstrapper
     {
         private readonly BootstrapperCreationOptions _creationOptions;
 
