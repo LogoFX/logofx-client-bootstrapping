@@ -79,5 +79,5 @@ namespace LogoFX.Client.Bootstrapping
                     : ViewLocator.GetOrCreateViewType(viewType);
             };
         }
-    }
+    }    
 }
