@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using Solid.Practices.IoC;
@@ -11,41 +10,7 @@ namespace LogoFX.Client.Bootstrapping
     /// Provides means for registering composition modules into the IoC container.
     /// </summary>    
     public static class ModuleRegistrationHelper
-    {
-        /// <summary>
-        /// Registers the composition modules using specified lifetime scope provider.
-        /// </summary>
-        /// <typeparam name="TIocContainer"></typeparam>
-        /// <param name="iocContainer">The ioc container.</param>
-        /// <param name="modules">The modules.</param>
-        /// <param name="lifetimeScopeProvider">The lifetime scope provider.</param>
-        public static void RegisterCompositionModules<TIocContainer>(
-            TIocContainer iocContainer,
-            IEnumerable<ICompositionModule> modules,
-            Func<object> lifetimeScopeProvider)
-            where TIocContainer : class
-        {            
-            var compositionModules = modules as ICompositionModule[] ?? modules.ToArray();
-            if (iocContainer is IIocContainer)
-            {
-                RegisterGeneralContainerCompositionModulesInternal((IIocContainer)iocContainer, compositionModules);
-            }
-            else
-            {
-                RegisterConcreteContainerCompositionModulesInternal(iocContainer, compositionModules);
-            }
-            
-            if (iocContainer is IIocContainerScoped)
-            {
-                var scopedMiddlewares = new IMiddleware<IIocContainerScoped>[]
-                {
-                    new ContainerScopedRegistrationMiddleware<IIocContainerScoped>(compositionModules,
-                        lifetimeScopeProvider)
-                };
-                MiddlewareApplier.ApplyMiddlewares((IIocContainerScoped)iocContainer, scopedMiddlewares);
-            }
-        }
-
+    {        
         /// <summary>
         /// Registers the composition modules.
         /// </summary>

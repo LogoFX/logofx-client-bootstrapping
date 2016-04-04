@@ -51,6 +51,10 @@ namespace LogoFX.Client.Bootstrapping
 #endif
                     ;
             }
+            if (creationOptions.UseDefaultMiddlewares)
+            {
+                Use(new InitializeViewLocatorMiddleware());
+            }
         }        
 
         /// <summary>
@@ -64,5 +68,5 @@ namespace LogoFX.Client.Bootstrapping
                 InitializeCompositionModules();
             }
         }                
-    }
+    }    
 }

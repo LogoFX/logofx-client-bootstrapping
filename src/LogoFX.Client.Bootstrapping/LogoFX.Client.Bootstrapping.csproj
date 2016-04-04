@@ -35,7 +35,6 @@
     <DocumentationFile>..\Bin\portable\Release\LogoFX.Client.Bootstrapping.XML</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="BootstrapperContainerCreationOptions.cs" />
     <Compile Include="BootstrapperCreationOptions.cs" />
     <Compile Include="BootstrapperHelper.cs" />
     <Compile Include="IBootstrapper.cs" />

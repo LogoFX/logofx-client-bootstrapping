@@ -25,6 +25,14 @@ namespace LogoFX.Client.Bootstrapping
         /// The assemblies.
         /// </value>
         Assembly[] Assemblies { get; }
+
+        /// <summary>
+        /// Uses the specified middleware.
+        /// </summary>
+        /// <param name="middleware">The middleware.</param>
+        /// <returns></returns>
+        IBootstrapper Use(
+            IMiddleware<IBootstrapper> middleware);
     }
 
     /// <summary>

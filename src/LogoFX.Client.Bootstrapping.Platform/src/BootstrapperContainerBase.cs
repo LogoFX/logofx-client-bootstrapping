@@ -36,25 +36,11 @@ namespace LogoFX.Client.Bootstrapping
         public BootstrapperContainerBase(
             TIocContainer iocContainer, 
             Func<TIocContainer, TIocContainerAdapter> adapterCreator) : 
-            this(iocContainer, adapterCreator, new BootstrapperContainerCreationOptions())
+            this(iocContainer, adapterCreator, new BootstrapperCreationOptions())
         {           
         }
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="BootstrapperContainerBase{TRootViewModel, TIocContainerAdapter, TIocContainer}"/> class.
-        /// </summary>
-        /// <param name="iocContainer">The ioc container.</param>
-        /// <param name="adapterCreator">The adapter creator.</param>
-        /// <param name="creationOptions">The creation options.</param>
-        [Obsolete("Added for compatibility reasons.")]
-        public BootstrapperContainerBase(
-            TIocContainer iocContainer,
-            Func<TIocContainer, TIocContainerAdapter> adapterCreator,
-            BootstrapperCreationOptions creationOptions) :
-            this(iocContainer, adapterCreator, BootstrapperContainerCreationOptions.From(creationOptions))
-        {
-        }
-
+        
         /// <summary>
         /// Initializes a new instance of the 
         /// <see cref="BootstrapperContainerBase{TRootViewModel, TIocContainerAdapter, TIocContainer}"/> class.
@@ -65,14 +51,10 @@ namespace LogoFX.Client.Bootstrapping
         public BootstrapperContainerBase(
             TIocContainer iocContainer,
             Func<TIocContainer, TIocContainerAdapter> adapterCreator,
-            BootstrapperContainerCreationOptions creationOptions) : base(adapterCreator(iocContainer), 
+            BootstrapperCreationOptions creationOptions) : base(adapterCreator(iocContainer), 
                 creationOptions)
         {
-            Container = iocContainer;
-            if (creationOptions.UseDefaultMiddlewares)
-            {
-                Use(new RegisterScopedMiddleware<TRootViewModel, TIocContainerAdapter, TIocContainer>(() => CurrentLifetimeScope));
-            }            
+            Container = iocContainer;                     
         }
 
         /// <summary>
@@ -104,29 +86,17 @@ namespace LogoFX.Client.Bootstrapping
         where TRootViewModel : class
         where TIocContainerAdapter : class, IIocContainer, IIocContainerAdapter, IBootstrapperAdapter, new()
     {
+        private readonly BootstrapperCreationOptions _creationOptions;
+
         /// <summary>
         /// Initializes a new instance of the <see cref="BootstrapperContainerBase{TRootViewModel, TIocContainerAdapter}"/> class.
         /// </summary>
         /// <param name="iocContainerAdapter">The ioc container adapter.</param>        
         public BootstrapperContainerBase(
             TIocContainerAdapter iocContainerAdapter)
-            :this(iocContainerAdapter, new BootstrapperContainerCreationOptions())            
+            :this(iocContainerAdapter, new BootstrapperCreationOptions())            
         {            
-        }
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="BootstrapperContainerBase{TRootViewModel, TIocContainerAdapter}"/> class.
-        /// </summary>
-        /// <param name="iocContainerAdapter">The ioc container adapter.</param>
-        /// <param name="creationOptions">The creation options.</param>
-        [Obsolete("Added for compatibility reasons.")]
-        public BootstrapperContainerBase(
-            TIocContainerAdapter iocContainerAdapter, 
-            BootstrapperCreationOptions creationOptions)
-            :this(iocContainerAdapter, BootstrapperContainerCreationOptions.From(creationOptions))
-        {
-            
-        }
+        }        
 
         /// <summary>
         /// Initializes a new instance of the <see cref="BootstrapperContainerBase{TRootViewModel, TIocContainerAdapter}"/> class.
@@ -135,11 +105,12 @@ namespace LogoFX.Client.Bootstrapping
         /// <param name="creationOptions">The creation options.</param>
         public BootstrapperContainerBase(
             TIocContainerAdapter iocContainerAdapter,
-            BootstrapperContainerCreationOptions creationOptions)
+            BootstrapperCreationOptions creationOptions)
 #if NET45
             :base(creationOptions)
 #endif
         {
+            _creationOptions = creationOptions;
             ContainerAdapter = iocContainerAdapter;
             if (creationOptions.UseDefaultMiddlewares)
             {
@@ -166,7 +137,14 @@ namespace LogoFX.Client.Bootstrapping
         protected override void OnStartup(object sender, StartupEventArgs e)
         {
             base.OnStartup(sender, e);
-            DisplayRootView();
+            if (_creationOptions.DisplayRootView)
+            {
+                DisplayRootView();
+            }    
+            else
+            {
+                CreateRootViewModel();
+            }    
         }
 #endif
 #if NETFX_CORE || WINDOWS_UWP
@@ -184,8 +162,15 @@ namespace LogoFX.Client.Bootstrapping
         protected override void OnLaunched(LaunchActivatedEventArgs e)
         {
             OnLaunchedCore();
-            BeforeOnLaunched(e);          
-            DisplayRootView();
+            BeforeOnLaunched(e);
+            if (_creationOptions.DisplayRootView)
+            {
+                DisplayRootView();
+            }
+            else
+            {
+                CreateRootViewModel();
+            }     
         }
 
         private void OnLaunchedCore()
@@ -197,6 +182,13 @@ namespace LogoFX.Client.Bootstrapping
         private void DisplayRootView()
         {
             DisplayRootViewFor<TRootViewModel>();
+        }
+
+        private void CreateRootViewModel()
+        {
+            //this mimics the Caliburn.Micro IoC.GetInstance 
+            //which is executed inside the DisplayRootViewFor
+            ContainerAdapter.Resolve<TRootViewModel>();
         }
 
 #if NETFX_CORE || WINDOWS_UWP
@@ -221,8 +213,7 @@ namespace LogoFX.Client.Bootstrapping
         /// </summary>
         protected sealed override void Configure()
         {
-            base.Configure();                                                       
-            InitializeViewLocator();
+            base.Configure();                                                                   
             InitializeAdapter(ContainerAdapter);
 #if NET45 // in UWP the dispatcher is initialized later.
             InitializeDispatcher();

@@ -107,6 +107,9 @@
     <Compile Include="..\src\BootstrapperBase.Inspection.cs">
       <Link>BootstrapperBase.Inspection.cs</Link>
     </Compile>
+    <Compile Include="..\src\BootstrapperBase.Middleware.cs">
+      <Link>BootstrapperBase.Middleware.cs</Link>
+    </Compile>
     <Compile Include="..\src\BootstrapperBase.ViewLocator.cs">
       <Link>BootstrapperBase.ViewLocator.cs</Link>
     </Compile>

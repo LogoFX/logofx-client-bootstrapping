@@ -7,16 +7,30 @@ using System.Windows.Controls;
 #if NETFX_CORE || WINDOWS_UWP
 using Windows.UI.Xaml.Controls;
 #endif
-
 using Caliburn.Micro;
+using Solid.Practices.Middleware;
 
 namespace LogoFX.Client.Bootstrapping
 {
-    partial class BootstrapperBase
+    /// <summary>
+    /// Initializes view locator.
+    /// </summary>    
+    public class InitializeViewLocatorMiddleware : IMiddleware<IBootstrapper>
     {
+        /// <summary>
+        /// Applies the middleware on the specified object.
+        /// </summary>
+        /// <param name="object">The object.</param>
+        /// <returns></returns>
+        public IBootstrapper Apply(IBootstrapper @object)
+        {
+            InitializeViewLocator(@object);
+            return @object;
+        }
+
         private readonly Dictionary<string, Type> _typedic = new Dictionary<string, Type>();
 
-        internal void InitializeViewLocator()
+        private void InitializeViewLocator(IBootstrapper bootstrapper)
         {
             //overriden for performance reasons (Assembly caching)
             ViewLocator.LocateTypeForModelType = (modelType, displayLocation, context) =>
@@ -35,7 +49,7 @@ namespace LogoFX.Client.Bootstrapping
                 Type viewType;
                 if (!_typedic.TryGetValue(viewTypeName, out viewType))
                 {
-                    _typedic[viewTypeName] = viewType = (from assembly in Assemblies
+                    _typedic[viewTypeName] = viewType = (from assembly in bootstrapper.Assemblies
                                                          from type in assembly
 #if NET45
                                                          .GetExportedTypes()

@@ -15,7 +15,9 @@ namespace LogoFX.Client.Bootstrapping
             UseApplication = true;
             ReuseCompositionInformation = true;
             DiscoverCompositionModules = true;
-            InspectAssemblies = true;            
+            InspectAssemblies = true;
+            UseDefaultMiddlewares = true;
+            DisplayRootView = true;
         }
 
         /// <summary>
@@ -55,6 +57,24 @@ namespace LogoFX.Client.Bootstrapping
         /// <value>
         ///   <c>true</c> if the assemblies should be looked for; otherwise, <c>false</c>.
         /// </value>
-        public bool InspectAssemblies { get; set; }        
+        public bool InspectAssemblies { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether the default middlewares
+        /// are used. The default value is <c>true</c>
+        /// </summary>
+        /// <value>
+        ///   <c>true</c> if the default middlewares are used; otherwise, <c>false</c>.
+        /// </value>
+        public bool UseDefaultMiddlewares { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether the root view is displayed upon
+        /// successful initialization.
+        /// </summary>
+        /// <value>
+        ///   <c>true</c> if the root view is displayed; otherwise, <c>false</c>.
+        /// </value>
+        public bool DisplayRootView { get; set; }
     }
 }

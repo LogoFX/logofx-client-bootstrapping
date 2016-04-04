@@ -14,7 +14,7 @@ namespace LogoFX.Client.Bootstrapping
         where TIocContainerAdapter : class, IIocContainer, IBootstrapperAdapter, IIocContainerAdapter, new()
     {
         private readonly TIocContainerAdapter _container;
-        private readonly BootstrapperContainerCreationOptions _options = new BootstrapperContainerCreationOptions();
+        private readonly BootstrapperCreationOptions _options = new BootstrapperCreationOptions();
 
         private BootstrapperContainerBuilder(TIocContainerAdapter container)
         {
