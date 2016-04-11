@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Reflection;
+using Solid.Practices.Composition;
 using Solid.Practices.Composition.Client;
 using Solid.Practices.Composition.Contracts;
 
@@ -41,7 +41,7 @@ namespace LogoFX.Client.Bootstrapping
         {
             OnConfigureAssemblyResolution();
             var assembliesResolver = new AssembliesResolver(GetType(),
-                new ClientAssemblySourceProvider(Directory.GetCurrentDirectory()));
+                new ClientAssemblySourceProvider(PlatformProvider.Current.GetRootPath()));
             return ((IAssembliesReadOnlyResolver)assembliesResolver).GetAssemblies().ToArray();
         }        
 

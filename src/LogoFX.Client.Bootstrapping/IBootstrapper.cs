@@ -27,6 +27,11 @@ namespace LogoFX.Client.Bootstrapping
         Assembly[] Assemblies { get; }
 
         /// <summary>
+        /// Initializes the framework.
+        /// </summary>
+        void Initialize();        
+
+        /// <summary>
         /// Uses the specified middleware.
         /// </summary>
         /// <param name="middleware">The middleware.</param>

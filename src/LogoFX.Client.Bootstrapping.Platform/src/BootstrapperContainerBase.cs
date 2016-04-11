@@ -3,7 +3,7 @@ using System.Windows.Threading;
 #if NET45
 using System.Windows;
 #endif
-#if NETFX_CORE || WINDOWS_UWP
+#if NETFX_CORE || WINDOWS_UWP || WIN81
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 #endif
@@ -86,6 +86,7 @@ namespace LogoFX.Client.Bootstrapping
         where TRootViewModel : class
         where TIocContainerAdapter : class, IIocContainer, IIocContainerAdapter, IBootstrapperAdapter, new()
     {
+
         private readonly BootstrapperCreationOptions _creationOptions;
 
         /// <summary>
@@ -147,7 +148,7 @@ namespace LogoFX.Client.Bootstrapping
             }    
         }
 #endif
-#if NETFX_CORE || WINDOWS_UWP
+#if NETFX_CORE || WINDOWS_UWP || WIN81
 
         /// <summary>
         /// Override this method to inject custom functionality before the app is launched.
@@ -191,7 +192,7 @@ namespace LogoFX.Client.Bootstrapping
             ContainerAdapter.Resolve<TRootViewModel>();
         }
 
-#if NETFX_CORE || WINDOWS_UWP
+#if NETFX_CORE || WINDOWS_UWP || WIN81
         ///<summary>
         /// Invoked when application execution is being suspended.  Application state is saved
         /// without knowing whether the application will be terminated or resumed with the contents

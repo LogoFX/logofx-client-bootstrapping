@@ -1,7 +1,8 @@
-#if WINDOWS_UWP || NETFX_CORE
+#if WINDOWS_UWP || NETFX_CORE || WIN81
 using Caliburn.Micro;
 #endif
 using Solid.Practices.Composition;
+using Solid.Practices.Middleware;
 
 namespace LogoFX.Client.Bootstrapping
 {
@@ -14,6 +15,9 @@ namespace LogoFX.Client.Bootstrapping
         Caliburn.Micro.BootstrapperBase
 #endif
 #if WINDOWS_UWP || NETFX_CORE
+        CaliburnApplication
+#endif
+#if WIN81
         CaliburnApplication
 #endif
         , IBootstrapper
@@ -49,6 +53,9 @@ namespace LogoFX.Client.Bootstrapping
 #if NETFX_CORE || WINDOWS_UWP
                     new UniversalPlatformProvider()
 #endif
+#if WIN81
+                    new WinRTPlatformProvider()
+#endif
                     ;
             }
             if (creationOptions.UseDefaultMiddlewares)
@@ -67,6 +74,12 @@ namespace LogoFX.Client.Bootstrapping
             {
                 InitializeCompositionModules();
             }
-        }                
+            MiddlewareApplier.ApplyMiddlewares(this, _middlewares);
+        }
+
+        void IBootstrapper.Initialize()
+        {
+            Initialize();
+        }            
     }    
 }
