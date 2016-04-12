@@ -244,15 +244,7 @@ namespace LogoFX.Client.Bootstrapping
         /// <param name="iocContainerAdapter">IoC container adapter</param>
         protected virtual void OnConfigure(TIocContainerAdapter iocContainerAdapter)
         {
-        }
-
-        /// <summary>
-        /// Gets the current lifetime scope.
-        /// </summary>
-        /// <value>
-        /// The current lifetime scope.
-        /// </value>
-        public virtual object CurrentLifetimeScope { get; } = new object();
+        }        
 
         /// <summary>
         /// Initializes the framework dispatcher.
