@@ -159,9 +159,24 @@ namespace LogoFX.Client.Bootstrapping
             
         }
 
+        /// <summary>
+        /// Override this method to inject custom launch activation arguments checking logic.
+        /// </summary>
+        /// <param name="e">The <see cref="LaunchActivatedEventArgs"/> instance containing the event data.</param>
+        /// <returns></returns>
+        protected virtual bool CheckLaunchActivationArguments(LaunchActivatedEventArgs e)
+        {
+            return e.PreviousExecutionState != ApplicationExecutionState.Running;
+        }
+        
         /// <param name="e">Details about the launch request and process.</param>
         protected override void OnLaunched(LaunchActivatedEventArgs e)
         {
+            var canLaunch = CheckLaunchActivationArguments(e);
+            if (canLaunch == false)
+            {
+                return;
+            }                            
             OnLaunchedCore();
             BeforeOnLaunched(e);
             if (_creationOptions.DisplayRootView)
