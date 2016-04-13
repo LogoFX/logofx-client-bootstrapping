@@ -52,7 +52,7 @@ namespace LogoFX.Client.Bootstrapping
     }
 
     /// <summary>
-    /// Registers composition modules into the ioc container.
+    /// Registers composition modules into the ioc container adapter.
     /// </summary>
     /// <typeparam name="TRootViewModel">The type of the root view model.</typeparam>
     /// <typeparam name="TIocContainerAdapter">The type of the ioc container adapter.</typeparam>    
@@ -73,5 +73,30 @@ namespace LogoFX.Client.Bootstrapping
                 @object.Modules);
             return @object;
         }
-    }    
+    }
+
+    /// <summary>
+    /// Registers composition modules into the ioc container.
+    /// </summary>
+    /// <typeparam name="TRootViewModel">The type of the root view model.</typeparam>
+    /// <typeparam name="TIocContainerAdapter">The type of the ioc container adapter.</typeparam>    
+    public class RegisterCompositionModulesMiddleware<TRootViewModel, TIocContainerAdapter, TIocContainer> :
+        IMiddleware<IBootstrapperWithContainer<TRootViewModel, TIocContainerAdapter, TIocContainer>>
+        where TRootViewModel : class
+        where TIocContainerAdapter : class, IIocContainer, IIocContainerAdapter, IBootstrapperAdapter, new() 
+        where TIocContainer : class
+    {
+        /// <summary>
+        /// Applies the middleware on the specified object.
+        /// </summary>
+        /// <param name="object">The object.</param>
+        /// <returns></returns>
+        public IBootstrapperWithContainer<TRootViewModel, TIocContainerAdapter, TIocContainer> Apply(
+            IBootstrapperWithContainer<TRootViewModel, TIocContainerAdapter, TIocContainer> @object)
+        {
+            ModuleRegistrationHelper.RegisterCompositionModules(@object.Container,
+                @object.Modules);
+            return @object;
+        }
+    }
 }

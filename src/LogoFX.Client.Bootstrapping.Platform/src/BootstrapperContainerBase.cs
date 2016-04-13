@@ -54,7 +54,11 @@ namespace LogoFX.Client.Bootstrapping
             BootstrapperCreationOptions creationOptions) : base(adapterCreator(iocContainer), 
                 creationOptions)
         {
-            Container = iocContainer;                     
+            Container = iocContainer;
+            if (creationOptions.UseDefaultMiddlewares)
+            {
+                Use(new RegisterCompositionModulesMiddleware<TRootViewModel, TIocContainerAdapter, TIocContainer>());
+            }
         }
 
         /// <summary>
