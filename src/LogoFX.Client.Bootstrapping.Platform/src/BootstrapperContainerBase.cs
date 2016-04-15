@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Threading;
+using LogoFX.Bootstrapping;
 #if NET45
 using System.Windows;
 #endif

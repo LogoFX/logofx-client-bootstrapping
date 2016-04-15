@@ -8,6 +8,7 @@ using System.Windows.Controls;
 using Windows.UI.Xaml.Controls;
 #endif
 using Caliburn.Micro;
+using LogoFX.Bootstrapping;
 using Solid.Practices.Middleware;
 
 namespace LogoFX.Client.Bootstrapping

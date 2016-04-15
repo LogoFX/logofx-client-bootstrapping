@@ -1,6 +1,7 @@
 #if WINDOWS_UWP || NETFX_CORE || WIN81
 using Caliburn.Micro;
 #endif
+using LogoFX.Bootstrapping;
 using Solid.Practices.Composition;
 using Solid.Practices.Middleware;
 

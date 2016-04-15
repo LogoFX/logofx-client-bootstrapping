@@ -37,7 +37,6 @@
   <ItemGroup>
     <Compile Include="BootstrapperCreationOptions.cs" />
     <Compile Include="BootstrapperHelper.cs" />
-    <Compile Include="IBootstrapper.cs" />
     <Compile Include="Middleware.cs" />
     <Compile Include="ModuleRegistrationHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -46,6 +45,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Reference Include="LogoFX.Bootstrapping, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\LogoFX.Bootstrapping.1.1.0\lib\portable-net45+wpa8+win8+MonoAndroid+MonoTouch+uap10.0\LogoFX.Bootstrapping.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="LogoFX.Client.Bootstrapping.Adapters.Contracts, Version=1.0.4.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\LogoFX.Client.Bootstrapping.Adapters.Contracts.1.0.4\lib\portable-net45+wpa8+win8\LogoFX.Client.Bootstrapping.Adapters.Contracts.dll</HintPath>
       <Private>True</Private>
