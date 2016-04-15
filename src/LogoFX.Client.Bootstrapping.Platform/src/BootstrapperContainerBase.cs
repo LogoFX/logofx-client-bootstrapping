@@ -17,20 +17,20 @@ namespace LogoFX.Client.Bootstrapping
     /// <summary>
     /// Application bootstrapper. Used when there is need in IoC-container-specific logic.
     /// </summary>
-    /// <typeparam name="TRootViewModel">The type of the root view model.</typeparam>
+    /// <typeparam name="TRootObject">The type of the root object.</typeparam>
     /// <typeparam name="TIocContainerAdapter">The type of the ioc container adapter.</typeparam>
     /// <typeparam name="TIocContainer">The type of the ioc container.</typeparam>
-    /// <seealso cref="Bootstrapping.BootstrapperContainerBase{TRootViewModel, TIocContainerAdapter}" />
-    public partial class BootstrapperContainerBase<TRootViewModel, TIocContainerAdapter, TIocContainer> :
-                    BootstrapperContainerBase<TRootViewModel, TIocContainerAdapter>,
-                    IBootstrapperWithContainer<TRootViewModel, TIocContainerAdapter, TIocContainer>
-        where TRootViewModel : class
+    /// <seealso cref="Bootstrapping.BootstrapperContainerBase{TRootObject, TIocContainerAdapter}" />
+    public partial class BootstrapperContainerBase<TRootObject, TIocContainerAdapter, TIocContainer> :
+                    BootstrapperContainerBase<TRootObject, TIocContainerAdapter>,
+                    IBootstrapperWithContainer<TRootObject, TIocContainerAdapter, TIocContainer>
+        where TRootObject : class
         where TIocContainerAdapter : class, IIocContainer, IIocContainerAdapter<TIocContainer>, IBootstrapperAdapter, new() 
         where TIocContainer : class
     {
         /// <summary>
         /// Initializes a new instance of the 
-        /// <see cref="BootstrapperContainerBase{TRootViewModel, TIocContainerAdapter, TIocContainer}"/> class.
+        /// <see cref="BootstrapperContainerBase{TRootObject, TIocContainerAdapter, TIocContainer}"/> class.
         /// </summary>
         /// <param name="iocContainer">The ioc container.</param>
         /// <param name="adapterCreator">The adapter creator function.</param>
@@ -44,7 +44,7 @@ namespace LogoFX.Client.Bootstrapping
         
         /// <summary>
         /// Initializes a new instance of the 
-        /// <see cref="BootstrapperContainerBase{TRootViewModel, TIocContainerAdapter, TIocContainer}"/> class.
+        /// <see cref="BootstrapperContainerBase{TRootObject, TIocContainerAdapter, TIocContainer}"/> class.
         /// </summary>
         /// <param name="iocContainer">The ioc container.</param>
         /// /// <param name="adapterCreator">The adapter creator function.</param>
@@ -58,7 +58,7 @@ namespace LogoFX.Client.Bootstrapping
             Container = iocContainer;
             if (creationOptions.UseDefaultMiddlewares)
             {
-                Use(new RegisterCompositionModulesMiddleware<TRootViewModel, TIocContainerAdapter, TIocContainer>());
+                Use(new RegisterCompositionModulesMiddleware<TRootObject, TIocContainerAdapter, TIocContainer>());
             }
         }
 
@@ -84,18 +84,18 @@ namespace LogoFX.Client.Bootstrapping
     /// <summary>
     /// Application bootstrapper. Used when no IoC-container-specific logic is needed.    
     /// </summary>
-    /// <typeparam name="TRootViewModel">Type of Root ViewModel.</typeparam>
-    /// <typeparam name="TIocContainerAdapter">Type of IoC container adapter.</typeparam>
-    public partial class BootstrapperContainerBase<TRootViewModel, TIocContainerAdapter> : 
-        BootstrapperBase, IBootstrapperWithContainerAdapter<TRootViewModel, TIocContainerAdapter>               
-        where TRootViewModel : class
+    /// <typeparam name="TRootObject">The type of the root object.</typeparam>
+    /// <typeparam name="TIocContainerAdapter">The type of the ioc container adapter.</typeparam>
+    public partial class BootstrapperContainerBase<TRootObject, TIocContainerAdapter> : 
+        BootstrapperBase, IBootstrapperWithContainerAdapter<TRootObject, TIocContainerAdapter>               
+        where TRootObject : class
         where TIocContainerAdapter : class, IIocContainer, IIocContainerAdapter, IBootstrapperAdapter, new()
     {
 
         private readonly BootstrapperCreationOptions _creationOptions;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="BootstrapperContainerBase{TRootViewModel, TIocContainerAdapter}"/> class.
+        /// Initializes a new instance of the <see cref="BootstrapperContainerBase{TRootObject, TIocContainerAdapter}"/> class.
         /// </summary>
         /// <param name="iocContainerAdapter">The ioc container adapter.</param>        
         public BootstrapperContainerBase(
@@ -105,7 +105,7 @@ namespace LogoFX.Client.Bootstrapping
         }        
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="BootstrapperContainerBase{TRootViewModel, TIocContainerAdapter}"/> class.
+        /// Initializes a new instance of the <see cref="BootstrapperContainerBase{TRootObject, TIocContainerAdapter}"/> class.
         /// </summary>
         /// <param name="iocContainerAdapter">The ioc container adapter.</param>
         /// <param name="creationOptions">The creation options.</param>
@@ -120,10 +120,10 @@ namespace LogoFX.Client.Bootstrapping
             ContainerAdapter = iocContainerAdapter;
             if (creationOptions.UseDefaultMiddlewares)
             {
-                Use(new RegisterCoreMiddleware<TRootViewModel, TIocContainerAdapter>())
-               .Use(new RegisterViewModelsMiddleware<TRootViewModel, TIocContainerAdapter>())
-               .Use(new RegisterCompositionModulesMiddleware<TRootViewModel, TIocContainerAdapter>())
-               .Use(new RegisterPlatformSpecificMiddleware<TRootViewModel, TIocContainerAdapter>());
+                Use(new RegisterCoreMiddleware<TRootObject, TIocContainerAdapter>())
+               .Use(new RegisterViewModelsMiddleware<TRootObject, TIocContainerAdapter>())
+               .Use(new RegisterCompositionModulesMiddleware<TRootObject, TIocContainerAdapter>())
+               .Use(new RegisterPlatformSpecificMiddleware<TRootObject, TIocContainerAdapter>());
             }           
         }
 
@@ -149,7 +149,7 @@ namespace LogoFX.Client.Bootstrapping
             }    
             else
             {
-                CreateRootViewModel();
+                CreateRootObject();
             }    
         }
 #endif
@@ -190,7 +190,7 @@ namespace LogoFX.Client.Bootstrapping
             }
             else
             {
-                CreateRootViewModel();
+                CreateRootObject();
             }     
         }
 
@@ -202,14 +202,16 @@ namespace LogoFX.Client.Bootstrapping
 
         private void DisplayRootView()
         {
-            DisplayRootViewFor<TRootViewModel>();
+            DisplayRootViewFor<TRootObject>();
         }
 
-        private void CreateRootViewModel()
+        private void CreateRootObject()
         {
             //this mimics the Caliburn.Micro IoC.GetInstance 
             //which is executed inside the DisplayRootViewFor
-            ContainerAdapter.Resolve<TRootViewModel>();
+            //this is the bridge between the Bootstrapping aspect
+            //and the actual application work.
+            ContainerAdapter.Resolve<TRootObject>();
         }
 
 #if NETFX_CORE || WINDOWS_UWP || WIN81

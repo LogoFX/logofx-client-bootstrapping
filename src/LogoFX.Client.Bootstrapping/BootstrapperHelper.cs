@@ -9,19 +9,19 @@ namespace LogoFX.Client.Bootstrapping
     /// <summary>
     /// Contains cross-platform bootstrapper utilities.
     /// </summary>
-    /// <typeparam name="TRootViewModel">The type of the root view model.</typeparam>
+    /// <typeparam name="TRootObject">The type of the root object.</typeparam>
     /// <typeparam name="TIocContainerAdapter">The type of the ioc container.</typeparam>
-    public static class BootstrapperHelper<TRootViewModel, TIocContainerAdapter> 
-        where TRootViewModel : class
+    public static class BootstrapperHelper<TRootObject, TIocContainerAdapter> 
+        where TRootObject : class
         where TIocContainerAdapter : class, IIocContainer
     {        
         /// <summary>
-        /// Registers the IoC container and root view model.
+        /// Registers the IoC container and root object.
         /// </summary>
         /// <param name="iocContainerAdapter">The ioc containeradapter .</param>
         public static void RegisterCore(TIocContainerAdapter iocContainerAdapter)                                    
         {
-            iocContainerAdapter.RegisterSingleton<TRootViewModel, TRootViewModel>();
+            iocContainerAdapter.RegisterSingleton<TRootObject, TRootObject>();
             iocContainerAdapter.RegisterInstance(iocContainerAdapter);
             iocContainerAdapter.RegisterInstance<IIocContainer>(iocContainerAdapter);            
         }
@@ -36,7 +36,7 @@ namespace LogoFX.Client.Bootstrapping
         {
             var viewModelTypes = assemblies
                 .SelectMany(assembly => assembly.ExportedTypes)
-                .Where(type => type != typeof(TRootViewModel) && type.Name.EndsWith("ViewModel"))
+                .Where(type => type != typeof(TRootObject) && type.Name.EndsWith("ViewModel"))
                 .Where(
                     type =>
                         !string.IsNullOrWhiteSpace(type.Namespace) && type.Namespace != null &&

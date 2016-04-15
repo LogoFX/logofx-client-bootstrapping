@@ -9,38 +9,38 @@ using Solid.Practices.Middleware;
 
 namespace LogoFX.Client.Bootstrapping
 {
-    public partial class BootstrapperContainerBase<TRootViewModel, TIocContainerAdapter, TIocContainer>
+    public partial class BootstrapperContainerBase<TRootObject, TIocContainerAdapter, TIocContainer>
     {
         private readonly
-            List<IMiddleware<IBootstrapperWithContainer<TRootViewModel, TIocContainerAdapter, TIocContainer>>>
+            List<IMiddleware<IBootstrapperWithContainer<TRootObject, TIocContainerAdapter, TIocContainer>>>
             _middlewares =
-                new List<IMiddleware<IBootstrapperWithContainer<TRootViewModel, TIocContainerAdapter, TIocContainer>>>();
+                new List<IMiddleware<IBootstrapperWithContainer<TRootObject, TIocContainerAdapter, TIocContainer>>>();
 
         /// <summary>
         /// Uses the specified middleware.
         /// </summary>
         /// <param name="middleware">The middleware.</param>
         /// <returns></returns>
-        public IBootstrapperWithContainer<TRootViewModel, TIocContainerAdapter, TIocContainer> Use(
-            IMiddleware<IBootstrapperWithContainer<TRootViewModel, TIocContainerAdapter, TIocContainer>> middleware)
+        public IBootstrapperWithContainer<TRootObject, TIocContainerAdapter, TIocContainer> Use(
+            IMiddleware<IBootstrapperWithContainer<TRootObject, TIocContainerAdapter, TIocContainer>> middleware)
         {
             _middlewares.Add(middleware);
             return this;
         }
     }
 
-    public partial class BootstrapperContainerBase<TRootViewModel, TIocContainerAdapter>
+    public partial class BootstrapperContainerBase<TRootObject, TIocContainerAdapter>
     {
-        private readonly List<IMiddleware<IBootstrapperWithContainerAdapter<TRootViewModel, TIocContainerAdapter>>> _middlewares =
-            new List<IMiddleware<IBootstrapperWithContainerAdapter<TRootViewModel, TIocContainerAdapter>>>();
+        private readonly List<IMiddleware<IBootstrapperWithContainerAdapter<TRootObject, TIocContainerAdapter>>> _middlewares =
+            new List<IMiddleware<IBootstrapperWithContainerAdapter<TRootObject, TIocContainerAdapter>>>();
 
         /// <summary>
         /// Uses the specified middleware.
         /// </summary>
         /// <param name="middleware">The middleware.</param>
         /// <returns></returns>
-        public IBootstrapperWithContainerAdapter<TRootViewModel, TIocContainerAdapter> Use(
-            IMiddleware<IBootstrapperWithContainerAdapter<TRootViewModel, TIocContainerAdapter>> middleware)
+        public IBootstrapperWithContainerAdapter<TRootObject, TIocContainerAdapter> Use(
+            IMiddleware<IBootstrapperWithContainerAdapter<TRootObject, TIocContainerAdapter>> middleware)
         {
             _middlewares.Add(middleware);
             return this;
