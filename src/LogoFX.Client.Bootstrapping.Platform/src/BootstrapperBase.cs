@@ -2,6 +2,7 @@
 using Caliburn.Micro;
 #endif
 using LogoFX.Bootstrapping;
+using Solid.Bootstrapping;
 using Solid.Practices.Composition;
 using Solid.Practices.Middleware;
 
@@ -78,7 +79,7 @@ namespace LogoFX.Client.Bootstrapping
             MiddlewareApplier.ApplyMiddlewares(this, _middlewares);
         }
 
-        void IBootstrapper.Initialize()
+        void IInitializable.Initialize()
         {
             Initialize();
         }            
