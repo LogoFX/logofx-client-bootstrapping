@@ -36,7 +36,7 @@ namespace LogoFX.Client.Bootstrapping.Platform.NET45.Tests
 
         [Test]
         public void
-            GivenThereIsCompositionModuleWithDependencyRegistration_WhenBootstrapperWithConcreteContainerIsUsedAndDependencyIsResolvedFromAdapter_ResolvedDependencyIsValid
+            GivenThereIsCompositionModuleWithConcreteDependencyRegistration_WhenBootstrapperWithConcreteContainerIsUsedAndDependencyIsResolvedFromAdapter_ResolvedDependencyIsValid
             ()
         {
             var container = new ExtendedSimpleContainer();
@@ -44,7 +44,7 @@ namespace LogoFX.Client.Bootstrapping.Platform.NET45.Tests
             var bootstrapper = new TestConcreteBootstrapper(container, c => adapter);
             bootstrapper.Initialize();
 
-            var dependency = adapter.Resolve<IDependency>();
+            var dependency = adapter.Resolve<IConcreteDependency>();
             Assert.IsNotNull(dependency);
         }
     }
@@ -93,11 +93,29 @@ namespace LogoFX.Client.Bootstrapping.Platform.NET45.Tests
         
     }
 
+    interface IConcreteDependency
+    {
+        
+    }
+
+    class ConcreteDependency : IConcreteDependency
+    {
+        
+    }
+
     class ServicesModule : ICompositionModule<IIocContainer>
     {
         public void RegisterModule(IIocContainer iocContainer)
         {
             iocContainer.RegisterSingleton<IDependency, Dependency>();
+        }
+    }
+
+    class ConcreteModule : ICompositionModule<ExtendedSimpleContainer>
+    {
+        public void RegisterModule(ExtendedSimpleContainer iocContainer)
+        {
+            iocContainer.RegisterPerRequest(typeof(IConcreteDependency), null, typeof(ConcreteDependency));
         }
     }
 }
