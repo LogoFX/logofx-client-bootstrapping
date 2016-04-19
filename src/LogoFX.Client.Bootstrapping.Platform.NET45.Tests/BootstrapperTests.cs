@@ -54,7 +54,7 @@ namespace LogoFX.Client.Bootstrapping.Platform.NET45.Tests
         
     }
 
-    class TestBootstrapper : BootstrapperContainerBase<TestShellViewModel, ExtendedSimpleContainerAdapter>
+    class TestBootstrapper : BootstrapperContainerBase<ExtendedSimpleContainerAdapter>
     {
         public TestBootstrapper(ExtendedSimpleContainerAdapter iocContainerAdapter) : base(iocContainerAdapter)
         {
@@ -67,7 +67,7 @@ namespace LogoFX.Client.Bootstrapping.Platform.NET45.Tests
         }
     }
 
-    class TestConcreteBootstrapper : BootstrapperContainerBase<TestShellViewModel, ExtendedSimpleContainerAdapter, ExtendedSimpleContainer>
+    class TestConcreteBootstrapper : BootstrapperContainerBase<ExtendedSimpleContainerAdapter, ExtendedSimpleContainer>
     {
         public TestConcreteBootstrapper(ExtendedSimpleContainer iocContainer, Func<ExtendedSimpleContainer, ExtendedSimpleContainerAdapter> adapterCreator) : 
             base(iocContainer, adapterCreator, new BootstrapperCreationOptions

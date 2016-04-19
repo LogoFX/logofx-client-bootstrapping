@@ -6,12 +6,10 @@ namespace LogoFX.Client.Bootstrapping
 {
     /// <summary>
     /// The builder enables creating bootstrapper instances using Fluent API.
-    /// </summary>
-    /// <typeparam name="TRootObject">The type of the root object.</typeparam>
+    /// </summary>    
     /// <typeparam name="TIocContainerAdapter">The type of the ioc container adapter.</typeparam>
-    public class BootstrapperContainerBuilder<TRootObject, TIocContainerAdapter> 
-        where TRootObject : class 
-        where TIocContainerAdapter : class, IIocContainer, IBootstrapperAdapter, IIocContainerAdapter, new()
+    public class BootstrapperContainerBuilder<TIocContainerAdapter>         
+        where TIocContainerAdapter : class, IIocContainer, IBootstrapperAdapter, IIocContainerAdapter
     {
         private readonly TIocContainerAdapter _container;
         private readonly BootstrapperCreationOptions _options = new BootstrapperCreationOptions();
@@ -26,9 +24,9 @@ namespace LogoFX.Client.Bootstrapping
         /// </summary>
         /// <param name="container">Container adapter.</param>
         /// <returns></returns>
-        public static BootstrapperContainerBuilder<TRootObject, TIocContainerAdapter> CreateBuilder(TIocContainerAdapter container)
+        public static BootstrapperContainerBuilder<TIocContainerAdapter> CreateBuilder(TIocContainerAdapter container)
         {
-            return new BootstrapperContainerBuilder<TRootObject, TIocContainerAdapter>(container);
+            return new BootstrapperContainerBuilder<TIocContainerAdapter>(container);
         }
 
         /// <summary>
@@ -36,7 +34,7 @@ namespace LogoFX.Client.Bootstrapping
         /// </summary>
         /// <param name="useApplication"><c>true</c> if the real application is used; otherwise, <c>false</c>.</param>
         /// <returns></returns>
-        public BootstrapperContainerBuilder<TRootObject, TIocContainerAdapter> UseApplication(bool useApplication)
+        public BootstrapperContainerBuilder<TIocContainerAdapter> UseApplication(bool useApplication)
         {
             _options.UseApplication = useApplication;
             return this;
@@ -51,7 +49,7 @@ namespace LogoFX.Client.Bootstrapping
         /// <c>true</c> if the composition information is re-used; otherwise, <c>false</c>.
         /// </param>
         /// <returns></returns>
-        public BootstrapperContainerBuilder<TRootObject, TIocContainerAdapter> ReuseCompositionInformation(bool reuseCompositionInformation)
+        public BootstrapperContainerBuilder<TIocContainerAdapter> ReuseCompositionInformation(bool reuseCompositionInformation)
         {
             _options.ReuseCompositionInformation = reuseCompositionInformation;
             return this;
@@ -65,7 +63,7 @@ namespace LogoFX.Client.Bootstrapping
         /// <c>true</c> if the assemblies should be looked for; otherwise, <c>false</c>.
         /// </param>
         /// <returns></returns>
-        public BootstrapperContainerBuilder<TRootObject, TIocContainerAdapter> InspectAssemblies(bool inspectAssemblies)
+        public BootstrapperContainerBuilder<TIocContainerAdapter> InspectAssemblies(bool inspectAssemblies)
         {
             _options.InspectAssemblies = inspectAssemblies;
             return this;
@@ -79,7 +77,7 @@ namespace LogoFX.Client.Bootstrapping
         /// <c>true</c> if the composition modules should be looked for; otherwise, <c>false</c>.
         /// </param>
         /// <returns></returns>
-        public BootstrapperContainerBuilder<TRootObject, TIocContainerAdapter> DiscoverCompositionModules(bool discoverCompositionModules)
+        public BootstrapperContainerBuilder<TIocContainerAdapter> DiscoverCompositionModules(bool discoverCompositionModules)
         {
             _options.DiscoverCompositionModules = discoverCompositionModules;
             return this;
@@ -93,19 +91,19 @@ namespace LogoFX.Client.Bootstrapping
         /// <c>true</c> if the composition modules should be looked for; otherwise, <c>false</c>.
         /// </param>
         /// <returns></returns>
-        public BootstrapperContainerBuilder<TRootObject, TIocContainerAdapter> UseDefaultMiddlewares(bool useDefaultMiddlewares)
+        public BootstrapperContainerBuilder<TIocContainerAdapter> UseDefaultMiddlewares(bool useDefaultMiddlewares)
         {
             _options.UseDefaultMiddlewares = useDefaultMiddlewares;
             return this;
         }
 
         /// <summary>
-        /// Builds a new instance of <see cref="BootstrapperContainerBase{TRootObject,TIocContainerAdapter}"/>
+        /// Builds a new instance of <see cref="BootstrapperContainerBase{TIocContainerAdapter}"/>
         /// </summary>
         /// <returns></returns>
-        public BootstrapperContainerBase<TRootObject, TIocContainerAdapter> Build()
+        public BootstrapperContainerBase<TIocContainerAdapter> Build()
         {
-            return new BootstrapperContainerBase<TRootObject, TIocContainerAdapter>(_container, _options);
+            return new BootstrapperContainerBase<TIocContainerAdapter>(_container, _options);
         }
     }
 }

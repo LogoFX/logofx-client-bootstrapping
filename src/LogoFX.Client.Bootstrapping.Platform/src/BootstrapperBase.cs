@@ -1,6 +1,7 @@
 #if WINDOWS_UWP || NETFX_CORE || WIN81
 using Caliburn.Micro;
 #endif
+using System;
 using LogoFX.Bootstrapping;
 using Solid.Bootstrapping;
 using Solid.Practices.Composition;
@@ -82,6 +83,19 @@ namespace LogoFX.Client.Bootstrapping
         void IInitializable.Initialize()
         {
             Initialize();
-        }            
+        }
+
+        /// <summary>
+        /// Occurs when initialization is completed and the application starts.
+        /// </summary>
+        public event EventHandler InitializationCompleted;
+
+        /// <summary>
+        /// Raises the initialization completed.
+        /// </summary>
+        protected internal void RaiseInitializationCompleted()
+        {
+            InitializationCompleted?.Invoke(this, new EventArgs());
+        }
     }    
 }

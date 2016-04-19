@@ -1,3 +1,5 @@
+using System;
+using System.Collections.Generic;
 using Solid.Practices.Modularity;
 
 namespace LogoFX.Client.Bootstrapping
@@ -18,6 +20,7 @@ namespace LogoFX.Client.Bootstrapping
             InspectAssemblies = true;
             UseDefaultMiddlewares = true;
             DisplayRootView = true;
+            ExcludedTypes = new List<Type>();
         }
 
         /// <summary>
@@ -70,11 +73,19 @@ namespace LogoFX.Client.Bootstrapping
 
         /// <summary>
         /// Gets or sets a value indicating whether the root view is displayed upon
-        /// successful initialization.
+        /// successful initialization. This value is used only when there is a root object.
         /// </summary>
         /// <value>
         ///   <c>true</c> if the root view is displayed; otherwise, <c>false</c>.
         /// </value>
         public bool DisplayRootView { get; set; }
+
+        /// <summary>
+        /// Gets or sets the types to be excluded from the registration.
+        /// </summary>
+        /// <value>
+        /// The type of the root object.
+        /// </value>
+        public List<Type> ExcludedTypes { get; set; }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Windows.Threading;
 using LogoFX.Bootstrapping;
 #if NET45
@@ -15,22 +16,68 @@ using Solid.Practices.Middleware;
 namespace LogoFX.Client.Bootstrapping
 {
     /// <summary>
-    /// Application bootstrapper. Used when there is need in IoC-container-specific logic.
-    /// </summary>
-    /// <typeparam name="TRootObject">The type of the root object.</typeparam>
+    /// Application bootstrapper with ioc container and its adapter.
+    /// </summary>    
     /// <typeparam name="TIocContainerAdapter">The type of the ioc container adapter.</typeparam>
     /// <typeparam name="TIocContainer">The type of the ioc container.</typeparam>
-    /// <seealso cref="Bootstrapping.BootstrapperContainerBase{TRootObject, TIocContainerAdapter}" />
-    public partial class BootstrapperContainerBase<TRootObject, TIocContainerAdapter, TIocContainer> :
-                    BootstrapperContainerBase<TRootObject, TIocContainerAdapter>,
-                    IBootstrapperWithContainer<TRootObject, TIocContainerAdapter, TIocContainer>
-        where TRootObject : class
-        where TIocContainerAdapter : class, IIocContainer, IIocContainerAdapter<TIocContainer>, IBootstrapperAdapter, new() 
+    /// <seealso cref="Bootstrapping.BootstrapperContainerBase{TIocContainerAdapter}" />
+    public partial class BootstrapperContainerBase<TIocContainerAdapter, TIocContainer> :
+                    BootstrapperContainerBase<TIocContainerAdapter>,
+                    IBootstrapperWithContainer<TIocContainerAdapter, TIocContainer>        
+        where TIocContainerAdapter : class, IIocContainer, IIocContainerAdapter<TIocContainer>, IBootstrapperAdapter 
         where TIocContainer : class
     {
         /// <summary>
+        /// Application bootstrapper with ioc container, its adapter and root object.
+        /// </summary>
+        /// <typeparam name="TRootObject"></typeparam>
+        public new class WithRootObject<TRootObject> : BootstrapperContainerBase<TIocContainerAdapter, TIocContainer>
+        {
+            /// <summary>
+            /// Initializes a new instance of <see cref="BootstrapperContainerBase{TIocContainerAdapter, TIocContainer}.WithRootObject{TRootObject}"/>
+            /// </summary>
+            /// <param name="iocContainer">The ioc container.</param>
+            /// <param name="adapterCreator">The adapter creation function.</param>
+            public WithRootObject(TIocContainer iocContainer,
+            Func<TIocContainer, TIocContainerAdapter> adapterCreator)
+                : this(iocContainer, adapterCreator, new BootstrapperCreationOptions
+                {
+                    ExcludedTypes = new List<Type> { typeof(TRootObject) }
+                })
+            {
+            }
+
+            /// <summary>
+            /// Initializes a new instance of <see cref="BootstrapperContainerBase{TIocContainerAdapter, TIocContainer}.WithRootObject{TRootObject}"/>
+            /// </summary>
+            /// <param name="iocContainer">The ioc container.</param>
+            /// <param name="adapterCreator">The adapter creation function.</param>
+            /// <param name="creationOptions">The bootstrapper creation options.</param>
+            public WithRootObject(TIocContainer iocContainer,
+            Func<TIocContainer, TIocContainerAdapter> adapterCreator,
+                BootstrapperCreationOptions creationOptions) : base(iocContainer, adapterCreator, AddRootObject(creationOptions))
+            {
+                Use(new CreateRootObjectMiddleware<TIocContainerAdapter>(typeof(TRootObject),
+                    creationOptions.DisplayRootView));
+            }
+
+            private static BootstrapperCreationOptions AddRootObject(BootstrapperCreationOptions creationOptions)
+            {
+                if (creationOptions.ExcludedTypes == null)
+                {
+                    creationOptions.ExcludedTypes = new List<Type>();
+                }
+                if (creationOptions.ExcludedTypes.Contains(typeof(TRootObject)) == false)
+                {
+                    creationOptions.ExcludedTypes.Add(typeof(TRootObject));
+                }
+                return creationOptions;
+            }
+        }
+
+        /// <summary>
         /// Initializes a new instance of the 
-        /// <see cref="BootstrapperContainerBase{TRootObject, TIocContainerAdapter, TIocContainer}"/> class.
+        /// <see cref="BootstrapperContainerBase{TIocContainerAdapter, TIocContainer}"/> class.
         /// </summary>
         /// <param name="iocContainer">The ioc container.</param>
         /// <param name="adapterCreator">The adapter creator function.</param>
@@ -40,11 +87,10 @@ namespace LogoFX.Client.Bootstrapping
             this(iocContainer, adapterCreator, new BootstrapperCreationOptions())
         {           
         }
-
         
         /// <summary>
         /// Initializes a new instance of the 
-        /// <see cref="BootstrapperContainerBase{TRootObject, TIocContainerAdapter, TIocContainer}"/> class.
+        /// <see cref="BootstrapperContainerBase{TIocContainerAdapter, TIocContainer}"/> class.
         /// </summary>
         /// <param name="iocContainer">The ioc container.</param>
         /// /// <param name="adapterCreator">The adapter creator function.</param>
@@ -58,7 +104,7 @@ namespace LogoFX.Client.Bootstrapping
             Container = iocContainer;
             if (creationOptions.UseDefaultMiddlewares)
             {
-                Use(new RegisterCompositionModulesMiddleware<TRootObject, TIocContainerAdapter, TIocContainer>());
+                Use(new RegisterCompositionModulesMiddleware<TIocContainerAdapter, TIocContainer>());
             }
         }
 
@@ -82,20 +128,59 @@ namespace LogoFX.Client.Bootstrapping
     }
 
     /// <summary>
-    /// Application bootstrapper. Used when no IoC-container-specific logic is needed.    
-    /// </summary>
-    /// <typeparam name="TRootObject">The type of the root object.</typeparam>
+    /// Application bootstrapper with ioc container adapter. 
+    /// </summary>    
     /// <typeparam name="TIocContainerAdapter">The type of the ioc container adapter.</typeparam>
-    public partial class BootstrapperContainerBase<TRootObject, TIocContainerAdapter> : 
-        BootstrapperBase, IBootstrapperWithContainerAdapter<TRootObject, TIocContainerAdapter>               
-        where TRootObject : class
-        where TIocContainerAdapter : class, IIocContainer, IIocContainerAdapter, IBootstrapperAdapter, new()
+    public partial class BootstrapperContainerBase<TIocContainerAdapter> : 
+        BootstrapperBase, IBootstrapperWithContainerAdapter<TIocContainerAdapter>                       
+        where TIocContainerAdapter : class, IIocContainer, IIocContainerAdapter, IBootstrapperAdapter
     {
+        /// <summary>
+        /// Application bootstrapper with ioc container adapter and root object.
+        /// </summary>
+        /// <typeparam name="TRootObject"></typeparam>
+        public class WithRootObject<TRootObject> : BootstrapperContainerBase<TIocContainerAdapter>
+        {
+            /// <summary>
+            /// Initializes a new instance of <see cref="BootstrapperContainerBase{TIocContainerAdapter}.WithRootObject{TRootObject}"/>
+            /// </summary>
+            /// <param name="iocContainerAdapter"></param>
+            public WithRootObject(TIocContainerAdapter iocContainerAdapter)
+                : this(iocContainerAdapter, new BootstrapperCreationOptions
+                {
+                    ExcludedTypes = new List<Type> {typeof (TRootObject)}
+                })
+            {
+            }
+            
+            /// <summary>
+            /// Initializes a new instance of <see cref="BootstrapperContainerBase{TIocContainerAdapter}.WithRootObject{TRootObject}"/>
+            /// </summary>          
+            /// <param name="iocContainerAdapter"></param>
+            /// <param name="creationOptions"></param>
+            public WithRootObject(TIocContainerAdapter iocContainerAdapter, 
+                BootstrapperCreationOptions creationOptions) : base(iocContainerAdapter, AddRootObject(creationOptions))
+            {
+                Use(new CreateRootObjectMiddleware<TIocContainerAdapter>(typeof (TRootObject),
+                    creationOptions.DisplayRootView));
+            }
 
-        private readonly BootstrapperCreationOptions _creationOptions;
+            private static BootstrapperCreationOptions AddRootObject(BootstrapperCreationOptions creationOptions)
+            {
+                if (creationOptions.ExcludedTypes == null)
+                {
+                    creationOptions.ExcludedTypes = new List<Type>();
+                }
+                if (creationOptions.ExcludedTypes.Contains(typeof (TRootObject)) == false)
+                {
+                    creationOptions.ExcludedTypes.Add(typeof(TRootObject));
+                }
+                return creationOptions;
+            }
+        }
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="BootstrapperContainerBase{TRootObject, TIocContainerAdapter}"/> class.
+        /// Initializes a new instance of the <see cref="BootstrapperContainerBase{TIocContainerAdapter}"/> class.
         /// </summary>
         /// <param name="iocContainerAdapter">The ioc container adapter.</param>        
         public BootstrapperContainerBase(
@@ -105,7 +190,7 @@ namespace LogoFX.Client.Bootstrapping
         }        
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="BootstrapperContainerBase{TRootObject, TIocContainerAdapter}"/> class.
+        /// Initializes a new instance of the <see cref="BootstrapperContainerBase{TIocContainerAdapter}"/> class.
         /// </summary>
         /// <param name="iocContainerAdapter">The ioc container adapter.</param>
         /// <param name="creationOptions">The creation options.</param>
@@ -115,15 +200,14 @@ namespace LogoFX.Client.Bootstrapping
 #if NET45
             :base(creationOptions)
 #endif
-        {
-            _creationOptions = creationOptions;
+        {            
             ContainerAdapter = iocContainerAdapter;
             if (creationOptions.UseDefaultMiddlewares)
             {
-                Use(new RegisterCoreMiddleware<TRootObject, TIocContainerAdapter>())
-               .Use(new RegisterViewModelsMiddleware<TRootObject, TIocContainerAdapter>())
-               .Use(new RegisterCompositionModulesMiddleware<TRootObject, TIocContainerAdapter>())
-               .Use(new RegisterPlatformSpecificMiddleware<TRootObject, TIocContainerAdapter>());
+                Use(new RegisterContainerMiddleware<TIocContainerAdapter>())
+                    .Use(new RegisterViewModelsMiddleware<TIocContainerAdapter>(creationOptions.ExcludedTypes))
+                    .Use(new RegisterCompositionModulesMiddleware<TIocContainerAdapter>())
+                    .Use(new RegisterPlatformSpecificMiddleware<TIocContainerAdapter>());
             }           
         }
 
@@ -142,15 +226,8 @@ namespace LogoFX.Client.Bootstrapping
         /// <param name="sender">The sender.</param><param name="e">The args.</param>
         protected override void OnStartup(object sender, StartupEventArgs e)
         {
-            base.OnStartup(sender, e);
-            if (_creationOptions.DisplayRootView)
-            {
-                DisplayRootView();
-            }    
-            else
-            {
-                CreateRootObject();
-            }    
+            base.OnStartup(sender, e);            
+            RaiseInitializationCompleted();            
         }
 #endif
 #if NETFX_CORE || WINDOWS_UWP || WIN81
@@ -184,34 +261,18 @@ namespace LogoFX.Client.Bootstrapping
             }                            
             OnLaunchedCore();
             BeforeOnLaunched(e);
-            if (_creationOptions.DisplayRootView)
-            {
-                DisplayRootView();
-            }
-            else
-            {
-                CreateRootObject();
-            }     
+            RaiseInitializationCompleted();                   
         }
 
         private void OnLaunchedCore()
         {
-            InitializeDispatcher();
+            InitializeDispatcher();                   
         }
 #endif
 
-        private void DisplayRootView()
+        internal void DisplayRootViewForInternal(Type rootObjectType)
         {
-            DisplayRootViewFor<TRootObject>();
-        }
-
-        private void CreateRootObject()
-        {
-            //this mimics the Caliburn.Micro IoC.GetInstance 
-            //which is executed inside the DisplayRootViewFor
-            //this is the bridge between the Bootstrapping aspect
-            //and the actual application work.
-            ContainerAdapter.Resolve<TRootObject>();
+            DisplayRootViewFor(rootObjectType);
         }
 
 #if NETFX_CORE || WINDOWS_UWP || WIN81
@@ -242,6 +303,7 @@ namespace LogoFX.Client.Bootstrapping
             InitializeDispatcher();
 #endif            
             MiddlewareApplier.ApplyMiddlewares(this, _middlewares);
+            MiddlewareApplier.ApplyMiddlewares(this, _concreteMiddlewares);
             OnConfigure(ContainerAdapter);
         }
                 
@@ -259,6 +321,6 @@ namespace LogoFX.Client.Bootstrapping
         static void InitializeDispatcher()
         {
             Dispatch.Current.InitializeDispatch();
-        }
+        }        
     }    
 }

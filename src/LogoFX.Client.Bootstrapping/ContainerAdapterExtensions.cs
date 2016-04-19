@@ -17,15 +17,15 @@ namespace LogoFX.Client.Bootstrapping
         /// </summary>
         /// <param name="iocContainerAdapter">The ioc container adapter.</param>
         /// <param name="assemblies">The assemblies.</param>
-        /// <param name="rootObjectType">The root object type.</param>
+        /// <param name="excludedTypes">The types to be excluded from the registration.</param>
         public static void RegisterViewModels(
             this IIocContainerRegistrator iocContainerAdapter,
             IEnumerable<Assembly> assemblies,
-            Type rootObjectType)
+            IEnumerable<Type> excludedTypes)
         {
             var viewModelTypes = assemblies
                 .SelectMany(assembly => assembly.ExportedTypes)
-                .Where(type => type != rootObjectType && type.Name.EndsWith("ViewModel"))
+                .Where(type => excludedTypes.Contains(type) == false && type.Name.EndsWith("ViewModel"))
                 .Where(
                     type =>
                         !string.IsNullOrWhiteSpace(type.Namespace) && type.Namespace != null &&
