@@ -15,7 +15,7 @@ namespace LogoFX.Client.Bootstrapping
     /// <seealso cref="Solid.Practices.Composition.Contracts.ICompositionModulesProvider" />
     public abstract partial class BootstrapperBase :
 #if TEST
-        TestBootstrapperBase
+        IntegrationTestBootstrapperBase
 #else
 #if NET45
         Caliburn.Micro.BootstrapperBase

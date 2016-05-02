@@ -14,7 +14,7 @@ namespace LogoFX.Client.Bootstrapping
     /// <summary>
     /// Base bootstrapper for integration tests.
     /// </summary>
-    public class TestBootstrapperBase
+    public class IntegrationTestBootstrapperBase
     {
         private bool _isInitialized;
 

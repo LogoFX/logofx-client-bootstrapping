@@ -138,8 +138,8 @@
     <Compile Include="..\..\LogoFX.Client.Bootstrapping.Platform\src\CompositionStorage.cs">
       <Link>CompositionStorage.cs</Link>
     </Compile>
-    <Compile Include="..\src\TestBootstrapperBase.cs">
-      <Link>TestBootstrapperBase.cs</Link>
+    <Compile Include="..\src\IntegrationTestBootstrapperBase.cs">
+      <Link>IntegrationTestBootstrapperBase.cs</Link>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
