@@ -9,7 +9,13 @@ using Solid.Practices.Middleware;
 
 namespace LogoFX.Client.Bootstrapping
 {
-    public partial class BootstrapperContainerBase<TIocContainerAdapter, TIocContainer>
+    public partial class
+#if TEST
+    TestBootstrapperContainerBase
+#else
+    BootstrapperContainerBase
+#endif
+    <TIocContainerAdapter, TIocContainer>
     {
         private readonly
             List<IMiddleware<IBootstrapperWithContainer<TIocContainerAdapter, TIocContainer>>>
@@ -29,7 +35,13 @@ namespace LogoFX.Client.Bootstrapping
         }
     }
 
-    public partial class BootstrapperContainerBase<TIocContainerAdapter>
+    public partial class
+#if TEST
+    TestBootstrapperContainerBase
+#else
+    BootstrapperContainerBase
+#endif
+        <TIocContainerAdapter>
     {
         private readonly List<IMiddleware<IBootstrapperWithContainerAdapter<TIocContainerAdapter>>> _middlewares =
             new List<IMiddleware<IBootstrapperWithContainerAdapter<TIocContainerAdapter>>>();
@@ -46,16 +58,40 @@ namespace LogoFX.Client.Bootstrapping
             return this;
         }
 
-        private readonly List<IMiddleware<BootstrapperContainerBase<TIocContainerAdapter>>> _concreteMiddlewares =
-            new List<IMiddleware<BootstrapperContainerBase<TIocContainerAdapter>>>();
+        private readonly List<IMiddleware<
+#if TEST
+    TestBootstrapperContainerBase
+#else
+    BootstrapperContainerBase
+#endif
+            <TIocContainerAdapter>>> _concreteMiddlewares =
+            new List<IMiddleware<
+#if TEST
+    TestBootstrapperContainerBase
+#else
+    BootstrapperContainerBase
+#endif
+                <TIocContainerAdapter>>>();
 
         /// <summary>
         /// Extends the functionality by using the specified middleware.
         /// </summary>
         /// <param name="middleware">The middleware.</param>
         /// <returns></returns>
-        public BootstrapperContainerBase<TIocContainerAdapter> Use(
-            IMiddleware<BootstrapperContainerBase<TIocContainerAdapter>> middleware)
+        public
+#if TEST
+    TestBootstrapperContainerBase
+#else
+    BootstrapperContainerBase
+#endif
+            <TIocContainerAdapter> Use(
+            IMiddleware<
+#if TEST
+    TestBootstrapperContainerBase
+#else
+    BootstrapperContainerBase
+#endif
+                <TIocContainerAdapter>> middleware)
         {
             _concreteMiddlewares.Add(middleware);
             return this;
@@ -91,7 +127,13 @@ namespace LogoFX.Client.Bootstrapping
     /// </summary>
     /// <typeparam name="TIocContainerAdapter">The type of the ioc container adapter.</typeparam>    
     public class CreateRootObjectMiddleware<TIocContainerAdapter> :
-        IMiddleware<BootstrapperContainerBase<TIocContainerAdapter>>
+        IMiddleware<
+#if TEST
+    TestBootstrapperContainerBase
+#else
+    BootstrapperContainerBase
+#endif
+            <TIocContainerAdapter>>
         where TIocContainerAdapter : class, IIocContainer, IIocContainerAdapter, IBootstrapperAdapter         
     {
         private readonly Type _rootObjectType;
@@ -113,8 +155,19 @@ namespace LogoFX.Client.Bootstrapping
         /// </summary>
         /// <param name="object">The object.</param>
         /// <returns></returns>
-        public BootstrapperContainerBase<TIocContainerAdapter> Apply(
-            BootstrapperContainerBase<TIocContainerAdapter> @object)
+        public
+#if TEST
+    TestBootstrapperContainerBase
+#else
+    BootstrapperContainerBase
+#endif
+            <TIocContainerAdapter> Apply(
+#if TEST
+    TestBootstrapperContainerBase
+#else
+    BootstrapperContainerBase
+#endif
+            <TIocContainerAdapter> @object)
         {
             @object.ContainerAdapter.RegisterSingleton(_rootObjectType, _rootObjectType);
             EventHandler strongHandler = ObjectOnInitializationCompleted;
@@ -125,7 +178,12 @@ namespace LogoFX.Client.Bootstrapping
         private void ObjectOnInitializationCompleted(object sender, EventArgs eventArgs)
         {
             var bootstrapper = sender as
-                BootstrapperContainerBase<TIocContainerAdapter>;
+#if TEST
+    TestBootstrapperContainerBase
+#else
+    BootstrapperContainerBase
+#endif
+                <TIocContainerAdapter>;
             if (bootstrapper != null)
             {
                 if (_displayView)

@@ -19,10 +19,20 @@ namespace LogoFX.Client.Bootstrapping
     /// Application bootstrapper with ioc container and its adapter.
     /// </summary>    
     /// <typeparam name="TIocContainerAdapter">The type of the ioc container adapter.</typeparam>
-    /// <typeparam name="TIocContainer">The type of the ioc container.</typeparam>
-    /// <seealso cref="Bootstrapping.BootstrapperContainerBase{TIocContainerAdapter}" />
-    public partial class BootstrapperContainerBase<TIocContainerAdapter, TIocContainer> :
-                    BootstrapperContainerBase<TIocContainerAdapter>,
+    /// <typeparam name="TIocContainer">The type of the ioc container.</typeparam>    
+    public partial class
+#if TEST
+    TestBootstrapperContainerBase
+#else
+    BootstrapperContainerBase
+#endif
+        <TIocContainerAdapter, TIocContainer> :
+#if TEST
+    TestBootstrapperContainerBase
+#else
+    BootstrapperContainerBase
+#endif
+        <TIocContainerAdapter>,
                     IBootstrapperWithContainer<TIocContainerAdapter, TIocContainer>        
         where TIocContainerAdapter : class, IIocContainer, IIocContainerAdapter<TIocContainer>, IBootstrapperAdapter 
         where TIocContainer : class
@@ -31,13 +41,27 @@ namespace LogoFX.Client.Bootstrapping
         /// Application bootstrapper with ioc container, its adapter and root object.
         /// </summary>
         /// <typeparam name="TRootObject"></typeparam>
-        public new class WithRootObject<TRootObject> : BootstrapperContainerBase<TIocContainerAdapter, TIocContainer>
+        public new class WithRootObject<TRootObject> :
+#if TEST
+    TestBootstrapperContainerBase
+#else
+    BootstrapperContainerBase
+#endif
+            <TIocContainerAdapter, TIocContainer>
         {
+#if TEST
+            /// <summary>
+            /// Initializes a new instance of <see cref="TestBootstrapperContainerBase{TIocContainerAdapter, TIocContainer}.WithRootObject{TRootObject}"/>
+            /// </summary>
+            /// <param name="iocContainer">The ioc container.</param>
+            /// <param name="adapterCreator">The adapter creation function.</param>
+#else
             /// <summary>
             /// Initializes a new instance of <see cref="BootstrapperContainerBase{TIocContainerAdapter, TIocContainer}.WithRootObject{TRootObject}"/>
             /// </summary>
             /// <param name="iocContainer">The ioc container.</param>
             /// <param name="adapterCreator">The adapter creation function.</param>
+#endif
             public WithRootObject(TIocContainer iocContainer,
             Func<TIocContainer, TIocContainerAdapter> adapterCreator)
                 : this(iocContainer, adapterCreator, new BootstrapperCreationOptions
@@ -47,12 +71,21 @@ namespace LogoFX.Client.Bootstrapping
             {
             }
 
+#if TEST
+            /// <summary>
+            /// Initializes a new instance of <see cref="TestBootstrapperContainerBase{TIocContainerAdapter, TIocContainer}.WithRootObject{TRootObject}"/>
+            /// </summary>
+            /// <param name="iocContainer">The ioc container.</param>
+            /// <param name="adapterCreator">The adapter creation function.</param>
+            /// <param name="creationOptions">The bootstrapper creation options.</param>
+#else
             /// <summary>
             /// Initializes a new instance of <see cref="BootstrapperContainerBase{TIocContainerAdapter, TIocContainer}.WithRootObject{TRootObject}"/>
             /// </summary>
             /// <param name="iocContainer">The ioc container.</param>
             /// <param name="adapterCreator">The adapter creation function.</param>
             /// <param name="creationOptions">The bootstrapper creation options.</param>
+#endif            
             public WithRootObject(TIocContainer iocContainer,
             Func<TIocContainer, TIocContainerAdapter> adapterCreator,
                 BootstrapperCreationOptions creationOptions) : base(iocContainer, adapterCreator, AddRootObject(creationOptions))
@@ -74,28 +107,58 @@ namespace LogoFX.Client.Bootstrapping
                 return creationOptions;
             }
         }
-
+#if TEST
+        /// <summary>
+        /// Initializes a new instance of the 
+        /// <see cref="TestBootstrapperContainerBase{TIocContainerAdapter, TIocContainer}"/> class.
+        /// </summary>
+        /// <param name="iocContainer">The ioc container.</param>
+        /// <param name="adapterCreator">The adapter creator function.</param>
+#else
         /// <summary>
         /// Initializes a new instance of the 
         /// <see cref="BootstrapperContainerBase{TIocContainerAdapter, TIocContainer}"/> class.
         /// </summary>
         /// <param name="iocContainer">The ioc container.</param>
         /// <param name="adapterCreator">The adapter creator function.</param>
-        public BootstrapperContainerBase(
+#endif
+        public
+#if TEST
+    TestBootstrapperContainerBase
+#else
+    BootstrapperContainerBase
+#endif
+            (
             TIocContainer iocContainer, 
             Func<TIocContainer, TIocContainerAdapter> adapterCreator) : 
             this(iocContainer, adapterCreator, new BootstrapperCreationOptions())
         {           
         }
-        
+
+#if TEST
+        /// <summary>
+        /// Initializes a new instance of the 
+        /// <see cref="TestBootstrapperContainerBase{TIocContainerAdapter, TIocContainer}"/> class.
+        /// </summary>
+        /// <param name="iocContainer">The ioc container.</param>
+        /// <param name="adapterCreator">The adapter creator function.</param>
+        /// <param name="creationOptions">The bootstrapper creation options.</param>
+#else
         /// <summary>
         /// Initializes a new instance of the 
         /// <see cref="BootstrapperContainerBase{TIocContainerAdapter, TIocContainer}"/> class.
         /// </summary>
         /// <param name="iocContainer">The ioc container.</param>
-        /// /// <param name="adapterCreator">The adapter creator function.</param>
+        /// <param name="adapterCreator">The adapter creator function.</param>
         /// <param name="creationOptions">The bootstrapper creation options.</param>
-        public BootstrapperContainerBase(
+#endif
+        public
+#if TEST
+    TestBootstrapperContainerBase
+#else
+    BootstrapperContainerBase
+#endif
+            (
             TIocContainer iocContainer,
             Func<TIocContainer, TIocContainerAdapter> adapterCreator,
             BootstrapperCreationOptions creationOptions) : base(adapterCreator(iocContainer), 
@@ -131,20 +194,45 @@ namespace LogoFX.Client.Bootstrapping
     /// Application bootstrapper with ioc container adapter. 
     /// </summary>    
     /// <typeparam name="TIocContainerAdapter">The type of the ioc container adapter.</typeparam>
-    public partial class BootstrapperContainerBase<TIocContainerAdapter> : 
-        BootstrapperBase, IBootstrapperWithContainerAdapter<TIocContainerAdapter>                       
+    public partial class
+#if TEST
+    TestBootstrapperContainerBase
+#else
+    BootstrapperContainerBase
+#endif
+        <TIocContainerAdapter> 
+        :
+#if TEST
+    TestBootstrapperBase
+#else
+    BootstrapperBase
+#endif
+        , IBootstrapperWithContainerAdapter<TIocContainerAdapter>                       
         where TIocContainerAdapter : class, IIocContainer, IIocContainerAdapter, IBootstrapperAdapter
     {
         /// <summary>
         /// Application bootstrapper with ioc container adapter and root object.
         /// </summary>
         /// <typeparam name="TRootObject"></typeparam>
-        public class WithRootObject<TRootObject> : BootstrapperContainerBase<TIocContainerAdapter>
+        public class WithRootObject<TRootObject> :
+#if TEST
+    TestBootstrapperContainerBase
+#else
+    BootstrapperContainerBase
+#endif
+            <TIocContainerAdapter>
         {
+#if TEST
+            /// <summary>
+            /// Initializes a new instance of <see cref="TestBootstrapperContainerBase{TIocContainerAdapter}.WithRootObject{TRootObject}"/>
+            /// </summary>
+            /// <param name="iocContainerAdapter">The ioc container adapter</param>
+#else
             /// <summary>
             /// Initializes a new instance of <see cref="BootstrapperContainerBase{TIocContainerAdapter}.WithRootObject{TRootObject}"/>
             /// </summary>
-            /// <param name="iocContainerAdapter"></param>
+            /// <param name="iocContainerAdapter">The ioc container adapter.</param>
+#endif
             public WithRootObject(TIocContainerAdapter iocContainerAdapter)
                 : this(iocContainerAdapter, new BootstrapperCreationOptions
                 {
@@ -152,14 +240,22 @@ namespace LogoFX.Client.Bootstrapping
                 })
             {
             }
-            
+#if TEST
             /// <summary>
-            /// Initializes a new instance of <see cref="BootstrapperContainerBase{TIocContainerAdapter}.WithRootObject{TRootObject}"/>
-            /// </summary>          
-            /// <param name="iocContainerAdapter"></param>
-            /// <param name="creationOptions"></param>
+            /// Initializes a new instance of the <see cref="TestBootstrapperContainerBase{TIocContainerAdapter}.WithRootObject{TRootObject}"/> class.
+            /// </summary>
+            /// <param name="iocContainerAdapter">The ioc container adapter.</param>
+            /// <param name="creationOptions">The creation options.</param>
+#else
+            /// <summary>
+            /// Initializes a new instance of the <see cref="BootstrapperContainerBase{TIocContainerAdapter}.WithRootObject{TRootObject}"/> class.
+            /// </summary>
+            /// <param name="iocContainerAdapter">The ioc container adapter.</param>
+            /// <param name="creationOptions">The creation options.</param>
+#endif
             public WithRootObject(TIocContainerAdapter iocContainerAdapter, 
-                BootstrapperCreationOptions creationOptions) : base(iocContainerAdapter, AddRootObject(creationOptions))
+                BootstrapperCreationOptions creationOptions) :
+                base(iocContainerAdapter, AddRootObject(creationOptions))
             {
                 Use(new CreateRootObjectMiddleware<TIocContainerAdapter>(typeof (TRootObject),
                     creationOptions.DisplayRootView));
@@ -179,25 +275,52 @@ namespace LogoFX.Client.Bootstrapping
             }
         }
 
+#if TEST
+        /// <summary>
+        /// Initializes a new instance of the <see cref="TestBootstrapperContainerBase{TIocContainerAdapter}"/> class.
+        /// </summary>
+        /// <param name="iocContainerAdapter">The ioc container adapter.</param>
+#else
         /// <summary>
         /// Initializes a new instance of the <see cref="BootstrapperContainerBase{TIocContainerAdapter}"/> class.
         /// </summary>
-        /// <param name="iocContainerAdapter">The ioc container adapter.</param>        
-        public BootstrapperContainerBase(
+        /// <param name="iocContainerAdapter">The ioc container adapter.</param>
+#endif
+        public
+#if TEST
+    TestBootstrapperContainerBase
+#else
+    BootstrapperContainerBase
+#endif
+            (
             TIocContainerAdapter iocContainerAdapter)
             :this(iocContainerAdapter, new BootstrapperCreationOptions())            
         {            
-        }        
+        }
 
+#if TEST
+        /// <summary>
+        /// Initializes a new instance of the <see cref="TestBootstrapperContainerBase{TIocContainerAdapter}"/> class.
+        /// </summary>
+        /// <param name="iocContainerAdapter">The ioc container adapter.</param>
+        /// <param name="creationOptions">The creation options.</param>
+#else
         /// <summary>
         /// Initializes a new instance of the <see cref="BootstrapperContainerBase{TIocContainerAdapter}"/> class.
         /// </summary>
         /// <param name="iocContainerAdapter">The ioc container adapter.</param>
         /// <param name="creationOptions">The creation options.</param>
-        public BootstrapperContainerBase(
+#endif
+        public
+#if TEST
+    TestBootstrapperContainerBase
+#else
+    BootstrapperContainerBase
+#endif
+            (
             TIocContainerAdapter iocContainerAdapter,
             BootstrapperCreationOptions creationOptions)
-#if NET45
+#if NET45 && !TEST
             :base(creationOptions)
 #endif
         {            
@@ -303,7 +426,7 @@ namespace LogoFX.Client.Bootstrapping
             InitializeAdapter(ContainerAdapter);
 #if NET45 // in UWP the dispatcher is initialized later.
             InitializeDispatcher();
-#endif            
+#endif
             MiddlewareApplier.ApplyMiddlewares(this, _middlewares);
             MiddlewareApplier.ApplyMiddlewares(this, _concreteMiddlewares);
             OnConfigure(ContainerAdapter);

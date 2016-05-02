@@ -4,7 +4,11 @@ using Solid.Practices.Middleware;
 
 namespace LogoFX.Client.Bootstrapping
 {
+#if TEST
+    partial class TestBootstrapperBase
+#else
     partial class BootstrapperBase
+#endif
     {
         private readonly
             List<IMiddleware<IBootstrapper>>

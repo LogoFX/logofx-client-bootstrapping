@@ -4,7 +4,12 @@ using Solid.Practices.Modularity;
 
 namespace LogoFX.Client.Bootstrapping
 {
-    partial class BootstrapperBase : ICompositionModulesProvider
+#if TEST
+    partial class TestBootstrapperBase
+#else
+    partial class BootstrapperBase
+#endif 
+        : ICompositionModulesProvider
     {
         private readonly bool _reuseCompositionInformation;        
 

@@ -4,7 +4,11 @@ using LogoFX.Client.Bootstrapping.Adapters.Contracts;
 
 namespace LogoFX.Client.Bootstrapping
 {
+#if TEST
+    partial class TestBootstrapperBase
+#else
     partial class BootstrapperBase
+#endif
     {
         private IBootstrapperAdapter _bootstrapperAdapter;
 

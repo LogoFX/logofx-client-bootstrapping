@@ -7,7 +7,11 @@ using Solid.Practices.Composition.Contracts;
 
 namespace LogoFX.Client.Bootstrapping
 {
+#if TEST
+    partial class TestBootstrapperBase
+#else
     partial class BootstrapperBase
+#endif
     {
         /// <summary>
         /// Override to tell the framework where to find assemblies to inspect for application components.

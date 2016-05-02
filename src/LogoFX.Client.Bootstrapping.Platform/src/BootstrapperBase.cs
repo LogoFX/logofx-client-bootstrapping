@@ -4,6 +4,7 @@ using Caliburn.Micro;
 using System;
 using LogoFX.Bootstrapping;
 using Solid.Bootstrapping;
+using Solid.Extensibility;
 using Solid.Practices.Composition;
 using Solid.Practices.Middleware;
 
@@ -13,7 +14,12 @@ namespace LogoFX.Client.Bootstrapping
     /// Base bootstrapper, responsible for modules composition.
     /// </summary>    
     /// <seealso cref="Solid.Practices.Composition.Contracts.ICompositionModulesProvider" />
-    public abstract partial class BootstrapperBase :
+#if TEST
+    public abstract partial class TestBootstrapperBase
+#else
+    public abstract partial class BootstrapperBase
+#endif
+        :
 #if TEST
         IntegrationTestBootstrapperBase
 #else
@@ -30,20 +36,50 @@ namespace LogoFX.Client.Bootstrapping
     {
         private readonly BootstrapperCreationOptions _creationOptions;
 
+#if TEST
         /// <summary>
-        /// Initializes a new instance of the <see cref="BootstrapperBase"/> class.
+        /// Initializes a new instance of the 
+        /// <see cref="TestBootstrapperBase"/> 
         /// </summary>
-        protected BootstrapperBase()
+#else
+            /// <summary>
+        /// Initializes a new instance of the 
+        /// <see cref="BootstrapperBase"/> 
+        /// </summary>
+#endif        
+        protected
+#if TEST
+            TestBootstrapperBase
+#else
+            BootstrapperBase
+#endif
+
+            ()
             :this(new BootstrapperCreationOptions())
         {
             
         }
-
+#if TEST
         /// <summary>
-        /// Initializes a new instance of the <see cref="BootstrapperBase"/> class.
+        /// Initializes a new instance of the 
+        /// <see cref="TestBootstrapperBase"/> 
         /// </summary>
         /// <param name="creationOptions">The creation options.</param>
-        protected BootstrapperBase(BootstrapperCreationOptions creationOptions)
+#else
+        /// <summary>
+        /// Initializes a new instance of the 
+        /// <see cref="BootstrapperBase"/> 
+        /// </summary>
+        /// <param name="creationOptions">The creation options.</param>
+#endif        
+        protected
+#if TEST
+            TestBootstrapperBase
+#else
+            BootstrapperBase
+#endif
+
+            (BootstrapperCreationOptions creationOptions)
 #if NET45 && !TEST
             :base(creationOptions.UseApplication)
 #endif

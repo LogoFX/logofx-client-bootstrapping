@@ -16,7 +16,13 @@ namespace LogoFX.Client.Bootstrapping
         /// <param name="bootstrapper">The bootstrapper.</param>
         /// <param name="rootObjectType">The type of the root object.</param>
         /// <param name="displayView">if set to <c>true</c> view is displayed.</param>
-        public static void UseRootObject<TIocContainerAdapter>(this BootstrapperContainerBase<TIocContainerAdapter> bootstrapper,
+        public static void UseRootObject<TIocContainerAdapter>(this
+#if TEST
+    TestBootstrapperContainerBase
+#else
+    BootstrapperContainerBase
+#endif
+            <TIocContainerAdapter> bootstrapper,
             Type rootObjectType, bool displayView) 
             where TIocContainerAdapter : class, IIocContainer, IIocContainerAdapter, IBootstrapperAdapter
         {
