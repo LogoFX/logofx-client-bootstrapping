@@ -14,14 +14,17 @@ namespace LogoFX.Client.Bootstrapping
     /// </summary>    
     /// <seealso cref="Solid.Practices.Composition.Contracts.ICompositionModulesProvider" />
     public abstract partial class BootstrapperBase :
+#if TEST
+        TestBootstrapperBase
+#else
 #if NET45
         Caliburn.Micro.BootstrapperBase
-#endif
-#if WINDOWS_UWP || NETFX_CORE
+#else
+#if WINDOWS_UWP || NETFX_CORE || WIN81
         CaliburnApplication
+#else
 #endif
-#if WIN81
-        CaliburnApplication
+#endif
 #endif
         , IBootstrapper
     {
@@ -41,7 +44,7 @@ namespace LogoFX.Client.Bootstrapping
         /// </summary>
         /// <param name="creationOptions">The creation options.</param>
         protected BootstrapperBase(BootstrapperCreationOptions creationOptions)
-#if NET45
+#if NET45 && !TEST
             :base(creationOptions.UseApplication)
 #endif
         {

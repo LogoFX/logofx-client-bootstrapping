@@ -130,7 +130,9 @@ namespace LogoFX.Client.Bootstrapping
             {
                 if (_displayView)
                 {
+#if !TEST
                     bootstrapper.DisplayRootViewForInternal(_rootObjectType);
+#endif
                 }
                 else
                 {

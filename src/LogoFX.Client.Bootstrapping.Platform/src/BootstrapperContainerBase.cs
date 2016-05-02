@@ -219,7 +219,7 @@ namespace LogoFX.Client.Bootstrapping
         /// </value>
         public TIocContainerAdapter ContainerAdapter { get; }
 
-#if NET45
+#if NET45 && !TEST
         /// <summary>
         /// Override this to add custom behavior to execute after the application starts.
         /// </summary>
@@ -230,7 +230,7 @@ namespace LogoFX.Client.Bootstrapping
             RaiseInitializationCompleted();            
         }
 #endif
-#if NETFX_CORE || WINDOWS_UWP || WIN81
+#if (NETFX_CORE || WINDOWS_UWP || WIN81) && !TEST
 
         /// <summary>
         /// Override this method to inject custom functionality before the app is launched.
@@ -270,12 +270,14 @@ namespace LogoFX.Client.Bootstrapping
         }
 #endif
 
+#if !TEST
         internal void DisplayRootViewForInternal(Type rootObjectType)
         {
             DisplayRootViewFor(rootObjectType);
         }
+#endif
 
-#if NETFX_CORE || WINDOWS_UWP || WIN81
+#if (NETFX_CORE || WINDOWS_UWP || WIN81) && !TEST
         ///<summary>
         /// Invoked when application execution is being suspended.  Application state is saved
         /// without knowing whether the application will be terminated or resumed with the contents
