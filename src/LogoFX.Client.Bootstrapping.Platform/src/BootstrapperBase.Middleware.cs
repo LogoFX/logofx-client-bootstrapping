@@ -12,7 +12,7 @@ namespace LogoFX.Client.Bootstrapping
                 new List<IMiddleware<IBootstrapper>>();
 
         /// <summary>
-        /// Uses the specified middleware.
+        /// Extends the functionality by using the specified middleware.
         /// </summary>
         /// <param name="middleware">The middleware.</param>
         /// <returns></returns>

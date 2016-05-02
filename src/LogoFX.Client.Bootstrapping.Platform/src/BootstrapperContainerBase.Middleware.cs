@@ -17,7 +17,7 @@ namespace LogoFX.Client.Bootstrapping
                 new List<IMiddleware<IBootstrapperWithContainer<TIocContainerAdapter, TIocContainer>>>();
 
         /// <summary>
-        /// Uses the specified middleware.
+        /// Extends the functionality by using the specified middleware.
         /// </summary>
         /// <param name="middleware">The middleware.</param>
         /// <returns></returns>
@@ -35,7 +35,7 @@ namespace LogoFX.Client.Bootstrapping
             new List<IMiddleware<IBootstrapperWithContainerAdapter<TIocContainerAdapter>>>();
 
         /// <summary>
-        /// Uses the specified middleware.
+        /// Extends the functionality by using the specified middleware.
         /// </summary>
         /// <param name="middleware">The middleware.</param>
         /// <returns></returns>
@@ -50,7 +50,7 @@ namespace LogoFX.Client.Bootstrapping
             new List<IMiddleware<BootstrapperContainerBase<TIocContainerAdapter>>>();
 
         /// <summary>
-        /// Uses the specified middleware.
+        /// Extends the functionality by using the specified middleware.
         /// </summary>
         /// <param name="middleware">The middleware.</param>
         /// <returns></returns>
