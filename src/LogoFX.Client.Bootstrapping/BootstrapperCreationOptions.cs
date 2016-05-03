@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using Solid.Practices.Modularity;
 
 namespace LogoFX.Client.Bootstrapping
 {
@@ -44,7 +43,7 @@ namespace LogoFX.Client.Bootstrapping
 
         /// <summary>
         /// Gets or sets a value indicating whether the bootstrapper 
-        /// should look for instances of <see cref="ICompositionModule"/>.
+        /// should look for composition modules.
         /// The default value is <c>true</c>.
         /// </summary>
         /// <value>
