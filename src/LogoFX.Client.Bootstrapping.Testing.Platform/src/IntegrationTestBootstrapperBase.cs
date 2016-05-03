@@ -7,7 +7,9 @@ using System.Windows;
 #else
 using Windows.UI.Xaml;
 #endif
+#if !WINDOWS_UWP && !NET45
 using Caliburn.Micro;
+#endif
 
 namespace LogoFX.Client.Bootstrapping
 {
@@ -30,9 +32,9 @@ namespace LogoFX.Client.Bootstrapping
 
             _isInitialized = true;            
 
-            var baseExtractTypes = AssemblySourceCache.ExtractTypes;
+            var baseExtractTypes = Caliburn.Micro.AssemblySourceCache.ExtractTypes;
 
-            AssemblySourceCache.ExtractTypes = assembly =>
+            Caliburn.Micro.AssemblySourceCache.ExtractTypes = assembly =>
             {
                 var baseTypes = baseExtractTypes(assembly);
                 var elementTypes = assembly.GetExportedTypes()
@@ -41,7 +43,7 @@ namespace LogoFX.Client.Bootstrapping
                 return baseTypes.Union(elementTypes);
             };
 
-            AssemblySource.Instance.Refresh();
+            Caliburn.Micro.AssemblySource.Instance.Refresh();
 
             StartDesignTime();
         }
@@ -51,14 +53,13 @@ namespace LogoFX.Client.Bootstrapping
         /// </summary>
         protected virtual void StartDesignTime()
         {
-            AssemblySource.Instance.Clear();
-            AssemblySource.Instance.AddRange(SelectAssemblies());
+            Caliburn.Micro.AssemblySource.Instance.Clear();
+            Caliburn.Micro.AssemblySource.Instance.AddRange(SelectAssemblies());
 
             Configure();
-            IoC.GetInstance = GetInstance;
-            IoC.GetAllInstances = GetAllInstances;
-            IoC.BuildUp = BuildUp;
-
+            Caliburn.Micro.IoC.GetInstance = GetInstance;
+            Caliburn.Micro.IoC.GetAllInstances = GetAllInstances;
+            Caliburn.Micro.IoC.BuildUp = BuildUp;
         }
 
         /// <summary>

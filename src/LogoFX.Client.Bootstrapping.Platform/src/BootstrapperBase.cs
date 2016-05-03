@@ -1,4 +1,4 @@
-#if WINDOWS_UWP || NETFX_CORE || WIN81 && !TEST
+#if !TEST && (WINDOWS_UWP || NETFX_CORE || WIN81 )
 using Caliburn.Micro;
 #endif
 using System;

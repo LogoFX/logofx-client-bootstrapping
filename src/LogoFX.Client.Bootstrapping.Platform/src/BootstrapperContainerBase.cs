@@ -5,7 +5,7 @@ using LogoFX.Bootstrapping;
 #if NET45 && !TEST
 using System.Windows;
 #endif
-#if NETFX_CORE || WINDOWS_UWP || WIN81 && !TEST
+#if !TEST && (NETFX_CORE || WINDOWS_UWP || WIN81)
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 #endif
