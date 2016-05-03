@@ -1,10 +1,9 @@
-#if WINDOWS_UWP || NETFX_CORE || WIN81
+#if WINDOWS_UWP || NETFX_CORE || WIN81 && !TEST
 using Caliburn.Micro;
 #endif
 using System;
 using LogoFX.Bootstrapping;
 using Solid.Bootstrapping;
-using Solid.Extensibility;
 using Solid.Practices.Composition;
 using Solid.Practices.Middleware;
 

@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Windows.Threading;
 using LogoFX.Bootstrapping;
-#if NET45
+#if NET45 && !TEST
 using System.Windows;
 #endif
-#if NETFX_CORE || WINDOWS_UWP || WIN81
+#if NETFX_CORE || WINDOWS_UWP || WIN81 && !TEST
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 #endif
