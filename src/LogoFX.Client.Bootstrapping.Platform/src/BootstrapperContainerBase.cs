@@ -327,12 +327,11 @@ namespace LogoFX.Client.Bootstrapping
             ContainerAdapter = iocContainerAdapter;
             if (creationOptions.UseDefaultMiddlewares)
             {
-                Use(new RegisterContainerMiddleware<TIocContainerAdapter>())
-                    .Use(new RegisterViewModelsMiddleware<TIocContainerAdapter>(creationOptions.ExcludedTypes))
+                Use(new RegisterViewModelsMiddleware<TIocContainerAdapter>(creationOptions.ExcludedTypes))
                     .Use(new RegisterCompositionModulesMiddleware<TIocContainerAdapter>())
                     .Use(new RegisterPlatformSpecificMiddleware<TIocContainerAdapter>());
             }           
-        }
+        }        
 
         /// <summary>
         /// Gets the container adapter.
@@ -340,7 +339,7 @@ namespace LogoFX.Client.Bootstrapping
         /// <value>
         /// The container adapter.
         /// </value>
-        public TIocContainerAdapter ContainerAdapter { get; }
+        public TIocContainerAdapter ContainerAdapter {  get; }
 
 #if NET45 && !TEST
         /// <summary>
