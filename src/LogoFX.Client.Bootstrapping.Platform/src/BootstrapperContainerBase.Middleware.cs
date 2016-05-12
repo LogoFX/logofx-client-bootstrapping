@@ -276,7 +276,8 @@ namespace LogoFX.Client.Bootstrapping
                 <TIocContainerAdapter>
             @object)
         {
-            @object.UseResolver(@object.ContainerAdapter);
+            var middleware = new LogoFX.Bootstrapping.RegisterResolverMiddleware<TIocContainerAdapter>(@object.ContainerAdapter);
+            middleware.Apply(@object);
             return @object;
         }
     }
