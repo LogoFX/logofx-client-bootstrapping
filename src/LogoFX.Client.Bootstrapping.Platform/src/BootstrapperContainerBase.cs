@@ -182,10 +182,10 @@ namespace LogoFX.Client.Bootstrapping
         /// <summary>
         /// Override this method to inject custom logic during bootstrapper configuration.
         /// </summary>
-        /// <param name="iocContainerAdapter">IoC container adapter</param>
-        protected override void OnConfigure(TIocContainerAdapter iocContainerAdapter)
+        /// <param name="containerRegistrator">IoC container adapter</param>
+        protected override void OnConfigure(IIocContainerRegistrator containerRegistrator)
         {
-            base.OnConfigure(iocContainerAdapter);            
+            base.OnConfigure(containerRegistrator);            
             MiddlewareApplier.ApplyMiddlewares(this, _middlewares);
         }
     }
@@ -437,8 +437,8 @@ namespace LogoFX.Client.Bootstrapping
         /// <summary>
         /// Override this method to inject custom logic during bootstrapper configuration.
         /// </summary>
-        /// <param name="iocContainerAdapter">IoC container adapter</param>
-        protected virtual void OnConfigure(TIocContainerAdapter iocContainerAdapter)
+        /// <param name="containerRegistrator">The ioc container registrator.</param>
+        protected virtual void OnConfigure(IIocContainerRegistrator containerRegistrator)
         {
         }        
 
