@@ -130,7 +130,6 @@
   <ItemGroup>
     <Compile Include="BootstrapperTests.cs" />
     <Compile Include="FakeIocContainer.cs" />
-    <Compile Include="MiddlewareTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

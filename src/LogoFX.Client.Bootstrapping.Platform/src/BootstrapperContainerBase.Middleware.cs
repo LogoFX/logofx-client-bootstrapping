@@ -205,7 +205,7 @@ namespace LogoFX.Client.Bootstrapping
     /// Registers the ioc container adapter.
     /// </summary>
     /// <typeparam name="TIocContainerAdapter">The type of the ioc container adapter.</typeparam>    
-    public class RegisterContainerAdapterMiddleware<TIocContainerAdapter> :
+    class RegisterContainerAdapterMiddleware<TIocContainerAdapter> :
         IMiddleware<
 #if TEST
     TestBootstrapperContainerBase
