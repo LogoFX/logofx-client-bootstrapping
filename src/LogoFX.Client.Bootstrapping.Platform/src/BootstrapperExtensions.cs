@@ -16,7 +16,14 @@ namespace LogoFX.Client.Bootstrapping
         /// <param name="bootstrapper">The bootstrapper.</param>
         /// <param name="rootObjectType">The type of the root object.</param>
         /// <param name="displayView">if set to <c>true</c> view is displayed.</param>
-        public static void UseRootObject<TIocContainerAdapter>(this
+        public static
+#if TEST
+    TestBootstrapperContainerBase
+#else
+    BootstrapperContainerBase
+#endif
+            <TIocContainerAdapter> 
+            UseRootObject<TIocContainerAdapter>(this
 #if TEST
     TestBootstrapperContainerBase
 #else
@@ -26,7 +33,8 @@ namespace LogoFX.Client.Bootstrapping
             Type rootObjectType, bool displayView) 
             where TIocContainerAdapter : class, IIocContainer, IIocContainerAdapter, IBootstrapperAdapter
         {
-            bootstrapper.Use(new CreateRootObjectMiddleware<TIocContainerAdapter>(rootObjectType, displayView));            
+            bootstrapper.Use(new CreateRootObjectMiddleware<TIocContainerAdapter>(rootObjectType, displayView));
+            return bootstrapper;
         }
 
         /// <summary>
@@ -34,7 +42,14 @@ namespace LogoFX.Client.Bootstrapping
         /// </summary>
         /// <typeparam name="TIocContainerAdapter">The type of the ioc container adapter.</typeparam>
         /// <param name="bootstrapper">The bootstrapper.</param>        
-        public static void UseResolver<TIocContainerAdapter>(this
+        public static
+#if TEST
+    TestBootstrapperContainerBase
+#else
+    BootstrapperContainerBase
+#endif
+            <TIocContainerAdapter>
+            UseResolver<TIocContainerAdapter>(this
 #if TEST
     TestBootstrapperContainerBase
 #else
@@ -44,6 +59,7 @@ namespace LogoFX.Client.Bootstrapping
             where TIocContainerAdapter : class, IIocContainer, IIocContainerAdapter, IBootstrapperAdapter
         {
             bootstrapper.Use(new RegisterResolverMiddleware<TIocContainerAdapter>());
+            return bootstrapper;            
         }
     }
 }
