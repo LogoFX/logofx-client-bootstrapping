@@ -28,5 +28,22 @@ namespace LogoFX.Client.Bootstrapping
         {
             bootstrapper.Use(new CreateRootObjectMiddleware<TIocContainerAdapter>(rootObjectType, displayView));            
         }
+
+        /// <summary>
+        /// Uses the resolver registration middleware.
+        /// </summary>
+        /// <typeparam name="TIocContainerAdapter">The type of the ioc container adapter.</typeparam>
+        /// <param name="bootstrapper">The bootstrapper.</param>        
+        public static void UseResolver<TIocContainerAdapter>(this
+#if TEST
+    TestBootstrapperContainerBase
+#else
+    BootstrapperContainerBase
+#endif
+            <TIocContainerAdapter> bootstrapper)
+            where TIocContainerAdapter : class, IIocContainer, IIocContainerAdapter, IBootstrapperAdapter
+        {
+            bootstrapper.Use(new RegisterResolverMiddleware<TIocContainerAdapter>());
+        }
     }
 }
