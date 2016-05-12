@@ -33,7 +33,7 @@ namespace LogoFX.Client.Bootstrapping
         public IBootstrapperWithContainerAdapter<TIocContainerAdapter> Apply(
             IBootstrapperWithContainerAdapter<TIocContainerAdapter> @object)
         {
-            @object.ContainerAdapter.RegisterViewModels(@object.Assemblies, _excludedTypes);            
+            @object.Registrator.RegisterViewModels(@object.Assemblies, _excludedTypes);            
             return @object;
         }
     }    

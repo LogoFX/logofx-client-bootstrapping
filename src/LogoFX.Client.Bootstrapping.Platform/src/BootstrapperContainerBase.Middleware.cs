@@ -115,7 +115,7 @@ namespace LogoFX.Client.Bootstrapping
             IBootstrapperWithContainerAdapter<TIocContainerAdapter> @object)
         {
 #if NET45
-            @object.ContainerAdapter.RegisterSingleton<IWindowManager, WindowManager>();
+            @object.Registrator.RegisterSingleton<IWindowManager, WindowManager>();
 #endif
             return @object;
         }
@@ -169,7 +169,7 @@ namespace LogoFX.Client.Bootstrapping
 #endif
             <TIocContainerAdapter> @object)
         {
-            @object.ContainerAdapter.RegisterSingleton(_rootObjectType, _rootObjectType);
+            @object.Registrator.RegisterSingleton(_rootObjectType, _rootObjectType);
             EventHandler strongHandler = ObjectOnInitializationCompleted;
             @object.InitializationCompleted += WeakDelegate.From(strongHandler);
             return @object;

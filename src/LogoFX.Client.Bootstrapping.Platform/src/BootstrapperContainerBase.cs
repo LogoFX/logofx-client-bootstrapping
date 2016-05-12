@@ -207,7 +207,10 @@ namespace LogoFX.Client.Bootstrapping
 #else
     BootstrapperBase
 #endif
-        , IBootstrapperWithContainerAdapter<TIocContainerAdapter>                       
+        , IBootstrapperWithContainerAdapter<TIocContainerAdapter>
+#if TEST
+        , Solid.Bootstrapping.IHaveContainerResolver
+#endif                    
         where TIocContainerAdapter : class, IIocContainer, IIocContainerAdapter, IBootstrapperAdapter
     {
         /// <summary>
@@ -339,7 +342,7 @@ namespace LogoFX.Client.Bootstrapping
         /// <value>
         /// The container adapter.
         /// </value>
-        public TIocContainerAdapter ContainerAdapter {  get; }
+        internal TIocContainerAdapter ContainerAdapter { get; }
 
 #if NET45 && !TEST
         /// <summary>
@@ -445,6 +448,24 @@ namespace LogoFX.Client.Bootstrapping
         static void InitializeDispatcher()
         {
             Dispatch.Current.InitializeDispatch();
-        }        
+        }
+
+        /// <summary>
+        /// Gets the registrator.
+        /// </summary>
+        /// <value>
+        /// The registrator.
+        /// </value>
+        public IIocContainerRegistrator Registrator => ContainerAdapter;
+
+#if TEST
+        /// <summary>
+        /// Gets the resolver.
+        /// </summary>
+        /// <value>
+        /// The resolver.
+        /// </value>
+        public IIocContainerResolver Resolver => ContainerAdapter;
+#endif
     }    
 }
