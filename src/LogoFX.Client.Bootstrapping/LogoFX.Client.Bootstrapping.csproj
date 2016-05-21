@@ -36,7 +36,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="BootstrapperCreationOptions.cs" />
-    <Compile Include="ContainerAdapterExtensions.cs" />
+    <Compile Include="ContainerRegistratorExtensions.cs" />
     <Compile Include="Middleware.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
