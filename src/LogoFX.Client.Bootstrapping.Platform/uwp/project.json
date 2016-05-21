@@ -2,7 +2,7 @@
   "dependencies": {
     "Caliburn.Micro": "3.0.0",
     "Caliburn.Micro.Core": "3.0.0",
-    "LogoFX.Bootstrapping": "1.4.0",
+    "LogoFX.Bootstrapping": "1.5.0",
     "LogoFX.Client.Bootstrapping.Adapters.Contracts": "1.0.4",
     "LogoFX.Client.Core": "1.0.8",
     "LogoFX.Client.Core.Core": "1.0.7",

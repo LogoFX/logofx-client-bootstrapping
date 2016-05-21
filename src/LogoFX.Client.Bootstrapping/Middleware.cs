@@ -1,23 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
 using LogoFX.Bootstrapping;
-using Solid.Practices.IoC;
 using Solid.Practices.Middleware;
 
 namespace LogoFX.Client.Bootstrapping
-{    
+{
     /// <summary>
     /// Registers automagically the application's view models in the transient lifestyle.
-    /// </summary>    
-    /// <typeparam name="TIocContainerAdapter">The type of the ioc container adapter.</typeparam>    
-    public class RegisterViewModelsMiddleware<TIocContainerAdapter> :
-        IMiddleware<IBootstrapperWithContainerAdapter<TIocContainerAdapter>>        
-        where TIocContainerAdapter : class, IIocContainer
+    /// </summary>
+    public class RegisterViewModelsMiddleware :
+        IMiddleware<IBootstrapperWithContainerRegistrator>
     {
         private readonly IEnumerable<Type> _excludedTypes;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="RegisterViewModelsMiddleware{TIocContainerAdapter}"/> class.
+        /// Initializes a new instance of the <see cref="RegisterViewModelsMiddleware"/> class.
         /// </summary>
         /// <param name="excludedTypes">The type of the root object.</param>
         public RegisterViewModelsMiddleware(IEnumerable<Type> excludedTypes)
@@ -30,8 +27,8 @@ namespace LogoFX.Client.Bootstrapping
         /// </summary>
         /// <param name="object">The object.</param>
         /// <returns></returns>
-        public IBootstrapperWithContainerAdapter<TIocContainerAdapter> Apply(
-            IBootstrapperWithContainerAdapter<TIocContainerAdapter> @object)
+        public IBootstrapperWithContainerRegistrator Apply(
+            IBootstrapperWithContainerRegistrator @object)
         {
             @object.Registrator.RegisterViewModels(@object.Assemblies, _excludedTypes);            
             return @object;

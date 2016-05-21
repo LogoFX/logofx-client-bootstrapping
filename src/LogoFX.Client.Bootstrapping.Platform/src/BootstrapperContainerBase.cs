@@ -330,9 +330,10 @@ namespace LogoFX.Client.Bootstrapping
             ContainerAdapter = iocContainerAdapter;
             if (creationOptions.UseDefaultMiddlewares)
             {
-                Use(new RegisterViewModelsMiddleware<TIocContainerAdapter>(creationOptions.ExcludedTypes))
-                    .Use(new RegisterCompositionModulesMiddleware<TIocContainerAdapter>())
-                    .Use(new RegisterPlatformSpecificMiddleware<TIocContainerAdapter>());
+                this.UseBootstrapperComposition().
+                Use(new RegisterViewModelsMiddleware(creationOptions.ExcludedTypes))
+                    .Use(new RegisterCompositionModulesMiddleware())
+                    .Use(new RegisterPlatformSpecificMiddleware());
             }           
         }        
 
@@ -429,6 +430,7 @@ namespace LogoFX.Client.Bootstrapping
 #if NET45 // in UWP the dispatcher is initialized later.
             InitializeDispatcher();
 #endif
+            MiddlewareApplier.ApplyMiddlewares(this, _registratorMiddlewares);
             MiddlewareApplier.ApplyMiddlewares(this, _middlewares);
             MiddlewareApplier.ApplyMiddlewares(this, _concreteMiddlewares);
             OnConfigure(ContainerAdapter);

@@ -43,6 +43,21 @@ namespace LogoFX.Client.Bootstrapping
 #endif
         <TIocContainerAdapter>
     {
+        private readonly List<IMiddleware<IBootstrapperWithContainerRegistrator>> _registratorMiddlewares =
+            new List<IMiddleware<IBootstrapperWithContainerRegistrator>>();
+
+        /// <summary>
+        /// Extends the functionality by using the specified middleware.
+        /// </summary>
+        /// <param name="middleware">The middleware.</param>
+        /// <returns></returns>
+        public IBootstrapperWithContainerRegistrator Use(
+            IMiddleware<IBootstrapperWithContainerRegistrator> middleware)
+        {
+            _registratorMiddlewares.Add(middleware);
+            return this;
+        }
+
         private readonly List<IMiddleware<IBootstrapperWithContainerAdapter<TIocContainerAdapter>>> _middlewares =
             new List<IMiddleware<IBootstrapperWithContainerAdapter<TIocContainerAdapter>>>();
 
@@ -96,23 +111,21 @@ namespace LogoFX.Client.Bootstrapping
             _concreteMiddlewares.Add(middleware);
             return this;
         }
-    }                
+    }
 
     /// <summary>
     /// Registers platform-specific services into the ioc container.
-    /// </summary>    
-    /// <typeparam name="TIocContainerAdapter">The type of the ioc container adapter.</typeparam>    
-    public class RegisterPlatformSpecificMiddleware<TIocContainerAdapter> :
-        IMiddleware<IBootstrapperWithContainerAdapter<TIocContainerAdapter>>        
-        where TIocContainerAdapter : class, IIocContainer
+    /// </summary>
+    public class RegisterPlatformSpecificMiddleware :
+        IMiddleware<IBootstrapperWithContainerRegistrator>
     {
         /// <summary>
         /// Applies the middleware on the specified object.
         /// </summary>
         /// <param name="object">The object.</param>
         /// <returns></returns>
-        public IBootstrapperWithContainerAdapter<TIocContainerAdapter> Apply(
-            IBootstrapperWithContainerAdapter<TIocContainerAdapter> @object)
+        public IBootstrapperWithContainerRegistrator Apply(
+            IBootstrapperWithContainerRegistrator @object)
         {
 #if NET45
             @object.Registrator.RegisterSingleton<IWindowManager, WindowManager>();
@@ -276,7 +289,7 @@ namespace LogoFX.Client.Bootstrapping
                 <TIocContainerAdapter>
             @object)
         {
-            var middleware = new LogoFX.Bootstrapping.RegisterResolverMiddleware<TIocContainerAdapter>(@object.ContainerAdapter);
+            var middleware = new RegisterResolverMiddleware(@object.ContainerAdapter);
             middleware.Apply(@object);
             return @object;
         }
