@@ -10,6 +10,7 @@ using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 #endif
 using LogoFX.Client.Bootstrapping.Adapters.Contracts;
+using Solid.Extensibility;
 using Solid.Practices.IoC;
 using Solid.Practices.Middleware;
 
@@ -207,6 +208,14 @@ namespace LogoFX.Client.Bootstrapping
 #else
     BootstrapperBase
 #endif
+        , IExtensible<
+#if TEST
+    TestBootstrapperContainerBase
+#else
+    BootstrapperContainerBase
+#endif
+        <TIocContainerAdapter>
+            >
         , IBootstrapperWithContainerAdapter<TIocContainerAdapter>
 #if TEST
         , Solid.Bootstrapping.IHaveContainerResolver
@@ -330,9 +339,16 @@ namespace LogoFX.Client.Bootstrapping
             ContainerAdapter = iocContainerAdapter;
             if (creationOptions.UseDefaultMiddlewares)
             {
-                this.UseBootstrapperComposition().
-                Use(new RegisterViewModelsMiddleware(creationOptions.ExcludedTypes))
-                    .Use(new RegisterCompositionModulesMiddleware())
+                Use(new RegisterCompositionModulesMiddleware<
+#if TEST
+    TestBootstrapperContainerBase
+#else
+                    BootstrapperContainerBase
+#endif
+                        <TIocContainerAdapter>>
+                    ())
+                    .UseBootstrapperComposition().
+                    Use(new RegisterViewModelsMiddleware(creationOptions.ExcludedTypes))
                     .Use(new RegisterPlatformSpecificMiddleware());
             }           
         }        

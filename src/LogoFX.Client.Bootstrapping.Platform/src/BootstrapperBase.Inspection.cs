@@ -31,7 +31,7 @@ namespace LogoFX.Client.Bootstrapping
         /// <value>
         /// The assemblies.
         /// </value>
-        public Assembly[] Assemblies
+        public IEnumerable<Assembly> Assemblies
         {
             get { return _assemblies ?? (_assemblies = CreateAssemblies()); }
         }

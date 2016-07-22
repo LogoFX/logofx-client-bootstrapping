@@ -252,7 +252,7 @@ namespace LogoFX.Client.Bootstrapping
             @object.Registrator.RegisterInstance(@object.ContainerAdapter);
             return @object;
         }
-    }
+    }    
 
     /// <summary>
     /// Registers the ioc container resolver.
@@ -289,7 +289,15 @@ namespace LogoFX.Client.Bootstrapping
                 <TIocContainerAdapter>
             @object)
         {
-            var middleware = new RegisterResolverMiddleware(@object.ContainerAdapter);
+            var middleware = new LogoFX.Bootstrapping.RegisterResolverMiddleware
+                <
+#if TEST
+    TestBootstrapperContainerBase
+#else
+    BootstrapperContainerBase
+#endif
+                <TIocContainerAdapter>
+                >(@object.ContainerAdapter);
             middleware.Apply(@object);
             return @object;
         }
