@@ -25,11 +25,7 @@ namespace LogoFX.Client.Bootstrapping
         {
             var viewModelTypes = assemblies
                 .SelectMany(assembly => assembly.ExportedTypes)
-                .Where(type => excludedTypes.Contains(type) == false && type.Name.EndsWith("ViewModel"))
-                .Where(
-                    type =>
-                        !string.IsNullOrWhiteSpace(type.Namespace) && type.Namespace != null &&
-                        type.Namespace.EndsWith("ViewModels"))
+                .Where(type => excludedTypes.Contains(type) == false && type.Name.EndsWith("ViewModel"))                
                 .Where(type => type.GetTypeInfo().ImplementedInterfaces.Contains(typeof (INotifyPropertyChanged)));
 
             foreach (var viewModelType in viewModelTypes)
