@@ -1,26 +1,30 @@
 ﻿using System;
+using FluentAssertions;
 using LogoFX.Client.Bootstrapping.Adapters.SimpleContainer;
 using LogoFX.Practices.IoC;
-using NUnit.Framework;
 using Solid.Practices.Composition;
 using Solid.Practices.IoC;
 using Solid.Practices.Modularity;
+using Xunit;
 
 namespace LogoFX.Client.Bootstrapping.Platform.NET45.Tests
-{
-    [TestFixture]
-    class BootstrapperTests
+{    
+    public class BootstrapperTests
     {
-        [Test]
+        [Fact]
         public void Initialization_DoesNotThrow()
         {
-            Assert.DoesNotThrow(() => new TestBootstrapper(new ExtendedSimpleContainerAdapter(),new BootstrapperCreationOptions
-            {
-                UseApplication = false
-            }));
+            var exception =
+                Record.Exception(
+                    () => new TestBootstrapper(new ExtendedSimpleContainerAdapter(), new BootstrapperCreationOptions
+                    {
+                        UseApplication = false
+                    }));
+
+            exception.Should().BeNull();
         }
 
-        [Test]
+        [Fact]
         public void
             GivenThereIsCompositionModuleWithDependencyRegistration_WhenBootstrapperWithConcreteContainerIsUsedAndDependencyIsResolvedFromConcreteContainer_ResolvedDependencyIsValid
             ()
@@ -31,10 +35,10 @@ namespace LogoFX.Client.Bootstrapping.Platform.NET45.Tests
             bootstrapper.Initialize();
 
             var dependency = container.GetInstance(typeof (IDependency), null);
-            Assert.IsNotNull(dependency);
+            dependency.Should().NotBeNull();            
         }
 
-        [Test]
+        [Fact]
         public void
             GivenThereIsCompositionModuleWithConcreteDependencyRegistration_WhenBootstrapperWithConcreteContainerIsUsedAndDependencyIsResolvedFromAdapter_ResolvedDependencyIsValid
             ()
@@ -45,7 +49,7 @@ namespace LogoFX.Client.Bootstrapping.Platform.NET45.Tests
             bootstrapper.Initialize();
 
             var dependency = adapter.Resolve<IConcreteDependency>();
-            Assert.IsNotNull(dependency);
+            dependency.Should().NotBeNull();
         }
     }
 
