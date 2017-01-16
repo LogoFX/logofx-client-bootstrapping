@@ -465,6 +465,7 @@ namespace LogoFX.Client.Bootstrapping
         /// </summary>
         static void InitializeDispatcher()
         {
+            Dispatch.Current = new PlatformDispatch();
             Dispatch.Current.InitializeDispatch();
         }
 

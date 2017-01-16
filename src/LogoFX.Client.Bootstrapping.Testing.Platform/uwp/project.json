@@ -3,7 +3,7 @@
     "Caliburn.Micro": "3.0.2",
     "LogoFX.Bootstrapping": "1.6.0",
     "LogoFX.Client.Bootstrapping.Adapters.Contracts": "1.0.4",
-    "LogoFX.Client.Core": "1.0.8",
+    "LogoFX.Client.Core": "1.1.0",
     "LogoFX.Core": "1.0.7",
     "Microsoft.NETCore.UniversalWindowsPlatform": "5.2.2",
     "Solid.Practices.Composition": "1.1.7",
