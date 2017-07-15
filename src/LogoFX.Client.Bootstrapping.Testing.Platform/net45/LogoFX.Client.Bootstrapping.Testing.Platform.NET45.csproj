@@ -166,7 +166,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\LogoFX.Client.Bootstrapping\LogoFX.Client.Bootstrapping.csproj">
+    <ProjectReference Include="..\..\LogoFX.Client.Bootstrapping\portable\LogoFX.Client.Bootstrapping.csproj">
       <Project>{BC639B22-269A-4556-83F7-BBFC2A4BF570}</Project>
       <Name>LogoFX.Client.Bootstrapping</Name>
     </ProjectReference>

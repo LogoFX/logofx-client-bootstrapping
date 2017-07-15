@@ -150,10 +150,13 @@
       <Project>{51322595-4423-46d9-8aad-7486fc87e15c}</Project>
       <Name>LogoFX.Client.Bootstrapping.Platform.NET45</Name>
     </ProjectReference>
-    <ProjectReference Include="..\LogoFX.Client.Bootstrapping\LogoFX.Client.Bootstrapping.csproj">
+    <ProjectReference Include="..\LogoFX.Client.Bootstrapping\portable\LogoFX.Client.Bootstrapping.csproj">
       <Project>{BC639B22-269A-4556-83F7-BBFC2A4BF570}</Project>
       <Name>LogoFX.Client.Bootstrapping</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

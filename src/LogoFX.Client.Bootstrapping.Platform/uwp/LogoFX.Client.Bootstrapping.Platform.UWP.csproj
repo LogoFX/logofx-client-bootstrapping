@@ -145,7 +145,7 @@
     <EmbeddedResource Include="Properties\LogoFX.Client.Bootstrapping.Platform.UWP.rd.xml" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\LogoFX.Client.Bootstrapping\LogoFX.Client.Bootstrapping.csproj">
+    <ProjectReference Include="..\..\LogoFX.Client.Bootstrapping\portable\LogoFX.Client.Bootstrapping.csproj">
       <Project>{bc639b22-269a-4556-83f7-bbfc2a4bf570}</Project>
       <Name>LogoFX.Client.Bootstrapping</Name>
     </ProjectReference>
