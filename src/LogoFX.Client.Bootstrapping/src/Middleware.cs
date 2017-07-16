@@ -11,7 +11,7 @@ namespace LogoFX.Client.Bootstrapping
     /// Registers automagically the application's view models in the transient lifestyle.
     /// </summary>
     public class RegisterViewModelsMiddleware :
-        IMiddleware<IBootstrapperWithContainerRegistrator>
+        IMiddleware<IBootstrapperWithRegistrator>
     {
         private readonly IEnumerable<Type> _excludedTypes;
 
@@ -29,10 +29,10 @@ namespace LogoFX.Client.Bootstrapping
         /// </summary>
         /// <param name="object">The object.</param>
         /// <returns></returns>
-        public IBootstrapperWithContainerRegistrator Apply(
-            IBootstrapperWithContainerRegistrator @object)
+        public IBootstrapperWithRegistrator Apply(
+            IBootstrapperWithRegistrator @object)
         {
-            var internalMiddleware = new RegisterViewModelsMiddleware<IBootstrapperWithContainerRegistrator>(_excludedTypes);
+            var internalMiddleware = new RegisterViewModelsMiddleware<IBootstrapperWithRegistrator>(_excludedTypes);
             return internalMiddleware.Apply(@object);
         }
     }
