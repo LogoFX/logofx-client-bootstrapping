@@ -7,7 +7,7 @@
     "LogoFX.Client.Core": "1.2.0-rc1",
     "LogoFX.Client.Core.Core": "1.2.0-rc1",
     "LogoFX.Core": "1.0.8-rc1",
-    "Microsoft.NETCore.UniversalWindowsPlatform": "5.2.2",
+    "Microsoft.NETCore.UniversalWindowsPlatform": "5.3.3",
     "Solid.Practices.Composition.Client": "1.2.0-rc2",
     "Solid.Practices.Composition.Core": "1.2.0-rc2",
     "Solid.Practices.IoC": "1.2.0-rc3",
