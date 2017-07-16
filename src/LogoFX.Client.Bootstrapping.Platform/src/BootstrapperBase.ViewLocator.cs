@@ -4,7 +4,7 @@ using System.Linq;
 #if NET45
 using System.Windows.Controls;
 #endif
-#if NETFX_CORE || WINDOWS_UWP || WIN81
+#if NETFX_CORE || WINDOWS_UWP
 using Windows.UI.Xaml.Controls;
 #endif
 using Caliburn.Micro;
@@ -55,12 +55,12 @@ namespace LogoFX.Client.Bootstrapping
 #if NET45
                                                          .GetExportedTypes()
 #endif
-#if WINDOWS_UWP || NETFX_CORE || WIN81
+#if WINDOWS_UWP || NETFX_CORE
                                                          .DefinedTypes
 #endif
                                                          where type.FullName == viewTypeName
                                                          select type
-#if WINDOWS_UWP || NETFX_CORE || WIN81
+#if WINDOWS_UWP || NETFX_CORE
                                                          .AsType()
 #endif
                                                          ).FirstOrDefault();

@@ -5,7 +5,7 @@ using LogoFX.Bootstrapping;
 #if NET45 && !TEST
 using System.Windows;
 #endif
-#if !TEST && (NETFX_CORE || WINDOWS_UWP || WIN81)
+#if !TEST && (NETFX_CORE || WINDOWS_UWP)
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 #endif
@@ -372,7 +372,7 @@ namespace LogoFX.Client.Bootstrapping
             RaiseInitializationCompleted();            
         }
 #endif
-#if (NETFX_CORE || WINDOWS_UWP || WIN81) && !TEST
+#if (NETFX_CORE || WINDOWS_UWP) && !TEST
 
         /// <summary>
         /// Override this method to inject custom functionality before the app is launched.
@@ -419,7 +419,7 @@ namespace LogoFX.Client.Bootstrapping
         }
 #endif
 
-#if (NETFX_CORE || WINDOWS_UWP || WIN81) && !TEST
+#if (NETFX_CORE || WINDOWS_UWP) && !TEST
         ///<summary>
         /// Invoked when application execution is being suspended.  Application state is saved
         /// without knowing whether the application will be terminated or resumed with the contents
