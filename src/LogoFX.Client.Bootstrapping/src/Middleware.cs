@@ -42,7 +42,7 @@ namespace LogoFX.Client.Bootstrapping
     /// </summary>
     public class RegisterViewModelsMiddleware<TBootstrapper> :
         IMiddleware<TBootstrapper> 
-        where TBootstrapper : class, IHaveContainerRegistrator, IAssemblySourceProvider
+        where TBootstrapper : class, IHaveRegistrator, IAssemblySourceProvider
     {
         private readonly IEnumerable<Type> _excludedTypes;
 

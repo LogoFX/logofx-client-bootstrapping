@@ -21,7 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="LogoFX.Bootstrapping" Version="1.7.0-rc1" />
+    <PackageReference Include="LogoFX.Bootstrapping" Version="1.7.0-rc2" />
   </ItemGroup>
 
 </Project>

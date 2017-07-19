@@ -10,6 +10,9 @@ using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 #endif
 using LogoFX.Client.Bootstrapping.Adapters.Contracts;
+#if TEST
+using Solid.Bootstrapping;
+#endif
 using Solid.Extensibility;
 using Solid.Practices.IoC;
 using Solid.Practices.Middleware;
@@ -218,7 +221,7 @@ namespace LogoFX.Client.Bootstrapping
             >
         , IBootstrapperWithContainerAdapter<TIocContainerAdapter>
 #if TEST
-        , Solid.Bootstrapping.IHaveContainerResolver
+        , IHaveResolver
 #endif                    
         where TIocContainerAdapter : class, IIocContainer, IIocContainerAdapter, IBootstrapperAdapter
     {

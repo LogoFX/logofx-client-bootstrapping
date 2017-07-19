@@ -47,10 +47,10 @@
       <HintPath>..\packages\FluentAssertions.4.19.3\lib\net45\FluentAssertions.Core.dll</HintPath>
     </Reference>
     <Reference Include="LogoFX.Bootstrapping, Version=1.7.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\LogoFX.Bootstrapping.1.7.0-rc1\lib\net45\LogoFX.Bootstrapping.dll</HintPath>
+      <HintPath>..\packages\LogoFX.Bootstrapping.1.7.0-rc2\lib\net45\LogoFX.Bootstrapping.dll</HintPath>
     </Reference>
     <Reference Include="LogoFX.Bootstrapping.Middleware, Version=1.7.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\LogoFX.Bootstrapping.1.7.0-rc1\lib\net45\LogoFX.Bootstrapping.Middleware.dll</HintPath>
+      <HintPath>..\packages\LogoFX.Bootstrapping.1.7.0-rc2\lib\net45\LogoFX.Bootstrapping.Middleware.dll</HintPath>
     </Reference>
     <Reference Include="LogoFX.Client.Bootstrapping.Adapters.Contracts, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\LogoFX.Client.Bootstrapping.Adapters.Contracts.1.1.0-rc1\lib\net45\LogoFX.Client.Bootstrapping.Adapters.Contracts.dll</HintPath>
@@ -59,7 +59,7 @@
       <HintPath>..\packages\LogoFX.Client.Bootstrapping.Adapters.SimpleContainer.1.2.0-rc1\lib\net45\LogoFX.Client.Bootstrapping.Adapters.SimpleContainer.dll</HintPath>
     </Reference>
     <Reference Include="LogoFX.Core, Version=1.0.8.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\LogoFX.Core.1.0.8-rc1\lib\net45\LogoFX.Core.dll</HintPath>
+      <HintPath>..\packages\LogoFX.Core.1.0.8-rc2\lib\net45\LogoFX.Core.dll</HintPath>
     </Reference>
     <Reference Include="LogoFX.Practices.IoC, Version=1.0.11.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\LogoFX.Practices.IoC.1.0.11-rc1\lib\net45\LogoFX.Practices.IoC.dll</HintPath>
@@ -68,7 +68,7 @@
       <HintPath>..\packages\LogoFX.Practices.IoC.1.0.11-rc1\lib\net45\LogoFX.Practices.IoC.Modularity.dll</HintPath>
     </Reference>
     <Reference Include="Solid.Bootstrapping, Version=1.2.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Solid.Bootstrapping.1.2.0-rc2\lib\net45\Solid.Bootstrapping.dll</HintPath>
+      <HintPath>..\packages\Solid.Bootstrapping.1.2.0-rc3\lib\net45\Solid.Bootstrapping.dll</HintPath>
     </Reference>
     <Reference Include="Solid.Extensibility, Version=1.2.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Solid.Extensibility.1.2.0-rc2\lib\net45\Solid.Extensibility.dll</HintPath>
