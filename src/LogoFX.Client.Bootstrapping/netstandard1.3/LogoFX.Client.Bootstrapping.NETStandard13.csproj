@@ -16,12 +16,12 @@
 
   <ItemGroup>
     <Compile Include="..\src\BootstrapperCreationOptions.cs" Link="BootstrapperCreationOptions.cs" />
-    <Compile Include="..\src\ContainerRegistratorExtensions.cs" Link="ContainerRegistratorExtensions.cs" />
+    <Compile Include="..\src\DependencyRegistratorExtensions.cs" Link="DependencyRegistratorExtensions.cs" />
     <Compile Include="..\src\Middleware.cs" Link="Middleware.cs" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="LogoFX.Bootstrapping" Version="1.7.0-rc2" />
+    <PackageReference Include="LogoFX.Bootstrapping" Version="1.7.0-rc3" />
   </ItemGroup>
 
 </Project>

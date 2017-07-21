@@ -8,18 +8,18 @@ using Solid.Practices.IoC;
 namespace LogoFX.Client.Bootstrapping
 {
     /// <summary>
-    /// The ioc container registrator extension methods.
+    /// The dependency registrator extension methods.
     /// </summary>
-    public static class ContainerRegistratorExtensions
+    public static class DependencyRegistratorExtensions
     {
         /// <summary>
         /// Registers the view models.
         /// </summary>
-        /// <param name="iocContainerRegistrator">The ioc container registrator.</param>
+        /// <param name="dependencyRegistrator">The dependency registrator.</param>
         /// <param name="assemblies">The assemblies.</param>
         /// <param name="excludedTypes">The types to be excluded from the registration.</param>
         public static void RegisterViewModels(
-            this IIocContainerRegistrator iocContainerRegistrator,
+            this IDependencyRegistrator dependencyRegistrator,
             IEnumerable<Assembly> assemblies,
             IEnumerable<Type> excludedTypes)
         {
@@ -30,7 +30,7 @@ namespace LogoFX.Client.Bootstrapping
 
             foreach (var viewModelType in viewModelTypes)
             {
-                iocContainerRegistrator.RegisterTransient(viewModelType, viewModelType);
+                dependencyRegistrator.RegisterTransient(viewModelType, viewModelType);
             }
         }
     }

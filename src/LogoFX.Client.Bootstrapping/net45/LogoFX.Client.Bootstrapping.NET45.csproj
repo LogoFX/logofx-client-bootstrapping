@@ -32,13 +32,13 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="LogoFX.Bootstrapping, Version=1.7.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\LogoFX.Bootstrapping.1.7.0-rc2\lib\net45\LogoFX.Bootstrapping.dll</HintPath>
+      <HintPath>..\..\packages\LogoFX.Bootstrapping.1.7.0-rc3\lib\net45\LogoFX.Bootstrapping.dll</HintPath>
     </Reference>
     <Reference Include="LogoFX.Bootstrapping.Middleware, Version=1.7.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\LogoFX.Bootstrapping.1.7.0-rc2\lib\net45\LogoFX.Bootstrapping.Middleware.dll</HintPath>
+      <HintPath>..\..\packages\LogoFX.Bootstrapping.1.7.0-rc3\lib\net45\LogoFX.Bootstrapping.Middleware.dll</HintPath>
     </Reference>
     <Reference Include="Solid.Bootstrapping, Version=1.2.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Solid.Bootstrapping.1.2.0-rc3\lib\net45\Solid.Bootstrapping.dll</HintPath>
+      <HintPath>..\..\packages\Solid.Bootstrapping.1.2.0-rc4\lib\net45\Solid.Bootstrapping.dll</HintPath>
     </Reference>
     <Reference Include="Solid.Extensibility, Version=1.2.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Solid.Extensibility.1.2.0-rc2\lib\net45\Solid.Extensibility.dll</HintPath>
@@ -53,13 +53,13 @@
       <HintPath>..\..\packages\Solid.Practices.Composition.Core.1.2.0-rc2\lib\net45\Solid.Practices.Composition.Contracts.dll</HintPath>
     </Reference>
     <Reference Include="Solid.Practices.IoC, Version=1.2.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Solid.Practices.IoC.1.2.0-rc3\lib\net45\Solid.Practices.IoC.dll</HintPath>
+      <HintPath>..\..\packages\Solid.Practices.IoC.1.2.0-rc4\lib\net45\Solid.Practices.IoC.dll</HintPath>
     </Reference>
     <Reference Include="Solid.Practices.Middleware, Version=1.2.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Solid.Practices.Middleware.1.2.0-rc2\lib\net45\Solid.Practices.Middleware.dll</HintPath>
     </Reference>
     <Reference Include="Solid.Practices.Modularity, Version=1.2.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Solid.Practices.Modularity.1.2.0-rc2\lib\net45\Solid.Practices.Modularity.dll</HintPath>
+      <HintPath>..\..\packages\Solid.Practices.Modularity.1.2.0-rc3\lib\net45\Solid.Practices.Modularity.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -73,8 +73,8 @@
     <Compile Include="..\src\BootstrapperCreationOptions.cs">
       <Link>BootstrapperCreationOptions.cs</Link>
     </Compile>
-    <Compile Include="..\src\ContainerRegistratorExtensions.cs">
-      <Link>ContainerRegistratorExtensions.cs</Link>
+    <Compile Include="..\src\DependencyRegistratorExtensions.cs">
+      <Link>DependencyRegistratorExtensions.cs</Link>
     </Compile>
     <Compile Include="..\src\Middleware.cs">
       <Link>Middleware.cs</Link>
