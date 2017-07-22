@@ -186,10 +186,10 @@ namespace LogoFX.Client.Bootstrapping
         /// <summary>
         /// Override this method to inject custom logic during bootstrapper configuration.
         /// </summary>
-        /// <param name="containerRegistrator">IoC container adapter</param>
-        protected override void OnConfigure(IIocContainerRegistrator containerRegistrator)
+        /// <param name="dependencyRegistrator">The dependency registrator.</param>
+        protected override void OnConfigure(IDependencyRegistrator dependencyRegistrator)
         {
-            base.OnConfigure(containerRegistrator);            
+            base.OnConfigure(dependencyRegistrator);            
             MiddlewareApplier.ApplyMiddlewares(this, _middlewares);
         }
     }
@@ -458,8 +458,8 @@ namespace LogoFX.Client.Bootstrapping
         /// <summary>
         /// Override this method to inject custom logic during bootstrapper configuration.
         /// </summary>
-        /// <param name="containerRegistrator">The ioc container registrator.</param>
-        protected virtual void OnConfigure(IIocContainerRegistrator containerRegistrator)
+        /// <param name="dependencyRegistrator">The dependency registrator.</param>
+        protected virtual void OnConfigure(IDependencyRegistrator dependencyRegistrator)
         {
         }        
 
@@ -478,7 +478,7 @@ namespace LogoFX.Client.Bootstrapping
         /// <value>
         /// The registrator.
         /// </value>
-        public IIocContainerRegistrator Registrator => ContainerAdapter;
+        public IDependencyRegistrator Registrator => ContainerAdapter;
 
 #if TEST
         /// <summary>
@@ -487,7 +487,7 @@ namespace LogoFX.Client.Bootstrapping
         /// <value>
         /// The resolver.
         /// </value>
-        public IIocContainerResolver Resolver => ContainerAdapter;
+        public IDependencyResolver Resolver => ContainerAdapter;
 #endif
     }    
 }

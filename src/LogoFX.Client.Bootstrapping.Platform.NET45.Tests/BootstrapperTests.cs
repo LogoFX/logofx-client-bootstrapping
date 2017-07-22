@@ -107,11 +107,11 @@ namespace LogoFX.Client.Bootstrapping.Platform.NET45.Tests
         
     }
 
-    class ServicesModule : ICompositionModule<IIocContainerRegistrator>
+    class ServicesModule : ICompositionModule<IDependencyRegistrator>
     {
-        public void RegisterModule(IIocContainerRegistrator iocContainerRegistrator)
+        public void RegisterModule(IDependencyRegistrator dependencyRegistrator)
         {
-            iocContainerRegistrator.RegisterSingleton<IDependency, Dependency>();
+            dependencyRegistrator.RegisterSingleton<IDependency, Dependency>();
         }
     }
 
