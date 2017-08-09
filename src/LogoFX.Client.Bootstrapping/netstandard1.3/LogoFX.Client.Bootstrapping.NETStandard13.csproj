@@ -1,0 +1,27 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard1.3</TargetFramework>
+    <AssemblyName>LogoFX.Client.Bootstrapping</AssemblyName>
+    <RootNamespace>LogoFX.Client.Bootstrapping</RootNamespace>
+    <Version>1.7.0</Version>
+    <AssemblyVersion>1.7.0</AssemblyVersion>
+    <FileVersion>1.7.0</FileVersion>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <OutputPath>..\..\Bin\netstandard1.3\Release</OutputPath>
+    <DocumentationFile>..\..\Bin\netstandard1.3\Release\netstandard1.3\LogoFX.Client.Bootstrapping.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="..\src\BootstrapperCreationOptions.cs" Link="BootstrapperCreationOptions.cs" />
+    <Compile Include="..\src\DependencyRegistratorExtensions.cs" Link="DependencyRegistratorExtensions.cs" />
+    <Compile Include="..\src\Middleware.cs" Link="Middleware.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="LogoFX.Bootstrapping" Version="1.7.0-rc3" />
+  </ItemGroup>
+
+</Project>

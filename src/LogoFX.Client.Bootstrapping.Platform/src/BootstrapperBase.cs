@@ -1,4 +1,4 @@
-#if !TEST && (WINDOWS_UWP || NETFX_CORE || WIN81 )
+#if !TEST && (WINDOWS_UWP || NETFX_CORE)
 using Caliburn.Micro;
 #endif
 using System;
@@ -25,7 +25,7 @@ namespace LogoFX.Client.Bootstrapping
 #if NET45
         Caliburn.Micro.BootstrapperBase
 #else
-#if WINDOWS_UWP || NETFX_CORE || WIN81
+#if WINDOWS_UWP || NETFX_CORE
         CaliburnApplication
 #else
 #endif
@@ -93,9 +93,6 @@ namespace LogoFX.Client.Bootstrapping
 #endif
 #if NETFX_CORE || WINDOWS_UWP
                     new UniversalPlatformProvider()
-#endif
-#if WIN81
-                    new WinRTPlatformProvider()
 #endif
                     ;
             }

@@ -145,9 +145,9 @@
     <EmbeddedResource Include="Properties\LogoFX.Client.Bootstrapping.Platform.UWP.rd.xml" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\LogoFX.Client.Bootstrapping\portable\LogoFX.Client.Bootstrapping.csproj">
-      <Project>{bc639b22-269a-4556-83f7-bbfc2a4bf570}</Project>
-      <Name>LogoFX.Client.Bootstrapping</Name>
+    <ProjectReference Include="..\..\LogoFX.Client.Bootstrapping\netstandard1.3\LogoFX.Client.Bootstrapping.NETStandard13.csproj">
+      <Project>{e5e24c71-44fa-4f97-8300-db10b337e96b}</Project>
+      <Name>LogoFX.Client.Bootstrapping.NETStandard13</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">

@@ -1,13 +1,13 @@
 ﻿{
   "dependencies": {
-    "Caliburn.Micro": "3.0.3",
-    "LogoFX.Bootstrapping": "1.6.0",
-    "LogoFX.Client.Bootstrapping.Adapters.Contracts": "1.0.4",
-    "LogoFX.Client.Core": "1.1.0",
-    "LogoFX.Core": "1.0.7",
-    "Microsoft.NETCore.UniversalWindowsPlatform": "5.2.2",
-    "Solid.Practices.Composition": "1.1.7",
-    "Solid.Practices.Composition.Client": "1.1.6"
+    "Caliburn.Micro": "3.1.0",
+    "LogoFX.Bootstrapping": "1.7.0-rc3",
+    "LogoFX.Client.Bootstrapping.Adapters.Contracts": "1.1.0-rc1",
+    "LogoFX.Client.Core": "1.2.0-rc1",
+    "LogoFX.Core": "1.0.8-rc2",
+    "Microsoft.NETCore.UniversalWindowsPlatform": "5.3.3",
+    "Solid.Practices.Composition": "1.2.0-rc2",
+    "Solid.Practices.Composition.Client": "1.2.0-rc2"
   },
   "frameworks": {
     "uap10.0": {}
