@@ -42,54 +42,54 @@
       <HintPath>..\..\packages\Caliburn.Micro.3.1.0\lib\net45\Caliburn.Micro.Platform.Core.dll</HintPath>
     </Reference>
     <Reference Include="LogoFX.Bootstrapping, Version=1.7.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\LogoFX.Bootstrapping.1.7.0-rc3\lib\net45\LogoFX.Bootstrapping.dll</HintPath>
+      <HintPath>..\..\packages\LogoFX.Bootstrapping.1.7.0\lib\net45\LogoFX.Bootstrapping.dll</HintPath>
     </Reference>
     <Reference Include="LogoFX.Bootstrapping.Middleware, Version=1.7.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\LogoFX.Bootstrapping.1.7.0-rc3\lib\net45\LogoFX.Bootstrapping.Middleware.dll</HintPath>
+      <HintPath>..\..\packages\LogoFX.Bootstrapping.1.7.0\lib\net45\LogoFX.Bootstrapping.Middleware.dll</HintPath>
     </Reference>
     <Reference Include="LogoFX.Client.Bootstrapping.Adapters.Contracts, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\LogoFX.Client.Bootstrapping.Adapters.Contracts.1.1.0-rc1\lib\net45\LogoFX.Client.Bootstrapping.Adapters.Contracts.dll</HintPath>
+      <HintPath>..\..\packages\LogoFX.Client.Bootstrapping.Adapters.Contracts.1.1.0\lib\net45\LogoFX.Client.Bootstrapping.Adapters.Contracts.dll</HintPath>
     </Reference>
     <Reference Include="LogoFX.Client.Core, Version=1.2.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\LogoFX.Client.Core.Core.1.2.0-rc1\lib\net45\LogoFX.Client.Core.dll</HintPath>
+      <HintPath>..\..\packages\LogoFX.Client.Core.Core.1.2.0\lib\net45\LogoFX.Client.Core.dll</HintPath>
     </Reference>
     <Reference Include="LogoFX.Client.Core.Platform, Version=1.2.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\LogoFX.Client.Core.1.2.0-rc1\lib\net45\LogoFX.Client.Core.Platform.dll</HintPath>
+      <HintPath>..\..\packages\LogoFX.Client.Core.1.2.0\lib\net45\LogoFX.Client.Core.Platform.dll</HintPath>
     </Reference>
-    <Reference Include="LogoFX.Core, Version=1.0.8.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\LogoFX.Core.1.0.8-rc2\lib\net45\LogoFX.Core.dll</HintPath>
+    <Reference Include="LogoFX.Core, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\LogoFX.Core.1.1.0\lib\net45\LogoFX.Core.dll</HintPath>
     </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="Solid.Bootstrapping, Version=1.2.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Solid.Bootstrapping.1.2.0-rc4\lib\net45\Solid.Bootstrapping.dll</HintPath>
+      <HintPath>..\..\packages\Solid.Bootstrapping.1.2.0\lib\net45\Solid.Bootstrapping.dll</HintPath>
     </Reference>
     <Reference Include="Solid.Extensibility, Version=1.2.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Solid.Extensibility.1.2.0-rc2\lib\net45\Solid.Extensibility.dll</HintPath>
+      <HintPath>..\..\packages\Solid.Extensibility.1.2.0\lib\net45\Solid.Extensibility.dll</HintPath>
     </Reference>
     <Reference Include="Solid.Practices.Composition, Version=1.2.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Solid.Practices.Composition.Core.1.2.0-rc2\lib\net45\Solid.Practices.Composition.dll</HintPath>
+      <HintPath>..\..\packages\Solid.Practices.Composition.Core.1.2.0\lib\net45\Solid.Practices.Composition.dll</HintPath>
     </Reference>
     <Reference Include="Solid.Practices.Composition.Client.Platform, Version=1.2.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Solid.Practices.Composition.Client.1.2.0-rc2\lib\net45\Solid.Practices.Composition.Client.Platform.dll</HintPath>
+      <HintPath>..\..\packages\Solid.Practices.Composition.Client.1.2.0\lib\net45\Solid.Practices.Composition.Client.Platform.dll</HintPath>
     </Reference>
     <Reference Include="Solid.Practices.Composition.Container, Version=1.2.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Solid.Practices.Composition.Core.1.2.0-rc2\lib\net45\Solid.Practices.Composition.Container.dll</HintPath>
+      <HintPath>..\..\packages\Solid.Practices.Composition.Core.1.2.0\lib\net45\Solid.Practices.Composition.Container.dll</HintPath>
     </Reference>
     <Reference Include="Solid.Practices.Composition.Contracts, Version=1.2.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Solid.Practices.Composition.Core.1.2.0-rc2\lib\net45\Solid.Practices.Composition.Contracts.dll</HintPath>
+      <HintPath>..\..\packages\Solid.Practices.Composition.Core.1.2.0\lib\net45\Solid.Practices.Composition.Contracts.dll</HintPath>
     </Reference>
     <Reference Include="Solid.Practices.Composition.Platform, Version=1.2.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Solid.Practices.Composition.1.2.0-rc2\lib\net45\Solid.Practices.Composition.Platform.dll</HintPath>
+      <HintPath>..\..\packages\Solid.Practices.Composition.1.2.0\lib\net45\Solid.Practices.Composition.Platform.dll</HintPath>
     </Reference>
     <Reference Include="Solid.Practices.IoC, Version=1.2.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Solid.Practices.IoC.1.2.0-rc4\lib\net45\Solid.Practices.IoC.dll</HintPath>
+      <HintPath>..\..\packages\Solid.Practices.IoC.1.2.0\lib\net45\Solid.Practices.IoC.dll</HintPath>
     </Reference>
     <Reference Include="Solid.Practices.Middleware, Version=1.2.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Solid.Practices.Middleware.1.2.0-rc2\lib\net45\Solid.Practices.Middleware.dll</HintPath>
+      <HintPath>..\..\packages\Solid.Practices.Middleware.1.2.0\lib\net45\Solid.Practices.Middleware.dll</HintPath>
     </Reference>
     <Reference Include="Solid.Practices.Modularity, Version=1.2.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Solid.Practices.Modularity.1.2.0-rc3\lib\net45\Solid.Practices.Modularity.dll</HintPath>
+      <HintPath>..\..\packages\Solid.Practices.Modularity.1.2.0\lib\net45\Solid.Practices.Modularity.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
