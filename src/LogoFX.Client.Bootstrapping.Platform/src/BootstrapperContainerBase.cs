@@ -172,7 +172,7 @@ namespace LogoFX.Client.Bootstrapping
             if (creationOptions.UseDefaultMiddlewares)
             {
                 Use(new RegisterCompositionModulesMiddleware<TIocContainerAdapter, TIocContainer>());
-            }
+            }            
         }
 
         /// <summary>
@@ -340,6 +340,15 @@ namespace LogoFX.Client.Bootstrapping
 #endif
         {            
             ContainerAdapter = iocContainerAdapter;
+            _concreteMiddlewareHelper = new ExtensibleHelper<
+#if TEST
+    TestBootstrapperContainerBase
+#else
+                BootstrapperContainerBase
+#endif
+                <TIocContainerAdapter>>(this);
+            _registratorMiddlewareHelper = new ExtensibleHelper<IBootstrapperWithRegistrator>(this);
+            _middlewareHelper = new ExtensibleHelper<IBootstrapperWithContainerAdapter<TIocContainerAdapter>>(this);
             if (creationOptions.UseDefaultMiddlewares)
             {
                 Use(new RegisterCompositionModulesMiddleware<
@@ -353,7 +362,7 @@ namespace LogoFX.Client.Bootstrapping
                     .UseBootstrapperComposition().
                     Use(new RegisterViewModelsMiddleware(creationOptions.ExcludedTypes))
                     .Use(new RegisterPlatformSpecificMiddleware());
-            }           
+            }                      
         }        
 
         /// <summary>
@@ -449,9 +458,9 @@ namespace LogoFX.Client.Bootstrapping
 #if NET45 // in UWP the dispatcher is initialized later.
             InitializeDispatcher();
 #endif
-            MiddlewareApplier.ApplyMiddlewares(this, _registratorMiddlewares);
-            MiddlewareApplier.ApplyMiddlewares(this, _middlewares);
-            MiddlewareApplier.ApplyMiddlewares(this, _concreteMiddlewares);
+            MiddlewareApplier.ApplyMiddlewares(this, _registratorMiddlewareHelper.Middlewares);
+            MiddlewareApplier.ApplyMiddlewares(this, _middlewareHelper.Middlewares);
+            MiddlewareApplier.ApplyMiddlewares(this, _concreteMiddlewareHelper.Middlewares);
             OnConfigure(ContainerAdapter);
         }
                 

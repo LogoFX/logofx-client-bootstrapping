@@ -43,8 +43,7 @@ namespace LogoFX.Client.Bootstrapping
 #endif
         <TIocContainerAdapter>
     {
-        private readonly List<IMiddleware<IBootstrapperWithRegistrator>> _registratorMiddlewares =
-            new List<IMiddleware<IBootstrapperWithRegistrator>>();
+        private readonly ExtensibleHelper<IBootstrapperWithRegistrator> _registratorMiddlewareHelper;       
 
         /// <summary>
         /// Extends the functionality by using the specified middleware.
@@ -54,12 +53,11 @@ namespace LogoFX.Client.Bootstrapping
         public IBootstrapperWithRegistrator Use(
             IMiddleware<IBootstrapperWithRegistrator> middleware)
         {
-            _registratorMiddlewares.Add(middleware);
+            _registratorMiddlewareHelper.Use(middleware);
             return this;
         }
 
-        private readonly List<IMiddleware<IBootstrapperWithContainerAdapter<TIocContainerAdapter>>> _middlewares =
-            new List<IMiddleware<IBootstrapperWithContainerAdapter<TIocContainerAdapter>>>();
+        private readonly ExtensibleHelper<IBootstrapperWithContainerAdapter<TIocContainerAdapter>> _middlewareHelper;       
 
         /// <summary>
         /// Extends the functionality by using the specified middleware.
@@ -69,24 +67,17 @@ namespace LogoFX.Client.Bootstrapping
         public IBootstrapperWithContainerAdapter<TIocContainerAdapter> Use(
             IMiddleware<IBootstrapperWithContainerAdapter<TIocContainerAdapter>> middleware)
         {
-            _middlewares.Add(middleware);
+            _middlewareHelper.Use(middleware);
             return this;
         }
 
-        private readonly List<IMiddleware<
+        private readonly ExtensibleHelper<
 #if TEST
     TestBootstrapperContainerBase
 #else
             BootstrapperContainerBase
 #endif
-            <TIocContainerAdapter>>> _concreteMiddlewares =
-            new List<IMiddleware<
-#if TEST
-    TestBootstrapperContainerBase
-#else
-                BootstrapperContainerBase
-#endif
-                <TIocContainerAdapter>>>();
+            <TIocContainerAdapter>> _concreteMiddlewareHelper;                   
 
         /// <summary>
         /// Extends the functionality by using the specified middleware.
@@ -108,7 +99,7 @@ namespace LogoFX.Client.Bootstrapping
 #endif
                     <TIocContainerAdapter>> middleware)
         {
-            _concreteMiddlewares.Add(middleware);
+            _concreteMiddlewareHelper.Use(middleware);           
             return this;
         }
 
@@ -131,8 +122,8 @@ namespace LogoFX.Client.Bootstrapping
 #endif
                 <TIocContainerAdapter>>
         {
-            _concreteMiddlewares.Add(
-                new MiddlewareDecorator<
+            _concreteMiddlewareHelper.Use(
+                new InjectableMiddleware<
 #if TEST
     TestBootstrapperContainerBase
 #else
