@@ -95,7 +95,8 @@ namespace LogoFX.Client.Bootstrapping
                     new UniversalPlatformProvider()
 #endif
                     ;
-            }
+            }   
+            _middlewaresWrapper = new MiddlewaresWrapper<IBootstrapper>(this);
             if (creationOptions.UseDefaultMiddlewares)
             {
                 Use(new InitializeViewLocatorMiddleware());
@@ -112,7 +113,7 @@ namespace LogoFX.Client.Bootstrapping
             {
                 InitializeCompositionModules();
             }
-            MiddlewareApplier.ApplyMiddlewares(this, _middlewares);
+            MiddlewareApplier.ApplyMiddlewares(this, _middlewaresWrapper.Middlewares);
         }
 
         void IInitializable.Initialize()

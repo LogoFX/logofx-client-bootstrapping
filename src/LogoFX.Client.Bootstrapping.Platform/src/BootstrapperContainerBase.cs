@@ -169,6 +169,8 @@ namespace LogoFX.Client.Bootstrapping
                 creationOptions)
         {
             Container = iocContainer;
+            _middlewaresWrapper =
+                new MiddlewaresWrapper<IBootstrapperWithContainer<TIocContainerAdapter, TIocContainer>>(this);
             if (creationOptions.UseDefaultMiddlewares)
             {
                 Use(new RegisterCompositionModulesMiddleware<TIocContainerAdapter, TIocContainer>());
@@ -190,7 +192,7 @@ namespace LogoFX.Client.Bootstrapping
         protected override void OnConfigure(IDependencyRegistrator dependencyRegistrator)
         {
             base.OnConfigure(dependencyRegistrator);            
-            MiddlewareApplier.ApplyMiddlewares(this, _middlewares);
+            MiddlewareApplier.ApplyMiddlewares(this, _middlewaresWrapper.Middlewares);
         }
     }
 
@@ -340,15 +342,15 @@ namespace LogoFX.Client.Bootstrapping
 #endif
         {            
             ContainerAdapter = iocContainerAdapter;
-            _concreteMiddlewareHelper = new ExtensibleHelper<
+            _concreteMiddlewaresWrapper = new MiddlewaresWrapper<
 #if TEST
     TestBootstrapperContainerBase
 #else
                 BootstrapperContainerBase
 #endif
                 <TIocContainerAdapter>>(this);
-            _registratorMiddlewareHelper = new ExtensibleHelper<IBootstrapperWithRegistrator>(this);
-            _middlewareHelper = new ExtensibleHelper<IBootstrapperWithContainerAdapter<TIocContainerAdapter>>(this);
+            _registratorMiddlewaresWrapper = new MiddlewaresWrapper<IBootstrapperWithRegistrator>(this);
+            _middlewaresWrapper = new MiddlewaresWrapper<IBootstrapperWithContainerAdapter<TIocContainerAdapter>>(this);
             if (creationOptions.UseDefaultMiddlewares)
             {
                 Use(new RegisterCompositionModulesMiddleware<
@@ -458,9 +460,9 @@ namespace LogoFX.Client.Bootstrapping
 #if NET45 // in UWP the dispatcher is initialized later.
             InitializeDispatcher();
 #endif
-            MiddlewareApplier.ApplyMiddlewares(this, _registratorMiddlewareHelper.Middlewares);
-            MiddlewareApplier.ApplyMiddlewares(this, _middlewareHelper.Middlewares);
-            MiddlewareApplier.ApplyMiddlewares(this, _concreteMiddlewareHelper.Middlewares);
+            MiddlewareApplier.ApplyMiddlewares(this, _registratorMiddlewaresWrapper.Middlewares);
+            MiddlewareApplier.ApplyMiddlewares(this, _middlewaresWrapper.Middlewares);
+            MiddlewareApplier.ApplyMiddlewares(this, _concreteMiddlewaresWrapper.Middlewares);
             OnConfigure(ContainerAdapter);
         }
                 

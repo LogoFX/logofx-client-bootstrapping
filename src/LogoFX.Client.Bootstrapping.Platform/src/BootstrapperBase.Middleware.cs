@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using LogoFX.Bootstrapping;
+﻿using LogoFX.Bootstrapping;
 using Solid.Practices.Middleware;
 
 namespace LogoFX.Client.Bootstrapping
@@ -10,10 +9,7 @@ namespace LogoFX.Client.Bootstrapping
     partial class BootstrapperBase
 #endif
     {
-        private readonly
-            List<IMiddleware<IBootstrapper>>
-            _middlewares =
-                new List<IMiddleware<IBootstrapper>>();
+        private readonly MiddlewaresWrapper<IBootstrapper> _middlewaresWrapper;      
 
         /// <summary>
         /// Extends the functionality by using the specified middleware.
@@ -23,7 +19,7 @@ namespace LogoFX.Client.Bootstrapping
         public IBootstrapper Use(
             IMiddleware<IBootstrapper> middleware)
         {
-            _middlewares.Add(middleware);
+            _middlewaresWrapper.Use(middleware);
             return this;
         }
     }

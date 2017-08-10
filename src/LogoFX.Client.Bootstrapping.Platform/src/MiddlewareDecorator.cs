@@ -31,12 +31,12 @@ namespace LogoFX.Client.Bootstrapping
     }
 
     //TODO: Move to Solid.Extensibility
-    class ExtensibleHelper<T> : IExtensible<T> where T : class
+    class MiddlewaresWrapper<T> : IExtensible<T> where T : class
     {
         private readonly T _object;
         private readonly List<IMiddleware<T>> _middlewares = new List<IMiddleware<T>>();
 
-        public ExtensibleHelper(T @object)
+        public MiddlewaresWrapper(T @object)
         {
             _object = @object;
         }
