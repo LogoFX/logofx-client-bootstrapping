@@ -39,7 +39,7 @@ namespace LogoFX.Client.Bootstrapping
 #if TEST
     TestBootstrapperContainerBase
 #else
-    BootstrapperContainerBase
+        BootstrapperContainerBase
 #endif
         <TIocContainerAdapter>
     {
@@ -77,14 +77,14 @@ namespace LogoFX.Client.Bootstrapping
 #if TEST
     TestBootstrapperContainerBase
 #else
-    BootstrapperContainerBase
+            BootstrapperContainerBase
 #endif
             <TIocContainerAdapter>>> _concreteMiddlewares =
             new List<IMiddleware<
 #if TEST
     TestBootstrapperContainerBase
 #else
-    BootstrapperContainerBase
+                BootstrapperContainerBase
 #endif
                 <TIocContainerAdapter>>>();
 
@@ -97,26 +97,96 @@ namespace LogoFX.Client.Bootstrapping
 #if TEST
     TestBootstrapperContainerBase
 #else
-    BootstrapperContainerBase
+            BootstrapperContainerBase
 #endif
             <TIocContainerAdapter> Use(
-            IMiddleware<
+                IMiddleware<
 #if TEST
     TestBootstrapperContainerBase
 #else
-    BootstrapperContainerBase
+                    BootstrapperContainerBase
 #endif
-                <TIocContainerAdapter>> middleware)
+                    <TIocContainerAdapter>> middleware)
         {
             _concreteMiddlewares.Add(middleware);
             return this;
         }
+
+        /// <summary>
+        /// Extends the functionality by using the specified middleware.
+        /// </summary>        
+        /// <returns></returns>
+        public
+#if TEST
+    TestBootstrapperContainerBase
+#else
+            BootstrapperContainerBase
+#endif
+            <TIocContainerAdapter> Use<TMiddleware>()
+            where TMiddleware : class, IMiddleware<
+#if TEST
+    TestBootstrapperContainerBase
+#else
+                BootstrapperContainerBase
+#endif
+                <TIocContainerAdapter>>
+        {
+            _concreteMiddlewares.Add(
+                new MiddlewareDecorator<TMiddleware>(ContainerAdapter));
+            return this;
+        }
+
+        class MiddlewareDecorator<TMiddleware> : IMiddleware<
+#if TEST
+    TestBootstrapperContainerBase
+#else
+            BootstrapperContainerBase
+#endif
+            <TIocContainerAdapter>>
+            where TMiddleware : class, IMiddleware<
+#if TEST
+    TestBootstrapperContainerBase
+#else
+                BootstrapperContainerBase
+#endif
+                <TIocContainerAdapter>>
+
+        {
+            private readonly IDependencyResolver _resolver;
+            private TMiddleware _instance;
+
+            public MiddlewareDecorator(IDependencyResolver resolver)
+            {
+                _resolver = resolver;
+            }
+
+            public
+#if TEST
+                TestBootstrapperContainerBase
+#else
+            BootstrapperContainerBase
+#endif
+                <TIocContainerAdapter> Apply(
+#if TEST
+                    TestBootstrapperContainerBase
+#else
+            BootstrapperContainerBase
+#endif
+                <TIocContainerAdapter> @object)
+            {
+                if (_instance == null)
+                {
+                    _instance = _resolver.Resolve<TMiddleware>();
+                }
+                return _instance.Apply(@object);
+            }
+        }
     }
 
-    /// <summary>
-    /// Registers platform-specific services into the ioc container.
-    /// </summary>
-    public class RegisterPlatformSpecificMiddleware :
+/// <summary>
+/// Registers platform-specific services into the ioc container.
+/// </summary>
+public class RegisterPlatformSpecificMiddleware :
         IMiddleware<IBootstrapperWithRegistrator>
     {
         /// <summary>
