@@ -141,6 +141,9 @@
     <Compile Include="..\..\LogoFX.Client.Bootstrapping.Platform\src\CompositionStorage.cs">
       <Link>CompositionStorage.cs</Link>
     </Compile>
+    <Compile Include="..\..\LogoFX.Client.Bootstrapping.Platform\src\MiddlewareDecorator.cs">
+      <Link>MiddlewareDecorator.cs</Link>
+    </Compile>
     <Compile Include="..\src\IntegrationTestBootstrapperBase.cs">
       <Link>IntegrationTestBootstrapperBase.cs</Link>
     </Compile>

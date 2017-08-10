@@ -132,54 +132,15 @@ namespace LogoFX.Client.Bootstrapping
                 <TIocContainerAdapter>>
         {
             _concreteMiddlewares.Add(
-                new MiddlewareDecorator<TMiddleware>(ContainerAdapter));
+                new MiddlewareDecorator<
+#if TEST
+    TestBootstrapperContainerBase
+#else
+                    BootstrapperContainerBase
+#endif
+                    <TIocContainerAdapter>,
+                    TMiddleware>(ContainerAdapter));
             return this;
-        }
-
-        class MiddlewareDecorator<TMiddleware> : IMiddleware<
-#if TEST
-    TestBootstrapperContainerBase
-#else
-            BootstrapperContainerBase
-#endif
-            <TIocContainerAdapter>>
-            where TMiddleware : class, IMiddleware<
-#if TEST
-    TestBootstrapperContainerBase
-#else
-                BootstrapperContainerBase
-#endif
-                <TIocContainerAdapter>>
-
-        {
-            private readonly IDependencyResolver _resolver;
-            private TMiddleware _instance;
-
-            public MiddlewareDecorator(IDependencyResolver resolver)
-            {
-                _resolver = resolver;
-            }
-
-            public
-#if TEST
-                TestBootstrapperContainerBase
-#else
-            BootstrapperContainerBase
-#endif
-                <TIocContainerAdapter> Apply(
-#if TEST
-                    TestBootstrapperContainerBase
-#else
-            BootstrapperContainerBase
-#endif
-                <TIocContainerAdapter> @object)
-            {
-                if (_instance == null)
-                {
-                    _instance = _resolver.Resolve<TMiddleware>();
-                }
-                return _instance.Apply(@object);
-            }
         }
     }
 
