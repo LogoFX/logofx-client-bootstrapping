@@ -8,14 +8,14 @@ namespace LogoFX.Client.Bootstrapping
     //TODO: Move to Solid.Extensibility
     //Add Use<T> at the IExtensible level
     //Add IMiddleware interface as marker interface for easier automagical registration
-    class InjectableMiddleware<TExtensible, TMiddleware> : IMiddleware<TExtensible>
+    class MiddlewareDecorator<TExtensible, TMiddleware> : IMiddleware<TExtensible>
         where TExtensible : class, IExtensible<TExtensible>
         where TMiddleware : class, IMiddleware<TExtensible>
     {
         private readonly IDependencyResolver _resolver;
         private TMiddleware _instance;
 
-        public InjectableMiddleware(IDependencyResolver resolver)
+        public MiddlewareDecorator(IDependencyResolver resolver)
         {
             _resolver = resolver;
         }

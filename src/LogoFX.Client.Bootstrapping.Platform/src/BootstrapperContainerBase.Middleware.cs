@@ -123,7 +123,7 @@ namespace LogoFX.Client.Bootstrapping
                 <TIocContainerAdapter>>
         {
             _concreteMiddlewareHelper.Use(
-                new InjectableMiddleware<
+                new MiddlewareDecorator<
 #if TEST
     TestBootstrapperContainerBase
 #else
