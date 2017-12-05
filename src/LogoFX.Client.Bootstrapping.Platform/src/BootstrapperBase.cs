@@ -92,7 +92,7 @@ namespace LogoFX.Client.Bootstrapping
                     new NetPlatformProvider()
 #endif
 #if NETFX_CORE || WINDOWS_UWP
-                    new UniversalPlatformProvider()
+                    new NetStandardPlatformProvider()
 #endif
                     ;
             }   

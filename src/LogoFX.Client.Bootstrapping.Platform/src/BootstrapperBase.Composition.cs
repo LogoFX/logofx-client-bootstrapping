@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using LogoFX.Bootstrapping;
 using Solid.Practices.Composition.Contracts;
 using Solid.Practices.Modularity;
 

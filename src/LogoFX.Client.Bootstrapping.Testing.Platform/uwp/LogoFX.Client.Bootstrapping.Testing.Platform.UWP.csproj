@@ -135,12 +135,6 @@
     <Compile Include="..\..\LogoFX.Client.Bootstrapping.Platform\src\BootstrapperExtensions.cs">
       <Link>BootstrapperExtensions.cs</Link>
     </Compile>
-    <Compile Include="..\..\LogoFX.Client.Bootstrapping.Platform\src\CompositionHelper.cs">
-      <Link>CompositionHelper.cs</Link>
-    </Compile>
-    <Compile Include="..\..\LogoFX.Client.Bootstrapping.Platform\src\CompositionStorage.cs">
-      <Link>CompositionStorage.cs</Link>
-    </Compile>
     <Compile Include="..\..\LogoFX.Client.Bootstrapping.Platform\src\MiddlewareDecorator.cs">
       <Link>MiddlewareDecorator.cs</Link>
     </Compile>
