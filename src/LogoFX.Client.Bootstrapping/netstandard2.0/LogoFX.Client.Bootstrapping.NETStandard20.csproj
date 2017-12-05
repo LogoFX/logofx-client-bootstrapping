@@ -4,6 +4,7 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <AssemblyName>LogoFX.Client.Bootstrapping</AssemblyName>
     <RootNamespace>LogoFX.Client.Bootstrapping</RootNamespace>
+    <Version>1.7.1</Version>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
