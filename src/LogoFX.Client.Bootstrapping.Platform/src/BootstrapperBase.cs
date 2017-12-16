@@ -22,7 +22,7 @@ namespace LogoFX.Client.Bootstrapping
 #if TEST
         IntegrationTestBootstrapperBase
 #else
-#if NET45
+#if NET
         Caliburn.Micro.BootstrapperBase
 #else
 #if WINDOWS_UWP || NETFX_CORE
@@ -79,7 +79,7 @@ namespace LogoFX.Client.Bootstrapping
 #endif
 
             (BootstrapperCreationOptions creationOptions)
-#if NET45 && !TEST
+#if NET && !TEST
             :base(creationOptions.UseApplication)
 #endif
         {
@@ -87,14 +87,7 @@ namespace LogoFX.Client.Bootstrapping
             _creationOptions = creationOptions;
             if (creationOptions.DiscoverCompositionModules || creationOptions.InspectAssemblies)
             {
-                Solid.Practices.Composition.PlatformProvider.Current =
-#if NET45
-                    new NetPlatformProvider()
-#endif
-#if NETFX_CORE || WINDOWS_UWP
-                    new NetStandardPlatformProvider()
-#endif
-                    ;
+                Solid.Practices.Composition.PlatformProvider.Current = new NetStandardPlatformProvider();
             }   
             _middlewaresWrapper = new MiddlewaresWrapper<IBootstrapper>(this);
             if (creationOptions.UseDefaultMiddlewares)

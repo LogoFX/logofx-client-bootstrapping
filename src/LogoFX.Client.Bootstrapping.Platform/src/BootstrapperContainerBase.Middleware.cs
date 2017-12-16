@@ -145,7 +145,7 @@ public class RegisterPlatformSpecificMiddleware :
         public IBootstrapperWithRegistrator Apply(
             IBootstrapperWithRegistrator @object)
         {
-#if NET45
+#if NET
             @object.Registrator.RegisterSingleton<IWindowManager, WindowManager>();
 #endif
             return @object;

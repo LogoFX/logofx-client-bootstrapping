@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Windows.Threading;
 using LogoFX.Bootstrapping;
-#if NET45 && !TEST
+#if NET && !TEST
 using System.Windows;
 #endif
 #if !TEST && (NETFX_CORE || WINDOWS_UWP)
@@ -337,7 +337,7 @@ namespace LogoFX.Client.Bootstrapping
             (
             TIocContainerAdapter iocContainerAdapter,
             BootstrapperCreationOptions creationOptions)
-#if NET45 && !TEST
+#if NET && !TEST
             :base(creationOptions)
 #endif
         {            
@@ -375,7 +375,7 @@ namespace LogoFX.Client.Bootstrapping
         /// </value>
         internal TIocContainerAdapter ContainerAdapter { get; }
 
-#if NET45 && !TEST
+#if NET && !TEST
         /// <summary>
         /// Override this to add custom behavior to execute after the application starts.
         /// </summary>
@@ -457,7 +457,7 @@ namespace LogoFX.Client.Bootstrapping
         {
             base.Configure();                                                                   
             InitializeAdapter(ContainerAdapter);
-#if NET45 // in UWP the dispatcher is initialized later.
+#if NET // in UWP the dispatcher is initialized later.
             InitializeDispatcher();
 #endif
             MiddlewareApplier.ApplyMiddlewares(this, _registratorMiddlewaresWrapper.Middlewares);

@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-#if NET45
+#if NET
 using System.Windows;
 #else
 using Windows.UI.Xaml;
 #endif
-#if !WINDOWS_UWP && !NET45
+#if !WINDOWS_UWP && !NET
 using Caliburn.Micro;
 #endif
 

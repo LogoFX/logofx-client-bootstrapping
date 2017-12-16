@@ -18,7 +18,7 @@ namespace LogoFX.Client.Bootstrapping
         /// Gets the path of composition modules that will be discovered during bootstrapper configuration.
         /// </summary>
         public
-#if NET45
+#if NET
             virtual 
 #endif
             string ModulesPath
