@@ -163,6 +163,9 @@
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
       <Version>6.0.5</Version>
     </PackageReference>
+    <PackageReference Include="Solid.Practices.Composition">
+      <Version>1.2.1-rc2</Version>
+    </PackageReference>
     <PackageReference Include="Solid.Practices.Composition.Client">
       <Version>1.2.1-rc3</Version>
     </PackageReference>

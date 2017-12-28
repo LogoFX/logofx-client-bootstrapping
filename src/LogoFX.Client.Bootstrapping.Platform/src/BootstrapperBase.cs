@@ -87,7 +87,13 @@ namespace LogoFX.Client.Bootstrapping
             _creationOptions = creationOptions;
             if (creationOptions.DiscoverCompositionModules || creationOptions.InspectAssemblies)
             {
-                Solid.Practices.Composition.PlatformProvider.Current = new NetStandardPlatformProvider();
+                Solid.Practices.Composition.PlatformProvider.Current = new
+#if WINDOWS_UWP
+                    UniversalPlatformProvider
+#else
+                    NetStandardPlatformProvider
+#endif
+                    ();
             }   
             _middlewaresWrapper = new MiddlewaresWrapper<IBootstrapper>(this);
             if (creationOptions.UseDefaultMiddlewares)
