@@ -143,7 +143,7 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Caliburn.Micro">
-      <Version>3.2.0</Version>
+      <Version>4.0.0-alpha.1</Version>
     </PackageReference>
     <PackageReference Include="LogoFX.Bootstrapping">
       <Version>1.7.1-rc4</Version>
@@ -152,13 +152,13 @@
       <Version>1.1.1-rc2</Version>
     </PackageReference>
     <PackageReference Include="LogoFX.Client.Core">
-      <Version>1.2.1-rc2</Version>
+      <Version>1.2.1-rc3</Version>
     </PackageReference>
     <PackageReference Include="LogoFX.Core">
       <Version>1.1.1-rc2</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
-      <Version>6.0.5</Version>
+      <Version>6.0.6</Version>
     </PackageReference>
     <PackageReference Include="Solid.Practices.Composition">
       <Version>1.2.1-rc3</Version>
