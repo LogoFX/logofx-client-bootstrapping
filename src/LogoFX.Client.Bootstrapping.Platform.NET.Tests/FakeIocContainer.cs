@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using LogoFX.Client.Bootstrapping.Adapters.Contracts;
 using Solid.Practices.IoC;
 
-namespace LogoFX.Client.Bootstrapping.Platform.NET45.Tests
+namespace LogoFX.Client.Bootstrapping.Platform.NET.Tests
 {
     class ContainerEntry
     {
