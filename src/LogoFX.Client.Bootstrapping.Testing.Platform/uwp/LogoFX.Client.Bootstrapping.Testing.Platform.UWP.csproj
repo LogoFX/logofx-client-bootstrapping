@@ -104,6 +104,10 @@
     <UseVSHostingProcess>false</UseVSHostingProcess>
     <ErrorReport>prompt</ErrorReport>
   </PropertyGroup>
+  <PropertyGroup>   
+    <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
   <ItemGroup>
     <Compile Include="..\..\LogoFX.Client.Bootstrapping.Platform\src\BootstrapperBase.Adapter.cs">
       <Link>BootstrapperBase.Adapter.cs</Link>
