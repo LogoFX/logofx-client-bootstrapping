@@ -7,7 +7,7 @@ using LogoFX.Client.Bootstrapping.Adapters.Contracts;
 using LogoFX.Client.Bootstrapping.Xamarin.Forms;
 using Solid.Practices.IoC;
 
-namespace LogoFX.Client.Bootstrapping.Platform.Droid
+namespace LogoFX.Client.Bootstrapping
 {
     /// <summary>
     /// Holds the responsibility for proper platform and
