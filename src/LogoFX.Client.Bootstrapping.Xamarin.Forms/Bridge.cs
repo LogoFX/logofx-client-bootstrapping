@@ -26,8 +26,7 @@ namespace LogoFX.Client.Bootstrapping.Xamarin.Forms
                 .AddInstance(ContainerContext.Registrator)
                 .AddInstance(ContainerContext.Resolver)
                 .AddSingleton<TApp>()
-                .AddSingleton<TBootstrapper>()
-                .AddSingleton<BootstrapperBase, TBootstrapper>();           
+                .AddSingleton<TBootstrapper>();           
         }
     }
 }

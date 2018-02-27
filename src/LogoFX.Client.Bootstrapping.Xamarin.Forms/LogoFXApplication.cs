@@ -18,12 +18,10 @@ namespace LogoFX.Client.Bootstrapping.Xamarin.Forms
         /// Creates an instance of the <see cref="LogoFXApplication{TRootViewModel}"/>
         /// </summary>
         /// <param name="bootstrapper"></param>
-        /// <param name="dependencyRegistrator"></param>
         public LogoFXApplication(
-            BootstrapperBase bootstrapper, 
-            IDependencyRegistrator dependencyRegistrator)
+            BootstrapperBase bootstrapper)
         {
-            _dependencyRegistrator = dependencyRegistrator;
+            _dependencyRegistrator = bootstrapper.Registrator;
             Initialize();
             bootstrapper
                 .Use(new RegisterCompositionModulesMiddleware<BootstrapperBase>())
