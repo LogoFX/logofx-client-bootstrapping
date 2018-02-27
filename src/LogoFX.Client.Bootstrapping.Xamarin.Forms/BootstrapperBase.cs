@@ -13,6 +13,12 @@ using Solid.Practices.Modularity;
 
 namespace LogoFX.Client.Bootstrapping.Xamarin.Forms
 {
+    /// <summary>
+    /// Base class that enables the following capabiities:
+    /// Modularity, 
+    /// Assembly inspection, 
+    /// Extensibility.
+    /// </summary>
     public class BootstrapperBase : IInitializable,
         IExtensible<BootstrapperBase>,
         ICompositionModulesProvider,
@@ -24,6 +30,10 @@ namespace LogoFX.Client.Bootstrapping.Xamarin.Forms
             _middlewares =
                 new List<IMiddleware<BootstrapperBase>>();
 
+        /// <summary>
+        /// Creates an instance of <see cref="BootstrapperBase"/>
+        /// </summary>
+        /// <param name="dependencyRegistrator">The dependency registrator.</param>
         public BootstrapperBase(IDependencyRegistrator dependencyRegistrator)
         {
             Registrator = dependencyRegistrator;
@@ -54,9 +64,15 @@ namespace LogoFX.Client.Bootstrapping.Xamarin.Forms
         /// </value>
         public IEnumerable<ICompositionModule> Modules { get; private set; } = new ICompositionModule[] { };
 
+        /// <summary>
+        /// <inheritdoc />
+        /// </summary>
         public IDependencyRegistrator Registrator { get; }
 
         private IEnumerable<Assembly> _assemblies;
+        /// <summary>
+        /// <inheritdoc />
+        /// </summary>
         public IEnumerable<Assembly> Assemblies => _assemblies ??
             (_assemblies = LoadAssemblies().FilterByPrefixes(Prefixes));
 
@@ -75,10 +91,8 @@ namespace LogoFX.Client.Bootstrapping.Xamarin.Forms
         }
 
         /// <summary>
-        /// Extends the functionality by using the specified middleware.
+        /// <inheritdoc />
         /// </summary>
-        /// <param name="middleware">The middleware.</param>
-        /// <returns></returns>
         public BootstrapperBase Use(
             IMiddleware<BootstrapperBase> middleware)
         {
@@ -86,6 +100,9 @@ namespace LogoFX.Client.Bootstrapping.Xamarin.Forms
             return this;
         }
 
+        /// <summary>
+        /// <inheritdoc />
+        /// </summary>
         public void Initialize()
         {
             InitializeCompositionModules();
