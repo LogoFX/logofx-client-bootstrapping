@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{D68C98B7-241E-42C2-97BB-5E4A76DD832B}</ProjectGuid>
+    <ProjectTypeGuids>{FEACFBD2-3405-455C-9665-78FE426C6842};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <RootNamespace>LogoFX.Client.Bootstrapping</RootNamespace>
+    <IPhoneResourcePrefix>Resources</IPhoneResourcePrefix>
+    <AssemblyName>LogoFX.Client.Bootstrapping.Platform</AssemblyName>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>full</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\..\Bin\iOS\Release\</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+    <DocumentationFile>..\..\Bin\iOS\Release\LogoFX.Client.Bootstrapping.Platform.xml</DocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <Reference Include="Xamarin.iOS" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Resources\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="LogoFXApplicationDelegate.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\LogoFX.Client.Bootstrapping.Xamarin.Forms\LogoFX.Client.Bootstrapping.Xamarin.Forms.csproj">
+      <Project>{84B66917-B748-46EA-B2E7-AE59AB3016F8}</Project>
+      <Name>LogoFX.Client.Bootstrapping.Xamarin.Forms</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Caliburn.Micro">
+      <Version>4.0.0-alpha.1</Version>
+    </PackageReference>
+    <PackageReference Include="LogoFX.Client.Bootstrapping.Adapters.Contracts">
+      <Version>1.1.1-rc2</Version>
+    </PackageReference>
+    <PackageReference Include="LogoFX.Client.Core">
+      <Version>1.2.1-rc3</Version>
+    </PackageReference>
+    <PackageReference Include="Solid.Practices.IoC">
+      <Version>1.2.1-rc4</Version>
+    </PackageReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
+</Project>
