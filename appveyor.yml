@@ -4,6 +4,10 @@ before_build:
 - cd src
 - nuget restore
 
+branches:
+  only:
+    - master
+
 image: Visual Studio 2017
 
 build:
