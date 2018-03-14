@@ -1,0 +1,235 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>LogoFX.Bootstrapping.Middleware</name>
+    </assembly>
+    <members>
+        <member name="T:LogoFX.Bootstrapping.BootstrapperExtensions">
+            <summary>
+            The bootstrapper extension methods.
+            </summary>
+        </member>
+        <member name="M:LogoFX.Bootstrapping.BootstrapperExtensions.ApplyCollectionRegistration(LogoFX.Bootstrapping.IBootstrapperWithRegistrator,System.Type)">
+            <summary>
+            Applies the collection registration middleware.
+            </summary>
+            <param name="bootstrapper">The bootstrapper.</param>
+            <param name="serviceContractType">The type of the service contract.</param>
+            <returns></returns>
+        </member>
+        <member name="M:LogoFX.Bootstrapping.BootstrapperExtensions.ApplyCollectionRegistration``1(LogoFX.Bootstrapping.IBootstrapperWithRegistrator)">
+            <summary>
+            Applies the collection registration middleware.
+            </summary>
+            <param name="bootstrapper">The bootstrapper.</param>
+            <typeparam name="TService">The type of the service contract.</typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:LogoFX.Bootstrapping.BootstrapperExtensions.UseCollectionRegistration(LogoFX.Bootstrapping.IBootstrapperWithRegistrator,System.Type)">
+            <summary>
+            Uses the collection registration middleware.
+            </summary>
+            <param name="bootstrapper">The bootstrapper.</param>
+            <param name="serviceContractType">The type of the service contract.</param>
+            <returns></returns>
+        </member>
+        <member name="M:LogoFX.Bootstrapping.BootstrapperExtensions.UseResolver(LogoFX.Bootstrapping.IBootstrapperWithRegistrator,Solid.Practices.IoC.IDependencyResolver)">
+            <summary>
+            Uses the resolver middleware.
+            </summary>
+            <param name="bootstrapper">The bootstrapper.</param>
+            <param name="resolver">The resolver.</param>
+            <returns></returns>
+        </member>
+        <member name="M:LogoFX.Bootstrapping.BootstrapperExtensions.UseBootstrapperComposition(LogoFX.Bootstrapping.IBootstrapperWithRegistrator)">
+            <summary>
+            Uses the bootstrapper composition middleware.
+            </summary>
+            <param name="bootstrapper">The bootstrapper.</param>
+            <returns></returns>
+        </member>
+        <member name="M:LogoFX.Bootstrapping.BootstrapperExtensions.UseMany``1(``0,System.Collections.Generic.IEnumerable{Solid.Practices.Middleware.IMiddleware{Solid.Practices.IoC.IDependencyRegistrator}})">
+            <summary>
+            Extends the bootstrapper's functionality by using the specified collection
+            of dependency registrator middlewares.
+            </summary>
+            <typeparam name="TBootstrapper">The type of the bootstrapper.</typeparam>
+            <param name="bootstrapper">The bootstrapper.</param>
+            <param name="middlewares">The middlewares.</param>
+            <returns></returns>
+        </member>
+        <member name="T:LogoFX.Bootstrapping.RegisterCompositionModulesMiddleware">
+            <summary>
+            Registers composition modules into the bootstrapper's registrator.
+            </summary>    
+        </member>
+        <member name="M:LogoFX.Bootstrapping.RegisterCompositionModulesMiddleware.Apply(LogoFX.Bootstrapping.IBootstrapperWithRegistrator)">
+            <summary>Applies the middleware on the specified object.</summary>
+            <param name="object">The object.</param>
+            <returns></returns>
+        </member>
+        <member name="T:LogoFX.Bootstrapping.RegisterCompositionModulesMiddleware`1">
+            <summary>
+            Registers composition modules into the bootstrapper's registrator.
+            </summary>
+            <typeparam name="TBootstrapper">The type of the bootstrapper.</typeparam>
+            <seealso cref="T:Solid.Practices.Middleware.IMiddleware`1" />
+        </member>
+        <member name="M:LogoFX.Bootstrapping.RegisterCompositionModulesMiddleware`1.Apply(`0)">
+            <summary>Applies the middleware on the specified object.</summary>
+            <param name="object">The object.</param>
+            <returns></returns>
+        </member>
+        <member name="T:LogoFX.Bootstrapping.RegisterCustomCompositionModulesMiddleware`2">
+            <summary>
+            Registers composition modules into the bootstrapper's registrator.
+            </summary>
+            <typeparam name="TBootstrapper">The type of the bootstrapper.</typeparam>
+            <typeparam name="TDependencyRegistrator">The type of the dependency registrator.</typeparam>
+        </member>
+        <member name="M:LogoFX.Bootstrapping.RegisterCustomCompositionModulesMiddleware`2.Apply(`0)">
+            <summary>
+            Applies the middleware on the specified object.
+            </summary>
+            <param name="object">The object.</param>
+            <returns></returns>
+        </member>
+        <member name="T:LogoFX.Bootstrapping.RegisterCompositionModulesMiddleware`2">
+            <summary>
+            Registers composition modules into the bootstrapper's ioc container.
+            </summary>    
+            <typeparam name="TIocContainerAdapter">The type of the ioc container adapter.</typeparam>
+            <typeparam name="TIocContainer">The type of the ioc container.</typeparam>    
+        </member>
+        <member name="M:LogoFX.Bootstrapping.RegisterCompositionModulesMiddleware`2.Apply(LogoFX.Bootstrapping.IBootstrapperWithContainer{`0,`1})">
+            <summary>
+            Applies the middleware on the specified object.
+            </summary>
+            <param name="object">The object.</param>
+            <returns></returns>
+        </member>
+        <member name="T:LogoFX.Bootstrapping.RegisterContainerCompositionModulesMiddleware`2">
+            <summary>
+            Registers composition modules into the boostrapper's ioc container.
+            </summary>
+            <typeparam name="TIocContainer">The type of the ioc container.</typeparam>
+            <typeparam name="TBootstrapper">The type of the bootstrapper.</typeparam>    
+        </member>
+        <member name="M:LogoFX.Bootstrapping.RegisterContainerCompositionModulesMiddleware`2.Apply(`0)">
+            <summary>
+            Applies the middleware on the specified object.
+            </summary>
+            <param name="object">The object.</param>
+            <returns></returns>
+        </member>
+        <member name="T:LogoFX.Bootstrapping.RegisterBootstrapperCompositionModulesMiddleware">
+            <summary>
+            Registers the collection of <see cref="T:LogoFX.Bootstrapping.IBootstrapperCompositionModule"/> modules.
+            </summary>
+            <seealso cref="T:Solid.Practices.Middleware.IMiddleware`1" />
+        </member>
+        <member name="M:LogoFX.Bootstrapping.RegisterBootstrapperCompositionModulesMiddleware.Apply(LogoFX.Bootstrapping.IBootstrapperWithRegistrator)">
+            <summary>
+            Applies the middleware on the specified object.
+            </summary>
+            <param name="object">The object.</param>
+            <returns/>
+        </member>
+        <member name="T:LogoFX.Bootstrapping.RegisterCollectionMiddleware">
+            <summary>
+            Registers collection of services. This is used in case of 
+            loosely coupled modular application where the services are defined in separate assemblies 
+            and/or are otherwise private.
+            </summary>
+        </member>
+        <member name="M:LogoFX.Bootstrapping.RegisterCollectionMiddleware.#ctor(System.Type)">
+            <summary>
+            Initializes a new instance of the <see cref="T:LogoFX.Bootstrapping.RegisterCollectionMiddleware"/> class.
+            </summary>
+            <param name="serviceContractType">The type of the module root object.</param>
+        </member>
+        <member name="M:LogoFX.Bootstrapping.RegisterCollectionMiddleware.Apply(LogoFX.Bootstrapping.IBootstrapperWithRegistrator)">
+            <summary>
+            Applies the middleware on the specified object.
+            </summary>
+            <param name="object">The object.</param>
+            <returns/>
+        </member>
+        <member name="T:LogoFX.Bootstrapping.RegisterCollectionMiddleware`1">
+            <summary>
+            Registers collection of services. This is used in case of 
+            loosely coupled modular application where the services are defined in separate assemblies 
+            and/or are otherwise private.
+            <typeparam name="TBootstrapper">The type of the bootstrapper.</typeparam>    
+            </summary>
+        </member>
+        <member name="M:LogoFX.Bootstrapping.RegisterCollectionMiddleware`1.#ctor(System.Type)">
+            <summary>
+            Initializes a new instance of the <see cref="T:LogoFX.Bootstrapping.RegisterCollectionMiddleware"/> class.
+            </summary>
+            <param name="serviceContractType">The type of the module root object.</param>
+        </member>
+        <member name="M:LogoFX.Bootstrapping.RegisterCollectionMiddleware`1.Apply(`0)">
+            <summary>
+            Applies the middleware on the specified object.
+            </summary>
+            <param name="object">The object.</param>
+            <returns/>
+        </member>
+        <member name="T:LogoFX.Bootstrapping.RegisterResolverMiddleware">
+            <summary>
+            Registers the dependency resolver.
+            </summary>    
+        </member>
+        <member name="M:LogoFX.Bootstrapping.RegisterResolverMiddleware.#ctor(Solid.Practices.IoC.IDependencyResolver)">
+            <summary>
+            Initializes a new instance of the <see cref="T:LogoFX.Bootstrapping.RegisterResolverMiddleware"/> class.
+            </summary>
+            <param name="resolver">The resolver.</param>
+        </member>
+        <member name="M:LogoFX.Bootstrapping.RegisterResolverMiddleware.Apply(LogoFX.Bootstrapping.IBootstrapperWithRegistrator)">
+            <summary>Applies the middleware on the specified object.</summary>
+            <param name="object">The object.</param>
+            <returns></returns>
+        </member>
+        <member name="T:LogoFX.Bootstrapping.RegisterResolverMiddleware`1">
+            <summary>
+            Registers the dependency resolver.
+            </summary>
+            <typeparam name="TBootstrapper">The type of the bootstrapper.</typeparam>
+            <seealso cref="T:Solid.Practices.Middleware.IMiddleware`1" />
+        </member>
+        <member name="M:LogoFX.Bootstrapping.RegisterResolverMiddleware`1.#ctor(Solid.Practices.IoC.IDependencyResolver)">
+            <summary>
+            Initializes a new instance of the <see cref="T:LogoFX.Bootstrapping.RegisterResolverMiddleware`1"/> class.
+            </summary>
+            <param name="resolver">The resolver.</param>
+        </member>
+        <member name="M:LogoFX.Bootstrapping.RegisterResolverMiddleware`1.Apply(`0)">
+            <summary>Applies the middleware on the specified object.</summary>
+            <param name="object">The object.</param>
+            <returns></returns>
+        </member>
+        <member name="T:LogoFX.Bootstrapping.UseDependencyRegistratorMiddleware`1">
+            <summary>
+            Extends the bootstrapper's functionality by using the 
+            specified dependency registrator middleware.
+            </summary>
+            <typeparam name="TBootstrapper">The type of the bootstrapper.</typeparam>
+            <seealso cref="T:Solid.Practices.Middleware.IMiddleware`1" />
+        </member>
+        <member name="M:LogoFX.Bootstrapping.UseDependencyRegistratorMiddleware`1.#ctor(Solid.Practices.Middleware.IMiddleware{Solid.Practices.IoC.IDependencyRegistrator})">
+            <summary>
+            Initializes a new instance of the <see cref="T:LogoFX.Bootstrapping.UseDependencyRegistratorMiddleware`1"/> class.
+            </summary>
+            <param name="middleware">The dependency registrator middleware.</param>
+        </member>
+        <member name="M:LogoFX.Bootstrapping.UseDependencyRegistratorMiddleware`1.Apply(`0)">
+            <summary>
+            Applies the middleware on the specified object.
+            </summary>
+            <param name="object">The object.</param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

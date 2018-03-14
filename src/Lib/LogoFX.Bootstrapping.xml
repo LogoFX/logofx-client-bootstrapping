@@ -1,0 +1,103 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>LogoFX.Bootstrapping</name>
+    </assembly>
+    <members>
+        <member name="T:LogoFX.Bootstrapping.CompositionHelper">
+            <summary>
+            Helper for efficient composition modules management
+            </summary>
+        </member>
+        <member name="M:LogoFX.Bootstrapping.CompositionHelper.GetCompositionModules(System.String,System.String[],System.Boolean)">
+            <summary>
+            Gets the collection of <see cref="T:Solid.Practices.Modularity.ICompositionModule"/>
+            </summary>
+            <param name="modulesPath">The relative modules path.</param>
+            <param name="prefixes">The prefixes to be looked for</param>
+            <param name="reuseCompositionInformation">True, if the composition modules information should be reused, false otherwise</param>
+            <returns></returns>
+        </member>
+        <member name="M:LogoFX.Bootstrapping.CompositionHelper.GetCompositionModules(System.Collections.Generic.IEnumerable{System.Reflection.Assembly},System.Boolean)">
+            <summary>
+            Gets the collection of <see cref="T:Solid.Practices.Modularity.ICompositionModule"/>
+            </summary>
+            <param name="assemblies">The collection of assemblies.</param>
+            <param name="reuseCompositionInformation">True, if the composition modules information should be reused, false otherwise</param>
+            <returns></returns>
+        </member>
+        <member name="T:LogoFX.Bootstrapping.ContainerExtensions">
+            <summary>
+            The ioc container extension methods.
+            </summary>
+        </member>
+        <member name="M:LogoFX.Bootstrapping.ContainerExtensions.RegisterContainerCompositionModules``1(``0,System.Collections.Generic.IEnumerable{Solid.Practices.Modularity.ICompositionModule})">
+            <summary>
+            Registers the composition modules into the ioc container.
+            </summary>
+            <typeparam name="TIocContainer">The type of the ioc container.</typeparam>
+            <param name="iocContainer">The ioc container.</param>
+            <param name="compositionModules">The composition modules.</param>
+        </member>
+        <member name="T:LogoFX.Bootstrapping.ContainerRegistratorExtensions">
+            <summary>
+            The ioc container registrator extension methods.
+            </summary>
+        </member>
+        <member name="M:LogoFX.Bootstrapping.ContainerRegistratorExtensions.RegisterContainerAdapterCompositionModules``1(``0,System.Collections.Generic.IEnumerable{Solid.Practices.Modularity.ICompositionModule})">
+            <summary>
+            Registers the composition modules into the ioc container.
+            </summary>
+            <typeparam name="TIocContainer">The type of the ioc container.</typeparam>
+            <param name="iocContainer">The dependency registrator.</param>
+            <param name="compositionModules">The composition modules.</param>
+        </member>
+        <member name="T:LogoFX.Bootstrapping.IInitializationInfo">
+            <summary>
+            Exposes additional initialization information.
+            </summary>
+        </member>
+        <member name="E:LogoFX.Bootstrapping.IInitializationInfo.InitializationCompleted">
+            <summary>
+            Occurs when initialization is completed and the application starts.
+            </summary>
+        </member>
+        <member name="T:LogoFX.Bootstrapping.IBootstrapper">
+            <summary>
+            Represents the bootstrapper.
+            </summary>
+        </member>
+        <member name="T:LogoFX.Bootstrapping.IBootstrapperWithRegistrator">
+            <summary>
+            Represents bootstrapper with dependency registrator.
+            </summary>
+        </member>
+        <member name="T:LogoFX.Bootstrapping.IBootstrapperWithContainerAdapter`1">
+            <summary>
+            Represents bootstrapper with ioc container adapter.
+            </summary>    
+            <typeparam name="TIocContainerAdapter">The type of the ioc container adapter.</typeparam>
+            <seealso cref="T:LogoFX.Bootstrapping.IBootstrapper" />
+        </member>
+        <member name="T:LogoFX.Bootstrapping.IBootstrapperWithContainer`2">
+            <summary>
+            Represents bootstrapper with ioc container and ioc container adapter.
+            </summary>    
+            <typeparam name="TIocContainerAdapter">The type of the ioc container adapter.</typeparam>
+            <typeparam name="TIocContainer">The type of the ioc container.</typeparam>
+            <seealso cref="T:LogoFX.Bootstrapping.IBootstrapperWithContainerAdapter`1" />
+        </member>
+        <member name="T:LogoFX.Bootstrapping.IBootstrapperCompositionModule">
+            <summary>
+            Represents a composition module, which may register dependencies using the bootstrapper.
+            </summary>
+            <seealso cref="T:Solid.Practices.Modularity.ICompositionModule" />
+        </member>
+        <member name="M:LogoFX.Bootstrapping.IBootstrapperCompositionModule.RegisterModule(LogoFX.Bootstrapping.IBootstrapperWithRegistrator)">
+            <summary>
+            Registers dependencies using the bootstrapper.
+            </summary>
+            <param name="bootstrapper">The bootstrapper.</param>
+        </member>
+    </members>
+</doc>

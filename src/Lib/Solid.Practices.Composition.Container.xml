@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Solid.Practices.Composition.Container</name>
+    </assembly>
+    <members>
+        <member name="T:Solid.Practices.Composition.Container.SimpleCompositionContainer`1">
+            <summary>
+            Represents a basic implementation of composition container with export feature only.
+            </summary>
+            <typeparam name="TModule">The type of the module.</typeparam>
+            <seealso cref="T:Solid.Practices.Composition.Contracts.ICompositionContainer" />
+        </member>
+        <member name="M:Solid.Practices.Composition.Container.SimpleCompositionContainer`1.#ctor(System.Collections.Generic.IEnumerable{System.Reflection.Assembly},Solid.Practices.Composition.Contracts.ICompositionModuleCreationStrategy)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Solid.Practices.Composition.Container.SimpleCompositionContainer`1"/> class.
+            </summary>
+            <param name="assemblies">The assemblies.</param>        
+            <param name="compositionModuleCreationStrategy">The module creation strategy.</param>        
+        </member>
+        <member name="P:Solid.Practices.Composition.Container.SimpleCompositionContainer`1.Modules">
+            <summary>
+            Collection of composition modules.
+            </summary>            
+        </member>
+        <member name="P:Solid.Practices.Composition.Container.SimpleCompositionContainer`1.Solid#Practices#Composition#Contracts#ICompositionModulesProvider{TModule}#Modules">
+            <summary>
+            Collection of composition modules.
+            </summary>            
+        </member>
+        <member name="M:Solid.Practices.Composition.Container.SimpleCompositionContainer`1.Compose">
+            <summary>
+            Composes the composition modules.
+            </summary>
+        </member>
+    </members>
+</doc>

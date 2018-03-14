@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Solid.Practices.Composition.Client</name>
+    </assembly>
+    <members>
+        <member name="T:Solid.Practices.Composition.Client.AssembliesResolver">
+            <summary>
+            Assemblies resolver for client part of desktop applications.
+            </summary>
+        </member>
+        <member name="M:Solid.Practices.Composition.Client.AssembliesResolver.#ctor(System.Type,Solid.Practices.Composition.Contracts.IAssemblySourceProvider)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Solid.Practices.Composition.Client.AssembliesResolver"/> class.
+            </summary>
+            <param name="entryType">Type of the entry.</param>
+            <param name="assemblySourceProvider">The assembly source provider.</param>
+        </member>
+        <member name="M:Solid.Practices.Composition.Client.AssembliesResolver.GetRootAssemblies">
+            <summary>
+            Override this method to retrieve platform-specific root assemblies.
+            </summary>
+            <returns>Collection of assemblies.</returns>
+        </member>
+        <member name="T:Solid.Practices.Composition.Client.ClientAssemblySourceProvider">
+            <summary>
+            Retrieves list of the assemblies to be 
+            inspected for application elements in the client side.
+            </summary>
+            <seealso cref="T:Solid.Practices.Composition.AssemblySourceProviderBase" />
+        </member>
+        <member name="M:Solid.Practices.Composition.Client.ClientAssemblySourceProvider.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Solid.Practices.Composition.Client.ClientAssemblySourceProvider"/> class.
+            </summary>
+            <param name="rootPath">The root path.</param>
+        </member>
+        <member name="M:Solid.Practices.Composition.Client.ClientAssemblySourceProvider.ResolveNamespaces">
+            <summary>
+            Returns the list of namespaces to be looked for during assembly discovery.
+            </summary>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

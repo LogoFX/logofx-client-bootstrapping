@@ -1,0 +1,78 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>LogoFX.Client.Core.Platform</name>
+    </assembly>
+    <members>
+        <member name="T:LogoFX.Client.Core.CommonProperties">
+            <summary>
+            This is indended  to deal with missed visual and logical tree inheritance on some of poorly designed controls
+            </summary>
+        </member>
+        <member name="M:LogoFX.Client.Core.CommonProperties.GetOwner(System.Windows.DependencyObject)">
+            <summary>
+            Gets the owner value
+            </summary>
+            <param name="obj"></param>
+            <returns></returns>
+        </member>
+        <member name="M:LogoFX.Client.Core.CommonProperties.SetOwner(System.Windows.DependencyObject,System.Windows.DependencyObject)">
+            <summary>
+            Sets the owner value
+            </summary>
+            <param name="obj"></param>
+            <param name="value"></param>
+        </member>
+        <member name="F:LogoFX.Client.Core.CommonProperties.OwnerProperty">
+            <summary>
+            Owner which is usually the parent.
+            </summary>
+        </member>
+        <member name="T:LogoFX.Client.Core.Consts">
+            <summary>
+            Dispatcher-related constants.
+            </summary>
+        </member>
+        <member name="F:LogoFX.Client.Core.Consts.DispatcherPriority">
+            <summary>
+            The dispatcher priority
+            </summary>
+        </member>
+        <member name="T:System.Windows.Threading.PlatformDispatch">
+            <summary>
+            Default UI-thread dispatcher
+            </summary>
+        </member>
+        <member name="M:System.Windows.Threading.PlatformDispatch.InitializeDispatch">
+            <summary>
+            Initializes the framework using the current dispatcher.
+            </summary>
+        </member>
+        <member name="M:System.Windows.Threading.PlatformDispatch.BeginOnUiThread(System.Action)">
+            <summary>
+            Begins the action on the UI thread
+            </summary>
+            <param name="action">Action</param>
+        </member>
+        <member name="M:System.Windows.Threading.PlatformDispatch.BeginOnUiThread(System.Windows.Threading.DispatcherPriority,System.Action)">
+            <summary>
+            Begins the action on the UI thread according to the specified priority
+            </summary>
+            <param name="prio">Desired priority</param>
+            <param name="action">Action</param>
+        </member>
+        <member name="M:System.Windows.Threading.PlatformDispatch.OnUiThread(System.Action)">
+            <summary>
+            Executes the action on the UI thread
+            </summary>
+            <param name="action">Action</param>
+        </member>
+        <member name="M:System.Windows.Threading.PlatformDispatch.OnUiThread(System.Windows.Threading.DispatcherPriority,System.Action)">
+            <summary>
+            Executes the action on the UI thread according to the specified priority
+            </summary>
+            <param name="priority">Desired priority</param>
+            <param name="action">Action</param>
+        </member>
+    </members>
+</doc>

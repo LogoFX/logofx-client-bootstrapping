@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>LogoFX.Client.Bootstrapping.Adapters.Contracts</name>
+    </assembly>
+    <members>
+        <member name="T:LogoFX.Client.Bootstrapping.Adapters.Contracts.IBootstrapperAdapter">
+            <summary>
+            Represents an adapter of an IoC container to the Caliburn.Micro required IoC functionality
+            </summary>
+        </member>
+        <member name="M:LogoFX.Client.Bootstrapping.Adapters.Contracts.IBootstrapperAdapter.GetInstance(System.Type,System.String)">
+            <summary>
+            Resolves an instance of required service by its type
+            </summary>
+            <param name="serviceType">Type of service</param>
+            <param name="key">Optional service key</param>
+            <returns>Instance of service</returns>
+        </member>
+        <member name="M:LogoFX.Client.Bootstrapping.Adapters.Contracts.IBootstrapperAdapter.GetAllInstances(System.Type)">
+            <summary>
+            Resolves all instances of required service by its type
+            </summary>
+            <param name="serviceType">Type of service</param>
+            <returns>All instances of requested service</returns>
+        </member>
+        <member name="M:LogoFX.Client.Bootstrapping.Adapters.Contracts.IBootstrapperAdapter.BuildUp(System.Object)">
+            <summary>
+            Resolves instance's dependencies and injects them into the instance
+            </summary>
+            <param name="instance">Instance to get injected with dependencies</param>
+        </member>
+    </members>
+</doc>
