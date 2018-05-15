@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using LogoFX.Bootstrapping;
 using Solid.Practices.Composition.Contracts;
 using Solid.Practices.Modularity;
@@ -38,18 +39,18 @@ namespace LogoFX.Client.Bootstrapping
             get { return new string[] { }; }
         }
 
-        /// <summary>
-        /// Gets the list of modules that were discovered during bootstrapper configuration.
-        /// </summary>
-        /// <value>
-        /// The list of modules.
-        /// </value>
-        public IEnumerable<ICompositionModule> Modules { get; private set; } = new ICompositionModule[] {};                
+        /// <inheritdoc />
+        public IEnumerable<ICompositionModule> Modules { get; private set; } = new ICompositionModule[] {};
+
+        /// <inheritdoc />
+        public IEnumerable<Exception> Errors { get; private set; } = new Exception[] { };
 
         private void InitializeCompositionModules()
         {
-            Modules = CompositionHelper.GetCompositionModules(ModulesPath, Prefixes,
+            var compositionInfo = CompositionHelper.GetCompositionInfo(ModulesPath, Prefixes,
                     _reuseCompositionInformation);
+            Modules = compositionInfo.Modules;
+            Errors = compositionInfo.Errors;
         }                
     }
 }

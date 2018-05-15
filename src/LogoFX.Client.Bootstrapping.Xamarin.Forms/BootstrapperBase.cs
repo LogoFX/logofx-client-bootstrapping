@@ -85,6 +85,7 @@ namespace LogoFX.Client.Bootstrapping.Xamarin.Forms
         {
             ICompositionContainer<ICompositionModule> innerContainer = new SimpleCompositionContainer<ICompositionModule>(
                 Assemblies,
+                new TypeInfoExtractionService(),
                 new ActivatorCreationStrategy());
             innerContainer.Compose();
             Modules = innerContainer.Modules.ToArray();
