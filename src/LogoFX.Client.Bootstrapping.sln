@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27130.2036
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LogoFX.Client.Bootstrapping.NETStandard13", "LogoFX.Client.Bootstrapping\netstandard1.3\LogoFX.Client.Bootstrapping.NETStandard13.csproj", "{E5E24C71-44FA-4F97-8300-DB10B337E96B}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LogoFX.Client.Bootstrapping.NETStandard20", "LogoFX.Client.Bootstrapping\netstandard2.0\LogoFX.Client.Bootstrapping.NETStandard20.csproj", "{86FC8BBF-4366-4C96-90A0-B715BF3C42E2}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogoFX.Client.Bootstrapping.Platform.NET", "LogoFX.Client.Bootstrapping.Platform\net\LogoFX.Client.Bootstrapping.Platform.NET.csproj", "{51322595-4423-46D9-8AAD-7486FC87E15C}"
@@ -31,22 +29,6 @@ Global
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{E5E24C71-44FA-4F97-8300-DB10B337E96B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E5E24C71-44FA-4F97-8300-DB10B337E96B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E5E24C71-44FA-4F97-8300-DB10B337E96B}.Debug|ARM.ActiveCfg = Debug|Any CPU
-		{E5E24C71-44FA-4F97-8300-DB10B337E96B}.Debug|ARM.Build.0 = Debug|Any CPU
-		{E5E24C71-44FA-4F97-8300-DB10B337E96B}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{E5E24C71-44FA-4F97-8300-DB10B337E96B}.Debug|x64.Build.0 = Debug|Any CPU
-		{E5E24C71-44FA-4F97-8300-DB10B337E96B}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{E5E24C71-44FA-4F97-8300-DB10B337E96B}.Debug|x86.Build.0 = Debug|Any CPU
-		{E5E24C71-44FA-4F97-8300-DB10B337E96B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E5E24C71-44FA-4F97-8300-DB10B337E96B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E5E24C71-44FA-4F97-8300-DB10B337E96B}.Release|ARM.ActiveCfg = Release|Any CPU
-		{E5E24C71-44FA-4F97-8300-DB10B337E96B}.Release|ARM.Build.0 = Release|Any CPU
-		{E5E24C71-44FA-4F97-8300-DB10B337E96B}.Release|x64.ActiveCfg = Release|Any CPU
-		{E5E24C71-44FA-4F97-8300-DB10B337E96B}.Release|x64.Build.0 = Release|Any CPU
-		{E5E24C71-44FA-4F97-8300-DB10B337E96B}.Release|x86.ActiveCfg = Release|Any CPU
-		{E5E24C71-44FA-4F97-8300-DB10B337E96B}.Release|x86.Build.0 = Release|Any CPU
 		{86FC8BBF-4366-4C96-90A0-B715BF3C42E2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{86FC8BBF-4366-4C96-90A0-B715BF3C42E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{86FC8BBF-4366-4C96-90A0-B715BF3C42E2}.Debug|ARM.ActiveCfg = Debug|Any CPU
