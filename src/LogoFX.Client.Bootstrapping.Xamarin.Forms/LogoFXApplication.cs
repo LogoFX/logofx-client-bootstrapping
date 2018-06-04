@@ -1,6 +1,5 @@
 ﻿using Caliburn.Micro.Xamarin.Forms;
 using LogoFX.Bootstrapping;
-using Solid.Practices.IoC;
 using Xamarin.Forms;
 
 namespace LogoFX.Client.Bootstrapping.Xamarin.Forms
@@ -12,22 +11,35 @@ namespace LogoFX.Client.Bootstrapping.Xamarin.Forms
     public class LogoFXApplication<TRootViewModel> : FormsApplication
         where TRootViewModel : class
     {
-        private readonly IDependencyRegistrator _dependencyRegistrator;
-
         /// <summary>
         /// Creates an instance of the <see cref="LogoFXApplication{TRootViewModel}"/>
         /// </summary>
-        /// <param name="bootstrapper"></param>
+        /// <param name="bootstrapper">The app boostrapper.</param>
+        /// <param name="viewFirst">Use true to enable built-in navigation, false otherwise. The default value is true.</param>
         public LogoFXApplication(
-            BootstrapperBase bootstrapper)
+            BootstrapperBase bootstrapper,
+            bool viewFirst = true)
         {
-            _dependencyRegistrator = bootstrapper.Registrator;
             Initialize();
+
             bootstrapper
                 .Use(new RegisterCompositionModulesMiddleware<BootstrapperBase>())
-                .Use(new RegisterRootViewModelMiddleware<BootstrapperBase, TRootViewModel>())
+                .Use(new RegisterRootViewModelMiddleware<BootstrapperBase, TRootViewModel>())                
                 .Initialize();
-            DisplayRootViewFor<TRootViewModel>();
+
+            var dependencyRegistrator = bootstrapper.Registrator;
+            dependencyRegistrator.RegisterTransient(() => NavigationContext.NavigationService);
+
+            if (viewFirst)
+            {
+                var viewType = ViewLocator.LocateTypeForModelType(typeof(TRootViewModel), null, null);
+                DisplayRootView(viewType);
+            }
+            else
+            {
+                //Default navigation does not work in this case
+                DisplayRootViewFor<TRootViewModel>();
+            }
         }
 
         /// <summary>
@@ -36,7 +48,7 @@ namespace LogoFX.Client.Bootstrapping.Xamarin.Forms
         /// <param name="navigationPage"></param>
         protected override void PrepareViewFirst(NavigationPage navigationPage)
         {
-            _dependencyRegistrator.RegisterInstance<INavigationService>(new NavigationPageAdapter(navigationPage));
+            NavigationContext.NavigationService = new NavigationPageAdapter(navigationPage);
         }
     }
 }
