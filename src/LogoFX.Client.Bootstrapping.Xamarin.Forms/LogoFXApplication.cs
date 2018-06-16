@@ -48,7 +48,7 @@ namespace LogoFX.Client.Bootstrapping.Xamarin.Forms
         /// <param name="navigationPage"></param>
         protected override void PrepareViewFirst(NavigationPage navigationPage)
         {
-            NavigationContext.NavigationService = new NavigationPageAdapter(navigationPage);
+            NavigationContext.NavigationService = new LogoFXNavigationPageAdapter(navigationPage);
         }
     }
 }
