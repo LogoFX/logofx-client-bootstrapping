@@ -1,5 +1,7 @@
 ﻿using Caliburn.Micro.Xamarin.Forms;
 using LogoFX.Bootstrapping;
+using LogoFX.Client.Mvvm.Navigation;
+using Solid.Practices.IoC;
 using Xamarin.Forms;
 
 namespace LogoFX.Client.Bootstrapping.Xamarin.Forms
@@ -11,6 +13,8 @@ namespace LogoFX.Client.Bootstrapping.Xamarin.Forms
     public class LogoFXApplication<TRootViewModel> : FormsApplication
         where TRootViewModel : class
     {
+        private readonly IDependencyRegistrator _dependencyRegistrator;
+
         /// <summary>
         /// Creates an instance of the <see cref="LogoFXApplication{TRootViewModel}"/>
         /// </summary>
@@ -27,8 +31,7 @@ namespace LogoFX.Client.Bootstrapping.Xamarin.Forms
                 .Use(new RegisterRootViewModelMiddleware<BootstrapperBase, TRootViewModel>())                
                 .Initialize();
 
-            var dependencyRegistrator = bootstrapper.Registrator;
-            dependencyRegistrator.RegisterTransient(() => NavigationContext.NavigationService);
+            _dependencyRegistrator = bootstrapper.Registrator;
 
             if (viewFirst)
             {
@@ -48,7 +51,10 @@ namespace LogoFX.Client.Bootstrapping.Xamarin.Forms
         /// <param name="navigationPage"></param>
         protected override void PrepareViewFirst(NavigationPage navigationPage)
         {
-            NavigationContext.NavigationService = new LogoFXNavigationPageAdapter(navigationPage);
+            var navigationService = new LogoFXNavigationPageAdapter(navigationPage);
+            _dependencyRegistrator
+                .AddInstance(typeof(INavigationService), navigationService)
+                .AddInstance(typeof(ILogoFXNavigationService), navigationService);
         }
     }
 }

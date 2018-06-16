@@ -1,7 +1,8 @@
 ﻿using System.Threading.Tasks;
 using Caliburn.Micro.Xamarin.Forms;
 
-namespace LogoFX.Client.Bootstrapping.Xamarin.Forms
+// ReSharper disable once CheckNamespace
+namespace LogoFX.Client.Mvvm.Navigation
 {
     /// <summary>
     /// An extension of <see cref="INavigationService"/> which allows navigating to view model instances

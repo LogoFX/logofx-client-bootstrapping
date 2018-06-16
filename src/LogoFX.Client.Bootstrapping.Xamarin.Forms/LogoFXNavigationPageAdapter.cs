@@ -3,7 +3,8 @@ using System.Threading.Tasks;
 using Caliburn.Micro.Xamarin.Forms;
 using Xamarin.Forms;
 
-namespace LogoFX.Client.Bootstrapping.Xamarin.Forms
+// ReSharper disable once CheckNamespace
+namespace LogoFX.Client.Mvvm.Navigation
 {
     internal class LogoFXNavigationPageAdapter : NavigationPageAdapter, ILogoFXNavigationService
     {
