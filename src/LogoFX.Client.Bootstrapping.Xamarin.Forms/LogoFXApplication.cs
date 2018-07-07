@@ -1,5 +1,6 @@
 ﻿using Caliburn.Micro.Xamarin.Forms;
 using LogoFX.Bootstrapping;
+using LogoFX.Client.Mvvm.Navigation;
 using Solid.Practices.IoC;
 using Xamarin.Forms;
 
@@ -17,17 +18,31 @@ namespace LogoFX.Client.Bootstrapping.Xamarin.Forms
         /// <summary>
         /// Creates an instance of the <see cref="LogoFXApplication{TRootViewModel}"/>
         /// </summary>
-        /// <param name="bootstrapper"></param>
+        /// <param name="bootstrapper">The app boostrapper.</param>
+        /// <param name="viewFirst">Use true to enable built-in navigation, false otherwise. The default value is true.</param>
         public LogoFXApplication(
-            BootstrapperBase bootstrapper)
+            BootstrapperBase bootstrapper,
+            bool viewFirst = true)
         {
-            _dependencyRegistrator = bootstrapper.Registrator;
             Initialize();
+
             bootstrapper
                 .Use(new RegisterCompositionModulesMiddleware<BootstrapperBase>())
-                .Use(new RegisterRootViewModelMiddleware<BootstrapperBase, TRootViewModel>())
+                .Use(new RegisterRootViewModelMiddleware<BootstrapperBase, TRootViewModel>())                
                 .Initialize();
-            DisplayRootViewFor<TRootViewModel>();
+
+            _dependencyRegistrator = bootstrapper.Registrator;
+
+            if (viewFirst)
+            {
+                var viewType = ViewLocator.LocateTypeForModelType(typeof(TRootViewModel), null, null);
+                DisplayRootView(viewType);
+            }
+            else
+            {
+                //Default navigation does not work in this case
+                DisplayRootViewFor<TRootViewModel>();
+            }
         }
 
         /// <summary>
@@ -36,7 +51,10 @@ namespace LogoFX.Client.Bootstrapping.Xamarin.Forms
         /// <param name="navigationPage"></param>
         protected override void PrepareViewFirst(NavigationPage navigationPage)
         {
-            _dependencyRegistrator.RegisterInstance<INavigationService>(new NavigationPageAdapter(navigationPage));
+            var navigationService = new LogoFXNavigationPageAdapter(navigationPage);
+            _dependencyRegistrator
+                .AddInstance(typeof(INavigationService), navigationService)
+                .AddInstance(typeof(ILogoFXNavigationService), navigationService);
         }
     }
 }

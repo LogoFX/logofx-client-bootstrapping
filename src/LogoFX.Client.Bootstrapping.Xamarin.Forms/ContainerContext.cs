@@ -35,5 +35,4 @@ namespace LogoFX.Client.Bootstrapping.Xamarin.Forms
         /// </summary>
         public static IBootstrapperAdapter Adapter => (IBootstrapperAdapter)_instance;
     }
-     
 }
