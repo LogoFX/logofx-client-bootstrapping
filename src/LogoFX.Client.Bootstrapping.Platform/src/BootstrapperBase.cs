@@ -132,5 +132,7 @@ namespace LogoFX.Client.Bootstrapping
         {
             InitializationCompleted?.Invoke(this, new EventArgs());
         }
+
+        public event EventHandler Exited;
     }    
 }

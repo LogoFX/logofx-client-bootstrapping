@@ -65,7 +65,7 @@
       <Version>1.2.1-rc3</Version>
     </PackageReference>
     <PackageReference Include="Solid.Practices.IoC">
-      <Version>1.2.1-rc4</Version>
+      <Version>1.2.1-rc5</Version>
     </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
