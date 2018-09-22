@@ -100,7 +100,7 @@ namespace LogoFX.Client.Bootstrapping
             {
                 Use(new InitializeViewLocatorMiddleware());
             }
-        }        
+        }       
 
         /// <summary>
         /// Override to configure the framework and setup your IoC container.
@@ -120,10 +120,11 @@ namespace LogoFX.Client.Bootstrapping
             Initialize();
         }
 
-        /// <summary>
-        /// Occurs when initialization is completed and the application starts.
-        /// </summary>
+        /// <inheritdoc />
         public event EventHandler InitializationCompleted;
+
+        /// <inheritdoc />
+        public event EventHandler Exited;
 
         /// <summary>
         /// Raises the initialization completed.

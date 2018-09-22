@@ -95,7 +95,7 @@
       <Version>4.0.0-alpha.1</Version>
     </PackageReference>
     <PackageReference Include="LogoFX.Bootstrapping">
-      <Version>1.7.1-rc6</Version>
+      <Version>1.7.1-rc7</Version>
     </PackageReference>
     <PackageReference Include="LogoFX.Client.Bootstrapping.Adapters.Contracts">
       <Version>1.1.1-rc2</Version>

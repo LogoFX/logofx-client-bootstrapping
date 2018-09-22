@@ -28,7 +28,7 @@ namespace LogoFX.Client.Bootstrapping
         {
             _middlewaresWrapper.Use(middleware);
             return this;
-        }
+        }        
     }
 
     public partial class
