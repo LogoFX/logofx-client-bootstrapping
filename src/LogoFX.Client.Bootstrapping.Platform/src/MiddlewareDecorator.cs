@@ -30,7 +30,7 @@ namespace LogoFX.Client.Bootstrapping
         }
     }
 
-    //TODO: Move to Solid.Extensibility
+    //TODO: Remove
     class MiddlewaresWrapper<T> : IExtensible<T> where T : class
     {
         private readonly T _object;
