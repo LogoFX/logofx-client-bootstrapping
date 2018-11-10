@@ -70,9 +70,9 @@
       <Project>{51322595-4423-46d9-8aad-7486fc87e15c}</Project>
       <Name>LogoFX.Client.Bootstrapping.Platform.NET</Name>
     </ProjectReference>
-    <ProjectReference Include="..\LogoFX.Client.Bootstrapping\netstandard2.0\LogoFX.Client.Bootstrapping.NETStandard20.csproj">
-      <Project>{86fc8bbf-4366-4c96-90a0-b715bf3c42e2}</Project>
-      <Name>LogoFX.Client.Bootstrapping.NETStandard20</Name>
+    <ProjectReference Include="..\LogoFX.Client.Bootstrapping\LogoFX.Client.Bootstrapping.csproj">
+      <Project>{253c97ea-fe42-4ec4-b42b-e28b0f3f013b}</Project>
+      <Name>LogoFX.Client.Bootstrapping</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

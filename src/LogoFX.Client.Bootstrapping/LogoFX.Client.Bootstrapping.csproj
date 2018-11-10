@@ -12,15 +12,9 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <OutputPath>..\..\Bin\netstandard2.0\Release</OutputPath>
-    <DocumentationFile>..\..\Bin\netstandard2.0\Release\LogoFX.Client.Bootstrapping.xml</DocumentationFile>
-  </PropertyGroup>
-
-  <ItemGroup>
-    <Compile Include="..\src\BootstrapperCreationOptions.cs" Link="BootstrapperCreationOptions.cs" />
-    <Compile Include="..\src\DependencyRegistratorExtensions.cs" Link="DependencyRegistratorExtensions.cs" />
-    <Compile Include="..\src\Middleware.cs" Link="Middleware.cs" />
-  </ItemGroup>
+    <OutputPath>..\Bin\netstandard2.0\Release</OutputPath>
+    <DocumentationFile>..\Bin\netstandard2.0\Release\LogoFX.Client.Bootstrapping.xml</DocumentationFile>
+  </PropertyGroup> 
 
   <ItemGroup>
     <PackageReference Include="LogoFX.Bootstrapping" Version="1.7.1-rc10" />

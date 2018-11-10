@@ -97,12 +97,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\LogoFX.Client.Bootstrapping\netstandard2.0\LogoFX.Client.Bootstrapping.NETStandard20.csproj">
-      <Project>{86fc8bbf-4366-4c96-90a0-b715bf3c42e2}</Project>
-      <Name>LogoFX.Client.Bootstrapping.NETStandard20</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <PackageReference Include="LogoFX.Client.Bootstrapping.Adapters.Contracts">
       <Version>1.1.1-rc2</Version>
     </PackageReference>
@@ -118,6 +112,12 @@
     <PackageReference Include="Solid.Practices.Composition.Client">
       <Version>1.2.1-rc4</Version>
     </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\LogoFX.Client.Bootstrapping\LogoFX.Client.Bootstrapping.csproj">
+      <Project>{253c97ea-fe42-4ec4-b42b-e28b0f3f013b}</Project>
+      <Name>LogoFX.Client.Bootstrapping</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
