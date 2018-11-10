@@ -23,7 +23,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="LogoFX.Bootstrapping" Version="1.7.1-rc7" />
+    <PackageReference Include="LogoFX.Bootstrapping" Version="1.7.1-rc9" />
   </ItemGroup>
 
 </Project>

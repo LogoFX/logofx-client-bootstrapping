@@ -160,6 +160,16 @@ namespace LogoFX.Client.Bootstrapping.Platform.NET.Tests
             throw new NotImplementedException();
         }
 
+        public IEnumerable<TDependency> ResolveAll<TDependency>() where TDependency : class
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable<object> ResolveAll(Type dependencyType)
+        {
+            throw new NotImplementedException();
+        }
+
         public void Dispose()
         {
             throw new NotImplementedException();
