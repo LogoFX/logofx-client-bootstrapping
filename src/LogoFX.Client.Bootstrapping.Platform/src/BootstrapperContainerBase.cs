@@ -10,9 +10,7 @@ using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 #endif
 using LogoFX.Client.Bootstrapping.Adapters.Contracts;
-#if TEST
 using Solid.Bootstrapping;
-#endif
 using Solid.Extensibility;
 using Solid.Practices.IoC;
 using Solid.Practices.Middleware;
@@ -217,9 +215,9 @@ namespace LogoFX.Client.Bootstrapping
 #if TEST
     TestBootstrapperContainerBase
 #else
-    BootstrapperContainerBase
+                BootstrapperContainerBase
 #endif
-        <TIocContainerAdapter>
+                <TIocContainerAdapter>
             >
         , IBootstrapperWithContainerAdapter<TIocContainerAdapter>
 #if TEST
@@ -357,9 +355,9 @@ namespace LogoFX.Client.Bootstrapping
 #if TEST
     TestBootstrapperContainerBase
 #else
-                    BootstrapperContainerBase
+                            BootstrapperContainerBase
 #endif
-                        <TIocContainerAdapter>>
+                            <TIocContainerAdapter>>
                     ())                    
                     .UseBootstrapperComposition().
                     Use(new RegisterViewModelsMiddleware(creationOptions.ExcludedTypes))

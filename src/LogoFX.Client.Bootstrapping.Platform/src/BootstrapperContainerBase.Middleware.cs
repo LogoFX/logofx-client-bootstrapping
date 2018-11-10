@@ -307,7 +307,7 @@ public class RegisterPlatformSpecificMiddleware :
                 <TIocContainerAdapter>
             @object)
         {
-            var middleware = new LogoFX.Bootstrapping.RegisterResolverMiddleware
+            var middleware = new Solid.Bootstrapping.RegisterResolverMiddleware
                 <
 #if TEST
     TestBootstrapperContainerBase

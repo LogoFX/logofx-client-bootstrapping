@@ -1,6 +1,6 @@
 ﻿using Caliburn.Micro.Xamarin.Forms;
-using LogoFX.Bootstrapping;
 using LogoFX.Client.Mvvm.Navigation;
+using Solid.Bootstrapping;
 using Solid.Practices.IoC;
 using Xamarin.Forms;
 
