@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using Solid.Bootstrapping;
+using Solid.Common;
 using Solid.Extensibility;
 using Solid.Practices.Composition;
 using Solid.Practices.Composition.Container;
@@ -111,6 +112,7 @@ namespace LogoFX.Client.Bootstrapping.Xamarin.Forms
         }
     }
 
+    //TODO: Check whether there's a suitable solution inside infra packages
     internal static class AssembliesExtensions
     {
         internal static IEnumerable<Assembly> FilterByPrefixes(this IEnumerable<Assembly> assemblies, string[] prefixes) => prefixes?.Length == 0

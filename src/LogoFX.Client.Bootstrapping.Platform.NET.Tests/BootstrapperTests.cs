@@ -2,7 +2,7 @@
 using FluentAssertions;
 using LogoFX.Client.Bootstrapping.Adapters.SimpleContainer;
 using LogoFX.Practices.IoC;
-using Solid.Practices.Composition;
+using Solid.Common;
 using Solid.Practices.IoC;
 using Solid.Practices.Modularity;
 using Xunit;
