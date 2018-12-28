@@ -123,6 +123,12 @@
     <PackageReference Include="Solid.Practices.Composition.Client">
       <Version>2.0.0-rc2</Version>
     </PackageReference>
+    <PackageReference Include="Solid.Practices.Composition.Core">
+      <Version>2.0.0-rc2</Version>
+    </PackageReference>
+    <PackageReference Include="Solid.Practices.Middleware">
+      <Version>2.0.0-rc1</Version>
+    </PackageReference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\LogoFX.Client.Bootstrapping\LogoFX.Client.Bootstrapping.csproj">
