@@ -3,8 +3,8 @@ using Caliburn.Micro;
 #endif
 using System;
 using LogoFX.Bootstrapping;
-using Solid.Bootstrapping;
 using Solid.Common;
+using Solid.Core;
 using Solid.Practices.Middleware;
 
 namespace LogoFX.Client.Bootstrapping
