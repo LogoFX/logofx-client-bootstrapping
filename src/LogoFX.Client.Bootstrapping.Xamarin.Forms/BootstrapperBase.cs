@@ -4,6 +4,7 @@ using System.Linq;
 using System.Reflection;
 using Solid.Bootstrapping;
 using Solid.Common;
+using Solid.Core;
 using Solid.Extensibility;
 using Solid.Practices.Composition;
 using Solid.Practices.Composition.Container;

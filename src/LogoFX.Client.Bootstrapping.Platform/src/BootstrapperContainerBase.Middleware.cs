@@ -3,6 +3,7 @@ using Caliburn.Micro;
 using LogoFX.Bootstrapping;
 using LogoFX.Client.Bootstrapping.Adapters.Contracts;
 using LogoFX.Core;
+using Solid.Extensibility;
 using Solid.Practices.IoC;
 using Solid.Practices.Middleware;
 

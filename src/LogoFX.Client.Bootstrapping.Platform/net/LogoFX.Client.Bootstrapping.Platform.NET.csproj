@@ -63,17 +63,17 @@
     <Compile Include="..\src\BootstrapperBase.Adapter.cs">
       <Link>BootstrapperBase.Adapter.cs</Link>
     </Compile>
-    <Compile Include="..\src\BootstrapperBase.Composition.cs">
-      <Link>BootstrapperBase.Composition.cs</Link>
-    </Compile>
     <Compile Include="..\src\BootstrapperBase.cs">
       <Link>BootstrapperBase.cs</Link>
     </Compile>
-    <Compile Include="..\src\BootstrapperBase.Inspection.cs">
-      <Link>BootstrapperBase.Inspection.cs</Link>
+    <Compile Include="..\src\BootstrapperBase.Discovery.cs">
+      <Link>BootstrapperBase.Discovery.cs</Link>
     </Compile>
     <Compile Include="..\src\BootstrapperBase.Middleware.cs">
       <Link>BootstrapperBase.Middleware.cs</Link>
+    </Compile>
+    <Compile Include="..\src\BootstrapperBase.Modularity.cs">
+      <Link>BootstrapperBase.Modularity.cs</Link>
     </Compile>
     <Compile Include="..\src\BootstrapperBase.ViewLocator.cs">
       <Link>BootstrapperBase.ViewLocator.cs</Link>
@@ -97,27 +97,36 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="LogoFX.Bootstrapping">
-      <Version>2.0.0-rc1</Version>
+      <Version>2.0.0-rc2</Version>
     </PackageReference>
     <PackageReference Include="LogoFX.Client.Bootstrapping.Adapters.Contracts">
       <Version>2.0.0-rc1</Version>
     </PackageReference>
     <PackageReference Include="LogoFX.Client.Core">
-      <Version>2.0.0-rc1</Version>
+      <Version>2.0.0-rc2</Version>
     </PackageReference>
     <PackageReference Include="LogoFX.Core">
       <Version>2.0.0-rc1</Version>
     </PackageReference>
     <PackageReference Include="Solid.Bootstrapping">
-      <Version>2.0.0-rc1</Version>
+      <Version>2.0.0-rc2</Version>
     </PackageReference>
     <PackageReference Include="Solid.Common.Core">
+      <Version>2.0.0-rc2</Version>
+    </PackageReference>
+    <PackageReference Include="Solid.Core">
       <Version>2.0.0-rc1</Version>
     </PackageReference>
     <PackageReference Include="Solid.Extensibility">
-      <Version>2.0.0-rc1</Version>
+      <Version>2.0.0-rc2</Version>
     </PackageReference>
     <PackageReference Include="Solid.Practices.Composition.Client">
+      <Version>2.0.0-rc2</Version>
+    </PackageReference>
+    <PackageReference Include="Solid.Practices.Composition.Core">
+      <Version>2.0.0-rc2</Version>
+    </PackageReference>
+    <PackageReference Include="Solid.Practices.Middleware">
       <Version>2.0.0-rc1</Version>
     </PackageReference>
   </ItemGroup>
