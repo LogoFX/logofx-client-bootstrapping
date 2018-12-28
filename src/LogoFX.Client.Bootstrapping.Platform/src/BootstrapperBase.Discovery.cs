@@ -38,7 +38,7 @@ namespace LogoFX.Client.Bootstrapping
 
         private Assembly[] CreateAssemblies()
         {
-            return _creationOptions.InspectAssemblies ? GetAssemblies() : new[] { GetType().GetTypeInfo().Assembly };
+            return _creationOptions.DiscoverAssemblies ? GetAssemblies() : new[] { GetType().GetTypeInfo().Assembly };
         }
 
         private Assembly[] GetAssemblies()

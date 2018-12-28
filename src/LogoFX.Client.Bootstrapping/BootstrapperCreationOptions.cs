@@ -15,8 +15,8 @@ namespace LogoFX.Client.Bootstrapping
         {
             UseApplication = true;
             ReuseCompositionInformation = true;
-            DiscoverCompositionModules = true;
-            InspectAssemblies = true;
+            UseCompositionModules = true;
+            DiscoverAssemblies = true;
             UseDefaultMiddlewares = true;
             DisplayRootView = true;
             ExcludedTypes = new List<Type>();
@@ -49,7 +49,7 @@ namespace LogoFX.Client.Bootstrapping
         /// <value>
         /// <c>true</c> if the composition modules should be looked for; otherwise, <c>false</c>.
         /// </value>
-        public bool DiscoverCompositionModules { get; set; }
+        public bool UseCompositionModules { get; set; }
 
         /// <summary>
         /// Gets or sets a value indicating whether the bootstrapper
@@ -59,7 +59,7 @@ namespace LogoFX.Client.Bootstrapping
         /// <value>
         ///   <c>true</c> if the assemblies should be looked for; otherwise, <c>false</c>.
         /// </value>
-        public bool InspectAssemblies { get; set; }
+        public bool DiscoverAssemblies { get; set; }
 
         /// <summary>
         /// Gets or sets a value indicating whether the default middlewares

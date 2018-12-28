@@ -5,6 +5,7 @@ using System;
 using LogoFX.Bootstrapping;
 using Solid.Common;
 using Solid.Core;
+using Solid.Extensibility;
 using Solid.Practices.Middleware;
 
 namespace LogoFX.Client.Bootstrapping
@@ -85,7 +86,7 @@ namespace LogoFX.Client.Bootstrapping
         {
             _reuseCompositionInformation = creationOptions.ReuseCompositionInformation;
             _creationOptions = creationOptions;
-            if (creationOptions.DiscoverCompositionModules || creationOptions.InspectAssemblies)
+            if (creationOptions.UseCompositionModules || creationOptions.DiscoverAssemblies)
             {
                PlatformProvider.Current = new
 #if WINDOWS_UWP
@@ -108,7 +109,7 @@ namespace LogoFX.Client.Bootstrapping
         protected override void Configure()
         {
             base.Configure();
-            if (_creationOptions.DiscoverCompositionModules)
+            if (_creationOptions.UseCompositionModules)
             {
                 InitializeCompositionModules();
             }

@@ -1,4 +1,5 @@
 ﻿using LogoFX.Bootstrapping;
+using Solid.Extensibility;
 using Solid.Practices.Middleware;
 
 namespace LogoFX.Client.Bootstrapping

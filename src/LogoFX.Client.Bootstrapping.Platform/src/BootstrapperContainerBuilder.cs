@@ -63,9 +63,9 @@ namespace LogoFX.Client.Bootstrapping
         /// <c>true</c> if the assemblies should be looked for; otherwise, <c>false</c>.
         /// </param>
         /// <returns></returns>
-        public BootstrapperContainerBuilder<TIocContainerAdapter> InspectAssemblies(bool inspectAssemblies)
+        public BootstrapperContainerBuilder<TIocContainerAdapter> DiscoverAssemblies(bool inspectAssemblies)
         {
-            _options.InspectAssemblies = inspectAssemblies;
+            _options.DiscoverAssemblies = inspectAssemblies;
             return this;
         }
 
@@ -77,9 +77,9 @@ namespace LogoFX.Client.Bootstrapping
         /// <c>true</c> if the composition modules should be looked for; otherwise, <c>false</c>.
         /// </param>
         /// <returns></returns>
-        public BootstrapperContainerBuilder<TIocContainerAdapter> DiscoverCompositionModules(bool discoverCompositionModules)
+        public BootstrapperContainerBuilder<TIocContainerAdapter> UseCompositionModules(bool discoverCompositionModules)
         {
-            _options.DiscoverCompositionModules = discoverCompositionModules;
+            _options.UseCompositionModules = discoverCompositionModules;
             return this;
         }
 
