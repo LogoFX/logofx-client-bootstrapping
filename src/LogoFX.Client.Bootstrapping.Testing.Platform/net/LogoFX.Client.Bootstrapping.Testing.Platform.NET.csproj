@@ -115,8 +115,17 @@
     <PackageReference Include="Solid.Core">
       <Version>2.0.0-rc1</Version>
     </PackageReference>
+    <PackageReference Include="Solid.Extensibility">
+      <Version>2.0.0-rc2</Version>
+    </PackageReference>
     <PackageReference Include="Solid.Practices.Composition.Client">
       <Version>2.0.0-rc2</Version>
+    </PackageReference>
+    <PackageReference Include="Solid.Practices.Composition.Core">
+      <Version>2.0.0-rc2</Version>
+    </PackageReference>
+    <PackageReference Include="Solid.Practices.Middleware">
+      <Version>2.0.0-rc1</Version>
     </PackageReference>
     <PackageReference Include="Solid.Practices.Modularity">
       <Version>2.0.0-rc1</Version>
