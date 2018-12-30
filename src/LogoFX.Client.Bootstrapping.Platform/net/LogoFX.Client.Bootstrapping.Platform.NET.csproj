@@ -121,10 +121,10 @@
       <Version>2.0.0-rc2</Version>
     </PackageReference>
     <PackageReference Include="Solid.Practices.Composition.Client">
-      <Version>2.0.0-rc2</Version>
+      <Version>2.0.0-rc3</Version>
     </PackageReference>
     <PackageReference Include="Solid.Practices.Composition.Core">
-      <Version>2.0.0-rc2</Version>
+      <Version>2.0.0-rc3</Version>
     </PackageReference>
     <PackageReference Include="Solid.Practices.Middleware">
       <Version>2.0.0-rc1</Version>

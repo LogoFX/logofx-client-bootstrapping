@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Reflection;
 using Solid.Common;
+using Solid.Practices.Composition;
 using Solid.Practices.Composition.Client;
 using Solid.Practices.Composition.Contracts;
 
@@ -25,29 +26,24 @@ namespace LogoFX.Client.Bootstrapping
         }
 
         private Assembly[] _assemblies;
+
         /// <summary>
         /// Gets the assemblies that will be inspected for the application components.
         /// </summary>
         /// <value>
         /// The assemblies.
         /// </value>
-        public IEnumerable<Assembly> Assemblies
-        {
-            get { return _assemblies ?? (_assemblies = CreateAssemblies()); }
-        }
+        public IEnumerable<Assembly> Assemblies => _assemblies ?? (_assemblies = CreateAssemblies());
 
-        private Assembly[] CreateAssemblies()
-        {
-            return _creationOptions.DiscoverAssemblies ? GetAssemblies() : new[] { GetType().GetTypeInfo().Assembly };
-        }
+        private Assembly[] CreateAssemblies() => _creationOptions.DiscoverAssemblies ? GetAssemblies() : new[] {GetType().GetTypeInfo().Assembly};
 
         private Assembly[] GetAssemblies()
         {
             OnConfigureAssemblyResolution();
-            var assembliesResolver = new AssembliesResolver(GetType(),
-                new ClientAssemblySourceProvider(PlatformProvider.Current.GetRootPath()));
-            return ((IAssembliesReadOnlyResolver)assembliesResolver).GetAssemblies().ToArray();
-        }        
+            var assembliesResolver = new AssembliesResolver(
+                new ClientAssemblySourceProvider(PlatformProvider.Current.GetRootPath()), GetType());
+            return ((IAssembliesReadOnlyResolver) assembliesResolver).GetAssemblies().ToArray();
+        }
 
         /// <summary>
         /// Override this to provide custom assembly namespaces collection.
