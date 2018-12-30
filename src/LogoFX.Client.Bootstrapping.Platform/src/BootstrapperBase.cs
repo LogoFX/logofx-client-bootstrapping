@@ -6,6 +6,7 @@ using LogoFX.Bootstrapping;
 using Solid.Common;
 using Solid.Core;
 using Solid.Extensibility;
+using Solid.Practices.Composition;
 using Solid.Practices.Middleware;
 
 namespace LogoFX.Client.Bootstrapping
@@ -108,7 +109,7 @@ namespace LogoFX.Client.Bootstrapping
         /// </summary>
         protected override void Configure()
         {
-            base.Configure();
+            base.Configure();            
             if (_creationOptions.UseCompositionModules)
             {
                 InitializeCompositionModules();
@@ -118,6 +119,7 @@ namespace LogoFX.Client.Bootstrapping
 
         void IInitializable.Initialize()
         {
+            _discoveryAspect = new DiscoveryAspect(CompositionOptions);
             Initialize();
         }
 

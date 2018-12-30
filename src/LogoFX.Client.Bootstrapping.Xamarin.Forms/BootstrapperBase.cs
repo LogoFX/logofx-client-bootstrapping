@@ -16,7 +16,7 @@ using Solid.Practices.Modularity;
 namespace LogoFX.Client.Bootstrapping.Xamarin.Forms
 {
     /// <summary>
-    /// Base class that enables the following capabiities:
+    /// Base class that enables the following capabilities:
     /// Modularity, 
     /// Assembly inspection, 
     /// Extensibility.

@@ -1,15 +1,18 @@
 ﻿using System;
 using FluentAssertions;
 using LogoFX.Client.Bootstrapping.Adapters.SimpleContainer;
+using LogoFX.Client.Testing.Shared.Caliburn.Micro;
 using LogoFX.Practices.IoC;
 using Solid.Common;
+using Solid.Core;
+using Solid.Practices.Composition;
 using Solid.Practices.IoC;
 using Solid.Practices.Modularity;
 using Xunit;
 
 namespace LogoFX.Client.Bootstrapping.Platform.NET.Tests
 {    
-    public class BootstrapperTests
+    public class BootstrapperTests : IDisposable
     {
         [Fact]
         public void Initialization_DoesNotThrow()
@@ -31,7 +34,7 @@ namespace LogoFX.Client.Bootstrapping.Platform.NET.Tests
         {
             var container = new ExtendedSimpleContainer();
             var adapter = new ExtendedSimpleContainerAdapter(container);
-            var bootstrapper = new TestConcreteBootstrapper(container, c => adapter);
+            IInitializable bootstrapper = new TestConcreteBootstrapper(container, c => adapter);
             bootstrapper.Initialize();
 
             var dependency = container.GetInstance(typeof (IDependency), null);
@@ -45,11 +48,16 @@ namespace LogoFX.Client.Bootstrapping.Platform.NET.Tests
         {
             var container = new ExtendedSimpleContainer();
             var adapter = new ExtendedSimpleContainerAdapter(container);
-            var bootstrapper = new TestConcreteBootstrapper(container, c => adapter);
+            IInitializable bootstrapper = new TestConcreteBootstrapper(container, c => adapter);
             bootstrapper.Initialize();
 
             var dependency = adapter.Resolve<IConcreteDependency>();
             dependency.Should().NotBeNull();
+        }
+
+        public void Dispose()
+        {
+            TestHelper.Teardown();
         }
     }
 
@@ -80,11 +88,11 @@ namespace LogoFX.Client.Bootstrapping.Platform.NET.Tests
             })
         {            
         }
-        
-        public override string[] Prefixes
+
+        public override CompositionOptions CompositionOptions { get; } = new CompositionOptions
         {
-            get { return new[] { "LogoFX.Client" };}
-        }
+            Prefixes = new[] {"LogoFX.Client"}
+        };
     }
 
     interface IDependency

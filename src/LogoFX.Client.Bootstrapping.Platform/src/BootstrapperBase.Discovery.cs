@@ -1,10 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using Solid.Common;
 using Solid.Practices.Composition;
-using Solid.Practices.Composition.Client;
-using Solid.Practices.Composition.Contracts;
 
 namespace LogoFX.Client.Bootstrapping
 {
@@ -14,6 +11,7 @@ namespace LogoFX.Client.Bootstrapping
     partial class BootstrapperBase
 #endif
     {
+        private DiscoveryAspect _discoveryAspect;
         /// <summary>
         /// Override to tell the framework where to find assemblies to inspect for application components.
         /// </summary>
@@ -26,7 +24,6 @@ namespace LogoFX.Client.Bootstrapping
         }
 
         private Assembly[] _assemblies;
-
         /// <summary>
         /// Gets the assemblies that will be inspected for the application components.
         /// </summary>
@@ -39,17 +36,8 @@ namespace LogoFX.Client.Bootstrapping
 
         private Assembly[] GetAssemblies()
         {
-            OnConfigureAssemblyResolution();
-            var assembliesResolver = new AssembliesResolver(
-                new ClientAssemblySourceProvider(PlatformProvider.Current.GetRootPath()), GetType());
-            return ((IAssembliesReadOnlyResolver) assembliesResolver).GetAssemblies().ToArray();
-        }
-
-        /// <summary>
-        /// Override this to provide custom assembly namespaces collection.
-        /// </summary>
-        protected virtual void OnConfigureAssemblyResolution()
-        {
-        }
+            _discoveryAspect.Initialize();
+            return _discoveryAspect.Assemblies.ToArray();
+        }        
     }
 }
