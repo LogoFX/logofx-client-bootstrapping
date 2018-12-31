@@ -27,10 +27,8 @@ namespace LogoFX.Client.Bootstrapping.Xamarin.Forms
         IHaveRegistrator,
         IAssemblySourceProvider
     {
-        private readonly
-            List<IMiddleware<BootstrapperBase>>
-            _middlewares =
-                new List<IMiddleware<BootstrapperBase>>();
+        private readonly PlatformAspect _platformAspect;
+        private readonly ExtensibilityAspect<BootstrapperBase> _extensibilityAspect;       
 
         /// <summary>
         /// Creates an instance of <see cref="BootstrapperBase"/>
@@ -39,7 +37,8 @@ namespace LogoFX.Client.Bootstrapping.Xamarin.Forms
         public BootstrapperBase(IDependencyRegistrator dependencyRegistrator)
         {
             Registrator = dependencyRegistrator;
-            PlatformProvider.Current = new NetStandardPlatformProvider();
+            _platformAspect = new PlatformAspect();
+            _extensibilityAspect = new ExtensibilityAspect<BootstrapperBase>(this);            
         }
 
         /// <summary>
@@ -99,7 +98,7 @@ namespace LogoFX.Client.Bootstrapping.Xamarin.Forms
         public BootstrapperBase Use(
             IMiddleware<BootstrapperBase> middleware)
         {
-            _middlewares.Add(middleware);
+            _extensibilityAspect.Use(middleware);
             return this;
         }
 
@@ -108,8 +107,9 @@ namespace LogoFX.Client.Bootstrapping.Xamarin.Forms
         /// </summary>
         public void Initialize()
         {
+            _platformAspect.Initialize();
             InitializeCompositionModules();
-            MiddlewareApplier.ApplyMiddlewares(this, _middlewares);
+            _extensibilityAspect.Initialize();
         }
     }
 
