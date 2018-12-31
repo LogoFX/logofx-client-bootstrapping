@@ -97,7 +97,7 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="LogoFX.Bootstrapping">
-      <Version>2.0.0-rc2</Version>
+      <Version>2.0.0-rc3</Version>
     </PackageReference>
     <PackageReference Include="LogoFX.Client.Bootstrapping.Adapters.Contracts">
       <Version>2.0.0-rc1</Version>
