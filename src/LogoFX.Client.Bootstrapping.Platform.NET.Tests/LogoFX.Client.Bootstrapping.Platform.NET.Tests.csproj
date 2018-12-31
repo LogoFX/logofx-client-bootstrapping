@@ -85,6 +85,9 @@
     <PackageReference Include="LogoFX.Client.Bootstrapping.Adapters.SimpleContainer">
       <Version>2.0.0-rc1</Version>
     </PackageReference>
+    <PackageReference Include="LogoFX.Client.Tests.Shared.Caliburn.Micro">
+      <Version>2.0.0-rc1</Version>
+    </PackageReference>
     <PackageReference Include="Solid.Common.Core">
       <Version>2.0.0-rc2</Version>
     </PackageReference>

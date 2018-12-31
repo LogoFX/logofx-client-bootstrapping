@@ -18,7 +18,7 @@ namespace LogoFX.Client.Bootstrapping.Xamarin.Forms
         /// <summary>
         /// Creates an instance of the <see cref="LogoFXApplication{TRootViewModel}"/>
         /// </summary>
-        /// <param name="bootstrapper">The app boostrapper.</param>
+        /// <param name="bootstrapper">The app bootstrapper.</param>
         /// <param name="viewFirst">Use true to enable built-in navigation, false otherwise. The default value is true.</param>
         public LogoFXApplication(
             BootstrapperBase bootstrapper,
