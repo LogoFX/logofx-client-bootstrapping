@@ -3,11 +3,11 @@ using Caliburn.Micro;
 #endif
 using System;
 using LogoFX.Bootstrapping;
-using Solid.Common;
 using Solid.Core;
 using Solid.Extensibility;
 using Solid.Practices.Composition;
 using Solid.Practices.Middleware;
+using PlatformProvider = Solid.Common.PlatformProvider;
 
 namespace LogoFX.Client.Bootstrapping
 {
@@ -89,11 +89,11 @@ namespace LogoFX.Client.Bootstrapping
             _creationOptions = creationOptions;
             if (creationOptions.UseCompositionModules || creationOptions.DiscoverAssemblies)
             {
-               PlatformProvider.Current = new
+               Solid.Common.PlatformProvider.Current = new
 #if WINDOWS_UWP
-                    UniversalPlatformProvider
+                    Solid.Platform.UniversalPlatformProvider
 #else
-                    NetStandardPlatformProvider
+                    Solid.Common.NetStandardPlatformProvider
 #endif
                     ();
             }   
