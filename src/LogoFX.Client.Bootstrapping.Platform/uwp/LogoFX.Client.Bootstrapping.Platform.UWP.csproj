@@ -183,10 +183,12 @@
     <Reference Include="Caliburn.Micro">
       <HintPath>..\..\lib\Caliburn.Micro\netstandard1.0\Caliburn.Micro.dll</HintPath>
     </Reference>
-    <Reference Include="Caliburn.Micro.Platform">
+    <Reference Include="Caliburn.Micro.Platform, Version=4.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\lib\Caliburn.Micro\uap10.0\Caliburn.Micro.Platform.dll</HintPath>
     </Reference>
-    <Reference Include="Caliburn.Micro.Platform.Core">
+    <Reference Include="Caliburn.Micro.Platform.Core, Version=4.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\lib\Caliburn.Micro\uap10.0\Caliburn.Micro.Platform.Core.dll</HintPath>
     </Reference>
   </ItemGroup>
