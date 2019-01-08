@@ -7,7 +7,6 @@ using Solid.Core;
 using Solid.Extensibility;
 using Solid.Practices.Composition;
 using Solid.Practices.Middleware;
-using PlatformProvider = Solid.Common.PlatformProvider;
 
 namespace LogoFX.Client.Bootstrapping
 {
