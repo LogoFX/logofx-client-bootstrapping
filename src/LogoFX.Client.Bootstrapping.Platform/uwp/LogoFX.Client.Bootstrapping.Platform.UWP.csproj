@@ -146,7 +146,7 @@
       <Version>2.0.0-rc1</Version>
     </PackageReference>
     <PackageReference Include="LogoFX.Client.Core">
-      <Version>2.0.0-rc2</Version>
+      <Version>2.0.0-rc3</Version>
     </PackageReference>
     <PackageReference Include="LogoFX.Client.Core.Core">
       <Version>2.0.0-rc1</Version>
