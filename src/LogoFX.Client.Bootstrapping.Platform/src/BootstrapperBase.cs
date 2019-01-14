@@ -90,7 +90,7 @@ namespace LogoFX.Client.Bootstrapping
             {
                Solid.Common.PlatformProvider.Current = new
 #if WINDOWS_UWP
-                    Solid.Platform.UniversalPlatformProvider
+                    Solid.Common.UniversalPlatformProvider
 #else
                     Solid.Common.NetStandardPlatformProvider
 #endif
