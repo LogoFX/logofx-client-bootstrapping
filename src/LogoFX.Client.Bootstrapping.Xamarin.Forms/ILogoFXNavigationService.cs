@@ -17,5 +17,11 @@ namespace LogoFX.Client.Mvvm.Navigation
         /// <param name="animated">True, if the navigation should be animated, false otherwise.</param>
         /// <returns></returns>
         Task NavigateToViewModelInstanceAsync<TViewModel>(TViewModel viewModel, bool animated = true);
+
+        /// <summary>
+        /// Returns true when back navigation is allowed, false otherwise.
+        /// </summary>
+        /// <returns></returns>
+        bool CanNavigateBack();
     }
 }
