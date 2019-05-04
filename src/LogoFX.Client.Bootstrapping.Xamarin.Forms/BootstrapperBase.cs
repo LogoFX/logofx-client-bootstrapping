@@ -7,7 +7,6 @@ using Solid.Common;
 using Solid.Core;
 using Solid.Extensibility;
 using Solid.Practices.Composition;
-using Solid.Practices.Composition.Container;
 using Solid.Practices.Composition.Contracts;
 using Solid.Practices.IoC;
 using Solid.Practices.Middleware;
@@ -15,6 +14,7 @@ using Solid.Practices.Modularity;
 
 namespace LogoFX.Client.Bootstrapping.Xamarin.Forms
 {
+    //TODO: Consider using the base bootstrapper and re-examining the custom discovery aspect usage
     /// <summary>
     /// Base class that enables the following core aspects:
     /// Modularity, 
@@ -31,7 +31,7 @@ namespace LogoFX.Client.Bootstrapping.Xamarin.Forms
     {
         private readonly PlatformAspect _platformAspect;
         private readonly DiscoveryAspect _discoveryAspect;
-        private readonly ModularityAspect<BootstrapperBase> _modularityAspect;
+        private readonly ModularityAspect _modularityAspect;
         private readonly ExtensibilityAspect<BootstrapperBase> _extensibilityAspect;
         private readonly AspectsWrapper _aspectsWrapper = new AspectsWrapper();
 
@@ -44,7 +44,7 @@ namespace LogoFX.Client.Bootstrapping.Xamarin.Forms
             Registrator = dependencyRegistrator;
             _platformAspect = new PlatformAspect();
             _discoveryAspect = new DiscoveryAspect(CompositionOptions);
-            _modularityAspect = new ModularityAspect<BootstrapperBase>(this);
+            _modularityAspect = new ModularityAspect(_discoveryAspect, CompositionOptions);
             _extensibilityAspect = new ExtensibilityAspect<BootstrapperBase>(this);            
         }
 
@@ -116,54 +116,7 @@ namespace LogoFX.Client.Bootstrapping.Xamarin.Forms
         internal static IEnumerable<Assembly> FilterByPrefixes(this IEnumerable<Assembly> assemblies, string[] prefixes) => prefixes?.Length == 0
                 ? assemblies
                 : assemblies.Where(t => prefixes.Any(k => t.GetName().Name.StartsWith(k)));
-    }
-
-    class ModularityAspect<TBootstrapper> : IAspect, ICompositionModulesProvider, IHaveErrors
-        where TBootstrapper : IAssemblySourceProvider
-    {
-        private readonly TBootstrapper _bootstrapper;
-
-        public ModularityAspect(TBootstrapper bootstrapper)
-        {
-            _bootstrapper = bootstrapper;
-        }
-
-        public void Initialize()
-        {
-            InitializeCompositionModules();
-        }
-
-        /// <summary>
-        /// Gets the list of modules that were discovered during bootstrapper configuration.
-        /// </summary>
-        /// <value>
-        /// The list of modules.
-        /// </value>
-        public IEnumerable<ICompositionModule> Modules { get; private set; } = new ICompositionModule[] { };
-
-        public string[] Dependencies => new[] {"Platform", "Discovery"};
-        public string Id => "Modularity";
-
-        private void InitializeCompositionModules()
-        {
-            try
-            {
-                ICompositionContainer<ICompositionModule> innerContainer = new SimpleCompositionContainer<ICompositionModule>(
-                    _bootstrapper.Assemblies,
-                    new TypeInfoExtractionService(),
-                    new ActivatorCreationStrategy());
-                innerContainer.Compose();
-                Modules = innerContainer.Modules.ToArray();
-            }
-            catch (AggregateAssemblyInspectionException e)
-            {
-                Errors = e.InnerExceptions;
-            }
-            
-        }
-
-        public IEnumerable<Exception> Errors { get; private set; } = new Exception[] { };
-    }
+    }   
 
     class DiscoveryAspect : IAspect, IAssemblySourceProvider
     {
