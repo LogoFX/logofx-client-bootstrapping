@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Windows.Threading;
+using System.Threading;
 using Caliburn.Micro;
 using LogoFX.Client.Bootstrapping.Adapters.Contracts;
 using LogoFX.Client.Bootstrapping.Xamarin.Forms;

@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Windows.Threading;
+using System.Threading;
 using Android.Runtime;
 using Caliburn.Micro;
 using LogoFX.Client.Bootstrapping.Adapters.Contracts;

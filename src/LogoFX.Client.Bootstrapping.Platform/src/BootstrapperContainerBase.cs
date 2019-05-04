@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Windows.Threading;
+using System.Threading;
 using LogoFX.Bootstrapping;
 #if NET && !TEST
 using System.Windows;
