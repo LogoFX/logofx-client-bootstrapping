@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-#if NET
+#if NET || NETCORE
 using System.Windows.Controls;
 #endif
 #if NETFX_CORE || WINDOWS_UWP
@@ -52,7 +52,7 @@ namespace LogoFX.Client.Bootstrapping
                 {
                     _typedic[viewTypeName] = viewType = (from assembly in bootstrapper.Assemblies
                                                          from type in assembly
-#if NET
+#if NET || NETCORE
                                                          .GetExportedTypes()
 #endif
 #if WINDOWS_UWP || NETFX_CORE

@@ -23,7 +23,7 @@ namespace LogoFX.Client.Bootstrapping
 #if TEST
         IntegrationTestBootstrapperBase
 #else
-#if NET
+#if NET || NETCORE
         Caliburn.Micro.BootstrapperBase
 #else
 #if WINDOWS_UWP || NETFX_CORE
@@ -80,7 +80,7 @@ namespace LogoFX.Client.Bootstrapping
 #endif
 
             (BootstrapperCreationOptions creationOptions)
-#if NET && !TEST
+#if (NET || NETCORE) && !TEST
             :base(creationOptions.UseApplication)
 #endif
         {
