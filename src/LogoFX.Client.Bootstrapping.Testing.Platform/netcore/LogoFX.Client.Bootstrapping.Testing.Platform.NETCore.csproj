@@ -12,7 +12,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
     <OutputPath>..\..\Bin\netcore\Release\</OutputPath>
     <DocumentationFile>..\..\Bin\netcore\Release\LogoFX.Client.Bootstrapping.Testing.Platform.xml</DocumentationFile>
-    <DefineConstants>TRACE;NETCORE</DefineConstants>
+    <DefineConstants>TRACE;NETCORE;TEST</DefineConstants>
   </PropertyGroup>
 
   <ItemGroup>
