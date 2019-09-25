@@ -4,14 +4,14 @@
     <TargetFramework>netcoreapp3.0</TargetFramework>
     <UseWPF>true</UseWPF>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
-    <AssemblyName>LogoFX.Client.Bootstrapping.Testing.Platform</AssemblyName>
+    <AssemblyName>LogoFX.Client.Bootstrapping.Testing</AssemblyName>
     <RootNamespace>LogoFX.Client.Bootstrapping.Testing</RootNamespace>
     <Version>2.1.0</Version>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
     <OutputPath>..\..\Bin\netcore\Release\</OutputPath>
-    <DocumentationFile>..\..\Bin\netcore\Release\LogoFX.Client.Bootstrapping.Testing.Platform.xml</DocumentationFile>
+    <DocumentationFile>..\..\Bin\netcore\Release\LogoFX.Client.Bootstrapping.Testing.xml</DocumentationFile>
     <DefineConstants>TRACE;NETCORE;TEST</DefineConstants>
   </PropertyGroup>
 
