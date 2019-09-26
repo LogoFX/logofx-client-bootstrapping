@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
-    <Version>2.0.0</Version>
+    <Version>2.1.0</Version>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
@@ -14,7 +14,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="LogoFX.Client.Bootstrapping.Adapters.Contracts" Version="2.0.0" />
+    <PackageReference Include="LogoFX.Client.Bootstrapping.Adapters.Contracts" Version="2.1.0" />
     <PackageReference Include="Solid.Bootstrapping" Version="2.2.0" />
     <PackageReference Include="Solid.Common.Core" Version="2.2.0" />
     <PackageReference Include="Solid.Core" Version="2.2.0" />

@@ -146,7 +146,7 @@ public class RegisterPlatformSpecificMiddleware :
         public IBootstrapperWithRegistrator Apply(
             IBootstrapperWithRegistrator @object)
         {
-#if NET
+#if NET || NETCORE
             @object.Registrator.RegisterSingleton<IWindowManager, WindowManager>();
 #endif
             return @object;

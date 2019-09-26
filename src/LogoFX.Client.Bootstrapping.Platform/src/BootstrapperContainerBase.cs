@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Threading;
 using LogoFX.Bootstrapping;
-#if NET && !TEST
+#if (NET || NETCORE) && !TEST
 using System.Windows;
 #endif
 #if !TEST && (NETFX_CORE || WINDOWS_UWP)
@@ -335,7 +335,7 @@ namespace LogoFX.Client.Bootstrapping
             (
             TIocContainerAdapter iocContainerAdapter,
             BootstrapperCreationOptions creationOptions)
-#if NET && !TEST
+#if (NET || NETCORE) && !TEST
             :base(creationOptions)
 #endif
         {            
@@ -373,7 +373,7 @@ namespace LogoFX.Client.Bootstrapping
         /// </value>
         internal TIocContainerAdapter ContainerAdapter { get; }
 
-#if NET && !TEST
+#if (NET || NETCORE) && !TEST
         /// <summary>
         /// Override this to add custom behavior to execute after the application starts.
         /// </summary>
@@ -455,7 +455,7 @@ namespace LogoFX.Client.Bootstrapping
         {
             base.Configure();                                                                   
             InitializeAdapter(ContainerAdapter);
-#if NET // in UWP the dispatcher is initialized later.
+#if (NET || NETCORE) // in UWP the dispatcher is initialized later.
             InitializeDispatcher();
 #endif
             MiddlewareApplier.ApplyMiddlewares(this, _registratorMiddlewaresWrapper.Middlewares);
