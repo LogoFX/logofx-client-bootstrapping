@@ -505,9 +505,16 @@ namespace LogoFX.Client.Bootstrapping
 #endif
                             <TIocContainerAdapter>>
                     ())                    
-                    .UseBootstrapperComposition().
-                    Use(new RegisterViewModelsMiddleware(creationOptions.ExcludedTypes))
+                    .UseBootstrapperComposition()                    
                     .Use(new RegisterPlatformSpecificMiddleware());
+                if (creationOptions.RegisterViewModels)
+                {
+                    Use(new RegisterViewModelsMiddleware(creationOptions.ExcludedTypes));
+                }
+                if (creationOptions.RegisterViewModelsAsContracts)
+                {
+                    Use(new RegisterViewModelsAsContractsMiddleware(creationOptions.ExcludedTypes));
+                }
             }                      
         }        
 
