@@ -167,19 +167,25 @@ public class RegisterPlatformSpecificMiddleware :
 #endif
             <TIocContainerAdapter>>
         where TIocContainerAdapter : class, IIocContainer, IIocContainerAdapter, IBootstrapperAdapter         
-    {
+    {        
         private readonly Type _rootObjectType;
         private readonly bool _displayView;
+        private readonly bool _registerRoot;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="CreateRootObjectMiddleware{TIocContainerAdapter}"/> class.
-        /// </summary>
+        /// </summary>        
         /// <param name="rootObjectType">Type of the root object.</param>
         /// <param name="displayView">if set to <c>true</c> the root view is displayed.</param>
-        public CreateRootObjectMiddleware(Type rootObjectType, bool displayView)
-        {
+        /// <param name="registerRoot">if set to <c>true</c> the root is registered.</param>
+        public CreateRootObjectMiddleware(            
+            Type rootObjectType,
+            bool displayView, 
+            bool registerRoot)
+        {           
             _rootObjectType = rootObjectType;
             _displayView = displayView;
+            _registerRoot = registerRoot;
         }
 
         /// <summary>
@@ -201,7 +207,11 @@ public class RegisterPlatformSpecificMiddleware :
 #endif
             <TIocContainerAdapter> @object)
         {
-            @object.Registrator.RegisterSingleton(_rootObjectType, _rootObjectType);
+            if (_registerRoot)
+            {
+                @object.Registrator.RegisterSingleton(_rootObjectType, _rootObjectType);
+            }
+            
             EventHandler strongHandler = ObjectOnInitializationCompleted;
             @object.InitializationCompleted += WeakDelegate.From(strongHandler);
             return @object;

@@ -23,7 +23,7 @@
     <PackageReference Include="Solid.Practices.IoC" Version="2.2.0" />
     <PackageReference Include="Solid.Practices.Middleware" Version="2.2.0" />
     <PackageReference Include="Solid.Practices.Modularity" Version="2.2.0" />
-    <PackageReference Include="Xamarin.Forms" Version="4.5.0.356" />
+    <PackageReference Include="Xamarin.Forms" Version="4.5.0.396" />
   </ItemGroup>
 
   <ItemGroup>
