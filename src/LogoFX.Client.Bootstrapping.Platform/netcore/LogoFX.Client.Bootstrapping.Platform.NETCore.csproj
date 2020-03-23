@@ -6,7 +6,7 @@
     <UseWPF>true</UseWPF>
     <AssemblyName>LogoFX.Client.Bootstrapping.Platform</AssemblyName>
     <RootNamespace>LogoFX.Client.Bootstrapping</RootNamespace>
-    <Version>2.1.0</Version>
+    <Version>2.1.1</Version>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
