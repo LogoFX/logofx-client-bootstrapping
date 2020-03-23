@@ -25,11 +25,11 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>full</DebugType>
     <Optimize>true</Optimize>
-    <OutputPath>..\..\bin\net\Release\</OutputPath>
+    <OutputPath>..\..\bin\netframework\Release\</OutputPath>
     <DefineConstants>TRACE;TEST;NET</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>..\..\bin\net\Release\LogoFX.Client.Bootstrapping.Testing.xml</DocumentationFile>
+    <DocumentationFile>..\..\bin\netframework\Release\LogoFX.Client.Bootstrapping.Testing.xml</DocumentationFile>
     <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
   <PropertyGroup>
