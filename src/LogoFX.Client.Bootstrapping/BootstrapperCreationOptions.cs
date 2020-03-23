@@ -19,6 +19,9 @@ namespace LogoFX.Client.Bootstrapping
             DiscoverAssemblies = true;
             UseDefaultMiddlewares = true;
             DisplayRootView = true;
+            RegisterRoot = true;
+            RegisterViewModels = true;
+            RegisterViewModelsAsContracts = false;
             ExcludedTypes = new List<Type>();
         }
 
@@ -86,5 +89,32 @@ namespace LogoFX.Client.Bootstrapping
         /// The type of the root object.
         /// </value>
         public List<Type> ExcludedTypes { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether the root object is registered
+        /// into the ioc container. This value is used only when there is a root object.
+        /// </summary>
+        /// <value>
+        ///   <c>true</c> if the root object is registered; otherwise, <c>false</c>.
+        /// </value>
+        public bool RegisterRoot { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether the view models are registered
+        /// automagically into the ioc container.
+        /// </summary>
+        /// <value>
+        ///   <c>true</c> if the view models are registered; otherwise, <c>false</c>.
+        /// </value>
+        public bool RegisterViewModels { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether the view models are registered
+        /// automagically into the ioc container as contracts.
+        /// </summary>
+        /// <value>
+        ///   <c>true</c> if the view models are registered as contracts; otherwise, <c>false</c>.
+        /// </value>
+        public bool RegisterViewModelsAsContracts { get; set; }
     }
 }
