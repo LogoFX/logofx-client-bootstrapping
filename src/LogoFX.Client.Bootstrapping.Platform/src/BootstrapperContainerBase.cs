@@ -141,7 +141,8 @@ namespace LogoFX.Client.Bootstrapping
             Func<TIocContainer, TIocContainerAdapter> adapterCreator)
                 : this(iocContainer, adapterCreator, new BootstrapperCreationOptions
                 {
-                    ExcludedTypes = new List<Type> { typeof(TRootObject) }
+                    ExcludedTypes = new List<Type> { typeof(TRootObject) },
+                    RegisterRoot = false
                 })
             {
             }
@@ -163,15 +164,15 @@ namespace LogoFX.Client.Bootstrapping
 #endif
             public WithRootObjectAsContract(TIocContainer iocContainer,
             Func<TIocContainer, TIocContainerAdapter> adapterCreator,
-                BootstrapperCreationOptions creationOptions) : base(iocContainer, adapterCreator, AddRootObject(creationOptions))
+                BootstrapperCreationOptions creationOptions) : base(iocContainer, adapterCreator, AddRootObjectAsContract(creationOptions))
             {
                 Use(new CreateRootObjectMiddleware<TIocContainerAdapter>(                    
                     typeof(TRootObject),
                     creationOptions.DisplayRootView, 
-                    false));
+                    creationOptions.RegisterRoot));
             }
 
-            private static BootstrapperCreationOptions AddRootObject(BootstrapperCreationOptions creationOptions)
+            private static BootstrapperCreationOptions AddRootObjectAsContract(BootstrapperCreationOptions creationOptions)
             {
                 if (creationOptions.ExcludedTypes == null)
                 {
@@ -181,6 +182,7 @@ namespace LogoFX.Client.Bootstrapping
                 {
                     creationOptions.ExcludedTypes.Add(typeof(TRootObject));
                 }
+                creationOptions.RegisterRoot = false;
                 return creationOptions;
             }
         }
@@ -395,7 +397,8 @@ namespace LogoFX.Client.Bootstrapping
                 : this(iocContainerAdapter, new BootstrapperCreationOptions
                 {
                     ExcludedTypes = new List<Type> {                         
-                        typeof(TRootObject) }
+                        typeof(TRootObject) },
+                    RegisterRoot = false
                 })
             {
             }
@@ -414,24 +417,25 @@ namespace LogoFX.Client.Bootstrapping
 #endif
             public WithRootObjectAsContract(TIocContainerAdapter iocContainerAdapter,
                 BootstrapperCreationOptions creationOptions) :
-                base(iocContainerAdapter, AddRootObject(creationOptions))
+                base(iocContainerAdapter, AddRootObjectAsContract(creationOptions))
             {
                 Use(new CreateRootObjectMiddleware<TIocContainerAdapter>(
                     typeof(TRootObject),
                     creationOptions.DisplayRootView,
-                    false));
-            }
+                    creationOptions.RegisterRoot));
+            }            
 
-            private static BootstrapperCreationOptions AddRootObject(BootstrapperCreationOptions creationOptions)
+            private static BootstrapperCreationOptions AddRootObjectAsContract(BootstrapperCreationOptions creationOptions)
             {
                 if (creationOptions.ExcludedTypes == null)
                 {
                     creationOptions.ExcludedTypes = new List<Type>();
-                }               
+                }
                 if (creationOptions.ExcludedTypes.Contains(typeof(TRootObject)) == false)
                 {
                     creationOptions.ExcludedTypes.Add(typeof(TRootObject));
                 }
+                creationOptions.RegisterRoot = false;
                 return creationOptions;
             }
         }
