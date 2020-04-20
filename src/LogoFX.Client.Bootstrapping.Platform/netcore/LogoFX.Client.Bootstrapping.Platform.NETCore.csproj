@@ -13,6 +13,9 @@
     <DefineConstants>TRACE;NETCORE</DefineConstants>
     <OutputPath>..\..\Bin\netcore\Release\</OutputPath>
     <DocumentationFile>..\..\Bin\netcore\Release\LogoFX.Client.Bootstrapping.Platform.xml</DocumentationFile>
+    <EmbedAllSources>True</EmbedAllSources>
+    <DebugType>embedded</DebugType>
+    <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
 
   <ItemGroup>

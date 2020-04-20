@@ -30,14 +30,15 @@
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
-    <DebugType>full</DebugType>
+     <EmbedAllSources>True</EmbedAllSources>
+     <DebugType>embedded</DebugType>
+     <DebugSymbols>true</DebugSymbols>
     <Optimize>true</Optimize>
     <OutputPath>..\..\Bin\uwp\Release\</OutputPath>
     <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>..\..\Bin\uwp\Release\LogoFX.Client.Bootstrapping.Platform.XML</DocumentationFile>
-    <DebugSymbols>true</DebugSymbols>
+    <DocumentationFile>..\..\Bin\uwp\Release\LogoFX.Client.Bootstrapping.Platform.XML</DocumentationFile>    
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
     <PlatformTarget>x86</PlatformTarget>

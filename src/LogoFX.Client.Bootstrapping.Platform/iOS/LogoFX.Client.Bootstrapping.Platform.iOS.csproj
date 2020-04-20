@@ -23,7 +23,9 @@
     <ConsolePause>false</ConsolePause>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>full</DebugType>
+     <EmbedAllSources>True</EmbedAllSources>
+     <DebugType>embedded</DebugType>
+     <DebugSymbols>true</DebugSymbols>
     <Optimize>true</Optimize>
     <OutputPath>..\..\Bin\iOS\Release\</OutputPath>
     <ErrorReport>prompt</ErrorReport>

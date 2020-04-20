@@ -27,14 +27,15 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>full</DebugType>
+     <EmbedAllSources>True</EmbedAllSources>
+     <DebugType>embedded</DebugType>
+     <DebugSymbols>true</DebugSymbols>
     <Optimize>true</Optimize>
     <OutputPath>..\..\Bin\android\Release\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <DocumentationFile>..\..\Bin\android\Release\LogoFX.Client.Bootstrapping.Platform.xml</DocumentationFile>
-    <DebugSymbols>true</DebugSymbols>
+    <DocumentationFile>..\..\Bin\android\Release\LogoFX.Client.Bootstrapping.Platform.xml</DocumentationFile>    
   </PropertyGroup>
   <PropertyGroup>
     <RestoreProjectStyle>PackageReference</RestoreProjectStyle>

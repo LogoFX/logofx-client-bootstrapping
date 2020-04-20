@@ -66,9 +66,9 @@
     <None Include="app.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\LogoFX.Client.Bootstrapping.Platform\net\LogoFX.Client.Bootstrapping.Platform.NET.csproj">
-      <Project>{51322595-4423-46d9-8aad-7486fc87e15c}</Project>
-      <Name>LogoFX.Client.Bootstrapping.Platform.NET</Name>
+    <ProjectReference Include="..\LogoFX.Client.Bootstrapping.Platform\netframework\LogoFX.Client.Bootstrapping.Platform.NETFramework.csproj">
+      <Project>{51322595-4423-46D9-8AAD-7486FC87E15C}</Project>
+      <Name>LogoFX.Client.Bootstrapping.Platform.NETFramework</Name>
     </ProjectReference>
     <ProjectReference Include="..\LogoFX.Client.Bootstrapping\LogoFX.Client.Bootstrapping.csproj">
       <Project>{253c97ea-fe42-4ec4-b42b-e28b0f3f013b}</Project>
