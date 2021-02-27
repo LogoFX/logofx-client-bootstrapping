@@ -28,7 +28,7 @@
     <DebugSymbols>true</DebugSymbols>
     <Optimize>true</Optimize>
     <OutputPath>..\..\bin\netframework\Release\</OutputPath>
-    <DefineConstants>TRACE;TEST;NET</DefineConstants>
+    <DefineConstants>TRACE;TEST;NETFRAMEWORK</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <DocumentationFile>..\..\bin\netframework\Release\LogoFX.Client.Bootstrapping.Testing.xml</DocumentationFile>

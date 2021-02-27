@@ -1,0 +1,58 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <AssemblyName>LogoFX.Client.Bootstrapping.Testing</AssemblyName>
+    <RootNamespace>LogoFX.Client.Bootstrapping.Testing</RootNamespace>
+    <Version>2.2.0-rc1</Version>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <OutputPath>..\..\Bin\net\Release\</OutputPath>
+    <DocumentationFile>..\..\Bin\net\Release\LogoFX.Client.Bootstrapping.Testing.xml</DocumentationFile>
+    <DefineConstants>TRACE;NET;TEST</DefineConstants>
+    <EmbedAllSources>True</EmbedAllSources>
+    <DebugType>embedded</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="..\..\LogoFX.Client.Bootstrapping.Platform\src\BootstrapperBase.Adapter.cs" Link="BootstrapperBase.Adapter.cs" />
+    <Compile Include="..\..\LogoFX.Client.Bootstrapping.Platform\src\BootstrapperBase.cs" Link="BootstrapperBase.cs" />
+    <Compile Include="..\..\LogoFX.Client.Bootstrapping.Platform\src\BootstrapperBase.Discovery.cs" Link="BootstrapperBase.Discovery.cs" />
+    <Compile Include="..\..\LogoFX.Client.Bootstrapping.Platform\src\BootstrapperBase.Middleware.cs" Link="BootstrapperBase.Middleware.cs" />
+    <Compile Include="..\..\LogoFX.Client.Bootstrapping.Platform\src\BootstrapperBase.Modularity.cs" Link="BootstrapperBase.Modularity.cs" />
+    <Compile Include="..\..\LogoFX.Client.Bootstrapping.Platform\src\BootstrapperBase.ViewLocator.cs" Link="BootstrapperBase.ViewLocator.cs" />
+    <Compile Include="..\..\LogoFX.Client.Bootstrapping.Platform\src\BootstrapperContainerBase.cs" Link="BootstrapperContainerBase.cs" />
+    <Compile Include="..\..\LogoFX.Client.Bootstrapping.Platform\src\BootstrapperContainerBase.Middleware.cs" Link="BootstrapperContainerBase.Middleware.cs" />
+    <Compile Include="..\..\LogoFX.Client.Bootstrapping.Platform\src\BootstrapperExtensions.cs" Link="BootstrapperExtensions.cs" />
+    <Compile Include="..\..\LogoFX.Client.Bootstrapping.Platform\src\MiddlewareDecorator.cs" Link="MiddlewareDecorator.cs" />
+    <Compile Include="..\src\IntegrationTestBootstrapperBase.cs" Link="IntegrationTestBootstrapperBase.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="LogoFX.Bootstrapping" Version="2.2.0-rc1" />
+    <PackageReference Include="LogoFX.Client.Bootstrapping.Adapters.Contracts" Version="2.2.0-rc1" />
+    <PackageReference Include="LogoFX.Client.Core" Version="2.2.0-rc1" />
+    <PackageReference Include="LogoFX.Core" Version="2.2.0-rc1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\LogoFX.Client.Bootstrapping\LogoFX.Client.Bootstrapping.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Caliburn.Micro">
+      <HintPath>..\..\lib\Caliburn.Micro\netstandard1.0\Caliburn.Micro.dll</HintPath>
+    </Reference>
+    <Reference Include="Caliburn.Micro.Platform">
+      <HintPath>..\..\lib\Caliburn.Micro\net45\Caliburn.Micro.Platform.dll</HintPath>
+    </Reference>
+    <Reference Include="Caliburn.Micro.Platform.Core">
+      <HintPath>..\..\lib\Caliburn.Micro\net45\Caliburn.Micro.Platform.Core.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>

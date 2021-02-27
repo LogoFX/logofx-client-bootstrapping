@@ -234,3 +234,6 @@ _Pvt_Extensions
 
 # FAKE - F# Make
 .fake/
+# Generated packages and intermediate output
+output
+devops/pack/**/contents/lib

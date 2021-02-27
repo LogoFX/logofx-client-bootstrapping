@@ -157,7 +157,7 @@
       <Version>2.2.0-rc1</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
-      <Version>6.2.10</Version>
+      <Version>6.2.12</Version>
     </PackageReference>
     <PackageReference Include="Solid.Common">
       <Version>2.2.0</Version>
