@@ -1,0 +1,2 @@
+rem Replace with PowerShell or some other programmatic means for locating msbuild installation
+"C:\Program Files (x86)\Microsoft Visual Studio\2019\Professional\MSBuild\Current\Bin\MSBuild" "Y:\Workspace\logofx-project\cl-bs\src\LogoFX.Client.Bootstrapping.sln" -property:Configuration=Release /t:Clean,Build

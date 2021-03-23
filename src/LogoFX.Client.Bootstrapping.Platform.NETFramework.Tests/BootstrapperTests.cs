@@ -10,7 +10,7 @@ using Solid.Practices.IoC;
 using Solid.Practices.Modularity;
 using Xunit;
 
-namespace LogoFX.Client.Bootstrapping.Platform.NET.Tests
+namespace LogoFX.Client.Bootstrapping.Platform.NETFramework.Tests
 {    
     public class BootstrapperTests : IDisposable
     {
