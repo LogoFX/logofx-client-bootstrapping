@@ -8,3 +8,18 @@ image: Visual Studio 2019
 
 build:
   verbosity: minimal
+  project: ./src/LogoFX.Client.Bootstrapping.sln
+
+after_test:
+  - cd ../test
+  - test
+  - cd ../publish
+  - cd PublishUtil
+  - dotnet build
+  - cd bin
+  - dotnet PublishUtil.dll
+
+artifacts:
+
+  - name: Packages
+    path: ./output/*.nupkg
