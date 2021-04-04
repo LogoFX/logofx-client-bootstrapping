@@ -13,10 +13,8 @@ build:
   project: ./src/LogoFX.Client.Bootstrapping.sln
 
 after_test:
-  - cd ../devops
-  - cd test
-  - test
-  - cd ../publish
+  - cd ../devops  
+  - cd ./publish
   - cd PublishUtil
   - dotnet build
   - cd bin
