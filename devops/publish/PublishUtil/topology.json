@@ -1,0 +1,18 @@
+{
+  "data": [
+    {
+      "id": "LogoFX.Client.Bootstrapping.Core"
+    },
+    {
+      "id": "LogoFX.Client.Bootstrapping",
+      "dependencies": [ "LogoFX.Client.Bootstrapping.Core" ]
+    },
+    {
+      "id": "LogoFX.Client.Bootstrapping.Testing",
+      "dependencies": [ "LogoFX.Client.Bootstrapping.Core" ]
+    },
+    {
+      "id": "LogoFX.Client.Bootstrapping.Xamarin.Forms"
+    }
+  ]
+}

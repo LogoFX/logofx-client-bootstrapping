@@ -13,7 +13,6 @@ build:
   project: ./src/LogoFX.Client.Bootstrapping.sln
 
 after_test:
-  - cd
   - cd ../devops  
   - cd publish
   - cd PublishUtil
