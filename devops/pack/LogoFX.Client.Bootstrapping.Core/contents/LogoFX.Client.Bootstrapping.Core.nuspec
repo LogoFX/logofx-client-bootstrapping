@@ -20,5 +20,5 @@
       <dependency id="Solid.Practices.Composition.Core" version="2.3.0-rc1" />
       <dependency id="LogoFX.Bootstrapping" version="2.2.0-rc2" />
     </dependencies>
-  </metadata>  
+  </metadata>
 </package>

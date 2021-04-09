@@ -1,19 +1,16 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
-
+<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
-    <Version>2.2.0-rc1</Version>
-  </PropertyGroup>   
-
+    <Version>2.2.0</Version>
+  </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
     <OutputPath>..\Bin\netstandard\Release</OutputPath>
     <DocumentationFile>..\Bin\netstandard\Release\LogoFX.Client.Bootstrapping.xml</DocumentationFile>
     <EmbedAllSources>True</EmbedAllSources>
     <DebugType>embedded</DebugType>
     <DebugSymbols>true</DebugSymbols>
-  </PropertyGroup> 
-
+  </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="LogoFX.Bootstrapping" Version="2.2.0-rc1" />
     <PackageReference Include="Solid.Bootstrapping" Version="2.2.0" />
@@ -21,5 +18,4 @@
     <PackageReference Include="Solid.Practices.IoC" Version="2.2.0" />
     <PackageReference Include="Solid.Practices.Middleware" Version="2.2.0" />
   </ItemGroup>
-
 </Project>

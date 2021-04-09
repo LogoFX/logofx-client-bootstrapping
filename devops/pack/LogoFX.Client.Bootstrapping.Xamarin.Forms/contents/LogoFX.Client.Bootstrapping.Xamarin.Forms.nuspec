@@ -33,5 +33,5 @@
         <dependency id="LogoFX.Client.Core" version="2.2.0-rc2" />
       </group>
     </dependencies>
-  </metadata>    
+  </metadata>
 </package>

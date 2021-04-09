@@ -57,7 +57,7 @@
         <dependency id="LogoFX.Client.Bootstrapping.Core" version="2.2.0-rc2" />
         <dependency id="LogoFX.Client.Core" version="2.2.0-rc2" />
       </group>
-      <group targetFramework="net5.0-windows">      
+      <group targetFramework="net5.0-windows">
         <dependency id="Solid.Practices.IoC" version="2.3.0-rc1" />
         <dependency id="Solid.Core" version="2.3.0-rc1" />
         <dependency id="Solid.Extensibility" version="2.3.0-rc1" />
@@ -72,5 +72,5 @@
         <dependency id="LogoFX.Client.Core" version="2.2.0-rc2" />
       </group>
     </dependencies>
-  </metadata>        
+  </metadata>
 </package>
