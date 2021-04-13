@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <UseWPF>true</UseWPF>
@@ -29,10 +29,10 @@
     <Compile Include="..\src\IntegrationTestBootstrapperBase.cs" Link="IntegrationTestBootstrapperBase.cs" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="LogoFX.Bootstrapping" Version="2.2.0-rc1" />
-    <PackageReference Include="LogoFX.Client.Bootstrapping.Adapters.Contracts" Version="2.2.0-rc1" />
-    <PackageReference Include="LogoFX.Client.Core" Version="2.2.0-rc1" />
-    <PackageReference Include="LogoFX.Core" Version="2.2.0-rc1" />
+    <PackageReference Include="LogoFX.Bootstrapping" Version="2.2.0-rc2" />
+    <PackageReference Include="LogoFX.Client.Bootstrapping.Adapters.Contracts" Version="2.2.0-rc2" />
+    <PackageReference Include="LogoFX.Client.Core" Version="2.2.0-rc2" />
+    <PackageReference Include="LogoFX.Core" Version="2.2.0-rc2" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\LogoFX.Client.Bootstrapping\LogoFX.Client.Bootstrapping.csproj" />
