@@ -1,10 +1,20 @@
+version: 2.2.0.{build}
 configuration: Release
-
 before_build:
 - cd src
 - nuget restore
-
 image: Visual Studio 2019
-
 build:
   verbosity: minimal
+  project: ./src/LogoFX.Client.Bootstrapping.sln
+after_test:
+- cd ../devops
+- cd publish
+- cd PublishUtil
+- dotnet build
+- cd bin
+- dotnet PublishUtil.dll
+artifacts:
+- name: Packages
+  path: ./output/*.nupkg
+...

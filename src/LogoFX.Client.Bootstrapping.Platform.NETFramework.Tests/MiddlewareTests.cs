@@ -2,7 +2,7 @@
 using NUnit.Framework;
 using Shouldly;
 
-namespace LogoFX.Client.Bootstrapping.Platform.NET45.Tests
+namespace LogoFX.Client.Bootstrapping.Platform.NETFramework.Tests
 {
     [TestFixture]
     class MiddlewareTests

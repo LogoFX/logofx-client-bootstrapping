@@ -1,20 +1,20 @@
-﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
-
+<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
   <PropertyGroup>
-    <TargetFramework>netcoreapp3.0</TargetFramework>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
     <UseWPF>true</UseWPF>
     <AssemblyName>LogoFX.Client.Bootstrapping.Platform</AssemblyName>
     <RootNamespace>LogoFX.Client.Bootstrapping</RootNamespace>
-    <Version>2.1.1</Version>
+    <Version>2.2.0</Version>
   </PropertyGroup>
-
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
     <DefineConstants>TRACE;NETCORE</DefineConstants>
     <OutputPath>..\..\Bin\netcore\Release\</OutputPath>
     <DocumentationFile>..\..\Bin\netcore\Release\LogoFX.Client.Bootstrapping.Platform.xml</DocumentationFile>
+    <EmbedAllSources>True</EmbedAllSources>
+    <DebugType>embedded</DebugType>
+    <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
-
   <ItemGroup>
     <Compile Include="..\src\BootstrapperBase.Adapter.cs" Link="BootstrapperBase.Adapter.cs" />
     <Compile Include="..\src\BootstrapperBase.cs" Link="BootstrapperBase.cs" />
@@ -28,18 +28,15 @@
     <Compile Include="..\src\BootstrapperExtensions.cs" Link="BootstrapperExtensions.cs" />
     <Compile Include="..\src\MiddlewareDecorator.cs" Link="MiddlewareDecorator.cs" />
   </ItemGroup>
-
   <ItemGroup>
-    <PackageReference Include="LogoFX.Client.Bootstrapping.Adapters.Contracts" Version="2.1.0" />
-    <PackageReference Include="LogoFX.Client.Core" Version="2.1.0" />
-    <PackageReference Include="LogoFX.Core" Version="2.1.0" />
-    <PackageReference Include="Solid.Common.Core" Version="2.2.0" />
+    <PackageReference Include="LogoFX.Client.Bootstrapping.Adapters.Contracts" Version="2.2.0-rc2" />
+    <PackageReference Include="LogoFX.Client.Core" Version="2.2.0-rc2" />
+    <PackageReference Include="LogoFX.Core" Version="2.2.0-rc2" />
+    <PackageReference Include="Solid.Common.Core" Version="2.3.0" />
   </ItemGroup>
-
   <ItemGroup>
     <ProjectReference Include="..\..\LogoFX.Client.Bootstrapping\LogoFX.Client.Bootstrapping.csproj" />
   </ItemGroup>
-
   <ItemGroup>
     <Reference Include="Caliburn.Micro">
       <HintPath>..\..\lib\Caliburn.Micro\netstandard1.0\Caliburn.Micro.dll</HintPath>
@@ -51,5 +48,4 @@
       <HintPath>..\..\lib\Caliburn.Micro\net45\Caliburn.Micro.Platform.Core.dll</HintPath>
     </Reference>
   </ItemGroup>
-
 </Project>

@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-#if NET || NETCORE
+#if NET || NETCORE || NETFRAMEWORK
 using System.Windows;
 #else
 using Windows.UI.Xaml;
 #endif
-#if !WINDOWS_UWP && !NET && !NETCORE
+#if !WINDOWS_UWP && !NET && !NETCORE && !NETFRAMEWORK
 using Caliburn.Micro;
 #endif
 

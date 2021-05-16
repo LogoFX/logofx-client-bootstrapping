@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>LogoFX.Client.Bootstrapping.Xamarin.Forms</id>
+    <version>2.2.0-rc2</version>
+    <title>LogoFX.Client.Bootstrapping.Xamarin.Forms</title>
+    <authors>Gennady Verdel</authors>
+    <owners>Gennady Verdel</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <licenseUrl>https://github.com/LogoFX/logofx-client-bootstrapping/blob/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/LogoFX/logofx-client-bootstrapping</projectUrl>
+    <iconUrl>https://github.com/LogoFX/logofx-assets/blob/master/icons/icon.png?raw=true</iconUrl>
+    <description>LogoFX Client Bootstrapping containing base bootstrapper for Xamarin.Forms. It performs some boilerplate tasks like modules and assemblies discovery</description>
+    <summary>LogoFX Client Bootstrapping containing base bootstrapper for Xamarin.Forms</summary>
+    <releaseNotes>Updated dependent packages</releaseNotes>
+    <dependencies>
+      <group>
+        <dependency id="Xamarin.Forms" version="4.5.0.396" />
+        <dependency id="Solid.Bootstrapping" version="2.3.0" />
+        <dependency id="Solid.Common.Core" version="2.3.0" />
+        <dependency id="Solid.Core" version="2.3.0" />
+        <dependency id="Solid.Extensibility" version="2.3.0" />
+        <dependency id="Solid.Practices.Composition.Core" version="2.3.0" />
+        <dependency id="Solid.Practices.IoC" version="2.3.0" />
+        <dependency id="Solid.Practices.Middleware" version="2.3.0" />
+        <dependency id="Solid.Practices.Modularity" version="2.3.0" />
+        <dependency id="LogoFX.Client.Bootstrapping.Adapters.Contracts" version="2.2.0-rc2" />
+      </group>
+      <group targetFramework="MonoAndroid4.0.3">
+        <dependency id="LogoFX.Client.Core" version="2.2.0-rc2" />
+      </group>
+      <group targetFramework="Xamarin.iOS1.0">
+        <dependency id="LogoFX.Client.Core" version="2.2.0-rc2" />
+      </group>
+    </dependencies>
+  </metadata>
+</package>

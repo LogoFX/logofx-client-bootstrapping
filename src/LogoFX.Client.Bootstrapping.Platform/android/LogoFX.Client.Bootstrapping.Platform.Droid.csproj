@@ -27,14 +27,15 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>full</DebugType>
+    <EmbedAllSources>True</EmbedAllSources>
+    <DebugType>embedded</DebugType>
+    <DebugSymbols>true</DebugSymbols>
     <Optimize>true</Optimize>
     <OutputPath>..\..\Bin\android\Release\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <DocumentationFile>..\..\Bin\android\Release\LogoFX.Client.Bootstrapping.Platform.xml</DocumentationFile>
-    <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
   <PropertyGroup>
     <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
@@ -71,13 +72,13 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="LogoFX.Client.Bootstrapping.Adapters.Contracts">
-      <Version>2.1.0</Version>
+      <Version>2.2.0-rc2</Version>
     </PackageReference>
     <PackageReference Include="LogoFX.Client.Core">
-      <Version>2.1.0</Version>
+      <Version>2.2.0-rc2</Version>
     </PackageReference>
     <PackageReference Include="Solid.Practices.IoC">
-      <Version>2.2.0</Version>
+      <Version>2.3.0</Version>
     </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />

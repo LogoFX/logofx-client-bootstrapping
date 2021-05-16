@@ -23,7 +23,7 @@ namespace LogoFX.Client.Bootstrapping
 #if TEST
         IntegrationTestBootstrapperBase
 #else
-#if NET || NETCORE
+#if NET || NETCORE || NETFRAMEWORK
         Caliburn.Micro.BootstrapperBase
 #else
 #if WINDOWS_UWP || NETFX_CORE
@@ -80,8 +80,8 @@ namespace LogoFX.Client.Bootstrapping
 #endif
 
             (BootstrapperCreationOptions creationOptions)
-#if (NET || NETCORE) && !TEST
-            :base(creationOptions.UseApplication)
+#if (NET || NETCORE || NETFRAMEWORK) && !TEST
+            : base(creationOptions.UseApplication)
 #endif
         {
             _reuseCompositionInformation = creationOptions.ReuseCompositionInformation;

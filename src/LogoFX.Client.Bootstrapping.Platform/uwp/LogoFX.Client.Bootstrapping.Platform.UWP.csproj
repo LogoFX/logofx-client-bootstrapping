@@ -30,14 +30,15 @@
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
-    <DebugType>full</DebugType>
+    <EmbedAllSources>True</EmbedAllSources>
+    <DebugType>embedded</DebugType>
+    <DebugSymbols>true</DebugSymbols>
     <Optimize>true</Optimize>
     <OutputPath>..\..\Bin\uwp\Release\</OutputPath>
     <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <DocumentationFile>..\..\Bin\uwp\Release\LogoFX.Client.Bootstrapping.Platform.XML</DocumentationFile>
-    <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
     <PlatformTarget>x86</PlatformTarget>
@@ -141,37 +142,37 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="LogoFX.Bootstrapping">
-      <Version>2.1.0</Version>
+      <Version>2.2.0-rc2</Version>
     </PackageReference>
     <PackageReference Include="LogoFX.Client.Bootstrapping.Adapters.Contracts">
-      <Version>2.1.0</Version>
+      <Version>2.2.0-rc2</Version>
     </PackageReference>
     <PackageReference Include="LogoFX.Client.Core">
-      <Version>2.1.0</Version>
+      <Version>2.2.0-rc2</Version>
     </PackageReference>
     <PackageReference Include="LogoFX.Client.Core.Core">
-      <Version>2.1.0</Version>
+      <Version>2.2.0-rc2</Version>
     </PackageReference>
     <PackageReference Include="LogoFX.Core">
-      <Version>2.1.0</Version>
+      <Version>2.2.0-rc2</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
-      <Version>6.2.10</Version>
+      <Version>6.2.12</Version>
     </PackageReference>
     <PackageReference Include="Solid.Common">
-      <Version>2.2.0</Version>
+      <Version>2.3.0</Version>
     </PackageReference>
     <PackageReference Include="Solid.Practices.Composition.Core">
-      <Version>2.2.0</Version>
+      <Version>2.3.0</Version>
     </PackageReference>
     <PackageReference Include="Solid.Practices.IoC">
-      <Version>2.2.0</Version>
+      <Version>2.3.0</Version>
     </PackageReference>
     <PackageReference Include="Solid.Practices.Middleware">
-      <Version>2.2.0</Version>
+      <Version>2.3.0</Version>
     </PackageReference>
     <PackageReference Include="Solid.Practices.Modularity">
-      <Version>2.2.0</Version>
+      <Version>2.3.0</Version>
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
