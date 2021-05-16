@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
@@ -13,9 +13,9 @@
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="LogoFX.Bootstrapping" Version="2.2.0-rc2" />
-    <PackageReference Include="Solid.Bootstrapping" Version="2.3.0-rc1" />
-    <PackageReference Include="Solid.Practices.Composition.Core" Version="2.3.0-rc1" />
-    <PackageReference Include="Solid.Practices.IoC" Version="2.3.0-rc1" />
-    <PackageReference Include="Solid.Practices.Middleware" Version="2.3.0-rc1" />
+    <PackageReference Include="Solid.Bootstrapping" Version="2.3.0" />
+    <PackageReference Include="Solid.Practices.Composition.Core" Version="2.3.0" />
+    <PackageReference Include="Solid.Practices.IoC" Version="2.3.0" />
+    <PackageReference Include="Solid.Practices.Middleware" Version="2.3.0" />
   </ItemGroup>
 </Project>

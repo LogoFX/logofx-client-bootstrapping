@@ -70,7 +70,7 @@
       <Version>2.2.0-rc2</Version>
     </PackageReference>
     <PackageReference Include="Solid.Practices.IoC">
-      <Version>2.3.0-rc1</Version>
+      <Version>2.3.0</Version>
     </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
