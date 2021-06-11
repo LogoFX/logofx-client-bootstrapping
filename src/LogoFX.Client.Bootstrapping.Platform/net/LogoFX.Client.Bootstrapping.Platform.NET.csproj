@@ -29,9 +29,9 @@
     <Compile Include="..\src\MiddlewareDecorator.cs" Link="MiddlewareDecorator.cs" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="LogoFX.Client.Bootstrapping.Adapters.Contracts" Version="2.2.0-rc2" />
-    <PackageReference Include="LogoFX.Client.Core" Version="2.2.0-rc2" />
-    <PackageReference Include="LogoFX.Core" Version="2.2.0-rc2" />
+    <PackageReference Include="LogoFX.Client.Bootstrapping.Adapters.Contracts" Version="2.2.0-rc3" />
+    <PackageReference Include="LogoFX.Client.Core" Version="2.2.0-rc3" />
+    <PackageReference Include="LogoFX.Core" Version="2.2.0-rc3" />
     <PackageReference Include="Solid.Common.Core" Version="2.3.0" />
   </ItemGroup>
   <ItemGroup>

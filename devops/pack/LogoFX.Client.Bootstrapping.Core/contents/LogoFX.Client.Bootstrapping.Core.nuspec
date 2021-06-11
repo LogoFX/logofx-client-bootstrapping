@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/10/nuspec.xsd">
   <metadata>
     <id>LogoFX.Client.Bootstrapping.Core</id>
-    <version>2.2.0-rc2</version>
+    <version>2.2.0-rc3</version>
     <title>LogoFX.Client.Bootstrapping.Core</title>
     <authors>Gennady Verdel</authors>
     <owners>Gennady Verdel</owners>
@@ -18,7 +18,7 @@
       <dependency id="Solid.Practices.Middleware" version="2.3.0" />
       <dependency id="Solid.Bootstrapping" version="2.3.0" />
       <dependency id="Solid.Practices.Composition.Core" version="2.3.0" />
-      <dependency id="LogoFX.Bootstrapping" version="2.2.0-rc2" />
+      <dependency id="LogoFX.Bootstrapping" version="2.2.0-rc3" />
     </dependencies>
   </metadata>
 </package>

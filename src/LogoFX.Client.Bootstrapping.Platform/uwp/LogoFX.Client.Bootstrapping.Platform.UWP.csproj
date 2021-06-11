@@ -142,19 +142,19 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="LogoFX.Bootstrapping">
-      <Version>2.2.0-rc2</Version>
+      <Version>2.2.0-rc3</Version>
     </PackageReference>
     <PackageReference Include="LogoFX.Client.Bootstrapping.Adapters.Contracts">
-      <Version>2.2.0-rc2</Version>
+      <Version>2.2.0-rc3</Version>
     </PackageReference>
     <PackageReference Include="LogoFX.Client.Core">
-      <Version>2.2.0-rc2</Version>
+      <Version>2.2.0-rc3</Version>
     </PackageReference>
     <PackageReference Include="LogoFX.Client.Core.Core">
-      <Version>2.2.0-rc2</Version>
+      <Version>2.2.0-rc3</Version>
     </PackageReference>
     <PackageReference Include="LogoFX.Core">
-      <Version>2.2.0-rc2</Version>
+      <Version>2.2.0-rc3</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
       <Version>6.2.12</Version>

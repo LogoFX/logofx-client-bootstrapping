@@ -31,7 +31,7 @@ namespace PublishUtil
             Directory.SetCurrentDirectory(Path.Combine(Directory.GetCurrentDirectory(), "publish"));
             var copyBat = Path.Combine(Directory.GetCurrentDirectory(), "copy-single.bat");
             //TODO: pass version as well
-            process = Process.Start(copyBat, new [] {packageId, "2.2.0-rc2", "../../../../packages/Tests-All" });
+            process = Process.Start(copyBat, new [] {packageId, "2.2.0-rc3", "../../../../packages/Tests-All" });
             process.WaitForExit();
             GoUp(1);
         }

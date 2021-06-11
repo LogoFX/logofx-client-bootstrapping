@@ -83,10 +83,10 @@
       <Version>5.10.3</Version>
     </PackageReference>
     <PackageReference Include="LogoFX.Client.Bootstrapping.Adapters.SimpleContainer">
-      <Version>2.2.0-rc2</Version>
+      <Version>2.2.0-rc3</Version>
     </PackageReference>
     <PackageReference Include="LogoFX.Client.Tests.Shared.Caliburn.Micro">
-      <Version>2.2.0-rc2</Version>
+      <Version>2.2.0-rc3</Version>
     </PackageReference>
     <PackageReference Include="Solid.Common.Core">
       <Version>2.3.0</Version>
