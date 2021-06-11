@@ -4,7 +4,6 @@ using LogoFX.Client.Bootstrapping.Adapters.SimpleContainer;
 using LogoFX.Client.Testing.Shared.Caliburn.Micro;
 using LogoFX.Practices.IoC;
 using Solid.Common;
-using Solid.Core;
 using Solid.Practices.Composition;
 using Solid.Practices.IoC;
 using Solid.Practices.Modularity;
