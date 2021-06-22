@@ -15,13 +15,13 @@
     <releaseNotes>Updated dependent packages</releaseNotes>
     <dependencies>
       <group targetFramework=".NETFramework4.6.1">
-        <dependency id="Solid.Practices.IoC" version="2.3.0" />
-        <dependency id="Solid.Core" version="2.3.0" />
-        <dependency id="Solid.Extensibility" version="2.3.0" />
-        <dependency id="Solid.Practices.Composition.Core" version="2.3.0" />
-        <dependency id="Solid.Practices.Modularity" version="2.3.0" />
-        <dependency id="Solid.Practices.Middleware" version="2.3.0" />
-        <dependency id="Solid.Bootstrapping" version="2.3.0" />
+        <dependency id="Solid.Practices.IoC" version="2.3.1" />
+        <dependency id="Solid.Core" version="2.3.1" />
+        <dependency id="Solid.Extensibility" version="2.3.1" />
+        <dependency id="Solid.Practices.Composition.Core" version="2.3.1" />
+        <dependency id="Solid.Practices.Modularity" version="2.3.1" />
+        <dependency id="Solid.Practices.Middleware" version="2.3.1" />
+        <dependency id="Solid.Bootstrapping" version="2.3.1" />
         <dependency id="LogoFX.Core" version="2.2.0-rc3" />
         <dependency id="LogoFX.Bootstrapping" version="2.2.0-rc3" />
         <dependency id="LogoFX.Client.Bootstrapping.Adapters.Contracts" version="2.2.0-rc3" />
@@ -29,14 +29,14 @@
         <dependency id="LogoFX.Client.Core" version="2.2.0-rc3" />
       </group>
       <group targetFramework="UAP10.0">
-        <dependency id="Solid.Practices.IoC" version="2.3.0" />
-        <dependency id="Solid.Core" version="2.3.0" />
-        <dependency id="Solid.Extensibility" version="2.3.0" />
-        <dependency id="Solid.Practices.Composition.Core" version="2.3.0" />
-        <dependency id="Solid.Practices.Modularity" version="2.3.0" />
-        <dependency id="Solid.Practices.Middleware" version="2.3.0" />
-        <dependency id="Solid.Bootstrapping" version="2.3.0" />
-        <dependency id="Solid.Common" version="2.3.0" />
+        <dependency id="Solid.Practices.IoC" version="2.3.1" />
+        <dependency id="Solid.Core" version="2.3.1" />
+        <dependency id="Solid.Extensibility" version="2.3.1" />
+        <dependency id="Solid.Practices.Composition.Core" version="2.3.1" />
+        <dependency id="Solid.Practices.Modularity" version="2.3.1" />
+        <dependency id="Solid.Practices.Middleware" version="2.3.1" />
+        <dependency id="Solid.Bootstrapping" version="2.3.1" />
+        <dependency id="Solid.Common" version="2.3.1" />
         <dependency id="LogoFX.Core" version="2.2.0-rc3" />
         <dependency id="LogoFX.Bootstrapping" version="2.2.0-rc3" />
         <dependency id="LogoFX.Client.Bootstrapping.Adapters.Contracts" version="2.2.0-rc3" />
@@ -44,27 +44,27 @@
         <dependency id="LogoFX.Client.Core" version="2.2.0-rc3" />
       </group>
       <group targetFramework=".NETCoreApp3.1">
-        <dependency id="Solid.Practices.IoC" version="2.3.0" />
-        <dependency id="Solid.Core" version="2.3.0" />
-        <dependency id="Solid.Extensibility" version="2.3.0" />
-        <dependency id="Solid.Practices.Composition.Core" version="2.3.0" />
-        <dependency id="Solid.Practices.Modularity" version="2.3.0" />
-        <dependency id="Solid.Practices.Middleware" version="2.3.0" />
-        <dependency id="Solid.Bootstrapping" version="2.3.0" />
+        <dependency id="Solid.Practices.IoC" version="2.3.1" />
+        <dependency id="Solid.Core" version="2.3.1" />
+        <dependency id="Solid.Extensibility" version="2.3.1" />
+        <dependency id="Solid.Practices.Composition.Core" version="2.3.1" />
+        <dependency id="Solid.Practices.Modularity" version="2.3.1" />
+        <dependency id="Solid.Practices.Middleware" version="2.3.1" />
+        <dependency id="Solid.Bootstrapping" version="2.3.1" />
         <dependency id="LogoFX.Core" version="2.2.0-rc3" />
         <dependency id="LogoFX.Bootstrapping" version="2.2.0-rc3" />
         <dependency id="LogoFX.Client.Bootstrapping.Adapters.Contracts" version="2.2.0-rc3" />
         <dependency id="LogoFX.Client.Bootstrapping.Core" version="2.2.0-rc3" />
         <dependency id="LogoFX.Client.Core" version="2.2.0-rc3" />
       </group>
-      <group targetFramework="net5.0-windows">
-        <dependency id="Solid.Practices.IoC" version="2.3.0" />
-        <dependency id="Solid.Core" version="2.3.0" />
-        <dependency id="Solid.Extensibility" version="2.3.0" />
-        <dependency id="Solid.Practices.Composition.Core" version="2.3.0" />
-        <dependency id="Solid.Practices.Modularity" version="2.3.0" />
-        <dependency id="Solid.Practices.Middleware" version="2.3.0" />
-        <dependency id="Solid.Bootstrapping" version="2.3.0" />
+      <group targetFramework="net5.0">
+        <dependency id="Solid.Practices.IoC" version="2.3.1" />
+        <dependency id="Solid.Core" version="2.3.1" />
+        <dependency id="Solid.Extensibility" version="2.3.1" />
+        <dependency id="Solid.Practices.Composition.Core" version="2.3.1" />
+        <dependency id="Solid.Practices.Modularity" version="2.3.1" />
+        <dependency id="Solid.Practices.Middleware" version="2.3.1" />
+        <dependency id="Solid.Bootstrapping" version="2.3.1" />
         <dependency id="LogoFX.Core" version="2.2.0-rc3" />
         <dependency id="LogoFX.Bootstrapping" version="2.2.0-rc3" />
         <dependency id="LogoFX.Client.Bootstrapping.Adapters.Contracts" version="2.2.0-rc3" />

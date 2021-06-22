@@ -89,7 +89,7 @@
       <Version>2.2.0-rc3</Version>
     </PackageReference>
     <PackageReference Include="Solid.Common.Core">
-      <Version>2.3.0</Version>
+      <Version>2.3.1</Version>
     </PackageReference>
     <PackageReference Include="xunit.core">
       <Version>2.4.1</Version>

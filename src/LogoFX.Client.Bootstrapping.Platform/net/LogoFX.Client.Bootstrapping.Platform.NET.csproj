@@ -32,7 +32,7 @@
     <PackageReference Include="LogoFX.Client.Bootstrapping.Adapters.Contracts" Version="2.2.0-rc3" />
     <PackageReference Include="LogoFX.Client.Core" Version="2.2.0-rc3" />
     <PackageReference Include="LogoFX.Core" Version="2.2.0-rc3" />
-    <PackageReference Include="Solid.Common.Core" Version="2.3.0" />
+    <PackageReference Include="Solid.Common.Core" Version="2.3.1" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\LogoFX.Client.Bootstrapping\LogoFX.Client.Bootstrapping.csproj" />

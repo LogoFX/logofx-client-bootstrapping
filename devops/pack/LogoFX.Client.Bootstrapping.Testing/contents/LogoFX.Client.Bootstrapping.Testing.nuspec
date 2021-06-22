@@ -14,14 +14,14 @@
     <summary>LogoFX Client Bootstrapping Testing containing bootstrapper for unit and integration testing that uses app bootstrapper while providing complete setup for tests.</summary>
     <releaseNotes>Updated dependent packages</releaseNotes>
     <dependencies>
-      <dependency id="Solid.Practices.IoC" version="2.3.0" />
-      <dependency id="Solid.Core" version="2.3.0" />
-      <dependency id="Solid.Common.Core" version="2.3.0" />
-      <dependency id="Solid.Extensibility" version="2.3.0" />
-      <dependency id="Solid.Practices.Composition.Core" version="2.3.0" />
-      <dependency id="Solid.Practices.Modularity" version="2.3.0" />
-      <dependency id="Solid.Practices.Middleware" version="2.3.0" />
-      <dependency id="Solid.Bootstrapping" version="2.3.0" />
+      <dependency id="Solid.Practices.IoC" version="2.3.1" />
+      <dependency id="Solid.Core" version="2.3.1" />
+      <dependency id="Solid.Common.Core" version="2.3.1" />
+      <dependency id="Solid.Extensibility" version="2.3.1" />
+      <dependency id="Solid.Practices.Composition.Core" version="2.3.1" />
+      <dependency id="Solid.Practices.Modularity" version="2.3.1" />
+      <dependency id="Solid.Practices.Middleware" version="2.3.1" />
+      <dependency id="Solid.Bootstrapping" version="2.3.1" />
       <dependency id="LogoFX.Core" version="2.2.0-rc3" />
       <dependency id="LogoFX.Bootstrapping" version="2.2.0-rc3" />
       <dependency id="LogoFX.Client.Bootstrapping.Adapters.Contracts" version="2.2.0-rc3" />
