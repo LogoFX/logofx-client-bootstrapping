@@ -142,37 +142,37 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="LogoFX.Bootstrapping">
-      <Version>2.2.0-rc2</Version>
+      <Version>2.2.0-rc3</Version>
     </PackageReference>
     <PackageReference Include="LogoFX.Client.Bootstrapping.Adapters.Contracts">
-      <Version>2.2.0-rc2</Version>
+      <Version>2.2.0-rc3</Version>
     </PackageReference>
     <PackageReference Include="LogoFX.Client.Core">
-      <Version>2.2.0-rc2</Version>
+      <Version>2.2.0-rc3</Version>
     </PackageReference>
     <PackageReference Include="LogoFX.Client.Core.Core">
-      <Version>2.2.0-rc2</Version>
+      <Version>2.2.0-rc3</Version>
     </PackageReference>
     <PackageReference Include="LogoFX.Core">
-      <Version>2.2.0-rc2</Version>
+      <Version>2.2.0-rc3</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
       <Version>6.2.12</Version>
     </PackageReference>
     <PackageReference Include="Solid.Common">
-      <Version>2.3.0</Version>
+      <Version>2.3.1</Version>
     </PackageReference>
     <PackageReference Include="Solid.Practices.Composition.Core">
-      <Version>2.3.0</Version>
+      <Version>2.3.1</Version>
     </PackageReference>
     <PackageReference Include="Solid.Practices.IoC">
-      <Version>2.3.0</Version>
+      <Version>2.3.1</Version>
     </PackageReference>
     <PackageReference Include="Solid.Practices.Middleware">
-      <Version>2.3.0</Version>
+      <Version>2.3.1</Version>
     </PackageReference>
     <PackageReference Include="Solid.Practices.Modularity">
-      <Version>2.3.0</Version>
+      <Version>2.3.1</Version>
     </PackageReference>
   </ItemGroup>
   <ItemGroup>

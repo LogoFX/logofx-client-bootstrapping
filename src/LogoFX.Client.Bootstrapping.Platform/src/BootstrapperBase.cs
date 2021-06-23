@@ -116,10 +116,23 @@ namespace LogoFX.Client.Bootstrapping
             MiddlewareApplier.ApplyMiddlewares(this, _middlewaresWrapper.Middlewares);
         }
 
+        /// <summary>
+        /// Initializes the bootstrapper.
+        /// </summary>
+        public new void Initialize()
+        {
+            InitializeImpl();
+        }
+
         void IInitializable.Initialize()
         {
+            InitializeImpl();
+        }
+
+        private void InitializeImpl()
+        {
             _discoveryAspect = new DiscoveryAspect(CompositionOptions);
-            Initialize();
+            base.Initialize();
         }
 
         /// <inheritdoc />

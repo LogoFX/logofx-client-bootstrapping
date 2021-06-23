@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using Caliburn.Micro;
 #if NET || NETCORE || NETFRAMEWORK
 using System.Windows;
 #else
@@ -30,11 +31,11 @@ namespace LogoFX.Client.Bootstrapping
                 return;
             }
 
-            _isInitialized = true;            
+            _isInitialized = true;
+            PlatformProvider.Current = new XamlPlatformProvider();
+            var baseExtractTypes = AssemblySourceCache.ExtractTypes;
 
-            var baseExtractTypes = Caliburn.Micro.AssemblySourceCache.ExtractTypes;
-
-            Caliburn.Micro.AssemblySourceCache.ExtractTypes = assembly =>
+            AssemblySourceCache.ExtractTypes = assembly =>
             {
                 var baseTypes = baseExtractTypes(assembly);
                 var elementTypes = assembly.GetExportedTypes()

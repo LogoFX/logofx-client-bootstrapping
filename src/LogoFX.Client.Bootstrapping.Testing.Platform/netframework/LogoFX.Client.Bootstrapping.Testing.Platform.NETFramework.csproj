@@ -100,34 +100,34 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="LogoFX.Client.Bootstrapping.Adapters.Contracts">
-      <Version>2.2.0-rc2</Version>
+      <Version>2.2.0-rc3</Version>
     </PackageReference>
     <PackageReference Include="LogoFX.Client.Core">
-      <Version>2.2.0-rc2</Version>
+      <Version>2.2.0-rc3</Version>
     </PackageReference>
     <PackageReference Include="LogoFX.Core">
-      <Version>2.2.0-rc2</Version>
+      <Version>2.2.0-rc3</Version>
     </PackageReference>
     <PackageReference Include="Solid.Bootstrapping">
-      <Version>2.3.0</Version>
+      <Version>2.3.1</Version>
     </PackageReference>
     <PackageReference Include="Solid.Common.Core">
-      <Version>2.3.0</Version>
+      <Version>2.3.1</Version>
     </PackageReference>
     <PackageReference Include="Solid.Core">
-      <Version>2.3.0</Version>
+      <Version>2.3.1</Version>
     </PackageReference>
     <PackageReference Include="Solid.Extensibility">
-      <Version>2.3.0</Version>
+      <Version>2.3.1</Version>
     </PackageReference>
     <PackageReference Include="Solid.Practices.Composition.Core">
-      <Version>2.3.0</Version>
+      <Version>2.3.1</Version>
     </PackageReference>
     <PackageReference Include="Solid.Practices.Middleware">
-      <Version>2.3.0</Version>
+      <Version>2.3.1</Version>
     </PackageReference>
     <PackageReference Include="Solid.Practices.Modularity">
-      <Version>2.3.0</Version>
+      <Version>2.3.1</Version>
     </PackageReference>
   </ItemGroup>
   <ItemGroup>

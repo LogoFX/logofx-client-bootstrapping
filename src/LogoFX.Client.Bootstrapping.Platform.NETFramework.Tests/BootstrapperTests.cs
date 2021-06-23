@@ -4,7 +4,6 @@ using LogoFX.Client.Bootstrapping.Adapters.SimpleContainer;
 using LogoFX.Client.Testing.Shared.Caliburn.Micro;
 using LogoFX.Practices.IoC;
 using Solid.Common;
-using Solid.Core;
 using Solid.Practices.Composition;
 using Solid.Practices.IoC;
 using Solid.Practices.Modularity;
@@ -34,7 +33,7 @@ namespace LogoFX.Client.Bootstrapping.Platform.NETFramework.Tests
         {
             var container = new ExtendedSimpleContainer();
             var adapter = new ExtendedSimpleContainerAdapter(container);
-            IInitializable bootstrapper = new TestConcreteBootstrapper(container, c => adapter);
+            var bootstrapper = new TestConcreteBootstrapper(container, c => adapter);
             bootstrapper.Initialize();
 
             var dependency = container.GetInstance(typeof (IDependency), null);
@@ -48,7 +47,7 @@ namespace LogoFX.Client.Bootstrapping.Platform.NETFramework.Tests
         {
             var container = new ExtendedSimpleContainer();
             var adapter = new ExtendedSimpleContainerAdapter(container);
-            IInitializable bootstrapper = new TestConcreteBootstrapper(container, c => adapter);
+            var bootstrapper = new TestConcreteBootstrapper(container, c => adapter);
             bootstrapper.Initialize();
 
             var dependency = adapter.Resolve<IConcreteDependency>();
