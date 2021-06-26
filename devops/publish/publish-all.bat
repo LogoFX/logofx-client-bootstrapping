@@ -1,4 +1,4 @@
-SET package_version=2.2.0-rc3
+SET package_version=2.2.0
 cd ../../src
 nuget restore
 cd ../devops

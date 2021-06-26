@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/10/nuspec.xsd">
   <metadata>
     <id>LogoFX.Client.Bootstrapping.Testing</id>
-    <version>2.2.0-rc3</version>
+    <version>2.2.0</version>
     <title>LogoFX.Client.Bootstrapping.Testing</title>
     <authors>Gennady Verdel</authors>
     <owners>Gennady Verdel</owners>
@@ -22,11 +22,11 @@
       <dependency id="Solid.Practices.Modularity" version="2.3.1" />
       <dependency id="Solid.Practices.Middleware" version="2.3.1" />
       <dependency id="Solid.Bootstrapping" version="2.3.1" />
-      <dependency id="LogoFX.Core" version="2.2.0-rc3" />
-      <dependency id="LogoFX.Bootstrapping" version="2.2.0-rc3" />
-      <dependency id="LogoFX.Client.Bootstrapping.Adapters.Contracts" version="2.2.0-rc3" />
-      <dependency id="LogoFX.Client.Bootstrapping.Core" version="2.2.0-rc3" />
-      <dependency id="LogoFX.Client.Core" version="2.2.0-rc3" />
+      <dependency id="LogoFX.Core" version="2.2.0" />
+      <dependency id="LogoFX.Bootstrapping" version="2.2.0" />
+      <dependency id="LogoFX.Client.Bootstrapping.Adapters.Contracts" version="2.2.0" />
+      <dependency id="LogoFX.Client.Bootstrapping.Core" version="2.2.0" />
+      <dependency id="LogoFX.Client.Core" version="2.2.0" />
     </dependencies>
   </metadata>
 </package>
