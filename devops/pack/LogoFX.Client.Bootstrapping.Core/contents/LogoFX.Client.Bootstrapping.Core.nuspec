@@ -12,7 +12,7 @@
     <iconUrl>https://github.com/LogoFX/logofx-assets/blob/master/icons/icon.png?raw=true</iconUrl>
     <description>LogoFX Client Bootstrapping Core containing cross-platform client bootstrapper utilities.</description>
     <summary>LogoFX Client Bootstrapping Core containing cross-platform client bootstrapper utilities.</summary>
-    <releaseNotes>Updated dependent packages</releaseNotes>
+    <releaseNotes></releaseNotes>
     <dependencies>
       <dependency id="Solid.Practices.IoC" version="2.3.1" />
       <dependency id="Solid.Practices.Middleware" version="2.3.1" />
@@ -20,5 +20,7 @@
       <dependency id="Solid.Practices.Composition.Core" version="2.3.1" />
       <dependency id="LogoFX.Bootstrapping" version="2.2.0" />
     </dependencies>
+    <tags>framework logofx dotnet</tags>
+    <repository type="Open Source" url="https://github.com/LogoFX/logofx-client-bootstrapping" />
   </metadata>
 </package>
