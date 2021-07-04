@@ -25,6 +25,7 @@
     <Compile Include="..\src\BootstrapperContainerBase.cs" Link="BootstrapperContainerBase.cs" />
     <Compile Include="..\src\BootstrapperContainerBase.Middleware.cs" Link="BootstrapperContainerBase.Middleware.cs" />
     <Compile Include="..\src\BootstrapperContainerBase.WithContainer.cs" Link="BootstrapperContainerBase.WithContainer.cs" />
+    <Compile Include="..\src\BootstrapperContainerBase.WithContainer.Middleware.cs" Link="BootstrapperContainerBase.WithContainer.Middleware.cs" />
     <Compile Include="..\src\BootstrapperContainerBuilder.cs" Link="BootstrapperContainerBuilder.cs" />
     <Compile Include="..\src\BootstrapperExtensions.cs" Link="BootstrapperExtensions.cs" />
     <Compile Include="..\src\MiddlewareDecorator.cs" Link="MiddlewareDecorator.cs" />
