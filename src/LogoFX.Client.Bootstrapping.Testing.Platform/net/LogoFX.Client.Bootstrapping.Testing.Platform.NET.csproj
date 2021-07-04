@@ -24,6 +24,7 @@
     <Compile Include="..\..\LogoFX.Client.Bootstrapping.Platform\src\BootstrapperBase.ViewLocator.cs" Link="BootstrapperBase.ViewLocator.cs" />
     <Compile Include="..\..\LogoFX.Client.Bootstrapping.Platform\src\BootstrapperContainerBase.cs" Link="BootstrapperContainerBase.cs" />
     <Compile Include="..\..\LogoFX.Client.Bootstrapping.Platform\src\BootstrapperContainerBase.Middleware.cs" Link="BootstrapperContainerBase.Middleware.cs" />
+    <Compile Include="..\..\LogoFX.Client.Bootstrapping.Platform\src\BootstrapperContainerBase.WithContainer.cs" Link="BootstrapperContainerBase.WithContainer.cs" />
     <Compile Include="..\..\LogoFX.Client.Bootstrapping.Platform\src\BootstrapperExtensions.cs" Link="BootstrapperExtensions.cs" />
     <Compile Include="..\..\LogoFX.Client.Bootstrapping.Platform\src\MiddlewareDecorator.cs" Link="MiddlewareDecorator.cs" />
     <Compile Include="..\src\IntegrationTestBootstrapperBase.cs" Link="IntegrationTestBootstrapperBase.cs" />
