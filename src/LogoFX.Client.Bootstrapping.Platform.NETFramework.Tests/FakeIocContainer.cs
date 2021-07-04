@@ -5,35 +5,6 @@ using Solid.Practices.IoC;
 
 namespace LogoFX.Client.Bootstrapping.Platform.NETFramework.Tests
 {
-    class ContainerEntry
-    {
-        public ContainerEntry(
-            Type interfaceType,
-            Type implementationType,
-            bool isSingleton)
-        {
-            InterfaceType = interfaceType;
-            ImplementationType = implementationType;
-            IsSingleton = isSingleton;
-        }
-
-        public Type InterfaceType { get; private set; }
-        public Type ImplementationType { get; private set; }
-        public bool IsSingleton { get; private set; }
-    }
-
-    class InstanceEntry
-    {
-        public InstanceEntry(Type instanceType, object instance)
-        {
-            InstanceType = instanceType;
-            Instance = instance;
-        }
-
-        public Type InstanceType { get; private set; }
-        public object Instance { get; private set; }
-    }
-
     class FakeIocContainer : IIocContainer, IIocContainerAdapter, IBootstrapperAdapter
     {
         private readonly List<ContainerEntry> _registrations = new List<ContainerEntry>();
@@ -188,18 +159,6 @@ namespace LogoFX.Client.Bootstrapping.Platform.NETFramework.Tests
         public void BuildUp(object instance)
         {
             throw new NotImplementedException();
-        }
-    }
-
-    class FakeBootstrapperWithContainerAdapter : BootstrapperContainerBase<FakeIocContainer>
-    {
-        public FakeBootstrapperWithContainerAdapter(FakeIocContainer iocContainerAdapter) : base(iocContainerAdapter)
-        {
-        }
-
-        public FakeBootstrapperWithContainerAdapter(FakeIocContainer iocContainerAdapter,
-            BootstrapperCreationOptions creationOptions) : base(iocContainerAdapter, creationOptions)
-        {
         }
     }
 }

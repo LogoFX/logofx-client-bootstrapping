@@ -61,10 +61,13 @@
     <Compile Include="BootstrapperTests.cs" />
     <Compile Include="ConcreteDependency.cs" />
     <Compile Include="ConcreteModule.cs" />
+    <Compile Include="ContainerEntry.cs" />
     <Compile Include="Dependency.cs" />
+    <Compile Include="FakeBootstrapperWithContainerAdapter.cs" />
     <Compile Include="FakeIocContainer.cs" />
     <Compile Include="IConcreteDependency.cs" />
     <Compile Include="IDependency.cs" />
+    <Compile Include="InstanceEntry.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ServicesModule.cs" />
     <Compile Include="TestBootstrapper.cs" />
