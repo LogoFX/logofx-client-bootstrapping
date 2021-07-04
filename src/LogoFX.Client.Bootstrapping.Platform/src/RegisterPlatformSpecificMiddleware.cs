@@ -1,4 +1,6 @@
+#if NET || NETCORE || NETFRAMEWORK
 using Caliburn.Micro;
+#endif
 using LogoFX.Bootstrapping;
 using Solid.Practices.Middleware;
 
