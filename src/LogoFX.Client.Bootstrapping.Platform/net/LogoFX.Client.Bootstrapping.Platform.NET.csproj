@@ -29,6 +29,7 @@
     <Compile Include="..\src\BootstrapperContainerBuilder.cs" Link="BootstrapperContainerBuilder.cs" />
     <Compile Include="..\src\BootstrapperExtensions.cs" Link="BootstrapperExtensions.cs" />
     <Compile Include="..\src\MiddlewareDecorator.cs" Link="MiddlewareDecorator.cs" />
+    <Compile Include="..\src\RegisterPlatformSpecificMiddleware.cs" Link="RegisterPlatformSpecificMiddleware.cs" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="LogoFX.Client.Bootstrapping.Adapters.Contracts" Version="2.2.0" />

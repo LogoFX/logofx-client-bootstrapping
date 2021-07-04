@@ -143,6 +143,9 @@
     <Compile Include="..\src\MiddlewareDecorator.cs">
       <Link>MiddlewareDecorator.cs</Link>
     </Compile>
+    <Compile Include="..\src\RegisterPlatformSpecificMiddleware.cs">
+      <Link>RegisterPlatformSpecificMiddleware.cs</Link>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Properties\LogoFX.Client.Bootstrapping.Platform.UWP.rd.xml" />
   </ItemGroup>
