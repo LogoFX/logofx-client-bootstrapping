@@ -27,8 +27,11 @@
     <Compile Include="..\..\LogoFX.Client.Bootstrapping.Platform\src\BootstrapperContainerBase.WithContainer.cs" Link="BootstrapperContainerBase.WithContainer.cs" />
     <Compile Include="..\..\LogoFX.Client.Bootstrapping.Platform\src\BootstrapperContainerBase.WithContainer.Middleware.cs" Link="BootstrapperContainerBase.WithContainer.Middleware.cs" />
     <Compile Include="..\..\LogoFX.Client.Bootstrapping.Platform\src\BootstrapperExtensions.cs" Link="BootstrapperExtensions.cs" />
+    <Compile Include="..\..\LogoFX.Client.Bootstrapping.Platform\src\CreateRootObjectMiddleware.cs" Link="CreateRootObjectMiddleware.cs" />
     <Compile Include="..\..\LogoFX.Client.Bootstrapping.Platform\src\MiddlewareDecorator.cs" Link="MiddlewareDecorator.cs" />
+    <Compile Include="..\..\LogoFX.Client.Bootstrapping.Platform\src\RegisterContainerAdapterMiddleware.cs" Link="RegisterContainerAdapterMiddleware.cs" />
     <Compile Include="..\..\LogoFX.Client.Bootstrapping.Platform\src\RegisterPlatformSpecificMiddleware.cs" Link="RegisterPlatformSpecificMiddleware.cs" />
+    <Compile Include="..\..\LogoFX.Client.Bootstrapping.Platform\src\RegisterResolverMiddleware.cs" Link="RegisterResolverMiddleware.cs" />
     <Compile Include="..\src\IntegrationTestBootstrapperBase.cs" Link="IntegrationTestBootstrapperBase.cs" />
   </ItemGroup>
   <ItemGroup>
