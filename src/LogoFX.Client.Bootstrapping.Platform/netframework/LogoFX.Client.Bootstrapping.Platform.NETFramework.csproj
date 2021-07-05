@@ -87,14 +87,32 @@
     <Compile Include="..\src\BootstrapperContainerBase.Middleware.cs">
       <Link>BootstrapperContainerBase.Middleware.cs</Link>
     </Compile>
+    <Compile Include="..\src\BootstrapperContainerBase.WithContainer.cs">
+      <Link>BootstrapperContainerBase.WithContainer.cs</Link>
+    </Compile>
+    <Compile Include="..\src\BootstrapperContainerBase.WithContainer.Middleware.cs">
+      <Link>BootstrapperContainerBase.WithContainer.Middleware.cs</Link>
+    </Compile>
     <Compile Include="..\src\BootstrapperContainerBuilder.cs">
       <Link>BootstrapperContainerBuilder.cs</Link>
     </Compile>
     <Compile Include="..\src\BootstrapperExtensions.cs">
       <Link>BootstrapperExtensions.cs</Link>
     </Compile>
+    <Compile Include="..\src\CreateRootObjectMiddleware.cs">
+      <Link>CreateRootObjectMiddleware.cs</Link>
+    </Compile>
     <Compile Include="..\src\MiddlewareDecorator.cs">
       <Link>MiddlewareDecorator.cs</Link>
+    </Compile>
+    <Compile Include="..\src\RegisterContainerAdapterMiddleware.cs">
+      <Link>RegisterContainerAdapterMiddleware.cs</Link>
+    </Compile>
+    <Compile Include="..\src\RegisterPlatformSpecificMiddleware.cs">
+      <Link>RegisterPlatformSpecificMiddleware.cs</Link>
+    </Compile>
+    <Compile Include="..\src\RegisterResolverMiddleware.cs">
+      <Link>RegisterResolverMiddleware.cs</Link>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
