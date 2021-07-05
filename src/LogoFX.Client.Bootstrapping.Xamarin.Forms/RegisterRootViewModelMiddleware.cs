@@ -21,5 +21,4 @@ namespace LogoFX.Client.Bootstrapping.Xamarin.Forms
             return @object;
         }
     }
-
 }

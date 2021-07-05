@@ -3,14 +3,10 @@ using FluentAssertions;
 using LogoFX.Client.Bootstrapping.Adapters.SimpleContainer;
 using LogoFX.Client.Testing.Shared.Caliburn.Micro;
 using LogoFX.Practices.IoC;
-using Solid.Common;
-using Solid.Practices.Composition;
-using Solid.Practices.IoC;
-using Solid.Practices.Modularity;
 using Xunit;
 
 namespace LogoFX.Client.Bootstrapping.Platform.NETFramework.Tests
-{    
+{
     public class BootstrapperTests : IDisposable
     {
         [Fact]
@@ -57,76 +53,6 @@ namespace LogoFX.Client.Bootstrapping.Platform.NETFramework.Tests
         public void Dispose()
         {
             TestHelper.Teardown();
-        }
-    }
-
-    class TestShellViewModel
-    {
-        
-    }
-
-    class TestBootstrapper : BootstrapperContainerBase<ExtendedSimpleContainerAdapter>
-    {
-        public TestBootstrapper(ExtendedSimpleContainerAdapter iocContainerAdapter) : base(iocContainerAdapter)
-        {
-        }
-
-        public TestBootstrapper(ExtendedSimpleContainerAdapter iocContainerAdapter, BootstrapperCreationOptions creationOptions) : 
-            base(iocContainerAdapter, creationOptions)
-        {
-            PlatformProvider.Current = new NetStandardPlatformProvider();
-        }
-    }
-
-    class TestConcreteBootstrapper : BootstrapperContainerBase<ExtendedSimpleContainerAdapter, ExtendedSimpleContainer>
-    {
-        public TestConcreteBootstrapper(ExtendedSimpleContainer iocContainer, Func<ExtendedSimpleContainer, ExtendedSimpleContainerAdapter> adapterCreator) : 
-            base(iocContainer, adapterCreator, new BootstrapperCreationOptions
-            {
-                UseApplication = false
-            })
-        {            
-        }
-
-        public override CompositionOptions CompositionOptions { get; } = new CompositionOptions
-        {
-            Prefixes = new[] {"LogoFX.Client"}
-        };
-    }
-
-    interface IDependency
-    {
-        
-    }
-
-    class Dependency : IDependency
-    {
-        
-    }
-
-    interface IConcreteDependency
-    {
-        
-    }
-
-    class ConcreteDependency : IConcreteDependency
-    {
-        
-    }
-
-    class ServicesModule : ICompositionModule<IDependencyRegistrator>
-    {
-        public void RegisterModule(IDependencyRegistrator dependencyRegistrator)
-        {
-            dependencyRegistrator.RegisterSingleton<IDependency, Dependency>();
-        }
-    }
-
-    class ConcreteModule : ICompositionModule<ExtendedSimpleContainer>
-    {
-        public void RegisterModule(ExtendedSimpleContainer iocContainer)
-        {
-            iocContainer.RegisterPerRequest(typeof(IConcreteDependency), null, typeof(ConcreteDependency));
         }
     }
 }

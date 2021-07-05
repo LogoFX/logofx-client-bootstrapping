@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Reflection;
 using Solid.Bootstrapping;
 using Solid.Common;
@@ -108,46 +107,5 @@ namespace LogoFX.Client.Bootstrapping.Xamarin.Forms
             _aspectsWrapper.UseAspect(aspect);
             return this;
         }
-    }
-
-    //TODO: Check whether there's a suitable solution inside infra packages
-    internal static class AssembliesExtensions
-    {
-        internal static IEnumerable<Assembly> FilterByPrefixes(this IEnumerable<Assembly> assemblies, string[] prefixes) => prefixes?.Length == 0
-                ? assemblies
-                : assemblies.Where(t => prefixes.Any(k => t.GetName().Name.StartsWith(k)));
-    }   
-
-    class DiscoveryAspect : IAspect, IAssemblySourceProvider
-    {
-        private readonly CompositionOptions _options;
-
-        public DiscoveryAspect(CompositionOptions options)
-        {
-            _options = options;
-        }
-
-        public void Initialize()
-        {
-            if (_assemblies == null)
-            {
-                LoadAssemblies();
-            }
-        }
-
-        private IEnumerable<Assembly> _assemblies;
-        /// <summary>
-        /// <inheritdoc />
-        /// </summary>
-        public IEnumerable<Assembly> Assemblies => _assemblies ??
-                                                   (_assemblies = LoadAssemblies().FilterByPrefixes(_options.Prefixes));
-
-        private IEnumerable<Assembly> LoadAssemblies()
-        {
-            return AppDomain.CurrentDomain.GetAssemblies();
-        }
-
-        public string[] Dependencies => new string[] {};
-        public string Id => "Discovery";
     }
 }

@@ -26,9 +26,7 @@ namespace LogoFX.Client.Bootstrapping
         /// </summary>        
         public LogoFXApplication(IntPtr javaReference, JniHandleOwnership transfer)
             : base(javaReference, transfer)
-        {
-
-        }
+        {}
 
         /// <summary>
         /// <inheritdoc />
