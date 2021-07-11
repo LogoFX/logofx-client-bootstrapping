@@ -5,7 +5,7 @@
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
     <AssemblyName>LogoFX.Client.Bootstrapping.Testing</AssemblyName>
     <RootNamespace>LogoFX.Client.Bootstrapping.Testing</RootNamespace>
-    <Version>2.2.0</Version>
+    <Version>2.2.1</Version>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
     <OutputPath>..\..\Bin\netcore\Release\</OutputPath>
@@ -35,10 +35,10 @@
     <Compile Include="..\src\IntegrationTestBootstrapperBase.cs" Link="IntegrationTestBootstrapperBase.cs" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="LogoFX.Bootstrapping" Version="2.2.0" />
-    <PackageReference Include="LogoFX.Client.Bootstrapping.Adapters.Contracts" Version="2.2.0" />
-    <PackageReference Include="LogoFX.Client.Core" Version="2.2.0" />
-    <PackageReference Include="LogoFX.Core" Version="2.2.0" />
+    <PackageReference Include="LogoFX.Bootstrapping" Version="2.2.1-rc1" />
+    <PackageReference Include="LogoFX.Client.Bootstrapping.Adapters.Contracts" Version="2.2.1-rc1" />
+    <PackageReference Include="LogoFX.Client.Core" Version="2.2.1-rc1" />
+    <PackageReference Include="LogoFX.Core" Version="2.2.1-rc1" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\LogoFX.Client.Bootstrapping\LogoFX.Client.Bootstrapping.csproj" />
