@@ -118,13 +118,13 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="LogoFX.Client.Bootstrapping.Adapters.Contracts">
-      <Version>2.2.1-rc1</Version>
+      <Version>2.2.1</Version>
     </PackageReference>
     <PackageReference Include="LogoFX.Client.Core">
-      <Version>2.2.1-rc1</Version>
+      <Version>2.2.1</Version>
     </PackageReference>
     <PackageReference Include="LogoFX.Core">
-      <Version>2.2.1-rc1</Version>
+      <Version>2.2.1</Version>
     </PackageReference>
     <PackageReference Include="Solid.Bootstrapping">
       <Version>2.3.1</Version>
