@@ -35,10 +35,10 @@
     <Compile Include="..\src\IntegrationTestBootstrapperBase.cs" Link="IntegrationTestBootstrapperBase.cs" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="LogoFX.Bootstrapping" Version="2.2.1-rc1" />
-    <PackageReference Include="LogoFX.Client.Bootstrapping.Adapters.Contracts" Version="2.2.1-rc1" />
-    <PackageReference Include="LogoFX.Client.Core" Version="2.2.1-rc1" />
-    <PackageReference Include="LogoFX.Core" Version="2.2.1-rc1" />
+    <PackageReference Include="LogoFX.Bootstrapping" Version="2.2.1" />
+    <PackageReference Include="LogoFX.Client.Bootstrapping.Adapters.Contracts" Version="2.2.1" />
+    <PackageReference Include="LogoFX.Client.Core" Version="2.2.1" />
+    <PackageReference Include="LogoFX.Core" Version="2.2.1" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\LogoFX.Client.Bootstrapping\LogoFX.Client.Bootstrapping.csproj" />
