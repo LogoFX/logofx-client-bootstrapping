@@ -5,7 +5,7 @@
     <UseWPF>true</UseWPF>
     <AssemblyName>LogoFX.Client.Bootstrapping.Platform</AssemblyName>
     <RootNamespace>LogoFX.Client.Bootstrapping</RootNamespace>
-    <Version>2.2.1</Version>
+    <Version>2.2.2</Version>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
     <DefineConstants>TRACE;NETCORE</DefineConstants>
@@ -35,10 +35,10 @@
     <Compile Include="..\src\RegisterResolverMiddleware.cs" Link="RegisterResolverMiddleware.cs" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="LogoFX.Client.Bootstrapping.Adapters.Contracts" Version="2.2.1" />
-    <PackageReference Include="LogoFX.Client.Core" Version="2.2.1" />
-    <PackageReference Include="LogoFX.Core" Version="2.2.1" />
-    <PackageReference Include="Solid.Common.Core" Version="2.3.1" />
+    <PackageReference Include="LogoFX.Client.Bootstrapping.Adapters.Contracts" Version="2.2.2" />
+    <PackageReference Include="LogoFX.Client.Core" Version="2.2.2" />
+    <PackageReference Include="LogoFX.Core" Version="2.2.2" />
+    <PackageReference Include="Solid.Common.Core" Version="2.3.2" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\LogoFX.Client.Bootstrapping\LogoFX.Client.Bootstrapping.csproj" />
