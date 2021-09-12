@@ -159,39 +159,19 @@
     <EmbeddedResource Include="Properties\LogoFX.Client.Bootstrapping.Platform.UWP.rd.xml" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="LogoFX.Bootstrapping">
-      <Version>2.2.1</Version>
-    </PackageReference>
-    <PackageReference Include="LogoFX.Client.Bootstrapping.Adapters.Contracts">
-      <Version>2.2.1</Version>
-    </PackageReference>
-    <PackageReference Include="LogoFX.Client.Core">
-      <Version>2.2.1</Version>
-    </PackageReference>
-    <PackageReference Include="LogoFX.Client.Core.Core">
-      <Version>2.2.1</Version>
-    </PackageReference>
-    <PackageReference Include="LogoFX.Core">
-      <Version>2.2.1</Version>
-    </PackageReference>
+    <PackageReference Include="LogoFX.Bootstrapping" Version="2.2.2" />    
+    <PackageReference Include="LogoFX.Client.Bootstrapping.Adapters.Contracts" Version="2.2.2" />
+    <PackageReference Include="LogoFX.Client.Core" Version="2.2.2" />      
+    <PackageReference Include="LogoFX.Client.Core.Core" Version="2.2.2" />      
+    <PackageReference Include="LogoFX.Core" Version="2.2.2" />      
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
       <Version>6.2.12</Version>
     </PackageReference>
-    <PackageReference Include="Solid.Common">
-      <Version>2.3.1</Version>
-    </PackageReference>
-    <PackageReference Include="Solid.Practices.Composition.Core">
-      <Version>2.3.1</Version>
-    </PackageReference>
-    <PackageReference Include="Solid.Practices.IoC">
-      <Version>2.3.1</Version>
-    </PackageReference>
-    <PackageReference Include="Solid.Practices.Middleware">
-      <Version>2.3.1</Version>
-    </PackageReference>
-    <PackageReference Include="Solid.Practices.Modularity">
-      <Version>2.3.1</Version>
-    </PackageReference>
+    <PackageReference Include="Solid.Common" Version="2.3.2" />      
+    <PackageReference Include="Solid.Practices.Composition.Core" Version="2.3.2" />      
+    <PackageReference Include="Solid.Practices.IoC" Version="2.3.2" />      
+    <PackageReference Include="Solid.Practices.Middleware" Version="2.3.2" />      
+    <PackageReference Include="Solid.Practices.Modularity" Version="2.3.2" />       
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\LogoFX.Client.Bootstrapping\LogoFX.Client.Bootstrapping.csproj">

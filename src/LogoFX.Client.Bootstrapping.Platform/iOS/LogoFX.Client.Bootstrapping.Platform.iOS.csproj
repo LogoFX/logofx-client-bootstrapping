@@ -63,14 +63,10 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="LogoFX.Client.Bootstrapping.Adapters.Contracts">
-      <Version>2.2.1</Version>
-    </PackageReference>
-    <PackageReference Include="LogoFX.Client.Core">
-      <Version>2.2.1</Version>
-    </PackageReference>
+    <PackageReference Include="LogoFX.Client.Bootstrapping.Adapters.Contracts" Version="2.2.2" />      
+    <PackageReference Include="LogoFX.Client.Core" Version="2.2.2" />      
     <PackageReference Include="Solid.Practices.IoC">
-      <Version>2.3.1</Version>
+      <Version>2.3.2</Version>
     </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />

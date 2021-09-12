@@ -1,4 +1,4 @@
-SET package_version=2.2.1
+SET package_version=2.2.2
 cd ../../src
 nuget restore
 cd ../devops
