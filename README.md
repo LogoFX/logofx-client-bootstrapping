@@ -28,3 +28,5 @@ Contains bootstrapping facilities for client applications.
 <img src=https://img.shields.io/nuget/dt/LogoFX.Client.Bootstrapping.Xamarin.Forms>
 
 [Get package](https://www.nuget.org/packages/LogoFX.Client.Bootstrapping.Xamarin.Forms)
+
+This repository is archived. Its functionality has been moved to https://github.com/LogoFX/bootstrapping
